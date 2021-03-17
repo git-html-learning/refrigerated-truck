@@ -98,30 +98,30 @@ export default new Router({
             //   icon: 'none'
             // }
             {
-              path: '/list/query1',
-              name: '详情页',
-              component: () => import('@/views/List/more'),
+              path: '/list/details',
+              name: '车辆详情页',
+              component: () => import('@/views/List/Details'),
               icon: 'none'
             },
           ]
         },
         {
-          path: '/history',
+          path: '/user',
           name: '用户信息',
           // component: RouteView,
           component: () => import('@/layouts/RouteView'),
           icon: 'check-circle-o',
           children: [
             {
-              path: '/list/card',
+              path: '/user/information',
               name: '个人中心',
-              component: () => import('@/views/List/CardList'),
+              component: () => import('@/views/User/Information'),
               icon: 'none'
             },
             {
-              path: '/list/step1',
+              path: '/user/modify',
               name: '基本设置',
-              component: () => import('@/views/List/QueryList'),
+              component: () => import('@/views/User/Modify'),
               icon: 'none'
             }
            
