@@ -1,220 +1,341 @@
 <template>
-<div>
-    <div >
-     <el-row style="height:240px">
-      <el-col :span="24">
- <el-row>
-      <el-col :span="5">
- <a-card title="总报警数" :bordered="false" style="width: 200px">
-      <a-statistic title="累计报警数" :value="112893" style="margin-right: 50px" />
-    <a-statistic title="本周报警数" :precision="2" :value="556" />
-    <br>
-    </a-card>
-      </el-col>
-      <el-col :span="19">
-       <a-card title="近一周活动发布" :bordered="false" style="width: 100%">
-      <p>Card content</p>
-      <p>Card content</p>
-      <p>Card content</p>   
-      <p>Card content</p>   
+  <div class="home">
+    <div class="home-item">
+      <div class="home-item-top">
+        <div class="warningnum">
+          <div class="title1">总报警数</div>
+          <div class="totalnum">{{ totalnum }}</div>
+          <div class="title2">近一周报警数</div>
+          <div class="recentnum">{{ recentnum }}</div>
+        </div>
+
+        <div class="warningdiagram" id="warningdiagram"></div>
+      </div>
       
-    </a-card>
-      </el-col>
-    </el-row>
-      </el-col>
-    </el-row>
-         <el-row style="height:300px">
-      <el-col :span="24">
-        <a-card
-      style="width:100%"
-      title="所属类目"
-      :tab-list="tabList"
-      :active-tab-key="key"
-      @tabChange="key => onTabChange(key, 'key')"
-    >
-      <span slot="customRender" slot-scope="item"> <a-icon type="home" />{{ item.key }} </span>
-      <a slot="extra" href="#">More</a>
-      {{ contentList[key] }}
-       <a-table :columns="columns" :data-source="data">
-    <a slot="name" slot-scope="text">{{ text }}</a>
-  </a-table>
-    </a-card>
-      </el-col>
-    </el-row>
+      <div class="home-item-bottom">
+        <a-tabs type="card" default-active-key="1" size="default">
+          <a-tab-pane key="1" tab="全部">
+            <div>
+              <a-table 
+              :columns="totalColumns" 
+              :data-source="totalData"
+              bordered 
+              :pagination="paginationOpt"
+              >
+              <a slot="number" slot-scope="text">{{ text }}</a>
+              </a-table>
+            </div>
+          </a-tab-pane>
+          
+          <a-tab-pane key="2" tab="胎温">Content of Tab Pane 2</a-tab-pane>
+          <a-tab-pane key="3" tab="胎压">Content of Tab Pane 3</a-tab-pane>
+          <a-tab-pane key="4" tab="震动">Content of Tab Pane 4</a-tab-pane>
+          <a-tab-pane key="5" tab="冷机">
+            <div>
+              <a-table
+                :columns="refColumns"
+                :data-source="refData"
+                bordered
+                :pagination="paginationOpt"
+              >
+              <a slot="number" slot-scope="text">{{ text }}</a>
+              </a-table>
+            </div>
+          </a-tab-pane>
+
+        </a-tabs>
+      </div>
+
     </div>
-
-
-</div>
+  </div>
 </template>
 
 <script>
-import store from '@/store'
-import {product,getdeviceList,getdeviceData} from '@/api/data'
-
-export default{
-data() {
+import { Line } from "@antv/g2plot";
+export default {
+  data() {
     return {
-       data,
-      columns,
-      tabList: [
+      totalnum: "1563",
+      recentnum: "66",
+      
+      paginationOpt: {  
+        defaultCurrent: 1,  // 默认当前页数  
+        defaultPageSize: 6,   // 默认当前页显示数据的大小  
+      },
+
+      warnningdata: [
+        { time: "2021-03-01 ", num: 10 },
+        { time: "2021-03-02 ", num: 22 },
+        { time: "2021-03-03 ", num: 20 },
+        { time: "2021-03-04 ", num: 26 },
+        { time: "2021-03-05 ", num: 20 },
+        { time: "2021-03-06 ", num: 26 },
+        { time: "2021-03-07 ", num: 28 },
+      ],
+
+      totalColumns:[
         {
-          key: 'tab1',
-          tab:'全部',
-          scopedSlots: { tab: 'customRender' },
+          title: "车牌号",
+          dataIndex: "number",
+          key: "number",
+          align: "center",
+          scopedSlots: { customRender: 'number' },
         },
         {
-          key: 'tab2',
-          tab: '胎温',
+          title: "最后上传时间",
+          dataIndex: "updateTime",
+          key: "updateTime",
+          align: "center",
         },
-           {
-          key: 'tab3',
-          tab: '胎压',
+        {
+          title: "报警位置",
+          dataIndex: "location",
+          key: "location",
+          align: "center",
         },
-           {
-          key: 'tab4',
-          tab: '温湿度',
+        {
+          title: "数值",
+          dataIndex: "value",
+          key: "value",
+          align: "center",
         },
-           {
-          key: 'tab5',
-          tab: '震动',
-        },
-           {
-          key: 'tab6',
-          tab: '油位',
+        {
+          title: "司机",
+          dataIndex: "driver",
+          key: "driver",
+          align: "center",
         },
       ],
-      contentList: {
-        tab1: 'content1',
-        tab2: 'content2',
-        tab3: 'content3',
-        tab4: 'content4',
-        tab5: 'content5',
-        tab6: 'content6',
-      },
-      key: 'tab1',
+      totalData:[
+        {
+          number: "皖11111",
+          updateTime: "2021-03-10 21:39",
+          location:"轮胎1",
+          value: "100℃",
+          driver: "张三",
+        },
+        {
+          number: "皖22222",
+          updateTime: "2021-03-10 21:33",
+          location:"油位",
+          value: "1%",
+          driver: "李四",
+        },
+        {
+          number: "皖33333",
+          updateTime: "2021-03-10 21:23",
+          location:"温度测量点1",
+          value: "60℃",
+          driver: "王五",
+        },
+        {
+          number: "皖44444",
+          updateTime: "2021-03-10 22:33",
+          location:"温度测量点2",
+          value: "70℃",
+          driver: "无名",
+        },
+        {
+          number: "皖55555",
+          updateTime: "2021-03-10 11:33",
+          location:"温度测量点3",
+          value: "72℃",
+          driver: "小芮",
+        },
+        {
+          number: "皖66666",
+          updateTime: "2021-03-10 20:33",
+          location:"温度测量点4",
+          value: "60℃",
+          driver: "司机",
+        },
+        {
+          number: "皖66666",
+          updateTime: "2021-03-10 20:33",
+          location:"温度测量点4",
+          value: "60℃",
+          driver: "司机",
+        },
+      ],
+
+      refColumns: [
+        {
+          title: "车牌号",
+          dataIndex: "number",
+          key: "number",
+          align: "center",
+          scopedSlots: { customRender: 'number' },
+        },
+        {
+          title: "冷机设备号",
+          dataIndex: "id",
+          key: "id",
+          align: "center",
+        },
+        {
+          title: "更新时间",
+          dataIndex: "updateTime",
+          key: "updateTime",
+          align: "center",
+        },
+        {
+          title: "电源",
+          dataIndex: "power",
+          key: "power",
+          align: "center",
+        },
+        {
+          title: "温度/℃",
+          dataIndex: "temp",
+          key: "temp",
+          align: "center",
+        },
+      ],
+      refData: [
+        {
+          number: "皖11111",
+          id: "977579",
+          updateTime: "2021-03-10 21:39",
+          power: "开",
+          temp: "2.0",
+        },
+        {
+          number: "皖22222",
+          id: "902147",
+          updateTime: "2021-03-10 21:33",
+          power: "开",
+          temp: "9.0",
+        },
+        {
+          number: "皖33333",
+          id: "214893",
+          updateTime: "2021-03-10 21:23",
+          power: "开",
+          temp: "5.0",
+        },
+        {
+          number: "皖44444",
+          id: "564390",
+          updateTime: "2021-03-10 22:33",
+          power: "关",
+          temp: "8.2",
+        },
+        {
+          number: "皖55555",
+          id: "489732",
+          updateTime: "2021-03-10 11:33",
+          power: "开",
+          temp: "9.1",
+        },
+        {
+          number: "皖66666",
+          id: "532890",
+          updateTime: "2021-03-10 20:33",
+          power: "关",
+          temp: "9.2",
+        },
+        {
+          number: "皖66666",
+          id: "532890",
+          updateTime: "2021-03-10 20:33",
+          power: "关",
+          temp: "9.2",
+        },
+      ],
+
     };
   },
-  methods: {
-    onTabChange(key, type) {
-      console.log(key, type);
-      this[type] = key;
-    },
+  methods: {},
+  created() {},
+  mounted() {
+    const linePlot = new Line("warningdiagram", {
+      title:{
+        visible:true,
+        text:"近一周报警数量",
+      },
+      data: this.warnningdata,
+      padding: 'auto',
+      xField: "time",
+      yField: "num",
+      yAxis:{
+        min:0,
+        max:30
+      }
+    });
+    linePlot.render();
   },
 };
-const columns = [
-  {
-    title: '车牌号',
-    dataIndex: 'name',
-    key: 'name',
-    scopedSlots: { customRender: 'name' },
-  },
-  {
-    title: '时间',
-    dataIndex: 'age',
-    key: 'age',
-    width: 80,
-  },
-  {
-    title: '报警位置',
-    dataIndex: 'address1',
-    key: 'address 1',
-    ellipsis: true,
-  },
-  {
-    title: '数值',
-    dataIndex: 'address2',
-    key: 'address 2',
-    ellipsis: true,
-  },
-  {
-    title: '司机',
-    dataIndex: 'address3',
-    key: 'address 3',
-    ellipsis: true,
-  },
-  {
-    title: '操作',
-    dataIndex: 'address4',
-    key: 'address 4',
-    ellipsis: true,
-  },
-];
-
-const data = [
-  {
-    key: '1',
-    name: '皖A2222',
-    age: "2020-01-01 09:00",
-    address1: '轮胎1',
-    address2: '100°C',
-    address3: '某某某',
-    address4: '通知',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    name: '皖A2223',
-    age: "2020-01-01 09:00",
-    address1: '油位',
-    address2: '1%',
-    address3: '某某某',
-    address4: '通知',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '3',
-    name: '皖A2225',
-    age: "2020-01-01 09:00",
-    address1: '温湿度测量点1',
-    address2: '55°C 30%',
-    address3: '某某某',
-    address4: '通知',
-    tags: ['nice', 'developer'],
-  },
-   {
-    key: '4',
-    name: '皖A2225',
-    age: "2020-01-01 09:00",
-    address1: '温湿度测量点2',
-    address2: '15°C',
-    address3: '某某某',
-    address4: '通知',
-    tags: ['nice', 'developer'],
-  },
-];
-
 </script>
 
-<style lang="less">
-  .el-row {
-    margin-bottom: 20px;
-    &:last-child {
-      margin-bottom: 0;
+<style lang="less" scoped>
+.home {
+  width: 100%;
+  height: 100%;
+  // background: black;
+  .home-item {
+    margin: 10px;
+    // background: rgb(32, 35, 212);
+    .home-item-top {
+      width: 100%;
+      height: 50%;
+      display: flex;
+      margin: 0px 30px 0px 0px;
+      // background: black;
+      .warningnum {
+        width: 20%;
+        height: 240px;
+        margin: 0px 15px 15px 0px;
+        background: #ffffff;
+        box-shadow: 5px 5px 5px #dad8d8;
+        border-radius: 10px;
+        .title1 {
+          font-size: 16px;
+          line-height: 40px;
+          margin-left: 20px;
+          font-weight: 600;
+          // background: black;
+        }
+        .totalnum {
+          width: 50%;
+          padding-top: 10px;
+          text-align: right;
+          font-size: 36px;
+          font-weight: 600;
+          // background: black;
+        }
+        .title2 {
+          font-size: 16px;
+          line-height: 60px;
+          margin-left: 20px;
+          font-weight: 600;
+          // background: black;
+        }
+        .recentnum {
+          width: 50%;
+          padding-top: 5px;
+          text-align: right;
+          font-size: 34px;
+          font-weight: 600;
+          // background: black;
+        }
+      }
+      .warningdiagram {
+        width: 80%;
+        height: 240px;
+        margin: 0px 15px 15px 15px;
+        background: #ffffff;
+        box-shadow: 5px 5px 5px #dad8d8;
+        border-radius: 10px;
+      }
+    }
+    .home-item-bottom {
+      width: 100%;
+      height: 500px;
+      background: #ffffff;
+      margin: 10px 10px 0px 0px;
+      box-shadow: 5px 5px 5px #dad8d8;
+      border-radius: 10px;
     }
   }
-  .el-col {
-    border-radius: 30px;
-  }
-  .bg-purple-light {
-    background: #FFFFFF;
-  }
-  .grid-content {
-    border-radius: 40px;
-    min-height: 50px;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 70px;
-  }
-  .grid-content1 {
-    border-radius: 40px;
-    min-height: 250px;
-    margin: 15px 5px 15px 0px;
-    box-shadow:  0 2px 12px 0 rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-  }
-  .warehouse{
-    font-size:30px;
-    color:#409EFF
-  }
-
+}
 </style>
