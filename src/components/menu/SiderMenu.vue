@@ -3,7 +3,7 @@
   <a-layout-sider :class="[theme, 'sider', isMobile ? null : 'shadow']" width="256px" :collapsible="collapsible" v-model="collapsed" :trigger="null">
     <!-- 顶部logo和系统名称 -->
     <div :class="['logo', theme]">
-      <router-link to="/dashboard/analysis">
+      <router-link to="/dashboard/map">
         <!-- <img src="../../assets/img/logo.png"> -->
         <img src="../../static/pic/honen.png">
         <h1>{{systemName}}</h1>
