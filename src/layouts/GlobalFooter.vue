@@ -8,7 +8,7 @@
     </div>
     <!-- 尾部出版信息 -->
     <div class="copyright">
-      {{'Copyright '}}<a-icon type="copyright" />2020 合肥弘恩科技有限公司
+      {{'Copyright '}}<a-icon type="copyright" />2021 合肥弘恩科技有限公司
     </div>
   </div>
 </template>
