@@ -14,11 +14,10 @@
             size="large"
             :tabBarStyle="{textAlign: 'center'}"
             style="padding: 0 2px;"
-            v-model="activeKey"
-            @change="onChangeTabs"
-            :animated="false"
+            default-active-key="1"
+            
           >
-            <a-tab-pane tab="账户密码登录" key="account">
+            <a-tab-pane tab="账户密码登录" key="1">
               <a-alert
                 type="error"
                 :closable="true"
@@ -43,7 +42,7 @@
                 </a-input>
               </a-form-item>
             </a-tab-pane>
-            <a-tab-pane tab="手机号登录" key="captcha">
+            <a-tab-pane tab="手机号登录" key="2">
               <a-alert type="error" :closable="true" v-show="captchaError" :message="captchaError" showIcon style="margin-bottom: 24px;" />
               <a-form-item>
                 <a-input
@@ -83,10 +82,6 @@
               </a-form-item>
             </a-tab-pane>
           </a-tabs>
-          <div>
-            <a-checkbox  @change="onChangeCheckBox">自动登录</a-checkbox>
-            <a style="float: right">忘记密码</a>
-          </div>
           <a-form-item>
             <a-button
               :loading="logging"
