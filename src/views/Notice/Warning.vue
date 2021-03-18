@@ -13,7 +13,8 @@
       </div>
       
       <div class="home-item-bottom">
-        <a-tabs type="card" default-active-key="1" size="default">
+        <!-- <p style="font-size: 20px; padding: 0px 0px 0px 10px; align: left">类别</p> -->
+        <a-tabs  default-active-key="1" size="large">
           <a-tab-pane key="1" tab="全部">
             <div>
               <a-table 
