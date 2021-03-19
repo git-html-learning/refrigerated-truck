@@ -52,7 +52,7 @@
     </a-modal> -->
 
       <div v-show="showPage == '2'" >
-        <div class="home-item1">
+        <div class="chart">
           <div>
             <i
               class="iconfont icon-ai207"
@@ -81,7 +81,7 @@ import { Progress, Line } from "@antv/g2plot";
 import { divide, floor, size } from "lodash";
 // import { set } from "vue/types/umd";
 export default {
-  name: "queryList",
+  name: "refrigerator",
 
   data() {
     return {
@@ -314,7 +314,7 @@ export default {
       }
     }
   }
-  .home-item1 {
+  .chart {
     background: #ffffff;
     // box-shadow: 5px 5px 5px #888888;
     // border-radius: 10px;
@@ -330,28 +330,4 @@ export default {
   }
 }
 
-.gridtable {
-  width: 99.8%;
-  font-family: verdana, arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #666666;
-  border-width: 1px;
-  border-color: #e8e8e8;
-  border-collapse: collapse;
-  text-align: center;
-}
-.gridtable td {
-  border-width: 1px;
-  padding: 14px;
-  border-style: solid;
-  border-color: #e8e8e8;
-  background-color: #ffffff;
-}
-.tabletitle {
-  font-size: 20px;
-  font-weight: 600;
-  text-align: center;
-  //  margin: 0 auto;
-}
 </style>
