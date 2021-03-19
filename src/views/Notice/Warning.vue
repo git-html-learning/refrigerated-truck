@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { Line } from "@antv/g2plot";
+import { Line,Area,Column } from "@antv/g2plot";
 export default {
   data() {
     return {
@@ -249,7 +249,7 @@ export default {
   methods: {},
   created() {},
   mounted() {
-    const linePlot = new Line("warningdiagram", {
+    const columnPlot = new Column("warningdiagram", {
       title:{
         visible:true,
         text:"近一周报警数量",
@@ -261,9 +261,18 @@ export default {
       yAxis:{
         min:0,
         max:30
-      }
+      },
+      meta: {
+        time: {
+          alias: ' ',
+        },
+        num: {
+          alias: '报警数',
+        },
+      },
+      columnSize:40
     });
-    linePlot.render();
+    columnPlot.render();
   },
 };
 </script>
