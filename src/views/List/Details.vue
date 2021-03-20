@@ -9,16 +9,50 @@
             hoverable
           >
             <a slot="extra" @click="open0">更多</a>
-            <div class="sensor1">wendu1</div>
-            <div class="sensor2">wendu2</div>
-            <div class="sensor3">wendu3</div>
-            <div class="sensor4">wendu4</div>
+            <div class="sensor1">
+              <p style="margin:0 0 0 0">监测点1</p>
+              <div class="left" @click="hisTem1">
+                {{"50℃"}}
+              </div>
+               <div class="right" @click="hisHum1">
+                {{"55%"}}
+              </div>
+            </div>
+            <div class="sensor2">
+              <p style="margin:0 0 0 0">监测点2</p>
+              <div class="left" @click="hisTem2">
+                {{"50℃"}}
+              </div>
+               <div class="right" @click="hisHum2">
+                {{"55%"}}
+              </div>
+            </div>
+            <div class="sensor3">
+              <p style="margin:0 0 0 0">监测点3</p>
+              <div class="left" @click="hisTem3">
+                {{"50℃"}}
+              </div>
+               <div class="right" @click="hisHum3">
+                {{"55%"}}
+              </div>
+            </div>
+            <div class="sensor4">
+              <p style="margin:0 0 0 0">监测点4</p>
+              <div class="left" @click="hisTem4">
+                {{"50℃"}}
+              </div>
+               <div class="right" @click="hisHum4">
+                {{"55%"}}
+              </div>
+            </div>
             <div class="carriage"></div>
             <div class="sensor5">wendu5</div>
             <div class="sensor6">wendu6</div>
             <div class="sensor7">wendu7</div>
             <div class="sensor8">wendu8</div>
-            <div class="top-right">warning</div>
+            <div class="top-right">
+              warning
+            </div>
           </a-card>
         </el-col>
         <el-col :span="6">
@@ -150,6 +184,30 @@ export default {
     };
   },
   methods: {
+    hisTem1(){
+      console.log("t1");
+    },
+    hisHum1(){
+      console.log("h1");
+    },
+    hisTem2(){
+      console.log("t2");
+    },
+    hisHum2(){
+      console.log("h2");
+    },
+    hisTem3(){
+      console.log("t3");
+    },
+    hisHum3(){
+      console.log("h3");
+    },
+    hisTem4(){
+      console.log("t4");
+    },
+    hisHum4(){
+      console.log("h4");
+    },
     open() {
       this.$prompt("设置震动报警值/g", {
         confirmButtonText: "确定",
@@ -267,34 +325,74 @@ export default {
 };
 </script>
 
-<style scope>
+<style lang="less" scope>
 .ant-card-body{
   padding: 10px 10px;
   /* background: black; */
 }
 .sensor1{
-  background: rgb(230, 223, 223);
+  background: rgb(216, 213, 213);
   margin: 0px 5px 15px 5px;
   width:100px;
-  height:50px
+  height:50px;
+  .left{
+    font-size: 18px;
+    width:50px;
+    // background: black;
+  }
+  .right{
+    font-size:18px;
+    margin:-27px 10px 10px 50px;
+    // background: black;
+  }
 }
 .sensor2{
   background: rgb(230, 223, 223);
   margin: -65px 5px 15px 200px;
   width:100px;
-  height:50px
+  height:50px;
+  .left{
+    font-size: 18px;
+    width:50px;
+    // background: black;
+  }
+  .right{
+    font-size:18px;
+    margin:-27px 10px 10px 50px;
+    // background: black;
+  }
 }
 .sensor3{
   background: rgb(230, 223, 223);
   margin: -65px 5px 15px 400px;
   width:100px;
-  height:50px
+  height:50px;
+  .left{
+    font-size: 18px;
+    width:50px;
+    // background: black;
+  }
+  .right{
+    font-size:18px;
+    margin:-27px 10px 10px 50px;
+    // background: black;
+  }
 }
 .sensor4{
   background: rgb(230, 223, 223);
   margin: -65px 5px 15px 600px;
   width:100px;
-  height:50px
+  height:50px;
+  .left{
+    font-size: 18px;
+    width:50px;
+    // background: black;
+  }
+  .right{
+    font-size:18px;
+    margin:-27px 10px 10px 50px;
+    // background: black;
+  }
 }
 .carriage{
   background: rgb(192, 181, 181);
