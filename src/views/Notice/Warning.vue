@@ -28,9 +28,42 @@
             </div>
           </a-tab-pane>
           
-          <a-tab-pane key="2" tab="胎温">Content of Tab Pane 2</a-tab-pane>
-          <a-tab-pane key="3" tab="胎压">Content of Tab Pane 3</a-tab-pane>
-          <a-tab-pane key="4" tab="震动">Content of Tab Pane 4</a-tab-pane>
+          <a-tab-pane key="2" tab="胎温">
+            <div>
+              <a-table
+                :columns="totalColumns"
+                :data-source="totalData"
+                bordered
+                :pagination="paginationOpt"
+              >
+              <a slot="number" slot-scope="text">{{ text }}</a>
+              </a-table>
+            </div>
+          </a-tab-pane>
+          <a-tab-pane key="3" tab="胎压">
+            <div>
+              <a-table
+                :columns="totalColumns"
+                :data-source="totalData"
+                bordered
+                :pagination="paginationOpt"
+              >
+              <a slot="number" slot-scope="text">{{ text }}</a>
+              </a-table>
+            </div>
+          </a-tab-pane>
+          <a-tab-pane key="4" tab="震动">
+            <div>
+              <a-table
+                :columns="totalColumns"
+                :data-source="totalData"
+                bordered
+                :pagination="paginationOpt"
+              >
+              <a slot="number" slot-scope="text">{{ text }}</a>
+              </a-table>
+            </div>
+          </a-tab-pane>
           <a-tab-pane key="5" tab="冷机">
             <div>
               <a-table
@@ -54,6 +87,33 @@
 <script>
 import { Line,Area,Column } from "@antv/g2plot";
 export default {
+    created() {},
+    mounted() {
+    const columnPlot = new Column("warningdiagram", {
+      title:{
+        visible:true,
+        text:"近一周报警数量",
+      },
+      data: this.warnningdata,
+      padding: 'auto',
+      xField: "time",
+      yField: "num",
+      yAxis:{
+        min:0,
+        max:30
+      },
+      meta: {
+        time: {
+          alias: ' ',
+        },
+        num: {
+          alias: '报警数',
+        },
+      },
+      columnSize:40
+    });
+    columnPlot.render();
+  },
   data() {
     return {
       totalnum: "1563",
@@ -247,33 +307,7 @@ export default {
     };
   },
   methods: {},
-  created() {},
-  mounted() {
-    const columnPlot = new Column("warningdiagram", {
-      title:{
-        visible:true,
-        text:"近一周报警数量",
-      },
-      data: this.warnningdata,
-      padding: 'auto',
-      xField: "time",
-      yField: "num",
-      yAxis:{
-        min:0,
-        max:30
-      },
-      meta: {
-        time: {
-          alias: ' ',
-        },
-        num: {
-          alias: '报警数',
-        },
-      },
-      columnSize:40
-    });
-    columnPlot.render();
-  },
+
 };
 </script>
 
