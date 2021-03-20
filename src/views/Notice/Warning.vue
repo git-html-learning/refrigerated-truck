@@ -89,30 +89,7 @@ import { Line,Area,Column } from "@antv/g2plot";
 export default {
     created() {},
     mounted() {
-    const columnPlot = new Column("warningdiagram", {
-      title:{
-        visible:true,
-        text:"近一周报警数量",
-      },
-      data: this.warnningdata,
-      padding: 'auto',
-      xField: "time",
-      yField: "num",
-      yAxis:{
-        min:0,
-        max:30
-      },
-      meta: {
-        time: {
-          alias: ' ',
-        },
-        num: {
-          alias: '报警数',
-        },
-      },
-      columnSize:40
-    });
-    columnPlot.render();
+      this.draw()
   },
   data() {
     return {
@@ -306,7 +283,34 @@ export default {
 
     };
   },
-  methods: {},
+  methods: {
+    draw(){
+      const columnPlot = new Column("warningdiagram", {
+      title:{
+        visible:true,
+        text:"近一周报警数量",
+      },
+      data: this.warnningdata,
+      padding: 'auto',
+      xField: "time",
+      yField: "num",
+      yAxis:{
+        min:0,
+        max:30
+      },
+      meta: {
+        time: {
+          alias: ' ',
+        },
+        num: {
+          alias: '报警数',
+        },
+      },
+      columnSize:40
+    });
+    columnPlot.render();
+    }
+  },
 
 };
 </script>
