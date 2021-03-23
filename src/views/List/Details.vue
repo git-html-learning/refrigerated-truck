@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div >
     <div v-show="showPage === '0'">
       <a-row>
         <a-col :span="18">
@@ -71,24 +71,21 @@
             hoverable
           >
             <a slot="extra" @click="open1">更多</a>
-           <div id="oil" class="oil">
-             
-           </div>
+            <div id="oil" class="oil"></div>
+            <div id="vol" class="vol"></div>
+            <div id="cap" class="cap"></div>
           </a-card>
         </a-col>
       </a-row>
-      
-      <a-row style="height: 250px">
+
+      <a-row>
         <a-col :span="9">
-          <a-card title="车门" :bordered="true" hoverable>
-            <p>Card content</p>
-            <p>Card content</p>
-            <p>Card content</p>
-            <p>Card content</p>
+          <a-card title="车门" style="height: 250px" hoverable>
+            
           </a-card>
         </a-col>
         <a-col :span="9">
-          <a-card title="灯开关" :bordered="true" hoverable>
+          <a-card title="灯开关" style="height: 250px" hoverable>
             <p>Card content</p>
             <p>Card content</p>
             <p>Card content</p>
@@ -96,7 +93,8 @@
           </a-card>
         </a-col>
         <a-col :span="6">
-          <a-card title="报警装置" :bordered="true" hoverable>
+          <a-card title="报警装置" style="height: 250px" hoverable>
+            <p>Card content</p>
             <p>Card content</p>
             <p>Card content</p>
             <p>Card content</p>
@@ -104,9 +102,10 @@
           </a-card>
         </a-col>
       </a-row>
-      <a-row style="height: 250px">
+      
+      <a-row>
         <a-col :span="18">
-          <a-card title="胎温胎压" :bordered="true" hoverable>
+          <a-card title="胎温胎压"   hoverable>
             <a slot="extra" @click="open2">更多</a>
             <p>Card content</p>
             <p>Card content</p>
@@ -115,7 +114,7 @@
           </a-card>
         </a-col>
         <a-col :span="6">
-          <a-card title="冷机" :bordered="true" hoverable>
+          <a-card title="冷机"   hoverable>
             <p>Card content</p>
             <p>Card content</p>
             <p>Card content</p>
@@ -123,14 +122,10 @@
           </a-card>
         </a-col>
       </a-row>
-      <a-row style="height: 250px">
+
+      <a-row>
         <a-col :span="12">
-          <a-card
-            title="皖A222"
-            :bordered="true"
-            style="height: 285px"
-            hoverable
-          >
+          <a-card title="皖A222" style="height: 285px" hoverable>
             <p>Card content</p>
             <p>Card content</p>
             <p>Card content</p>
@@ -139,12 +134,13 @@
           </a-card>
         </a-col>
         <a-col :span="12">
-          <a-card title="车辆震动曲线图" :bordered="true" hoverable>
+          <a-card title="车辆震动曲线图" style="height: 285px" hoverable>
             <a slot="extra" @click="open">更多</a>
             <div id="main7" style="width: 700px; height: 180px"></div>
           </a-card>
         </a-col>
       </a-row>
+
     </div>
 
     <div v-show="showPage === '1'">
@@ -157,54 +153,56 @@
           ></i>
         </div>
 
-        <a-tabs 
-          tab-position="left"
-          :default-active-key="tabKey"
-        >
-          <a-tab-pane 
-            v-for="(item,index) in sensorList"
-            :key="index" 
+        <a-tabs tab-position="left" :default-active-key="tabKey">
+          <a-tab-pane
+            v-for="(item, index) in sensorList"
+            :key="index"
             :tab="item.name"
           >
             <div style="font-size: 26px; font-weight: 600">
-              <span>{{item.name}}</span>
+              <span>{{ item.name }}</span>
             </div>
-            <div
-              style="font-size: 22px; font-weight: 600; line-height: 50px"
-            >
+            <div style="font-size: 22px; font-weight: 600; line-height: 50px">
               <span>更新时间：{{ item.date }}</span>
             </div>
-            <div id="chart" ref="main" style="height: 300px;width: 90%"></div>
+            <div id="chart" ref="main" style="height: 300px; width: 90%"></div>
           </a-tab-pane>
         </a-tabs>
-
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
 import store from "@/store";
 import { product, getdeviceList, getdeviceData } from "@/api/data";
-import * as echarts from 'echarts';
-import { Liquid } from '@antv/g2plot';
+import * as echarts from "echarts";
+import { Liquid, Gauge } from "@antv/g2plot";
 export default {
-  created(){
-    // this.draw()
+
+  created() {
+    // this.draw();
+    // this.drawOil();
+    // this.drawVol();
   },
-  mounted(){
+
+  mounted() {
     // this.draw()
-    this.drawOil()
+    this.drawOil();
+    this.drawVol();
+    this.drawCap();
   },
 
   data() {
     return {
-      showPage: "0",
-      tabKey:"1",
-      
+      showPage: "0",    //初始页面
+      tabKey: "1",      //温湿度tabs初始值
+      oilData: "70",    //油位
+      volData: "22",    //剩余容积
+      capData: "45",    //载重量
 
-      devicerankList: [       //报警条数排名
+      devicerankList: [
+        //报警条数排名
         { count: "52", deviceName: "温度传感器3" },
         { count: "26", deviceName: "温度传感器2" },
         { count: "22", deviceName: "温度传感器1" },
@@ -212,19 +210,20 @@ export default {
         { count: "12", deviceName: "胎压传感器8" },
         { count: "10", deviceName: "胎温传感器5" },
         // {count:"9",deviceName:"温度传感器6",},
-      ], 
-      sensorList:[
-        {name:"温度传感器1",date:"2021-03-22 12:00:00"},
-        {name:"温度传感器2",date:"2021-03-22 12:00:01"},
-        {name:"温度传感器3",date:"2021-03-22 12:00:02"},
-        {name:"温度传感器4",date:"2021-03-22 12:00:03"},
-        {name:"温度传感器5",date:"2021-03-22 12:00:04"},
-        {name:"温度传感器6",date:"2021-03-22 12:00:05"},
-        {name:"温度传感器7",date:"2021-03-22 12:00:06"},
-        {name:"温度传感器8",date:"2021-03-22 12:00:07"},
-      ]
+      ],
+      sensorList: [
+        { name: "温度传感器1", date: "2021-03-22 12:00:00" },
+        { name: "温度传感器2", date: "2021-03-22 12:00:01" },
+        { name: "温度传感器3", date: "2021-03-22 12:00:02" },
+        { name: "温度传感器4", date: "2021-03-22 12:00:03" },
+        { name: "温度传感器5", date: "2021-03-22 12:00:04" },
+        { name: "温度传感器6", date: "2021-03-22 12:00:05" },
+        { name: "温度传感器7", date: "2021-03-22 12:00:06" },
+        { name: "温度传感器8", date: "2021-03-22 12:00:07" },
+      ],
     };
   },
+
   methods: {
     hisTem1() {
       // console.log("t1");
@@ -232,118 +231,376 @@ export default {
       console.log(this.showPage);
       // this.draw()
     },
-    hisHum1(){
+    hisHum1() {
       console.log("h1");
     },
-    hisTem2(){
+    hisTem2() {
       console.log("t2");
     },
-    hisHum2(){
+    hisHum2() {
       console.log("h2");
     },
-    hisTem3(){
+    hisTem3() {
       console.log("t3");
     },
-    hisHum3(){
+    hisHum3() {
       console.log("h3");
     },
-    hisTem4(){
+    hisTem4() {
       console.log("t4");
     },
-    hisHum4(){
+    hisHum4() {
       console.log("h4");
     },
-    hisTem5(){
+    hisTem5() {
       console.log("t5");
     },
-    hisHum5(){
+    hisHum5() {
       console.log("h5");
     },
-    hisTem6(){
+    hisTem6() {
       console.log("t6");
     },
-    hisHum6(){
+    hisHum6() {
       console.log("h6");
     },
-    hisTem7(){
+    hisTem7() {
       console.log("t7");
     },
-    hisHum7(){
+    hisHum7() {
       console.log("h7");
     },
-    hisTem8(){
+    hisTem8() {
       console.log("t8");
     },
-    hisHum8(){
+    hisHum8() {
       console.log("h8");
     },
+
     back() {
       this.showPage = "0";
       console.log(this.showPage);
     },
 
-    draw(){
+    draw() {   //温湿度历史数据图
       // var myChart= echarts.init(document.getElementById('chart'))
       var myChart = echarts.init(this.$refs.main);
-      var option={
-        title:{
-          text:"温湿度历史数据"
+      var option = {
+        title: {
+          text: "温湿度历史数据",
         },
         tooltip: {
-          trigger: 'axis'
+          trigger: "axis",
         },
         legend: {
-          data: ['温度', '湿度']
+          data: ["温度", "湿度"],
         },
         grid: {
-          left: '3%',
-          right: '4%',
-          bottom: '3%',
-          containLabel: true
+          left: "3%",
+          right: "4%",
+          bottom: "3%",
+          containLabel: true,
         },
         xAxis: {
-          type: 'category',
+          type: "category",
           boundaryGap: false,
-          data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+          data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
         },
         yAxis: {
-          type: 'value'
+          type: "value",
         },
         series: [
           {
-            name: '温度',
-            type: 'line',
-            stack: '总量',
-            data: [120, 132, 101, 134, 90, 230, 210]
+            name: "温度",
+            type: "line",
+            stack: "总量",
+            data: [120, 132, 101, 134, 90, 230, 210],
           },
           {
-            name: '湿度',
-            type: 'line',
-            stack: '总量',
-            data: [220, 182, 191, 234, 290, 330, 310]
+            name: "湿度",
+            type: "line",
+            stack: "总量",
+            data: [220, 182, 191, 234, 290, 330, 310],
           },
-        ]
-
-      }
+        ],
+      };
       option && myChart.setOption(option);
     },
 
-    drawOil(){
-      const liquidPlot = new Liquid('oil', {
-        percent: 0.5,
-        color: '#a8ddb5',
-        outline: {
-          border: 8,
-          distance: 8,
-        },
-        wave: {
-          length: 128,
-        },
-      });
-      liquidPlot.render();
-    }
-    
+    drawOil() {   //油位图
+      // const liquidPlot = new Liquid('oil', {
+      //   min:0.1,
+      //   max:1.0,
+      //   percent: 0.5,
+      //   color: '#1890ff',
+      //   outline: {
+      //     border: 8,
+      //     distance: 8,
+      //   },
+      //   wave: {
+      //     length: 128,
+
+      //   },
+      // });
+      // liquidPlot.render();
+      // console.log("111");
+
+      var chartDom = document.getElementById("oil");
+      var myChart = echarts.init(chartDom);
+      var option = {
+        series: [
+          {
+            type: "gauge",
+            startAngle: 225,
+            endAngle: -45,
+            splitNumber: 5,
+            axisLine: {
+              // 仪表盘轴线(轮廓线)相关配置。
+              lineStyle: {
+                // 仪表盘轴线样式。
+                width: 10,
+                color: [
+                  [0.3, "#fd666d"],
+                  [0.7, "#37a2da"],
+                  [1, "#67e0e3"],
+                ],
+              },
+            },
+            pointer: {
+              // 仪表盘指针
+              length: "70%",
+              width: 5,
+              itemStyle: {
+                color: "auto",
+              },
+            },
+            axisTick: {
+              // 刻度(线)样式。
+              distance: -30,
+              length: 2,
+              lineStyle: {
+                color: "#fff",
+                width: 2,
+              },
+            },
+            splitLine: {
+              // 分隔线样式
+              distance: -30,
+              length: 10,
+              lineStyle: {
+                color: "#fff",
+                width: 2,
+              },
+            },
+            axisLabel: {
+              // 刻度标签。
+              color: "auto",
+              distance: 2,
+              fontSize: 10,
+            },
+            detail: {
+              // 仪表盘详情，用于显示数据。
+              valueAnimation: true,
+              formatter: "{value} %",
+              color: "auto",
+              fontSize: 20,
+            },
+            data: [
+              {
+                value: this.oilData,
+                name: "油位",
+              },
+            ],
+          },
+        ],
+      };
+      option && myChart.setOption(option);
+    },
+
+    drawVol() {   //剩余容积图
+      var chartDom = document.getElementById("vol");
+      var myChart = echarts.init(chartDom);
+      var option = {
+        series: [
+          {
+            type: "gauge",
+            splitNumber: 5,
+            axisLine: {
+              // 仪表盘轴线(轮廓线)相关配置。
+              lineStyle: {
+                // 仪表盘轴线样式。
+                width: 10,
+                color: [
+                  [0.3, "#fd666d"],
+                  [0.7, "#37a2da"],
+                  [1, "#67e0e3"],
+                ],
+              },
+            },
+            pointer: {
+              // 仪表盘指针
+              length: "70%",
+              width: 5,
+              itemStyle: {
+                color: "auto",
+              },
+            },
+            axisTick: {
+              // 刻度(线)样式。
+              distance: -30,
+              length: 0,
+              lineStyle: {
+                color: "#fff",
+                width: 2,
+              },
+            },
+            splitLine: {
+              // 分隔线样式
+              distance: -30,
+              length: 10,
+              lineStyle: {
+                color: "#fff",
+                width: 2,
+              },
+            },
+            axisLabel: {
+              // 刻度标签。
+              color: "auto",
+              distance: 2,
+              fontSize: 10,
+            },
+            detail: {
+              // 仪表盘详情，用于显示数据。
+              valueAnimation: true,
+              formatter: "{value} %",
+              color: "auto",
+              fontSize: 20,
+            },
+            data: [
+              {
+                value: this.volData,
+                name: "剩余容积",
+              },
+            ],
+          },
+        ],
+      };
+      option && myChart.setOption(option);
+    },
+
+    drawCap() {   //载重量图
+      var chartDom = document.getElementById("cap");
+      var myChart = echarts.init(chartDom);
+      var option = {
+        series: [
+          {
+            type: "gauge",
+            splitNumber: 5,
+            axisLine: {
+              // 仪表盘轴线(轮廓线)相关配置。
+              lineStyle: {
+                // 仪表盘轴线样式。
+                width: 10,
+                color: [
+                  [0.3, "#67e0e3"],
+                  [0.7, "#37a2da"],
+                  [1, "#fd666d"],
+                ],
+              },
+            },
+            pointer: {
+              // 仪表盘指针
+              length: "70%",
+              width: 5,
+              itemStyle: {
+                color: "auto",
+              },
+            },
+            axisTick: {
+              // 刻度(线)样式。
+              distance: -30,
+              length: 0,
+              lineStyle: {
+                color: "#fff",
+                width: 2,
+              },
+            },
+            splitLine: {
+              // 分隔线样式
+              distance: -30,
+              length: 10,
+              lineStyle: {
+                color: "#fff",
+                width: 2,
+              },
+            },
+            axisLabel: {
+              // 刻度标签。
+              color: "auto",
+              distance: 2,
+              fontSize: 10,
+            },
+            detail: {
+              // 仪表盘详情，用于显示数据。
+              valueAnimation: true,
+              formatter: "{value} %",
+              color: "auto",
+              fontSize: 20,
+            },
+            data: [
+              {
+                value: this.capData,
+                name: "载重量",
+              },
+            ],
+          },
+        ],
+      };
+      option && myChart.setOption(option);
+    },
+
+    open0() {
+      this.$prompt("设置温度报警值/°C", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+      })
+        .then(({ value }) => {
+          this.$message({
+            type: "success",
+            message: "温度报警值: " + value,
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "取消输入",
+          });
+        });
+    },
+
+    open1() {
+      this.$prompt("设置油位报警值/%", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+      })
+        .then(({ value }) => {
+          this.$message({
+            type: "success",
+            message: "油位低于: " + value + "报警",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "取消输入",
+          });
+        });
+    },
+
+
   },
+
+
 };
 </script>
 
@@ -352,11 +609,8 @@ export default {
   padding: 10px 10px;
   /* background: black; */
 }
-
-.home {
-  background: #ffffff;
-  width: 100%;
-  margin: 10px auto;
+.card{
+  margin: 3px;
 }
 .home1 {
   background: #ffffff;
@@ -539,16 +793,23 @@ export default {
     }
   }
 }
-.oil{
-  background: rgb(233, 219, 219);
-  width: 80%;
-  height: 240px;
+.oil {
+  // background: rgb(233, 219, 219);
+  width: 100%;
+  height: 180px;
+  margin: -20px 0px 0px -35px;
 }
-
-.ant-progress-circle-wrap,
-.ant-progress-line-wrap {
-  margin-right: 8px;
-  margin-bottom: 5px;
+.vol {
+  // background: rgb(160, 157, 157);
+  width: 50%;
+  height: 180px;
+  margin: -50px 0px 0px -10px;
+}
+.cap {
+  // background: rgb(212, 205, 205);
+  width: 50%;
+  height: 180px;
+  margin: -180px 0px 0px 160px;
 }
 
 </style>
