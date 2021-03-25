@@ -5,14 +5,17 @@
       :center="{ lng: lg, lat: lt }"
       :zoom="12"
       :scroll-wheel-zoom="true"
+      
     >
+      <bm-map-type :map-types="['BMAP_NORMAL_MAP', 'BMAP_HYBRID_MAP']" anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type>
       <bm-marker
         v-for="(item, index) in markers"
         :key="index"
         :position="{ lng: markers[index].lng, lat: markers[index].lat }"
         @click="lookDetail(item)"
-        :dragging="true"
+        :dragging="false"
         animation="BMAP_ANIMATION_BOUNCE"
+        :icon="{url: require('../../static/pic/卡车.png'), size: {width: 50, height: 50}}"
       >
         <!-- :icon="{url: 'http://pic95.huitu.com/res/20170428/851091_20170428215847978040_1.jpg', size: {width: 62, height: 62}}" -->
         <!-- <bm-label content="安徽大学" :labelStyle="{color: 'red', fontSize : '24px'}" :offset="{width: -35, height: 30}"/> -->
