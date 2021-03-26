@@ -783,17 +783,17 @@
                   p-id="27026"
                 ></path>
               </svg> </a-col
-            ><a-col :span="12" style="padding-left: 10px; padding-top: 70px">
+            ><a-col :span="12" style="padding-top: 70px">
               <el-input-number
-                size="mini"
+                size="large"
                 v-model="num"
                 :precision="2"
                 :step="0.1"
                 :max="100"
                 min="-20"
-                style="margin-left: 15px; margin-top: 10px"
+                style="margin-left: -30px; margin-top: 10px"
               ></el-input-number>
-              <p style="padding-left: 30px; padding-top: 17px">
+              <p style="padding-left: 0px; padding-top: 17px;font-size:20px">
                 当前温度：{{ num }}°C
               </p>
             </a-col>
@@ -853,7 +853,7 @@
             <div style="font-size: 22px; font-weight: 600; line-height: 50px">
               <span>更新时间：{{ item.date }}</span>
             </div>
-            <div id="chart" ref="main" style="height: 300px; width: 90%"></div>
+            <div id="chart" ref="main" style="height: 300px; width: 1500px"></div>
           </a-tab-pane>
         </a-tabs>
       </div>
@@ -1039,7 +1039,7 @@ export default {
   data() {
     return {
       showPage: "0", //初始页面
-      tabKey: "1", //温湿度tabs初始值
+      tabKey: "", //温湿度tabs初始值
       oilData: "70", //油位
       volData: "22", //剩余容积
       capData: "45", //载重量
@@ -1132,8 +1132,9 @@ export default {
     hisTem1() {
       // console.log("t1");
       this.showPage = "1";
-      console.log(this.showPage);
-      // this.draw()
+      this.tabKey="1"
+      console.log(this.tabKey);
+      this.draw()
     },
     hisHum1() {
       console.log("h1");
@@ -1188,8 +1189,8 @@ export default {
 
     draw() {
       //温湿度历史数据图
-      // var myChart= echarts.init(document.getElementById('chart'))
-      var myChart = echarts.init(this.$refs.main);
+      var myChart= echarts.init(document.getElementById('chart'))
+      // var myChart = echarts.init(this.$refs.main);
       var option = {
         title: {
           text: "温湿度历史数据",
@@ -1219,13 +1220,15 @@ export default {
             name: "温度",
             type: "line",
             stack: "总量",
-            data: [120, 132, 101, 134, 90, 230, 210],
+            color:"#a0d911",
+            data: [12, 13, 10, 13, 9, 23, 21],
           },
           {
             name: "湿度",
             type: "line",
             stack: "总量",
-            data: [220, 182, 191, 234, 290, 330, 310],
+            color:"#40a9ff",
+            data: [22, 18, 19, 23, 29, 33, 31],
           },
         ],
       };
