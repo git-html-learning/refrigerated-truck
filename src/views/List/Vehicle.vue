@@ -38,7 +38,8 @@
             <a-card hoverable class="vehicle">
               <a-card-meta :title="item.number">
                 <a-avatar :size="64" slot="avatar" style="background: #1980ff">
-                  <i class="iconfont icon-cangku"></i>
+                  <!-- <i class="iconfont icon-cangku"></i> -->
+                  <img src="../../static/icon/车辆.svg" >
                 </a-avatar>
               </a-card-meta>
               <p style="padding-left: 64px">
@@ -106,6 +107,12 @@
   </div>
 </template>
 <script>
+import {
+  product,
+  getdeviceList,
+  getdeviceData,
+  onlinestatus,
+} from "@/api/data";
 export default {
   data() {
     return {
@@ -144,8 +151,15 @@ export default {
       testV: [], //注册测试
     };
   },
+  created(){
+    this.getproduct()
+  },
   methods: {
-    more(data) {
+    async getproduct(){   //获取产品信息
+      const res = await product();
+      console.log(res);
+    },
+    more(data) {   //点击卡片
       console.log(data);
     },
     search() {
@@ -177,6 +191,7 @@ export default {
       this.showInfo = "1";
       console.log("取消");
     },
+
   },
 };
 </script>
