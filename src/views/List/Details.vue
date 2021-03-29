@@ -476,7 +476,6 @@
             style="fontsize: 20px; padding: 0px 0px 0px 10px; align: left"
           ></i>
         </div>
-
         <a-tabs tab-position="left" :default-active-key="tabKey">
           <a-tab-pane
             v-for="(item, index) in sensorList"
@@ -499,8 +498,54 @@
       </div>
     </div>
 
+    <div v-show="showPage === '2'">
+      <div class="home1">
+        <i
+          class="iconfont icon-ai207"
+          @click="back()"
+          style="fontsize: 30px; padding: 0px 0px 0px 10px; align: left"
+        ></i
+        ><br />
+        <el-tabs tab-position="left" style="height: 600px">
+          <el-tab-pane label="照明灯">
+            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
+              照明灯
+            </h1>
+            <h2 style="font-size: 22px; padding-left: 30px">
+              更新时间：2021-03-20 20:11:00
+            </h2>
+            <br /><br /><br />
+            <br /><br /><br />
+            <div id="main1" style="padding-left: 20px; height: 250px"></div>
+          </el-tab-pane>
+          <el-tab-pane label="杀菌灯">
+            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
+              杀菌灯
+            </h1>
+            <h3 style="font-size: 22px; padding-left: 30px">
+              更新时间：2021-03-20 20:11:00
+            </h3>
+            <br /><br /><br />
+            <br /><br /><br />
+            <div id="main2" style="padding-left: 20px; height: 250px"></div>
+          </el-tab-pane>
+          <el-tab-pane label="其它">
+            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
+              其它
+            </h1>
+            <h2 style="font-size: 22px; padding-left: 30px">
+              更新时间：2021-03-20 20:11:00
+            </h2>
+            <br /><br /><br />
+            <br /><br /><br />
+            <div id="main3" style="padding-left: 20px; height: 250px"></div
+          ></el-tab-pane>
+        </el-tabs>
+      </div>
+    </div>
+
     <div v-show="showPage === '3'">
-      <div class="reverse">
+      <div class="home1">
         <i
           class="iconfont icon-ai207"
           @click="back()"
@@ -669,6 +714,10 @@ export default {
     this.drawVol();
     this.drawCap();
 
+    this.tu1();
+    this.tu2();
+    this.tu3();
+
     this.drawVib();
     this.drawTyre1();
     this.drawTyre2();
@@ -763,6 +812,53 @@ export default {
       ],
       data01: [12, 13, 10, 13, 9, 23, 21],
       data02: [22, 18, 19, 23, 29, 33, 31],
+
+      data1: [
+        { time: "00:00", value: 0 },
+        { time: "02:00", value: 1 },
+        { time: "04:00", value: 1 },
+        { time: "06:00", value: 1 },
+        { time: "08:00", value: 1 },
+        { time: "10:00", value: 0 },
+        { time: "12:00", value: 0 },
+        { time: "14:00", value: 0 },
+        { time: "16:00", value: 0 },
+        { time: "18:00", value: 1 },
+        { time: "20:00", value: 1 },
+        { time: "22:00", value: 1 },
+        { time: "24:00", value: 1 },
+      ],
+      data2: [
+        { time: "00:00", value: 0 },
+        { time: "02:00", value: 0 },
+        { time: "04:00", value: 0 },
+        { time: "06:00", value: 1 },
+        { time: "08:00", value: 1 },
+        { time: "10:00", value: 1 },
+        { time: "12:00", value: 1 },
+        { time: "14:00", value: 1 },
+        { time: "16:00", value: 1 },
+        { time: "18:00", value: 1 },
+        { time: "20:00", value: 1 },
+        { time: "22:00", value: 1 },
+        { time: "24:00", value: 1 },
+      ],
+      data3: [
+        { time: "00:00", value: 0 },
+        { time: "02:00", value: 1 },
+        { time: "04:00", value: 1 },
+        { time: "06:00", value: 1 },
+        { time: "08:00", value: 1 },
+        { time: "10:00", value: 0 },
+        { time: "12:00", value: 1 },
+        { time: "14:00", value: 1 },
+        { time: "16:00", value: 1 },
+        { time: "18:00", value: 1 },
+        { time: "20:00", value: 1 },
+        { time: "22:00", value: 1 },
+        { time: "24:00", value: 1 },
+      ],
+
     };
   },
 
@@ -1191,6 +1287,43 @@ export default {
     more1(a) {
       this.showPage = "3";
     },
+    show(){
+      this.showPage="2"
+    },
+
+    tu1() {
+      //照明灯图
+      const linePlot = new Line("main1", {
+        data: this.data1,
+        padding: "auto",
+        xField: "time",
+        yField: "value",
+        stepType: "vh",
+      });
+      linePlot.render();
+    },
+    tu2() {
+      //杀菌灯图
+      const linePlot = new Line("main2", {
+        data: this.data2,
+        xField: "time",
+        yField: "value",
+        stepType: "vh",
+      });
+      linePlot.render();
+    },
+    tu3() {
+      //其它
+      const linePlot = new Line("main3", {
+        data: this.data3,
+        padding: "auto",
+        xField: "time",
+        yField: "value",
+        stepType: "vh",
+      });
+      linePlot.render();
+    },
+
     drawVib() {
       //详情页震动图
       const linePlot = new Line("main7", {
