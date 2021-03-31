@@ -5,7 +5,7 @@
     <div :class="['logo', theme]">
       <router-link to="/dashboard/map">
         <!-- <img src="../../assets/img/logo.png"> -->
-        <img src="../../static/pic/honen.png">
+        <!-- <img src="../../static/pic/honen.png"> -->
         <h1>{{systemName}}</h1>
       </router-link>
     </div>
