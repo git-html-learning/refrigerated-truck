@@ -6,7 +6,8 @@
       <router-link to="/dashboard/map">
         <!-- <img src="../../assets/img/logo.png"> -->
         <!-- <img src="../../static/pic/honen.png"> -->
-        <h1>{{systemName}}</h1>
+        <img src="../../static/pic/logo.png" style="width:200px">
+        <!-- <h1>{{systemName}}</h1> -->
       </router-link>
     </div>
     <!-- 菜单 -->
