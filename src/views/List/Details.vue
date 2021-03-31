@@ -256,142 +256,130 @@
             class="shadow"
           >
             <a slot="extra" @click="open2">更多</a>
-            <a-row type="flex" style="height: 60px">
+            <a-row type="flex" style="height: 60px;font-size: 18px">
               <a-col :span="8">
-                <a-col :span="12" style="text-align: center">
+                <a-col :span="8" style="text-align: center">
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
-                <a-col :span="12">
+                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
-                    胎温：50°C <br />
-                    胎压：5bar
+                    胎温：50°C &nbsp;&nbsp;胎压：5bar
                   </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
-                <a-col :span="12" style="text-align: center">
+                <a-col :span="8" style="text-align: center">
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
-                <a-col :span="12">
+                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
-                    胎温：50°C <br />
-                    胎压：5bar
+                    胎温：50°C &nbsp;&nbsp;胎压：5bar
                   </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
-                <a-col :span="12" style="text-align: center">
+                <a-col :span="8" style="text-align: center">
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
-                <a-col :span="12">
+                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
-                    胎温：50°C <br />
-                    胎压：5bar
-                  </span>
-                </a-col>
-              </a-col>
-            </a-row>
-            <a-row type="flex" style="height: 60px">
-              <a-col :span="8">
-                <a-col :span="12" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
-                </a-col>
-                <a-col :span="12">
-                  <span>
-                    胎温：50°C <br />
-                    胎压：5bar
-                  </span>
-                </a-col>
-              </a-col>
-              <a-col :span="8">
-                <a-col :span="12" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
-                </a-col>
-                <a-col :span="12">
-                  <span>
-                    胎温：50°C <br />
-                    胎压：5bar
-                  </span>
-                </a-col>
-              </a-col>
-              <a-col :span="8">
-                <a-col :span="12" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
-                </a-col>
-                <a-col :span="12">
-                  <span>
-                    胎温：50°C <br />
-                    胎压：5bar
+                    胎温：50°C &nbsp;&nbsp;胎压：5bar
                   </span>
                 </a-col>
               </a-col>
             </a-row>
-            <a-row type="flex" style="height: 60px">
+            <a-row type="flex" style="height: 60px;font-size: 18px">
               <a-col :span="8">
-                <a-col :span="12" style="text-align: center">
+                <a-col :span="8" style="text-align: center">
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
-                <a-col :span="12">
+                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
-                    胎温：50°C <br />
-                    胎压：5bar
+                    胎温：50°C &nbsp;&nbsp;胎压：5bar
                   </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
-                <a-col :span="12" style="text-align: center">
+                <a-col :span="8" style="text-align: center">
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
-                <a-col :span="12">
+                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
-                    胎温：50°C <br />
-                    胎压：5bar
+                    胎温：50°C &nbsp;&nbsp;胎压：5bar
                   </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
-                <a-col :span="12" style="text-align: center">
+                <a-col :span="8" style="text-align: center">
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
-                <a-col :span="12">
+                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
-                    胎温：50°C <br />
-                    胎压：5bar
+                    胎温：50°C &nbsp;&nbsp;胎压：5bar
                   </span>
                 </a-col>
               </a-col>
             </a-row>
-            <a-row type="flex" style="height: 60px">
+            <a-row type="flex" style="height: 60px;font-size: 18px">
               <a-col :span="8">
-                <a-col :span="12" style="text-align: center">
+                <a-col :span="8" style="text-align: center">
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
-                <a-col :span="12">
+                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
-                    胎温：50°C <br />
-                    胎压：5bar
+                    胎温：50°C &nbsp;&nbsp;胎压：5bar
                   </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
-                <a-col :span="12" style="text-align: center">
+                <a-col :span="8" style="text-align: center">
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
-                <a-col :span="12">
+                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
-                    胎温：50°C <br />
-                    胎压：5bar
+                    胎温：50°C &nbsp;&nbsp;胎压：5bar
                   </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
-                <a-col :span="12" style="text-align: center">
+                <a-col :span="8" style="text-align: center">
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
-                <a-col :span="12">
+                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
-                    胎温：50°C <br />
-                    胎压：5bar <br />
+                    胎温：50°C &nbsp;&nbsp;胎压：5bar
+                  </span>
+                </a-col>
+              </a-col>
+            </a-row>
+            <a-row type="flex" style="height: 60px;font-size: 18px">
+              <a-col :span="8">
+                <a-col :span="8" style="text-align: center">
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                </a-col>
+                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
+                  <span>
+                    胎温：50°C &nbsp;&nbsp;胎压：5bar
+                  </span>
+                </a-col>
+              </a-col>
+              <a-col :span="8">
+                <a-col :span="8" style="text-align: center">
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                </a-col>
+                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
+                  <span>
+                    胎温：50°C &nbsp;&nbsp;胎压：5bar
+                  </span>
+                </a-col>
+              </a-col>
+              <a-col :span="8">
+                <a-col :span="8" style="text-align: center">
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                </a-col>
+                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
+                  <span>
+                    胎温：50°C &nbsp;&nbsp;胎压：5bar
                   </span>
                 </a-col>
               </a-col>
@@ -1405,13 +1393,15 @@ export default {
   width: 100px;
   height: 50px;
   .left {
-    font-size: 18px;
+    font-size: 20px;
     width: 50px;
+    font-weight: bold;
     // background: black;
   }
   .right {
-    font-size: 18px;
-    margin: -27px 10px 10px 50px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: -30px 10px 10px 50px;
     // background: black;
   }
 }
@@ -1421,13 +1411,15 @@ export default {
   width: 100px;
   height: 50px;
   .left {
-    font-size: 18px;
+    font-size: 20px;
     width: 50px;
+    font-weight: bold;
     // background: black;
   }
   .right {
-    font-size: 18px;
-    margin: -27px 10px 10px 50px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: -30px 10px 10px 50px;
     // background: black;
   }
 }
@@ -1437,13 +1429,15 @@ export default {
   width: 100px;
   height: 50px;
   .left {
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
     width: 50px;
     // background: black;
   }
   .right {
-    font-size: 18px;
-    margin: -27px 10px 10px 50px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: -30px 10px 10px 50px;
     // background: black;
   }
 }
@@ -1453,13 +1447,15 @@ export default {
   width: 100px;
   height: 50px;
   .left {
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
     width: 50px;
     // background: black;
   }
   .right {
-    font-size: 18px;
-    margin: -27px 10px 10px 50px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: -30px 10px 10px 50px;
     // background: black;
   }
 }
@@ -1478,13 +1474,15 @@ export default {
   width: 100px;
   height: 50px;
   .left {
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
     width: 50px;
     // background: black;
   }
   .right {
-    font-size: 18px;
-    margin: -45px 10px 10px 50px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: -50px 10px 10px 50px;
     // background: black;
   }
 }
@@ -1494,13 +1492,15 @@ export default {
   width: 100px;
   height: 50px;
   .left {
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
     width: 50px;
     // background: black;
   }
   .right {
-    font-size: 18px;
-    margin: -45px 10px 10px 50px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: -50px 10px 10px 50px;
     // background: black;
   }
 }
@@ -1510,13 +1510,15 @@ export default {
   width: 100px;
   height: 50px;
   .left {
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
     width: 50px;
     // background: black;
   }
   .right {
-    font-size: 18px;
-    margin: -45px 10px 10px 50px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: -50px 10px 10px 50px;
     // background: black;
   }
 }
@@ -1526,13 +1528,15 @@ export default {
   width: 100px;
   height: 50px;
   .left {
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
     width: 50px;
     // background: black;
   }
   .right {
-    font-size: 18px;
-    margin: -45px 10px 10px 50px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: -50px 10px 10px 50px;
     // background: black;
   }
 }
