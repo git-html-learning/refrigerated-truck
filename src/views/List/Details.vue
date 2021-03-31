@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-show="showPage === '0'">
-      <a-row :gutter="[16, 8]">
+      <a-row :gutter="[8, 8]">
         <a-col :span="18">
           <a-card
             title="厢内温湿度监测"
@@ -85,7 +85,7 @@
         </a-col>
       </a-row>
 
-      <a-row :gutter="[16, 8]">
+      <a-row :gutter="[8, 8]">
         <a-col :span="9">
           <a-card title="车门" style="height: 220px" class="shadow" hoverable>
             <a-col :span="8" style="text-align: center">
@@ -247,7 +247,7 @@
         </a-col>
       </a-row>
 
-      <a-row :gutter="[16, 8]">
+      <a-row :gutter="[8, 8]">
         <a-col :span="18">
           <a-card
             title="胎温胎压"
@@ -259,7 +259,7 @@
             <a-row type="flex" style="height: 60px">
               <a-col :span="8">
                 <a-col :span="12" style="text-align: center">
-                  <img src="../../static/icon/轮胎.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="12">
                   <span>
@@ -270,7 +270,7 @@
               </a-col>
               <a-col :span="8">
                 <a-col :span="12" style="text-align: center">
-                  <img src="../../static/icon/轮胎.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="12">
                   <span>
@@ -281,42 +281,7 @@
               </a-col>
               <a-col :span="8">
                 <a-col :span="12" style="text-align: center">
-                  <img src="../../static/icon/轮胎.svg" @click="more1()" />
-                </a-col>
-                <a-col :span="12">
-                  <span>
-                    胎温：50°C <br />
-                    胎压：5bar
-                  </span>
-                </a-col>
-              </a-col>
-            </a-row>
-            <a-row type="flex" style="height: 60px">
-              <a-col :span="8">
-                <a-col :span="12" style="text-align: center">
-                  <img src="../../static/icon/轮胎.svg" @click="more1()" />
-                </a-col>
-                <a-col :span="12">
-                  <span>
-                    胎温：50°C <br />
-                    胎压：5bar
-                  </span>
-                </a-col>
-              </a-col>
-              <a-col :span="8">
-                <a-col :span="12" style="text-align: center">
-                  <img src="../../static/icon/轮胎.svg" @click="more1()" />
-                </a-col>
-                <a-col :span="12">
-                  <span>
-                    胎温：50°C <br />
-                    胎压：5bar
-                  </span>
-                </a-col>
-              </a-col>
-              <a-col :span="8">
-                <a-col :span="12" style="text-align: center">
-                  <img src="../../static/icon/轮胎.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="12">
                   <span>
@@ -329,7 +294,7 @@
             <a-row type="flex" style="height: 60px">
               <a-col :span="8">
                 <a-col :span="12" style="text-align: center">
-                  <img src="../../static/icon/轮胎.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="12">
                   <span>
@@ -340,7 +305,7 @@
               </a-col>
               <a-col :span="8">
                 <a-col :span="12" style="text-align: center">
-                  <img src="../../static/icon/轮胎.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="12">
                   <span>
@@ -351,7 +316,7 @@
               </a-col>
               <a-col :span="8">
                 <a-col :span="12" style="text-align: center">
-                  <img src="../../static/icon/轮胎.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="12">
                   <span>
@@ -364,7 +329,7 @@
             <a-row type="flex" style="height: 60px">
               <a-col :span="8">
                 <a-col :span="12" style="text-align: center">
-                  <img src="../../static/icon/轮胎.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="12">
                   <span>
@@ -375,7 +340,7 @@
               </a-col>
               <a-col :span="8">
                 <a-col :span="12" style="text-align: center">
-                  <img src="../../static/icon/轮胎.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="12">
                   <span>
@@ -386,7 +351,42 @@
               </a-col>
               <a-col :span="8">
                 <a-col :span="12" style="text-align: center">
-                  <img src="../../static/icon/轮胎.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                </a-col>
+                <a-col :span="12">
+                  <span>
+                    胎温：50°C <br />
+                    胎压：5bar
+                  </span>
+                </a-col>
+              </a-col>
+            </a-row>
+            <a-row type="flex" style="height: 60px">
+              <a-col :span="8">
+                <a-col :span="12" style="text-align: center">
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                </a-col>
+                <a-col :span="12">
+                  <span>
+                    胎温：50°C <br />
+                    胎压：5bar
+                  </span>
+                </a-col>
+              </a-col>
+              <a-col :span="8">
+                <a-col :span="12" style="text-align: center">
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                </a-col>
+                <a-col :span="12">
+                  <span>
+                    胎温：50°C <br />
+                    胎压：5bar
+                  </span>
+                </a-col>
+              </a-col>
+              <a-col :span="8">
+                <a-col :span="12" style="text-align: center">
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="12">
                   <span>
@@ -421,7 +421,7 @@
         </a-col>
       </a-row>
 
-      <a-row :gutter="[16, 8]">
+      <a-row :gutter="[8, 8]">
         <a-col :span="12">
           <a-card
             title="皖A2222    行进中（已行驶99km 速度50km/h）"
@@ -1009,9 +1009,8 @@ export default {
                 // 仪表盘轴线样式。
                 width: 10,
                 color: [
-                  [0.3, "#fd666d"],
-                  [0.7, "#37a2da"],
-                  [1, "#67e0e3"],
+                  [0.3, "#f04864"],
+                  [1, "#1890ff"],
                 ],
               },
             },
@@ -1081,9 +1080,8 @@ export default {
                 // 仪表盘轴线样式。
                 width: 10,
                 color: [
-                  [0.3, "#fd666d"],
-                  [0.7, "#37a2da"],
-                  [1, "#67e0e3"],
+                  [0.3, "#f04864"],
+                  [1, "#1890ff"],
                 ],
               },
             },
@@ -1153,9 +1151,8 @@ export default {
                 // 仪表盘轴线样式。
                 width: 10,
                 color: [
-                  [0.3, "#67e0e3"],
-                  [0.7, "#37a2da"],
-                  [1, "#fd666d"],
+                  [0.7, "#1890ff"],
+                  [1, "#f04864"],
                 ],
               },
             },
