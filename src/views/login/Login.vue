@@ -236,7 +236,7 @@ export default {
       countDown: 60,
       form: this.$form.createForm(this),
       loginform: {
-        username: "电缆测试",
+        username: "通宇项目测试",
         password: "123456",
       },
       loading: false,
