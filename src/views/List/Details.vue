@@ -479,7 +479,7 @@
             <div
               id="chart"
               ref="main"
-              style="height: 300px; width: 1500px"
+              style="height: 300px; width: 1450px"
             ></div>
           </a-tab-pane>
         </a-tabs>
@@ -799,7 +799,7 @@ export default {
         { time: "24:00", value: 0 },
       ],
       data01: [12, 13, 10, 13, 9, 23, 21],
-      data02: [22, 18, 19, 23, 29, 33, 31],
+      data02: [22, 18, 19, 23, 29, 55, 21],
 
       data1: [
         { time: "00:00", value: 0 },
@@ -853,7 +853,6 @@ export default {
   methods: {
     hisTem1() {
       // console.log("t1");
-
       this.showPage = "1";
       this.tabKey = "1";
       console.log(this.tabKey);
@@ -867,6 +866,7 @@ export default {
       console.log("t2");
       this.showPage = "1";
       this.tabKey = "2";
+      this.draw()
     },
     hisHum2() {
       console.log("h2");
@@ -917,13 +917,18 @@ export default {
       //温湿度历史数据图
       var myChart = echarts.init(document.getElementById("chart"));
       // var myChart = echarts.init(this.$refs.main);
+      var colors = ["#7cb305", "#1890ff"];
       var option = {
+        color: colors,
         title: {
           text: "温湿度历史数据",
           left: "center",
         },
         tooltip: {
           trigger: "axis",
+          axisPointer: {
+            type: "cross",
+          },
         },
         legend: {
           data: ["温度", "湿度"],
@@ -937,25 +942,56 @@ export default {
         },
         xAxis: {
           type: "category",
-          boundaryGap: false,
+          boundaryGap: false,    //横轴顶格
           data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
         },
-        yAxis: {
-          type: "value",
-        },
+        yAxis: [
+          {
+            type: "value",
+            name: "温度",
+            min: 0,
+            max: 30,
+            position: "left",
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: colors[0],
+              },
+            },
+            axisLabel: {
+              formatter: "{value} ℃",
+            },
+          },
+          {
+            type: "value",
+            name: "湿度",
+            min: 0,
+            max: 60,
+            position: "right",
+            offset: 6,
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: colors[1],
+              },
+            },
+            axisLabel: {
+              formatter: "{value} %",
+            },
+          },
+        ],
         series: [
           {
             name: "温度",
             type: "line",
-            stack: "总量",
-            color: "#a0d911",
+            // stack: "总量",
             data: this.data01,
           },
           {
             name: "湿度",
             type: "line",
-            stack: "总量",
-            color: "#40a9ff",
+            yAxisIndex: 1,     //解决了左右y轴相同刻度，选定哪条y
+            // stack: "总量",
             data: this.data02,
           },
         ],
