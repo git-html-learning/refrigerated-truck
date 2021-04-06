@@ -85,7 +85,7 @@
 </template>
 
 <script>
-import { Line,Area,Column } from "@antv/g2plot";
+import { Line,Area,Column,Liquid } from "@antv/g2plot";
 export default {
     created() {},
     mounted() {
@@ -138,6 +138,12 @@ export default {
           align: "center",
         },
         {
+          title: "等级",
+          dataIndex: "grade",
+          key: "grade",
+          align: "center",
+        },
+        {
           title: "司机",
           dataIndex: "driver",
           key: "driver",
@@ -150,6 +156,7 @@ export default {
           updateTime: "2021-03-10 21:39",
           location:"轮胎1",
           value: "100℃",
+          grade:"报警",
           driver: "张三",
         },
         {
@@ -157,6 +164,7 @@ export default {
           updateTime: "2021-03-10 21:33",
           location:"油位",
           value: "1%",
+          grade:"报警",
           driver: "李四",
         },
         {
@@ -164,6 +172,7 @@ export default {
           updateTime: "2021-03-10 21:23",
           location:"温度测量点1",
           value: "60℃",
+          grade:"预警",
           driver: "王五",
         },
         {
@@ -171,6 +180,7 @@ export default {
           updateTime: "2021-03-10 22:33",
           location:"温度测量点2",
           value: "70℃",
+          grade:"报警",
           driver: "无名",
         },
         {
@@ -178,6 +188,7 @@ export default {
           updateTime: "2021-03-10 11:33",
           location:"温度测量点3",
           value: "72℃",
+          grade:"报警",
           driver: "小芮",
         },
         {
@@ -185,6 +196,7 @@ export default {
           updateTime: "2021-03-10 20:33",
           location:"温度测量点4",
           value: "60℃",
+          grade:"预警",
           driver: "司机",
         },
         {
@@ -192,6 +204,7 @@ export default {
           updateTime: "2021-03-10 20:33",
           location:"温度测量点4",
           value: "60℃",
+          grade:"预警",
           driver: "司机",
         },
       ],
@@ -286,29 +299,29 @@ export default {
   methods: {
     draw(){
       const columnPlot = new Column("warningdiagram", {
-      title:{
-        visible:true,
-        text:"近一周报警数量",
-      },
-      data: this.warnningdata,
-      padding: 'auto',
-      xField: "time",
-      yField: "num",
-      yAxis:{
-        min:0,
-        max:30
-      },
-      meta: {
-        time: {
-          alias: ' ',
+        title:{
+          visible:true,
+          text:"近一周报警数量",
         },
-        num: {
-          alias: '报警数',
+        data: this.warnningdata,
+        padding: 'auto',
+        xField: "time",
+        yField: "num",
+        yAxis:{
+          min:0,
+          max:30
         },
-      },
-      columnSize:40
-    });
-    columnPlot.render();
+        meta: {
+          time: {
+            alias: ' ',
+          },
+          num: {
+            alias: '报警数',
+          },
+        },
+        columnSize:40
+      });
+      columnPlot.render();
     }
   },
 
