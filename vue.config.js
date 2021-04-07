@@ -34,6 +34,7 @@ module.exports = {
       [process.env.VUE_APP_BASE_API]: {
         target: `https://api.ahusmart.com`,
         changeOrigin: true,
+        ws:false,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''
         }
