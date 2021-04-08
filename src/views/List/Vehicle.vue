@@ -159,7 +159,11 @@
   </div>
 </template>
 <script>
-import { product, register, temAndHum } from "@/api/interface";
+import {
+  product, register, 
+  tempAndHumi,refrigerator,capacity,load,oil,
+  light01,light02,tireTempPress,door,shake01,shake02 
+} from "@/api/interface";
 
 export default {
   data() {
@@ -265,13 +269,13 @@ export default {
       this.visible = true;
       this.productname = "";
       this.productKey = "";
-      this.num1 = "8";
+      // this.num1 = "8";
     },
 
     async handleOk() {
       //注册
       var _this = this;
-      _this.visible = false;
+      // _this.visible = false;
       // _this.showInfo="1"
       // console.log(_this.productname);
       const res = await register({
@@ -296,22 +300,134 @@ export default {
         // _this.$message.success("注册成功!");
         // _this.getproduct();
       }
-      // console.log(_this.num1);
     },
     async batchTem(){
-      console.log(this.productKey);
-      const res=await temAndHum({
-        productKey:this.productKey,
-        number:this.num1
+      var _this=this
+      // console.log(_this.productKey);
+      const res=await tempAndHumi({
+        productKey:_this.productKey,
+        number1:_this.num1
       })
-        console.log(res);
-
+      // console.log(res);
+      if(res.code==200){
+        _this.batchRef()
+      }
+    },
+    async batchRef(){
+      var _this=this
+      const res=await refrigerator({
+        productKey:_this.productKey,
+        number2:_this.num2
+      })
+      // console.log(res);
+      if(res.code==200){
+        _this.batchCap()
+      }
+    },
+    async batchCap(){
+      var _this=this
+      const res=await capacity({
+        productKey:_this.productKey,
+        number3:_this.num3
+      })
+      // console.log(res);
+      if(res.code==200){
+        _this.batchLoad()
+      }
+    },
+    async batchLoad(){
+      var _this=this
+      const res=await load({
+        productKey:_this.productKey,
+        number4:_this.num4
+      })
+      // console.log(res);
+      if(res.code==200){
+        _this.batchOil() 
+      }      
+    },
+    async batchOil(){
+      var _this=this
+      const res=await oil({
+        productKey:_this.productKey,
+        number5:_this.num5
+      })
+      // console.log(res);
+      if(res.code==200){
+        _this.batchLight01() 
+      }      
+    },
+    async batchLight01(){
+      var _this=this
+      const res=await light01({
+        productKey:_this.productKey,
+        number6:_this.num6
+      })
+      // console.log(res);
+      if(res.code==200){
+        _this.batchLight02();  
+      }      
+    },
+    async batchLight02(){
+      var _this=this
+      const res=await light02({
+        productKey:_this.productKey,
+        number7:_this.num7
+      })
+      // console.log(res);
+      if(res.code==200){
+        _this.batchTire();  
+      }      
+    },
+    async batchTire(){
+      var _this=this
+      const res=await tireTempPress({
+        productKey:_this.productKey,
+        number8:_this.num8
+      })
+      // console.log(res);
+      if(res.code==200){
+        _this.batchDoor();  
+      }      
+    },
+    async batchDoor(){
+      var _this=this
+      const res=await door({
+        productKey:_this.productKey,
+        number9:_this.num9
+      })
+      // console.log(res);
+      if(res.code==200){
+        _this.batchShake01();  
+      }      
+    },
+    async batchShake01(){
+      var _this=this
+      const res=await shake01({
+        productKey:_this.productKey,
+        number10:_this.num10
+      })
+      // console.log(res);
+      if(res.code==200){
+        _this.batchShake02();  
+      }      
+    },
+    async batchShake02(){
+      var _this=this
+      const res=await shake02({
+        productKey:_this.productKey,
+        number11:_this.num11
+      })
+      console.log(res);
       if(res.code==200){
         _this.vehicleList = [];
         _this.$message.success("注册成功!");
-        _this.getproduct();
-      }
+        _this.visible = false;
+        _this.getproduct();  
+      }      
     },
+
+
 
     handleCancel() {
       this.visible = false;
