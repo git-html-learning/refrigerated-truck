@@ -110,9 +110,12 @@
           >
             <a-card hoverable class="vehicle">
               <a-card-meta :title="item.productName">
-                <a-avatar :size="64" slot="avatar" style="background: #1980ff">
+                <!-- <a-avatar :size="64" slot="avatar" 
+                  style="background: white;border-style:solid;border-width:2px;border-color:#1890ff"
+                > -->
+                <a-avatar :size="64" slot="avatar" style="background: #1890ff">
                   <!-- <i class="iconfont icon-cangku"></i> -->
-                  <img src="../../static/icon/车辆.svg" />
+                  <img src="../../static/icon/冷藏车1.svg" />
                 </a-avatar>
               </a-card-meta>
               <p style="padding-left: 64px">
@@ -127,6 +130,9 @@
                   {{ item.value2 }}
                 </span>
               </p>
+              <a style="float: right; font-size: 15px" @click="cut(item)"
+                >删除</a
+              >
             </a-card>
           </a-col>
         </a-row>
@@ -160,9 +166,20 @@
 </template>
 <script>
 import {
-  product, register, 
-  tempAndHumi,refrigerator,capacity,load,oil,
-  light01,light02,tireTempPress,door,shake01,shake02 
+  product,
+  register,
+  deleteProduct,
+  tempAndHumi,
+  refrigerator,
+  capacity,
+  load,
+  oil,
+  light01,
+  light02,
+  tireTempPress,
+  door,
+  shake01,
+  shake02,
 } from "@/api/interface";
 
 export default {
@@ -183,7 +200,8 @@ export default {
       num9: "3",
       num10: "1",
       num11: "1",
-      productKey:"",
+      productKey: "", //注册车辆生成的pk
+      productkey:"",  //删除车辆所需pk
 
       vehicleList: [],
       // vehicleList: [
@@ -213,7 +231,6 @@ export default {
       //     destination: "武汉",
       //   },
       // ],
-      testV: [], //注册测试
     };
   },
 
@@ -228,15 +245,15 @@ export default {
       // console.log(res);
       for (var i = 0; i < res.data.productInfo.length; i++) {
         if (res.data.productInfo[i].typeIdentify == "tylcc") {
-
           // console.log(res.data.productInfo[i]);
           // this.vehicleList.push(res.data.productInfo[i]);
-          var obj={
-            productName:res.data.productInfo[i].productName,
-            value1:res.data.productInfo[i].extraInfo.tempAndHumi.Value,
-            value2:res.data.productInfo[i].extraInfo.tireTempPress.Value,
-          }
-          this.vehicleList.push(obj)
+          var obj = {
+            productName: res.data.productInfo[i].productName,
+            value1: res.data.productInfo[i].extraInfo.tempAndHumi.Value,
+            value2: res.data.productInfo[i].extraInfo.tireTempPress.Value,
+            productkey: res.data.productInfo[i].productKey,
+          };
+          this.vehicleList.push(obj);
         }
       }
       console.log(this.vehicleList);
@@ -280,154 +297,152 @@ export default {
       // console.log(_this.productname);
       const res = await register({
         productName: this.productname,
-        num1:this.num1,
-        num2:this.num2,
-        num3:this.num3,
-        num4:this.num4,
-        num5:this.num5,
-        num6:this.num6,
-        num7:this.num7,
-        num8:this.num8,
-        num9:this.num9,
-        num10:this.num10,
-        num11:this.num11,
+        num1: this.num1,
+        num2: this.num2,
+        num3: this.num3,
+        num4: this.num4,
+        num5: this.num5,
+        num6: this.num6,
+        num7: this.num7,
+        num8: this.num8,
+        num9: this.num9,
+        num10: this.num10,
+        num11: this.num11,
       });
       // console.log(res);
       if (res.code == 200) {
-        _this.productKey=res.data.productKey
-        _this.batchTem()
+        _this.productKey = res.data.productKey;
+        _this.batchTem();
         // _this.vehicleList = [];
         // _this.$message.success("注册成功!");
         // _this.getproduct();
       }
     },
-    async batchTem(){
-      var _this=this
+    async batchTem() {
+      var _this = this;
       // console.log(_this.productKey);
-      const res=await tempAndHumi({
-        productKey:_this.productKey,
-        number1:_this.num1
-      })
+      const res = await tempAndHumi({
+        productKey: _this.productKey,
+        number1: _this.num1,
+      });
       // console.log(res);
-      if(res.code==200){
-        _this.batchRef()
+      if (res.code == 200) {
+        _this.batchRef();
       }
     },
-    async batchRef(){
-      var _this=this
-      const res=await refrigerator({
-        productKey:_this.productKey,
-        number2:_this.num2
-      })
+    async batchRef() {
+      var _this = this;
+      const res = await refrigerator({
+        productKey: _this.productKey,
+        number2: _this.num2,
+      });
       // console.log(res);
-      if(res.code==200){
-        _this.batchCap()
+      if (res.code == 200) {
+        _this.batchCap();
       }
     },
-    async batchCap(){
-      var _this=this
-      const res=await capacity({
-        productKey:_this.productKey,
-        number3:_this.num3
-      })
+    async batchCap() {
+      var _this = this;
+      const res = await capacity({
+        productKey: _this.productKey,
+        number3: _this.num3,
+      });
       // console.log(res);
-      if(res.code==200){
-        _this.batchLoad()
+      if (res.code == 200) {
+        _this.batchLoad();
       }
     },
-    async batchLoad(){
-      var _this=this
-      const res=await load({
-        productKey:_this.productKey,
-        number4:_this.num4
-      })
+    async batchLoad() {
+      var _this = this;
+      const res = await load({
+        productKey: _this.productKey,
+        number4: _this.num4,
+      });
       // console.log(res);
-      if(res.code==200){
-        _this.batchOil() 
-      }      
+      if (res.code == 200) {
+        _this.batchOil();
+      }
     },
-    async batchOil(){
-      var _this=this
-      const res=await oil({
-        productKey:_this.productKey,
-        number5:_this.num5
-      })
+    async batchOil() {
+      var _this = this;
+      const res = await oil({
+        productKey: _this.productKey,
+        number5: _this.num5,
+      });
       // console.log(res);
-      if(res.code==200){
-        _this.batchLight01() 
-      }      
+      if (res.code == 200) {
+        _this.batchLight01();
+      }
     },
-    async batchLight01(){
-      var _this=this
-      const res=await light01({
-        productKey:_this.productKey,
-        number6:_this.num6
-      })
+    async batchLight01() {
+      var _this = this;
+      const res = await light01({
+        productKey: _this.productKey,
+        number6: _this.num6,
+      });
       // console.log(res);
-      if(res.code==200){
-        _this.batchLight02();  
-      }      
+      if (res.code == 200) {
+        _this.batchLight02();
+      }
     },
-    async batchLight02(){
-      var _this=this
-      const res=await light02({
-        productKey:_this.productKey,
-        number7:_this.num7
-      })
+    async batchLight02() {
+      var _this = this;
+      const res = await light02({
+        productKey: _this.productKey,
+        number7: _this.num7,
+      });
       // console.log(res);
-      if(res.code==200){
-        _this.batchTire();  
-      }      
+      if (res.code == 200) {
+        _this.batchTire();
+      }
     },
-    async batchTire(){
-      var _this=this
-      const res=await tireTempPress({
-        productKey:_this.productKey,
-        number8:_this.num8
-      })
+    async batchTire() {
+      var _this = this;
+      const res = await tireTempPress({
+        productKey: _this.productKey,
+        number8: _this.num8,
+      });
       // console.log(res);
-      if(res.code==200){
-        _this.batchDoor();  
-      }      
+      if (res.code == 200) {
+        _this.batchDoor();
+      }
     },
-    async batchDoor(){
-      var _this=this
-      const res=await door({
-        productKey:_this.productKey,
-        number9:_this.num9
-      })
+    async batchDoor() {
+      var _this = this;
+      const res = await door({
+        productKey: _this.productKey,
+        number9: _this.num9,
+      });
       // console.log(res);
-      if(res.code==200){
-        _this.batchShake01();  
-      }      
+      if (res.code == 200) {
+        _this.batchShake01();
+      }
     },
-    async batchShake01(){
-      var _this=this
-      const res=await shake01({
-        productKey:_this.productKey,
-        number10:_this.num10
-      })
+    async batchShake01() {
+      var _this = this;
+      const res = await shake01({
+        productKey: _this.productKey,
+        number10: _this.num10,
+      });
       // console.log(res);
-      if(res.code==200){
-        _this.batchShake02();  
-      }      
+      if (res.code == 200) {
+        _this.batchShake02();
+      }
     },
-    async batchShake02(){
-      var _this=this
-      const res=await shake02({
-        productKey:_this.productKey,
-        number11:_this.num11
-      })
+    async batchShake02() {
+      var _this = this;
+      const res = await shake02({
+        productKey: _this.productKey,
+        number11: _this.num11,
+      });
       console.log(res);
-      if(res.code==200){
+      if (res.code == 200) {
         _this.vehicleList = [];
         _this.$message.success("注册成功!");
         _this.visible = false;
-        _this.getproduct();  
-      }      
+        _this.getproduct();
+      }
     },
-
-
 
     handleCancel() {
       this.visible = false;
@@ -435,6 +450,32 @@ export default {
       this.$message.info("取消注册");
       // console.log("取消");
     },
+
+    cut(data) {   //删除车辆
+      // console.log(data.productkey);
+      this.productkey=data.productkey
+      this.$confirm('此操作将永久删除该车辆, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.confirm()
+        }).catch(() => {
+          this.$message.info('已取消删除');          
+        });
+      
+    },
+    async confirm(){
+      const res = await deleteProduct({
+        key: this.productkey,
+      });
+      // console.log(res);
+      if(res.code==200){
+        this.$message.success('删除成功!');
+        this.getproduct()
+      }
+    },
+
   },
 };
 </script>
