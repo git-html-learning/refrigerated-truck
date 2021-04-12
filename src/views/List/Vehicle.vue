@@ -30,7 +30,12 @@
               @cancel="handleCancel"
               width="700px"
             >
-              <a-form-model :label-col="{ span: 7 }">
+              <a-form-model 
+                :label-col="{ span: 7 }" 
+                v-loading="loading"
+                element-loading-text="拼命注册中"
+                element-loading-spinner="el-icon-loading"
+              >
                 <a-form-model-item label="车牌号" :wrapper-col="{ span: 12 }">
                   <a-input v-model="productname" />
                 </a-form-model-item>
@@ -100,21 +105,22 @@
         </div>
       </div>
 
-      <div v-show="vehicleList.length != 0">
-        <a-row :gutter="16">
+      <div v-show="vehicleList.length != 0" >
+        <a-row :gutter="16" >
           <a-col
             :span="8"
             v-for="(item, index) in vehicleList"
             :key="index"
             @click="more(item)"
           >
-            <a-card hoverable class="vehicle">
+            <a-card hoverable class="vehicle" >
               <a-card-meta :title="item.productName">
                 <!-- <a-avatar :size="64" slot="avatar" 
                   style="background: white;border-style:solid;border-width:2px;border-color:#1890ff"
                 > -->
-                <a-avatar :size="64" slot="avatar" style="background: #1890ff">
+                <a-avatar :size="64" slot="avatar" style="background: #1890ff" >
                   <!-- <i class="iconfont icon-cangku"></i> -->
+                  <!-- <img src="../../static/pic/冷藏车.png" /> -->
                   <img src="../../static/icon/冷藏车1.svg" />
                 </a-avatar>
               </a-card-meta>
@@ -188,6 +194,7 @@ export default {
       showInfo: "1", //切换页面
       searchNum: "", //车牌号搜索
       visible: false, //对话框显示
+      loading:false,
       productname: "", //注册车辆号码
       num1: "8",
       num2: "1",
@@ -292,6 +299,7 @@ export default {
     async handleOk() {
       //注册
       var _this = this;
+      _this.loading=true
       // _this.visible = false;
       // _this.showInfo="1"
       // console.log(_this.productname);
@@ -309,7 +317,7 @@ export default {
         num10: this.num10,
         num11: this.num11,
       });
-      // console.log(res);
+      console.log(res);
       if (res.code == 200) {
         _this.productKey = res.data.productKey;
         _this.batchTem();
@@ -438,8 +446,9 @@ export default {
       console.log(res);
       if (res.code == 200) {
         _this.vehicleList = [];
-        _this.$message.success("注册成功!");
         _this.visible = false;
+        _this.loading=false
+        _this.$message.success("注册成功!");
         _this.getproduct();
       }
     },
@@ -472,6 +481,7 @@ export default {
       // console.log(res);
       if(res.code==200){
         this.$message.success('删除成功!');
+        this.vehicleList = [];
         this.getproduct()
       }
     },
