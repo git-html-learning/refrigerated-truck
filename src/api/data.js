@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export function product(data) {//产品列表
+export function product(data) {     //产品列表,即为所有冷藏车与司机信息
   return request({
     url: '/api/v1/product',
     method: 'GET',
