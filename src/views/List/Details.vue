@@ -464,7 +464,10 @@
             style="fontsize: 20px; padding: 0px 0px 0px 10px; align: left"
           ></i>
         </div>
-        <a-tabs tab-position="left" :default-active-key="tabKey">
+        <a-tabs 
+          tab-position="left" 
+          :default-active-key="tabKey"
+        >
           <a-tab-pane
             v-for="(item, index) in sensorList"
             :key="index"
@@ -552,21 +555,11 @@
             <h2 style="font-size: 22px; padding-left: 30px">
               更新时间：2021-03-20 20:11:00
             </h2>
-            <br /><br /><br />
-            <el-col :span="12">
-              胎温/°C
-              <div
-                id="main4"
-                style="padding-left: 20px; width: 600px; height: 250px"
-              ></div>
-            </el-col>
-            <el-col :span="12">
-              胎压/bar
-              <div
-                id="main5"
-                style="padding-left: 20px; width: 600px; height: 250px"
-              ></div>
-            </el-col>
+            <div
+              id="chart1"
+              
+              style="height: 350px; width: 1450px"
+            ></div>
           </el-tab-pane>
           <el-tab-pane label="胎2">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
@@ -708,7 +701,6 @@ export default {
 
     this.drawVib();
     this.drawTyre1();
-    this.drawTyre2();
   },
 
   data() {
@@ -800,6 +792,8 @@ export default {
       ],
       data01: [12, 13, 10, 13, 9, 23, 21],
       data02: [22, 18, 19, 23, 29, 55, 21],
+      data03: [0,0,0,0,0,0,33,45,55,60,77,56,57,43,26,19,25,0,0,0,0,], // 胎温
+      data04: [0,0,0,0,0,0,8,9,18,6,7,11,9,16,8,17,9,0,0,0,0,], // 胎压
 
       data1: [
         { time: "00:00", value: 0 },
@@ -853,9 +847,8 @@ export default {
   methods: {
     hisTem1() {
       // console.log("t1");
-      this.showPage = "1";
       this.tabKey = "1";
-      console.log(this.tabKey);
+      this.showPage = "1";
       this.draw();
     },
 
@@ -864,8 +857,8 @@ export default {
     },
     hisTem2() {
       console.log("t2");
-      this.showPage = "1";
       this.tabKey = "2";
+      this.showPage = "1";
       this.draw()
     },
     hisHum2() {
@@ -910,9 +903,13 @@ export default {
 
     back() {
       this.showPage = "0";
-      console.log(this.showPage);
+      this.tabKey=""
+      // console.log(this.showPage);
     },
 
+    // tabclick(e){
+    //   console.log(e);
+    // },
     draw() {
       //温湿度历史数据图
       var myChart = echarts.init(document.getElementById("chart"));
@@ -1305,8 +1302,9 @@ export default {
         });
     },
 
-    more1(a) {
+    more1() {
       this.showPage = "3";
+      this.drawTyre1()
     },
     show(){
       this.showPage="2"
@@ -1368,39 +1366,113 @@ export default {
     },
     drawTyre1() {
       //轮胎历史数据
-      const areaPlot = new Area("main4", {
-        color: ["rgb(19, 194, 194)"],
-        data: this.data4,
-        padding: "auto",
-        xField: "time",
-        yField: "value",
-        label: {},
-        tooltip: { showMarkers: false },
-        interactions: [{ type: "marker-active" }],
-      });
-      areaPlot.render();
-    },
-    drawTyre2() {
-      const linePlot1 = new Line("main5", {
-        color: ["#91CC75"],
-        data: this.data5,
-        padding: "auto",
-        xField: "time",
-        yField: "value",
-        label: {},
-        tooltip: { showMarkers: false },
-        meta: {
-          time: {
-            alias: " ",
-          },
-          num: {
-            alias: "bar",
+       var myChart = echarts.init(document.getElementById("chart1"));
+      var colors = ["#5470C6", "#91CC75"];
+      var option = {
+        color: colors,
+        title: {
+          text: "胎温胎压历史数据",
+          left: "center",
+        },
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            type: "cross",
           },
         },
-        interactions: [{ type: "marker-active" }],
-      });
-      linePlot1.render();
+        legend: {
+          data: ["胎温", "胎压"],
+          left: 80,
+        },
+        grid: {
+          left: "2%",
+          right: "4%",
+          bottom: "3%",
+          containLabel: true,
+        },
+        xAxis: {
+          type: "category",
+          axisTick: {
+            alignWithLabel: true,
+          },
+          data: [
+            "00:00",
+            "01:15",
+            "02:30",
+            "03:45",
+            "05:00",
+            "06:15",
+            "07:30",
+            "08:45",
+            "10:00",
+            "11:15",
+            "12:30",
+            "13:45",
+            "15:00",
+            "16:15",
+            "17:30",
+            "18:45",
+            "20:00",
+            "21:15",
+            "22:30",
+            "23:45",
+          ],
+        },
+        yAxis: [
+          {
+            type: "value",
+            name: "胎温",
+            min: 0,
+            max: 100,
+            position: "left",
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: colors[0],
+              },
+            },
+            axisLabel: {
+              formatter: "{value}°C",
+            },
+          },
+          {
+            type: "value",
+            name: "胎压",
+            min: 0,
+            max: 20,
+            position: "right",
+            offset: 6,
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: colors[1],
+              },
+            },
+            axisLabel: {
+              formatter: "{value}bar",
+            },
+          },
+        ],
+
+        series: [
+          {
+            name: "胎温",
+            type: "line",
+            color: colors[0],
+            data: this.data03,
+          },
+          {
+            name: "胎压",
+            type: "line",
+            color: colors[1],
+            yAxisIndex: 1,
+            data: this.data04,
+          },
+        ],
+      };
+      option && myChart.setOption(option);
     },
+ 
   },
 };
 </script>
