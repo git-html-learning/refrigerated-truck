@@ -43,61 +43,61 @@
                   label="温湿度传感器数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input v-model="num1" />
+                  <a-input-number v-model="num1" :min="1" style="width:120%"/>
                 </a-form-model-item>
                 <a-form-model-item label="冷机数量" :wrapper-col="{ span: 2 }">
-                  <a-input v-model="num2" />
+                  <a-input-number v-model="num2" :min="1" style="width:120%"/>
                 </a-form-model-item>
                 <a-form-model-item
                   label="容量监测设备数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input v-model="num3" />
+                  <a-input-number v-model="num3" :min="1" style="width:120%"/>
                 </a-form-model-item>
                 <a-form-model-item
                   label="载重监测设备数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input v-model="num4" />
+                  <a-input-number v-model="num4" :min="1" style="width:120%"/>
                 </a-form-model-item>
                 <a-form-model-item
                   label="油位监测设备数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input v-model="num5" />
+                  <a-input-number v-model="num5" :min="1" style="width:120%"/>
                 </a-form-model-item>
                 <a-form-model-item
                   label="照明灯数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input v-model="num6" />
+                  <a-input-number v-model="num6" :min="1" style="width:120%"/>
                 </a-form-model-item>
                 <a-form-model-item
                   label="杀菌灯数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input v-model="num7" />
+                  <a-input-number v-model="num7" :min="1" style="width:120%"/>
                 </a-form-model-item>
                 <a-form-model-item
                   label="胎温胎压传感器数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input v-model="num8" />
+                  <a-input-number v-model="num8" :min="1" style="width:120%"/>
                 </a-form-model-item>
                 <a-form-model-item label="门数量" :wrapper-col="{ span: 2 }">
-                  <a-input v-model="num9" />
+                  <a-input-number v-model="num9" :min="1" style="width:120%"/>
                 </a-form-model-item>
                 <a-form-model-item
                   label="横向震动监测数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input v-model="num10" />
+                  <a-input-number v-model="num10" :min="1" style="width:120%"/>
                 </a-form-model-item>
                 <a-form-model-item
                   label="纵向震动监测数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input v-model="num11" />
+                  <a-input-number v-model="num11" :min="1" style="width:120%"/>
                 </a-form-model-item>
               </a-form-model>
             </a-modal>
@@ -111,7 +111,7 @@
             :span="8"
             v-for="(item, index) in vehicleList"
             :key="index"
-            @click="more(item)"
+            
           >
             <a-card hoverable class="vehicle" >
               <a-card-meta :title="item.productName">
@@ -121,7 +121,7 @@
                 <a-avatar :size="64" slot="avatar" style="background: #1890ff" >
                   <!-- <i class="iconfont icon-cangku"></i> -->
                   <!-- <img src="../../static/pic/冷藏车.png" /> -->
-                  <img src="../../static/icon/冷藏车1.svg" />
+                  <img src="../../static/icon/冷藏车1.svg" style="width:60px"/>
                 </a-avatar>
               </a-card-meta>
               <p style="padding-left: 64px">
@@ -139,6 +139,9 @@
               <a style="float: right; font-size: 15px" @click="cut(item)"
                 >删除</a
               >
+              <a style="float: left; font-size: 15px" >
+                <router-link to="/list/details">查看</router-link>
+              </a>
             </a-card>
           </a-col>
         </a-row>
@@ -152,13 +155,13 @@
       <div class="home-item1">
         <a-form-model :label-col="{ span: 8 }" >
           <a-form-model-item label="车牌号" :wrapper-col="{ span: 6 }">
-            <a-input v-model="vehicleList.number" />
+            <a-input-number v-model="vehicleList.number" />
           </a-form-model-item>
           <a-form-model-item label="司机" :wrapper-col="{ span: 6 }">
-            <a-input v-model="vehicleList.driver" />
+            <a-input-number v-model="vehicleList.driver" />
           </a-form-model-item>
           <a-form-model-item label="目的地" :wrapper-col="{ span: 6 }">
-            <a-input v-model="vehicleList.destination" />
+            <a-input-number v-model="vehicleList.destination" />
           </a-form-model-item>
         </a-form-model>
      <a-form-item :wrapper-col="{ span: 14, offset: 8 }">
@@ -249,7 +252,7 @@ export default {
     async getproduct() {
       //获取产品信息
       const res = await product();
-      // console.log(res);
+      console.log(res);
       for (var i = 0; i < res.data.productInfo.length; i++) {
         if (res.data.productInfo[i].typeIdentify == "tylcc") {
           // console.log(res.data.productInfo[i]);
@@ -266,10 +269,10 @@ export default {
       console.log(this.vehicleList);
     },
 
-    more(data) {
-      //点击卡片
-      console.log(data);
-    },
+    // more(data) {
+    //   //点击卡片
+    //   console.log(data);
+    // },
 
     search() {
       //查询车辆
