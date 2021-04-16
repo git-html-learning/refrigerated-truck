@@ -61,21 +61,21 @@ export default {
           lng: 117.192,
           lat: 31.771,
           number: "皖A11111",
-          updateTime:"2021-03-24 13：14",
+          updateTime:"2021-03-24 13:14",
           speed:"78Km/h"
         },
         {
           lng: 117.092,
           lat: 31.671,
           number: "皖A22222",
-          updateTime:"2021-03-24 13：16",
+          updateTime:"2021-03-24 13:16",
           speed:"80Km/h"
         },
         {
           lng: 117.002,
           lat: 31.631,
           number: "皖A33333",
-          updateTime:"2021-03-24 13：24",
+          updateTime:"2021-03-24 13:24",
           speed:"79Km/h"
         },
       ],
