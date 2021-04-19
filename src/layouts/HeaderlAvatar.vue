@@ -1,11 +1,18 @@
 <template>
   <!-- 头部右侧用户头像，下拉菜单 -->
-  <a-dropdown style="display: inline-block; height: 100%; vertical-align: initial">
+  <a-dropdown
+    style="display: inline-block; height: 100%; vertical-align: initial"
+  >
     <!-- 显示区 -->
     <span style="cursor: pointer">
-      <a-avatar class="avatar" size="small" shape="circle" :src="currUser.avatar" />
+      <a-avatar
+        class="avatar"
+        size="small"
+        shape="circle"
+        :src="currUser.avatar"
+      />
       <!-- <span>{{currUser.name}}</span> -->
-       <a-icon type="user" />
+      <a-icon type="user" />
     </span>
     <!-- 下拉菜单区  slot="overlay" -->
     <a-menu style="width: 150px" slot="overlay">
@@ -23,11 +30,18 @@
       </a-menu-item>
       <a-menu-divider /> -->
       <a-menu-item>
+        <router-link to="/user/information">
+          <a-icon type="user" />
+          <span>个人中心</span>
+        </router-link>
+      </a-menu-item>
+      <a-menu-item>
         <router-link to="/login">
           <a-icon type="poweroff" />
           <span>退出登录</span>
         </router-link>
       </a-menu-item>
+      
     </a-menu>
   </a-dropdown>
 </template>
@@ -38,8 +52,8 @@ export default {
   computed: {
     currUser() {
       return this.$store.state.account.user;
-    }
-  }
+    },
+  },
 };
 </script>
 
