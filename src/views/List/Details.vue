@@ -496,9 +496,9 @@
           @click="back()"
           style="fontsize: 30px; padding: 0px 0px 0px 10px; align: left"
         ></i
-        ><br />
-        <el-tabs tab-position="left" style="height: 600px">
-          <el-tab-pane label="照明灯">
+        >
+        <a-tabs size="large">
+          <a-tab-pane key="1" tab="照明灯">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
               照明灯
             </h1>
@@ -506,10 +506,9 @@
               更新时间：2021-03-20 20:11:00
             </h2>
             <br /><br /><br />
-            <br /><br /><br />
             <div id="main1" style="padding-left: 20px; height: 250px"></div>
-          </el-tab-pane>
-          <el-tab-pane label="杀菌灯">
+          </a-tab-pane>
+          <a-tab-pane key="2" tab="杀菌灯">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
               杀菌灯
             </h1>
@@ -517,10 +516,9 @@
               更新时间：2021-03-20 20:11:00
             </h3>
             <br /><br /><br />
-            <br /><br /><br />
             <div id="main2" style="padding-left: 20px; height: 250px"></div>
-          </el-tab-pane>
-          <el-tab-pane label="其它">
+          </a-tab-pane>
+          <a-tab-pane key="3" tab="其它">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
               其它
             </h1>
@@ -528,10 +526,9 @@
               更新时间：2021-03-20 20:11:00
             </h2>
             <br /><br /><br />
-            <br /><br /><br />
             <div id="main3" style="padding-left: 20px; height: 250px"></div
-          ></el-tab-pane>
-        </el-tabs>
+          ></a-tab-pane>
+        </a-tabs>
       </div>
     </div>
 
@@ -543,12 +540,11 @@
           style="fontsize: 30px; padding: 0px 0px 0px 10px; align: left"
         ></i
         ><br />
-        <el-tabs
-          tab-position="top"
-          default-active-key="1"
+        <a-tabs
+          size="large"
           style="height: 800px; padding-left: 20px; padding-top: 10px"
         >
-          <el-tab-pane label="胎1">
+          <a-tab-pane key="1" tab="胎1">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
               胎1
             </h1>
@@ -560,8 +556,8 @@
               
               style="height: 350px; width: 1450px"
             ></div>
-          </el-tab-pane>
-          <el-tab-pane label="胎2">
+          </a-tab-pane>
+          <a-tab-pane key="2" tab="胎2">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
               胎2
             </h1>
@@ -570,8 +566,8 @@
             </h2>
             <br /><br /><br />
             <br /><br /><br />
-          </el-tab-pane>
-          <el-tab-pane label="胎3">
+          </a-tab-pane>
+          <a-tab-pane key="3" tab="胎3">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
               胎3
             </h1>
@@ -580,8 +576,8 @@
             </h2>
             <br /><br /><br />
             <br /><br /><br />
-          </el-tab-pane>
-          <el-tab-pane label="胎4">
+          </a-tab-pane>
+          <a-tab-pane key="4" tab="胎4">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
               胎4
             </h1>
@@ -590,8 +586,8 @@
             </h2>
             <br /><br /><br />
             <br /><br /><br />
-          </el-tab-pane>
-          <el-tab-pane label="胎5">
+          </a-tab-pane>
+          <a-tab-pane key="5" tab="胎5">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
               胎5
             </h1>
@@ -600,8 +596,8 @@
             </h2>
             <br /><br /><br />
             <br /><br /><br />
-          </el-tab-pane>
-          <el-tab-pane label="胎6">
+          </a-tab-pane>
+          <a-tab-pane key="6" tab="胎6">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
               胎6
             </h1>
@@ -610,8 +606,8 @@
             </h2>
             <br /><br /><br />
             <br /><br /><br />
-          </el-tab-pane>
-          <el-tab-pane label="胎7">
+          </a-tab-pane>
+          <a-tab-pane key="7" tab="胎7">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
               胎7
             </h1>
@@ -620,8 +616,8 @@
             </h2>
             <br /><br /><br />
             <br /><br /><br />
-          </el-tab-pane>
-          <el-tab-pane label="胎8">
+          </a-tab-pane>
+          <a-tab-pane key="8" tab="胎8">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
               胎8
             </h1>
@@ -630,8 +626,8 @@
             </h2>
             <br /><br /><br />
             <br /><br /><br />
-          </el-tab-pane>
-          <el-tab-pane label="胎9">
+          </a-tab-pane>
+          <a-tab-pane key="9" tab="胎9">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
               胎9
             </h1>
@@ -640,8 +636,8 @@
             </h2>
             <br /><br /><br />
             <br /><br /><br />
-          </el-tab-pane>
-          <el-tab-pane label="胎10">
+          </a-tab-pane>
+          <a-tab-pane key="10" tab="胎10">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
               胎10
             </h1>
@@ -650,8 +646,8 @@
             </h2>
             <br /><br /><br />
             <br /><br /><br />
-          </el-tab-pane>
-          <el-tab-pane label="胎11">
+          </a-tab-pane>
+          <a-tab-pane key="11" tab="胎11">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
               胎11
             </h1>
@@ -660,8 +656,8 @@
             </h2>
             <br /><br /><br />
             <br /><br /><br />
-          </el-tab-pane>
-          <el-tab-pane label="胎12">
+          </a-tab-pane>
+          <a-tab-pane key="12" tab="胎12">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
               胎12
             </h1>
@@ -670,8 +666,8 @@
             </h2>
             <br /><br /><br />
             <br /><br /><br />
-          </el-tab-pane>
-        </el-tabs>
+          </a-tab-pane>
+        </a-tabs>
       </div>
     </div>
   </div>
@@ -694,12 +690,12 @@ export default {
     this.drawOil();
     this.drawVol();
     this.drawCap();
+    this.drawVib();
 
     this.tu1();
     this.tu2();
     this.tu3();
-
-    this.drawVib();
+    
     this.drawTyre1();
   },
 
@@ -1710,7 +1706,7 @@ export default {
   margin: -180px 0px 0px 160px;
 }
 .map {
-  width: 790px;
+  width: 102%;
   height: 227px;
   margin: -10px 0px 0px -10px;
 }
