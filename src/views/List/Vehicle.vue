@@ -30,8 +30,8 @@
               @cancel="handleCancel"
               width="700px"
             >
-              <a-form-model 
-                :label-col="{ span: 7 }" 
+              <a-form-model
+                :label-col="{ span: 7 }"
                 v-loading="loading"
                 element-loading-text="拼命注册中"
                 element-loading-spinner="el-icon-loading"
@@ -43,61 +43,69 @@
                   label="温湿度传感器数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input-number v-model="num1" :min="1" style="width:120%"/>
+                  <a-input-number v-model="num1" :min="1" style="width: 120%" />
                 </a-form-model-item>
                 <a-form-model-item label="冷机数量" :wrapper-col="{ span: 2 }">
-                  <a-input-number v-model="num2" :min="1" style="width:120%"/>
+                  <a-input-number v-model="num2" :min="1" style="width: 120%" />
                 </a-form-model-item>
                 <a-form-model-item
                   label="容量监测设备数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input-number v-model="num3" :min="1" style="width:120%"/>
+                  <a-input-number v-model="num3" :min="1" style="width: 120%" />
                 </a-form-model-item>
                 <a-form-model-item
                   label="载重监测设备数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input-number v-model="num4" :min="1" style="width:120%"/>
+                  <a-input-number v-model="num4" :min="1" style="width: 120%" />
                 </a-form-model-item>
                 <a-form-model-item
                   label="油位监测设备数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input-number v-model="num5" :min="1" style="width:120%"/>
+                  <a-input-number v-model="num5" :min="1" style="width: 120%" />
                 </a-form-model-item>
                 <a-form-model-item
                   label="照明灯数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input-number v-model="num6" :min="1" style="width:120%"/>
+                  <a-input-number v-model="num6" :min="1" style="width: 120%" />
                 </a-form-model-item>
                 <a-form-model-item
                   label="杀菌灯数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input-number v-model="num7" :min="1" style="width:120%"/>
+                  <a-input-number v-model="num7" :min="1" style="width: 120%" />
                 </a-form-model-item>
                 <a-form-model-item
                   label="胎温胎压传感器数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input-number v-model="num8" :min="1" style="width:120%"/>
+                  <a-input-number v-model="num8" :min="1" style="width: 120%" />
                 </a-form-model-item>
                 <a-form-model-item label="门数量" :wrapper-col="{ span: 2 }">
-                  <a-input-number v-model="num9" :min="1" style="width:120%"/>
+                  <a-input-number v-model="num9" :min="1" style="width: 120%" />
                 </a-form-model-item>
                 <a-form-model-item
                   label="横向震动监测数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input-number v-model="num10" :min="1" style="width:120%"/>
+                  <a-input-number
+                    v-model="num10"
+                    :min="1"
+                    style="width: 120%"
+                  />
                 </a-form-model-item>
                 <a-form-model-item
                   label="纵向震动监测数量"
                   :wrapper-col="{ span: 2 }"
                 >
-                  <a-input-number v-model="num11" :min="1" style="width:120%"/>
+                  <a-input-number
+                    v-model="num11"
+                    :min="1"
+                    style="width: 120%"
+                  />
                 </a-form-model-item>
               </a-form-model>
             </a-modal>
@@ -105,23 +113,21 @@
         </div>
       </div>
 
-      <div v-show="vehicleList.length != 0" >
-        <a-row :gutter="16" >
-          <a-col
-            :span="8"
-            v-for="(item, index) in vehicleList"
-            :key="index"
-            
-          >
-            <a-card hoverable class="vehicle" >
+      <div v-show="vehicleList.length != 0">
+        <a-row :gutter="16">
+          <a-col :span="8" v-for="(item, index) in vehicleList" :key="index">
+            <a-card hoverable class="vehicle">
               <a-card-meta :title="item.productName">
                 <!-- <a-avatar :size="64" slot="avatar" 
                   style="background: white;border-style:solid;border-width:2px;border-color:#1890ff"
                 > -->
-                <a-avatar :size="64" slot="avatar" style="background: #1890ff" >
+                <a-avatar :size="64" slot="avatar" style="background: #1890ff">
                   <!-- <i class="iconfont icon-cangku"></i> -->
                   <!-- <img src="../../static/pic/冷藏车.png" /> -->
-                  <img src="../../static/icon/冷藏车1.svg" style="width:60px"/>
+                  <img
+                    src="../../static/icon/冷藏车1.svg"
+                    style="width: 60px"
+                  />
                 </a-avatar>
               </a-card-meta>
               <p style="padding-left: 64px">
@@ -139,7 +145,7 @@
               <a style="float: right; font-size: 15px" @click="cut(item)"
                 >删除</a
               >
-              <a style="float: left; font-size: 15px" >
+              <a style="float: left; font-size: 15px">
                 <router-link to="/list/details">查看</router-link>
               </a>
             </a-card>
@@ -176,7 +182,7 @@
 <script>
 import {
   product,
-  register,
+  registerVeh,
   deleteProduct,
   tempAndHumi,
   refrigerator,
@@ -197,7 +203,7 @@ export default {
       showInfo: "1", //切换页面
       searchNum: "", //车牌号搜索
       visible: false, //对话框显示
-      loading:false,
+      loading: false, //注册加载
       productname: "", //注册车辆号码
       num1: "8",
       num2: "1",
@@ -211,9 +217,9 @@ export default {
       num10: "1",
       num11: "1",
       productKey: "", //注册车辆生成的pk
-      productkey:"",  //删除车辆所需pk
+      productkey: "", //删除车辆所需pk
 
-      vehicleList: [],
+      vehicleList: [],  //车辆信息展示列表
       // vehicleList: [
       //   {
       //     number: "皖A11111",
@@ -256,7 +262,6 @@ export default {
       for (var i = 0; i < res.data.productInfo.length; i++) {
         if (res.data.productInfo[i].typeIdentify == "tylcc") {
           // console.log(res.data.productInfo[i]);
-          // this.vehicleList.push(res.data.productInfo[i]);
           var obj = {
             productName: res.data.productInfo[i].productName,
             value1: res.data.productInfo[i].extraInfo.tempAndHumi.Value,
@@ -302,11 +307,9 @@ export default {
     async handleOk() {
       //注册
       var _this = this;
-      _this.loading=true
-      // _this.visible = false;
-      // _this.showInfo="1"
+      _this.loading = true;
       // console.log(_this.productname);
-      const res = await register({
+      const res = await registerVeh({
         productName: this.productname,
         num1: this.num1,
         num2: this.num2,
@@ -450,7 +453,7 @@ export default {
       if (res.code == 200) {
         _this.vehicleList = [];
         _this.visible = false;
-        _this.loading=false
+        _this.loading = false;
         _this.$message.success("注册成功!");
         _this.getproduct();
       }
@@ -463,32 +466,33 @@ export default {
       // console.log("取消");
     },
 
-    cut(data) {   //删除车辆
+    cut(data) {
+      //删除车辆
       // console.log(data.productkey);
-      this.productkey=data.productkey
-      this.$confirm('此操作将永久删除该车辆, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          this.confirm()
-        }).catch(() => {
-          this.$message.info('已取消删除');          
+      this.productkey = data.productkey;
+      this.$confirm("此操作将永久删除该车辆, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          this.confirm();
+        })
+        .catch(() => {
+          this.$message.info("已取消删除");
         });
-      
     },
-    async confirm(){
+    async confirm() {
       const res = await deleteProduct({
         key: this.productkey,
       });
       // console.log(res);
-      if(res.code==200){
-        this.$message.success('删除成功!');
+      if (res.code == 200) {
+        this.$message.success("删除成功!");
         this.vehicleList = [];
-        this.getproduct()
+        this.getproduct();
       }
     },
-
   },
 };
 </script>
