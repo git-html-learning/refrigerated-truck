@@ -219,7 +219,7 @@ export default {
       productKey: "", //注册车辆生成的pk
       productkey: "", //删除车辆所需pk
 
-      vehicleList: [],  //车辆信息展示列表
+      vehicleList: [], //车辆信息展示列表
       // vehicleList: [
       //   {
       //     number: "皖A11111",
