@@ -2,17 +2,14 @@
   <!-- 头部通知下拉菜单 -->
   <a-dropdown :trigger="['click']" v-model="visible">
     <!-- 下拉菜单区 -->
-    <!-- <template slot="overlay"> -->
-      <!-- {{total}}
-       {{total1}} -->
-      <!-- <a-spin :spinning="loading"> -->
-        <!-- <a-tabs
+    <template slot="overlay">
+      <a-spin :spinning="loading">
+        <a-tabs
           :tabBarStyle="{ textAlign: 'center' }"
           :style="{ backgroundColor: 'white', width: '297px' }"
         >
           <a-tab-pane :tab="'通知'" key="1" :style="{ padding: '0 24px' }">
-            <a-list> -->
-              
+            <a-list>
               <!-- <a-list-item
                 v-for="(item, index) in data1.filter(
                   (d) => d.type === 'notification'
@@ -28,9 +25,8 @@
                   />
                 </a-list-item-meta> -->
               <!-- </a-list-item> -->
-
-
-              <!-- <a-list-item :style="{ opacity: data1[0].read ? 0.7 : 1 }">
+              <!-- <a-list-item :style="{ opacity: data1[0].read ? 0.7 : 1 }"> -->
+              <a-list-item :style="{ opacity: 1 }">
                 <a-list-item-meta :title="data1[0].title" @click="tiaozhuan">
                   <a-avatar
                     style="background-color: white"
@@ -38,20 +34,19 @@
                     :src="data1[0].avatar"
                   />
                 </a-list-item-meta>
-              </a-list-item> -->
-            <!-- </a-list>
+              </a-list-item>
+            </a-list>
           </a-tab-pane>
-        </a-tabs> -->
-      <!-- </a-spin> -->
-    <!-- </template> -->
+        </a-tabs>
+      </a-spin>
+    </template>
     <!-- 显示区 -->
-    <!-- <span @click="fetchNotice" class="header-notice">
-      <a-badge :dot="show"> -->
+    <span @click="fetchNotice" class="header-notice">
+      <a-badge :dot="show">
         <!-- 数据长度 -->
-        <!-- <a-icon :class="['header-notice-icon', theme]" type="bell" />
+        <a-icon :class="['header-notice-icon', theme]" type="bell" />
       </a-badge>
-    </span> -->
-    
+    </span>
   </a-dropdown>
 </template>
 
@@ -127,7 +122,7 @@ export default {
       }
     },
     tiaozhuan() {
-      this.$router.push({ path: "/form/advance" });
+      this.$router.push({ path: "/notice/warning" });
     },
     fetchNotice() {
       this.visible = true;
