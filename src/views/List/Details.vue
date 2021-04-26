@@ -88,6 +88,7 @@
       <a-row :gutter="[8, 8]">
         <a-col :span="9">
           <a-card title="车门" style="height: 220px" class="shadow" hoverable>
+            <a slot="extra" @click="showdoor()">更多</a>
             <a-col :span="8" style="text-align: center">
               <div>
                 <p v-show="door1">
@@ -256,15 +257,13 @@
             class="shadow"
           >
             <a slot="extra" @click="open2">更多</a>
-            <a-row type="flex" style="height: 60px;font-size: 18px">
+            <a-row type="flex" style="height: 60px; font-size: 18px">
               <a-col :span="8">
                 <a-col :span="8" style="text-align: center">
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span>
-                    胎温：50°C &nbsp;&nbsp;胎压：5bar
-                  </span>
+                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -272,9 +271,7 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span>
-                    胎温：50°C &nbsp;&nbsp;胎压：5bar
-                  </span>
+                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -282,21 +279,17 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span>
-                    胎温：50°C &nbsp;&nbsp;胎压：5bar
-                  </span>
+                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
                 </a-col>
               </a-col>
             </a-row>
-            <a-row type="flex" style="height: 60px;font-size: 18px">
+            <a-row type="flex" style="height: 60px; font-size: 18px">
               <a-col :span="8">
                 <a-col :span="8" style="text-align: center">
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span>
-                    胎温：50°C &nbsp;&nbsp;胎压：5bar
-                  </span>
+                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -304,9 +297,7 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span>
-                    胎温：50°C &nbsp;&nbsp;胎压：5bar
-                  </span>
+                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -314,21 +305,17 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span>
-                    胎温：50°C &nbsp;&nbsp;胎压：5bar
-                  </span>
+                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
                 </a-col>
               </a-col>
             </a-row>
-            <a-row type="flex" style="height: 60px;font-size: 18px">
+            <a-row type="flex" style="height: 60px; font-size: 18px">
               <a-col :span="8">
                 <a-col :span="8" style="text-align: center">
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span>
-                    胎温：50°C &nbsp;&nbsp;胎压：5bar
-                  </span>
+                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -336,9 +323,7 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span>
-                    胎温：50°C &nbsp;&nbsp;胎压：5bar
-                  </span>
+                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -346,21 +331,17 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span>
-                    胎温：50°C &nbsp;&nbsp;胎压：5bar
-                  </span>
+                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
                 </a-col>
               </a-col>
             </a-row>
-            <a-row type="flex" style="height: 60px;font-size: 18px">
+            <a-row type="flex" style="height: 60px; font-size: 18px">
               <a-col :span="8">
                 <a-col :span="8" style="text-align: center">
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span>
-                    胎温：50°C &nbsp;&nbsp;胎压：5bar
-                  </span>
+                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -368,9 +349,7 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span>
-                    胎温：50°C &nbsp;&nbsp;胎压：5bar
-                  </span>
+                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -378,9 +357,7 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span>
-                    胎温：50°C &nbsp;&nbsp;胎压：5bar
-                  </span>
+                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
                 </a-col>
               </a-col>
             </a-row>
@@ -464,10 +441,12 @@
             style="fontsize: 20px; padding: 0px 0px 0px 10px; align: left"
           ></i>
         </div>
-        <a-tabs 
-          tab-position="left" 
+        <a-tabs
+        v-model="tabname"
+          tab-position="left"
           :default-active-key="tabKey"
-        >
+          @tabClick="tabclick"
+        > 
           <a-tab-pane
             v-for="(item, index) in sensorList"
             :key="index"
@@ -481,8 +460,9 @@
             </div>
             <div
               id="chart"
-              ref="main"
+              ref="chart"
               style="height: 300px; width: 1450px"
+              v-if="tabname===index"
             ></div>
           </a-tab-pane>
         </a-tabs>
@@ -495,8 +475,7 @@
           class="iconfont icon-ai207"
           @click="back()"
           style="fontsize: 30px; padding: 0px 0px 0px 10px; align: left"
-        ></i
-        >
+        ></i>
         <a-tabs size="large">
           <a-tab-pane key="1" tab="照明灯">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
@@ -551,11 +530,7 @@
             <h2 style="font-size: 22px; padding-left: 30px">
               更新时间：2021-03-20 20:11:00
             </h2>
-            <div
-              id="chart1"
-              
-              style="height: 350px; width: 1450px"
-            ></div>
+            <div id="chart1" style="height: 350px; width: 1450px"></div>
           </a-tab-pane>
           <a-tab-pane key="2" tab="胎2">
             <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
@@ -670,6 +645,49 @@
         </a-tabs>
       </div>
     </div>
+
+    <div v-show="showPage === '4'">
+      <div class="home1">
+        <i
+          class="iconfont icon-ai207"
+          @click="back()"
+          style="fontsize: 30px; padding: 0px 0px 0px 10px; align: left"
+        ></i
+        ><br />
+        <a-tabs default-active-key="1" size="large">
+          <a-tab-pane key="1" tab="门 1">
+            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
+              门 1
+            </h1>
+            <h2 style="font-size: 22px; padding-left: 30px">
+              更新时间：2021-03-20 20:11:00
+            </h2>
+            <br /><br /><br />
+            <div id="main2" style="padding-left: 20px; height: 250px"></div>
+          </a-tab-pane>
+          <a-tab-pane key="2" tab="门 2" force-render>
+            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
+              门 2
+            </h1>
+            <h2 style="font-size: 22px; padding-left: 30px">
+              更新时间：2021-03-20 20:11:00
+            </h2>
+            <br /><br /><br />
+            <div id="main2" style="padding-left: 20px; height: 250px"></div>
+          </a-tab-pane>
+          <a-tab-pane key="3" tab="门 3">
+            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
+              门 3
+            </h1>
+            <h2 style="font-size: 22px; padding-left: 30px">
+              更新时间：2021-03-20 20:11:00
+            </h2>
+            <br /><br /><br />
+            <div id="main2" style="padding-left: 20px; height: 250px"></div>
+          </a-tab-pane>
+        </a-tabs>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -695,7 +713,7 @@ export default {
     this.tu1();
     this.tu2();
     this.tu3();
-    
+
     this.drawTyre1();
   },
 
@@ -703,6 +721,7 @@ export default {
     return {
       showPage: "0", //初始页面
       tabKey: "", //温湿度tabs初始值
+      tabname:0,
       oilData: "70", //油位
       volData: "22", //剩余容积
       capData: "45", //载重量
@@ -786,10 +805,23 @@ export default {
         { time: "22:00", value: 0 },
         { time: "24:00", value: 0 },
       ],
-      data01: [12, 13, 10, 13, 9, 23, 21],
-      data02: [22, 18, 19, 23, 29, 55, 21],
-      data03: [0,0,0,0,0,0,33,45,55,60,77,56,57,43,26,19,25,0,0,0,0,], // 胎温
-      data04: [0,0,0,0,0,0,8,9,18,6,7,11,9,16,8,17,9,0,0,0,0,], // 胎压
+      data01: [],
+      data02: [],
+      data011:[
+        {name:"1",temp:[12, 13, 10, 13, 9, 23, 21],humi:[22, 18, 19, 23, 29, 55, 21]},
+        {name:"2",temp:[12, 13, 10, 13, 9, 23, 21],humi:[22, 18, 19, 23, 29, 55, 51]},
+        {name:"3",temp:[12, 23, 10, 13, 9, 23, 21],humi:[22, 38, 19, 23, 29, 55, 21]},
+        {name:"4",temp:[22, 18, 19, 23, 29, 25, 21],humi:[22, 18, 19, 23, 29, 25, 21]},
+        {name:"5",temp:[13, 18, 19, 23, 29, 25, 21],humi:[22, 18, 29, 23, 29, 55, 21]},
+        {name:"6",temp:[8, 18, 19, 23, 29, 25, 21],humi:[2, 18, 19, 23, 29, 55, 21]},
+        {name:"7",temp:[9, 18, 19, 23, 29, 25, 21],humi:[22, 18, 19, 53, 29, 55, 21]},
+        {name:"8",temp:[10, 18, 19, 23, 29, 25, 21],humi:[32, 18, 19,43, 29, 55, 41]},
+
+        ],
+      data03: [12, 13, 10, 13, 9, 23,33,45,55,60,77,
+        56,57,43,26,19,25,23, 29, 25, 21], // 胎温
+      data04: [8, 18, 19, 23, 29, 25, 21,8,9,18,6,7,
+        11,9,16,8,17,9,32, 18, 19,43], // 胎压
 
       data1: [
         { time: "00:00", value: 0 },
@@ -836,15 +868,16 @@ export default {
         { time: "22:00", value: 1 },
         { time: "24:00", value: 1 },
       ],
-
     };
   },
 
   methods: {
     hisTem1() {
-      // console.log("t1");
+      console.log("t1");
       this.tabKey = "1";
       this.showPage = "1";
+      this.data01=this.data011[0].temp
+      this.data02=this.data011[0].humi
       this.draw();
     },
 
@@ -855,7 +888,8 @@ export default {
       console.log("t2");
       this.tabKey = "2";
       this.showPage = "1";
-      this.draw()
+      console.log(this.tabKey);
+      this.draw();
     },
     hisHum2() {
       console.log("h2");
@@ -896,20 +930,28 @@ export default {
     hisHum8() {
       console.log("h8");
     },
+    click1() {
+      this.door3 = !this.door3;
+    },
 
     back() {
       this.showPage = "0";
-      this.tabKey=""
+     // this.tabKey = "";
       // console.log(this.showPage);
     },
 
-    // tabclick(e){
-    //   console.log(e);
-    // },
+    tabclick(e) {
+      this.tabname=e
+      console.log(e);
+      this.data01=this.data011[e].temp
+      this.data02=this.data011[e].humi
+      this.$nextTick(()=>{
+        this.draw()
+      })     
+    },
     draw() {
       //温湿度历史数据图
       var myChart = echarts.init(document.getElementById("chart"));
-      // var myChart = echarts.init(this.$refs.main);
       var colors = ["#7cb305", "#1890ff"];
       var option = {
         color: colors,
@@ -935,7 +977,7 @@ export default {
         },
         xAxis: {
           type: "category",
-          boundaryGap: false,    //横轴顶格
+          boundaryGap: false, //横轴顶格
           data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
         },
         yAxis: [
@@ -983,7 +1025,7 @@ export default {
           {
             name: "湿度",
             type: "line",
-            yAxisIndex: 1,     //解决了左右y轴相同刻度，选定哪条y
+            yAxisIndex: 1, //解决了左右y轴相同刻度，选定哪条y
             // stack: "总量",
             data: this.data02,
           },
@@ -1300,10 +1342,13 @@ export default {
 
     more1() {
       this.showPage = "3";
-      this.drawTyre1()
+      this.drawTyre1();
     },
-    show(){
-      this.showPage="2"
+    show() {
+      this.showPage = "2";
+    },
+    showdoor() {
+      this.showPage = "4";
     },
 
     tu1() {
@@ -1362,7 +1407,7 @@ export default {
     },
     drawTyre1() {
       //轮胎历史数据
-       var myChart = echarts.init(document.getElementById("chart1"));
+      var myChart = echarts.init(document.getElementById("chart1"));
       var colors = ["#5470C6", "#91CC75"];
       var option = {
         color: colors,
@@ -1435,7 +1480,7 @@ export default {
             type: "value",
             name: "胎压",
             min: 0,
-            max: 20,
+            max: 50,
             position: "right",
             offset: 6,
             axisLine: {
@@ -1468,7 +1513,6 @@ export default {
       };
       option && myChart.setOption(option);
     },
- 
   },
 };
 </script>
