@@ -51,6 +51,27 @@ export default new Router({
           ]
         },
         {
+          path: '/notice',
+          name: '通知',
+          // component: RouteView,
+          component: () => import('@/layouts/RouteView'),
+          icon: 'profile',
+          children: [
+            {
+              path: '/notice/warning',
+              name: '警报',
+              component: () => import('@/views/Notice/Warning'),
+              icon: 'none'
+            },
+            // {
+            //   path: '/detail/basic',
+            //   name: '设备设置',
+            //   component: () => import('@/views/Detail/BasicDetail'),
+            //   icon: 'none'
+            // }          
+          ]
+        },
+        {
           path: '/monitor',
           name: '数字货舱',
           // component: RouteView,
@@ -127,27 +148,7 @@ export default new Router({
            
           ]
         },
-        {
-          path: '/notice',
-          name: '通知',
-          // component: RouteView,
-          component: () => import('@/layouts/RouteView'),
-          icon: 'profile',
-          children: [
-            {
-              path: '/notice/warning',
-              name: '警报',
-              component: () => import('@/views/Notice/Warning'),
-              icon: 'none'
-            },
-            // {
-            //   path: '/detail/basic',
-            //   name: '设备设置',
-            //   component: () => import('@/views/Detail/BasicDetail'),
-            //   icon: 'none'
-            // }          
-          ]
-        },
+        
         // {
         //   path: '/result',
         //   name: '结果页',
