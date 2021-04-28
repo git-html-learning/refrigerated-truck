@@ -33,7 +33,8 @@ Vue.use(Antd)
 import echarts from 'echarts'
 Vue.prototype.$echarts = echarts
 import 'echarts-gl';
-
+const g2plot = require('@antv/g2plot') // 1. 引入g2plot
+Vue.prototype.$g2plot = g2plot // 2. 将g2plot挂载到vue中
 Vue.use(ElementUI);
 
 new Vue({
