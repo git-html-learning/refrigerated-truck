@@ -145,8 +145,18 @@
               <a style="float: right; font-size: 15px" @click="cut(item)"
                 >删除</a
               >
-              <a style="float: left; font-size: 15px">
-                <router-link to="/list/details">查看</router-link>
+              <a style="float: left; font-size: 15px" @click="trans(item)">
+                <!-- <router-link 
+                  :to="{
+                    path:'/list/details',
+                    query:{
+                      pk : 123
+                    }
+                    }"
+                >
+                查看
+                </router-link> -->
+                查看
               </a>
             </a-card>
           </a-col>
@@ -218,6 +228,7 @@ export default {
       num11: "1",
       productKey: "", //注册车辆生成的pk
       productkey: "", //删除车辆所需pk
+      transpk: "", //组件传参pk
 
       vehicleList: [], //车辆信息展示列表
       // vehicleList: [
@@ -253,6 +264,7 @@ export default {
   created() {
     this.getproduct();
   },
+
 
   methods: {
     async getproduct() {
@@ -464,6 +476,18 @@ export default {
       // this.showInfo = "1";
       this.$message.info("取消注册");
       // console.log("取消");
+    },
+
+    trans(data) {
+      this.transpk = data.productkey;
+      // console.log(data.productkey);
+      // console.log("##"+this.transpk);
+      this.$router.push({
+        path: "/list/details",
+        query: {
+          pk: this.transpk,
+        },
+      });
     },
 
     cut(data) {
