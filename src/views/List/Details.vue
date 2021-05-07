@@ -442,11 +442,11 @@
           ></i>
         </div>
         <a-tabs
-        v-model="tabname"
+          v-model="tabname"
           tab-position="left"
           :default-active-key="tabKey"
           @tabClick="tabclick"
-        > 
+        >
           <a-tab-pane
             v-for="(item, index) in sensorList"
             :key="index"
@@ -462,7 +462,7 @@
               id="chart"
               ref="chart"
               style="height: 300px; width: 1450px"
-              v-if="tabname===index"
+              v-if="tabname === index"
             ></div>
           </a-tab-pane>
         </a-tabs>
@@ -698,12 +698,17 @@ import * as echarts from "echarts";
 import { Liquid, Gauge, Line, Area } from "@antv/g2plot";
 export default {
   created() {
-    // this.draw();
-    // this.drawOil();
-    // this.drawVol();
+    this.getQuery()
+  },
+
+    watch:{
+    '$route'(){
+      this.getQuery()
+    }
   },
 
   mounted() {
+    // console.log(this.$route.query.pk);
     // this.draw()
     this.drawOil();
     this.drawVol();
@@ -721,7 +726,7 @@ export default {
     return {
       showPage: "0", //初始页面
       tabKey: "", //温湿度tabs初始值
-      tabname:0,
+      tabname: 0,
       oilData: "70", //油位
       volData: "22", //剩余容积
       capData: "45", //载重量
@@ -737,6 +742,7 @@ export default {
         lng: 117.192,
         lat: 31.771,
       },
+      productkey:"", //传递过来的pk
 
       devicerankList: [
         //报警条数排名
@@ -807,21 +813,95 @@ export default {
       ],
       data01: [],
       data02: [],
-      data011:[
-        {name:"1",temp:[12, 13, 10, 13, 9, 23, 21],humi:[22, 18, 19, 23, 29, 55, 21]},
-        {name:"2",temp:[12, 13, 10, 13, 9, 23, 21],humi:[22, 18, 19, 23, 29, 55, 51]},
-        {name:"3",temp:[12, 23, 10, 13, 9, 23, 21],humi:[22, 38, 19, 23, 29, 55, 21]},
-        {name:"4",temp:[22, 18, 19, 23, 29, 25, 21],humi:[22, 18, 19, 23, 29, 25, 21]},
-        {name:"5",temp:[13, 18, 19, 23, 29, 25, 21],humi:[22, 18, 29, 23, 29, 55, 21]},
-        {name:"6",temp:[8, 18, 19, 23, 29, 25, 21],humi:[2, 18, 19, 23, 29, 55, 21]},
-        {name:"7",temp:[9, 18, 19, 23, 29, 25, 21],humi:[22, 18, 19, 53, 29, 55, 21]},
-        {name:"8",temp:[10, 18, 19, 23, 29, 25, 21],humi:[32, 18, 19,43, 29, 55, 41]},
-
-        ],
-      data03: [12, 13, 10, 13, 9, 23,33,45,55,60,77,
-        56,57,43,26,19,25,23, 29, 25, 21], // 胎温
-      data04: [8, 18, 19, 23, 29, 25, 21,8,9,18,6,7,
-        11,9,16,8,17,9,32, 18, 19,43], // 胎压
+      data011: [
+        {
+          name: "1",
+          temp: [12, 13, 10, 13, 9, 23, 21],
+          humi: [22, 18, 19, 23, 29, 55, 21],
+        },
+        {
+          name: "2",
+          temp: [12, 13, 10, 13, 9, 23, 21],
+          humi: [22, 18, 19, 23, 29, 55, 51],
+        },
+        {
+          name: "3",
+          temp: [12, 23, 10, 13, 9, 23, 21],
+          humi: [22, 38, 19, 23, 29, 55, 21],
+        },
+        {
+          name: "4",
+          temp: [22, 18, 19, 23, 29, 25, 21],
+          humi: [22, 18, 19, 23, 29, 25, 21],
+        },
+        {
+          name: "5",
+          temp: [13, 18, 19, 23, 29, 25, 21],
+          humi: [22, 18, 29, 23, 29, 55, 21],
+        },
+        {
+          name: "6",
+          temp: [8, 18, 19, 23, 29, 25, 21],
+          humi: [2, 18, 19, 23, 29, 55, 21],
+        },
+        {
+          name: "7",
+          temp: [9, 18, 19, 23, 29, 25, 21],
+          humi: [22, 18, 19, 53, 29, 55, 21],
+        },
+        {
+          name: "8",
+          temp: [10, 18, 19, 23, 29, 25, 21],
+          humi: [32, 18, 19, 43, 29, 55, 41],
+        },
+      ],
+      data03: [
+        12,
+        13,
+        10,
+        13,
+        9,
+        23,
+        33,
+        45,
+        55,
+        60,
+        77,
+        56,
+        57,
+        43,
+        26,
+        19,
+        25,
+        23,
+        29,
+        25,
+        21,
+      ], // 胎温
+      data04: [
+        8,
+        18,
+        19,
+        23,
+        29,
+        25,
+        21,
+        8,
+        9,
+        18,
+        6,
+        7,
+        11,
+        9,
+        16,
+        8,
+        17,
+        9,
+        32,
+        18,
+        19,
+        43,
+      ], // 胎压
 
       data1: [
         { time: "00:00", value: 0 },
@@ -870,14 +950,20 @@ export default {
       ],
     };
   },
+  
 
   methods: {
+    getQuery(){
+      this.productkey=this.$route.query.pk
+      console.log(this.productkey);
+    },
+    
     hisTem1() {
       console.log("t1");
       this.tabKey = "1";
       this.showPage = "1";
-      this.data01=this.data011[0].temp
-      this.data02=this.data011[0].humi
+      this.data01 = this.data011[0].temp;
+      this.data02 = this.data011[0].humi;
       this.draw();
     },
 
@@ -936,18 +1022,18 @@ export default {
 
     back() {
       this.showPage = "0";
-     // this.tabKey = "";
+      // this.tabKey = "";
       // console.log(this.showPage);
     },
 
     tabclick(e) {
-      this.tabname=e
+      this.tabname = e;
       console.log(e);
-      this.data01=this.data011[e].temp
-      this.data02=this.data011[e].humi
-      this.$nextTick(()=>{
-        this.draw()
-      })     
+      this.data01 = this.data011[e].temp;
+      this.data02 = this.data011[e].humi;
+      this.$nextTick(() => {
+        this.draw();
+      });
     },
     draw() {
       //温湿度历史数据图
