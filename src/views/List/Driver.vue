@@ -3,7 +3,7 @@
     <div>
       <div class="home-item">
         <div class="top">
-          <span class="title">司机概览</span>
+          <span class="title">司机管理</span>
           <a-form-model layout="inline">
             <a-form-model-item>
               <a-input v-model="searchNum" placeholder="请输入司机姓名" />
@@ -14,19 +14,18 @@
             <a-form-model-item>
               <a-button type="primary" @click="reset">重置</a-button>
             </a-form-model-item>
-
-            <a-button
+               <a-form-model-item>
+                <a-button
               type="primary"
-              style="float: right"
-              size="large"
               @click="add"
-              >司机注册
+              >添加司机
             </a-button>
+            </a-form-model-item>
             <a-modal
-              title="司机注册"
+              title="添加司机"
               :visible="visible"
               @ok="handleOk"
-              @cancel="handleCancel"
+              @cancel="visible = false"
               width="500px"
             >
               <a-form-model :label-col="{ span: 7 }">
@@ -59,7 +58,7 @@
             >
               <a-form-model :label-col="{ span: 7 }">
                 <a-form-model-item label="驾龄" :wrapper-col="{ span: 12 }">
-                  <a-input v-model="drinum" />
+                  <a-input   v-model="drinum" />
                 </a-form-model-item>
                 <a-form-model-item label="年龄" :wrapper-col="{ span: 12 }">
                   <a-input v-model="agenum" />
@@ -69,6 +68,9 @@
                 </a-form-model-item>
                 <a-form-model-item label="银行账户" :wrapper-col="{ span: 12 }">
                   <a-input v-model="monnum" />
+                </a-form-model-item>
+                 <a-form-model-item label="身份证号" :wrapper-col="{ span: 12 }">
+                  <a-input v-model="ID" />
                 </a-form-model-item>
               </a-form-model>
             </a-modal>
@@ -86,16 +88,16 @@
               <p>身份证号：{{ this.ID }}</p>
               <p>银行卡号：{{ this.Account }}</p>
             </a-modal>
-            <a-modal title="" :visible.sync="dialogVisible3" width="20%">
-            </a-modal>
-          </a-form-model>
+            <!-- <a-modal title="" :visible.sync="dialogVisible3" width="20%">
+            </a-modal> -->
+          </a-form-model> 
         </div>
       </div>
       <div>
         <div v-show="driverList.length != 0">
           <a-row :gutter="16">
             <a-col :span="8" v-for="(item, index) in driverList" :key="index">
-              <a-card hoverable class="driver">
+              <a-card  class="vehicle"  hoverable>
                 <a-card-meta :title="item.productName">
                   <a-avatar
                     :size="64"
@@ -103,8 +105,7 @@
                     style="
                       background: white;
                       border: solid;
-                      border-color: #515151;
-                    "
+                      border-color: #515151;"
                   >
                     <img src="../../static/icon/司机.svg" style="width: 60px" />
                   </a-avatar>
@@ -118,15 +119,15 @@
                   <span> {{ item.driveYear }}</span
                   ><br /><br />
                   <a-row>
-                    <a-col :span="8">
+                    <a-col :span="12">
                       <a @click="more(item)">查看</a>
                     </a-col>
-                    <a-col :span="8">
+                    <a-col :span="12">
                       <a @click="edit(item)">修改</a>
                     </a-col>
-                    <a-col :span="8">
+                    <!-- <a-col :span="8">
                       <a @click="dele(item)">删除</a>
-                    </a-col>
+                    </a-col> -->
                   </a-row>
                 </p>
               </a-card>
@@ -145,7 +146,7 @@ import {
   product,
   registerDri,
   driver,
-  deledriver,
+  // deledriver,
   founddriver,
   editdriver,
 } from "@/api/interface";
@@ -179,7 +180,7 @@ export default {
       monnum: "",
       dialogVisible1: false,
       dialogVisible2: false, //修改
-      dialogVisible3: false,
+      // dialogVisible3: false,
       vehicleList: [],
       driverList: [],
     };
@@ -190,8 +191,7 @@ export default {
   },
 
   methods: {
-    async getproduct() {
-      //获取全部信息
+    async getproduct() { //获取全部信息
       const res = await product();
       for (var i = 0; i < res.data.productInfo.length; i++) {
         if (res.data.productInfo[i].typeIdentify == "tysj") {
@@ -202,8 +202,7 @@ export default {
       }
       this.getdriver();
     },
-    async getdriver() {
-      //获取司机信息
+    async getdriver() { //获取司机信息
       const res = await driver({
         key: this.productKey,
       });
@@ -223,8 +222,7 @@ export default {
         this.driverList.push(obj); //把obj数组放入driverList
       }
     },
-    async handleOk() {
-      //注册司机
+    async handleOk() { //注册司机
       var _this = this;
       _this.visible = false;
       const res = await registerDri({
@@ -248,35 +246,26 @@ export default {
       }
       // console.log(_this.num1);
     },
-    handleCancel() {
-      this.visible = false;
-      // this.showInfo = "1";
-      this.$message.info("取消注册");
-      // console.log("取消");
-    },
-    async moredriver() {
-      //司机详情
+    async moredriver() {  //司机详情
       const res = await founddriver({
         pKey: this.productkey,
       });
       // console.log(this.productkey);
       // console.log(res);
     },
-    async deletdriver() {
-      //删除司机
-      const res = await deledriver({
-        key1: this.productkey,
-        key2: this.devicekey,
-      });
-      console.log(res);
-      if (res.code == 200) {
-        this.$message.success("删除成功!");
-        this.driverList = [];
-        this.getproduct();
-      }
-    },
-    async edidriver() {
-      //修改司机
+    // async deletdriver() { //删除司机
+    //   const res = await deledriver({
+    //     key1: this.productkey,
+    //     key2: this.devicekey,
+    //   });
+    //   console.log(res);
+    //   if (res.code == 200) {
+    //     this.$message.success("删除成功!");
+    //     this.driverList = [];
+    //     this.getproduct();
+    //   }
+    // },
+    async edidriver() { //修改司机
       const res = await editdriver({
         name: this.name, //取已存的数据
         ID: this.ID,
@@ -303,10 +292,10 @@ export default {
       //存需要传入服务器的data
       // console.log(data);
       this.dialogVisible2 = true;
-      this.phnum = ""; //输入
-      this.agenum = "";
-      this.drinum = "";
-      this.monnum = "";
+      this.phnum = data.phoneNumber; //输入
+      this.agenum = data.Age;
+      this.drinum = data.driveYear;
+      this.monnum = data.Account;
       this.dKey = data.deviceKey; //不变
       this.name = data.Name;
       this.ID = data.ID;
@@ -324,27 +313,25 @@ export default {
       this.moredriver();
       this.dialogVisible1 = true;
     },
-    dele(data) {
-      //删除司机
-      // console.log(data);
-      this.productkey = data.productKey;
-      this.devicekey = data.deviceKey;
-      // console.log(this.productkey);
-      // console.log(this.devicekey);
-      this.$confirm("此操作将永久删除司机， 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-      })
-        .then(() => {
-          this.deletdriver();
-        })
-        .catch(() => {
-          this.$message.info("已取消删除");
-        });
-    },
-    search() {
-      //查询司机
+    // dele(data) {//删除司机
+    //   // console.log(data);
+    //   this.productkey = data.productKey;
+    //   this.devicekey = data.deviceKey;
+    //   // console.log(this.productkey);
+    //   // console.log(this.devicekey);
+    //   this.$confirm("此操作将永久删除司机， 是否继续?", "提示", {
+    //     confirmButtonText: "确定",
+    //     cancelButtonText: "取消",
+    //     type: "warning",
+    //   })
+    //     .then(() => {
+    //       this.deletdriver();
+    //     })
+    //     .catch(() => {
+    //       this.$message.info("已取消删除");
+    //     });
+    // },
+    search() { //查询司机
       var arr = [];
       for (var i = 0; i < this.driverList.length; i++) {
         if (this.driverList[i].productName.indexOf(this.searchNum) >= 0) {
@@ -353,8 +340,7 @@ export default {
       }
       this.driverList = arr;
     },
-    reset() {
-      //重置
+    reset() { //重置
       this.driverList = [];
       this.searchNum = "";
       this.getproduct();
@@ -391,9 +377,21 @@ export default {
       }
     }
   }
+  .home-item1 {
+    background: #ffffff;
+    .top {
+      margin: 0px;
+      padding: 0px 0px 20px 20px;
+      .title {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 70px;
+      }
+    }
+  }
 }
-.driver {
-  margin: 15px 5px 15px 0px;
+.vehicle {
+  margin: 15px 10px 15px 10px;
   box-shadow: 5px 5px 5px #e2e1e1;
   border-radius: 10px;
 }
