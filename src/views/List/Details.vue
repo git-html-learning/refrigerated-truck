@@ -959,7 +959,7 @@ export default {
     },
     
     hisTem1() {
-      // console.log("t1");
+      console.log("t1");
       console.log(this.productkey);
       this.tabKey = "1";
       this.showPage = "1";
