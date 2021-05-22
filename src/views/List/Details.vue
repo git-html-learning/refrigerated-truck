@@ -692,7 +692,6 @@
 </template>
 
 <script>
-import store from "@/store";
 import { product, getdeviceList, getdeviceData } from "@/api/data";
 import * as echarts from "echarts";
 import { Liquid, Gauge, Line, Area } from "@antv/g2plot";
