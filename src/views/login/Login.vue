@@ -110,7 +110,6 @@
             </a-tabs>
             <a-form-item>
               <a-button
-                :loading="logging"
                 style="width: 100%; margin-top: 10px"
                 size="large"
                 htmlType="submit"
@@ -158,25 +157,31 @@
             <el-form-item label="手机号" prop="phone">
               <el-input v-model.number="ruleForm.phone"></el-input>
             </el-form-item>
-            
-            <el-form-item >
+
+            <el-form-item>
               <el-button type="primary" @click="submitForm('ruleForm')"
                 >提交</el-button
               >
               <el-button @click="resetForm('ruleForm')">重置</el-button>
-              <a @click="cancel('ruleForm')" style="margin-left:165px">取消注册</a>
+              <a @click="cancel('ruleForm')" style="margin-left: 165px"
+                >取消注册</a
+              >
             </el-form-item>
           </el-form>
         </div>
       </div>
     </div>
-    <global-footer :link-list="linkList" :copyright="copyright" />
+    <global-footer
+      :link-list="linkList"
+      :copyright="copyright"
+      style="margin-top: 250px"
+    />
   </div>
 </template>
 
 <script>
 import GlobalFooter from "@/layouts/GlobalFooter";
-import { login } from "@/api/user";
+import { login, userRegister } from "@/api/user";
 export default {
   name: "Login",
   components: {
@@ -257,9 +262,29 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert("提交!");
-      this.$refs[formName].resetFields();
-          this.show1 = "1";
+          console.log(this.ruleForm.name);
+          // alert("提交!");
+          userRegister({
+            username: this.ruleForm.name,
+            password: this.ruleForm.pass,
+            phone: this.ruleForm.phone,
+          }).then((res) => {
+            console.log(res);
+            if (res.code == "200") {
+              this.$message({
+                message: "注册成功！",
+                type: "success",
+              });
+              this.$refs[formName].resetFields();
+            } else {
+              this.$message({
+                message: res.msg,
+                type: "warning",
+              });
+            }
+          });
+          // this.$refs[formName].resetFields();
+          // this.show1 = "1";
         } else {
           console.log("error submit!!");
           return false;
@@ -275,7 +300,7 @@ export default {
     },
     denglu() {
       login(this.loginform).then((res) => {
-        //  console.log(res)
+        console.log(res);
         if (res.msg != "ok") {
           alert("用户名或者密码错误！");
         } else {
@@ -293,6 +318,12 @@ export default {
     },
     more() {
       this.show1 = "2";
+    },
+    onSubmit() {
+      console.log("验证码");
+    },
+    onGetCaptcha() {
+      console.log("获取验证码");
     },
   },
 };
