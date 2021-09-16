@@ -7,3 +7,15 @@ export function login(data) {
     data
   })
 }
+
+export function userRegister(data) {
+  return request({
+    url: '/session',
+    method: 'put',
+    data:{
+      "username":data.username,
+      "password":data.password,
+      "phone":String(data.phone)
+    }
+  })
+}
