@@ -114,25 +114,28 @@
 </template>
 
 <script>
+import { product } from "@/api/interface";
+
 export default {
   created() {
     // console.log(this.markers.lng);
+    this.getPk();
   },
 
   data() {
     return {
-      lg: "117.192",
-      lt: "31.671", //地图中心
+      lg: "117.10856343",
+      lt: "31.46304981", //地图中心
       title: "",
       position: {},
       showFlag: false,
       time: "",
-      speed: "",
+      speed: "",    //详情窗口信息
 
       markers: [
         {
-          lng: 117.192,
-          lat: 31.771,
+          lng: 117.10856343,
+          lat: 31.46304981,
           number: "皖A11111",
           updateTime: "2021-03-24 13:14",
           speed: "78Km/h",
@@ -152,11 +155,33 @@ export default {
           speed: "79Km/h",
         },
       ],
-      info: {},
+
+      //获取数据得到：
+      pkList:[],
+      dkList:[],
+      
     };
   },
 
   methods: {
+    async getPk() {
+      //获取车辆信息概览
+      const res = await product();
+      // console.log(res);
+      if (res.code == 200) {
+        for (var i = 0; i < res.data.productInfo.length; i++) {
+          if (res.data.productInfo[i].typeIdentify != "tysj") {
+            // console.log(res.data.productInfo[i]);
+            this.pkList.push(res.data.productInfo[i].productKey)
+          }
+        }
+        console.log(this.pkList);
+      }
+    },
+    async getDk(){
+      //获取车辆经纬度
+
+    },
     lookDetail(data) {
       console.log(data);
       this.title = data.number;
@@ -181,7 +206,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
 .home {
   margin: 10px auto;
   width: 100%;
