@@ -12,23 +12,23 @@
             <a slot="extra" @click="open0">更多</a>
             <div class="sensor1">
               <p style="margin: 0 0 0 0">监测点1</p>
-              <div class="left" @click="hisTem1">{{ "10℃" }}</div>
-              <div class="right" @click="hisHum1">{{ "55%" }}</div>
+              <div class="left" @click="hisTem1">{{humiData[0].temp}}</div>
+              <div class="right" @click="hisHum1">{{ humiData[0].humi}}</div>
             </div>
             <div class="sensor2">
               <p style="margin: 0 0 0 0">监测点2</p>
-              <div class="left" @click="hisTem2">{{ "10℃" }}</div>
-              <div class="right" @click="hisHum2">{{ "55%" }}</div>
+              <div class="left" @click="hisTem2">{{humiData[1].temp}}</div>
+              <div class="right" @click="hisHum2">{{ humiData[1].humi}}</div>
             </div>
             <div class="sensor3">
               <p style="margin: 0 0 0 0">监测点3</p>
-              <div class="left" @click="hisTem3">{{ "10℃" }}</div>
-              <div class="right" @click="hisHum3">{{ "55%" }}</div>
+              <div class="left" @click="hisTem3">{{humiData[2].temp}}</div>
+              <div class="right" @click="hisHum3">{{ humiData[2].humi}}</div>
             </div>
             <div class="sensor4">
               <p style="margin: 0 0 0 0">监测点4</p>
-              <div class="left" @click="hisTem4">{{ "10℃" }}</div>
-              <div class="right" @click="hisHum4">{{ "55%" }}</div>
+              <div class="left" @click="hisTem4">{{humiData[3].temp}}</div>
+              <div class="right" @click="hisHum4">{{ humiData[3].humi}}</div>
             </div>
             <div class="carriage">
               <img src="../../static/pic/carriage.png" class="img" />
@@ -36,23 +36,23 @@
             </div>
             <div class="sensor5">
               <p style="margin: 0 0 0 0">监测点5</p>
-              <p class="left" @click="hisTem5">{{ "10℃" }}</p>
-              <p class="right" @click="hisHum5">{{ "55%" }}</p>
+              <p class="left" @click="hisTem5">{{humiData[4].temp}}</p>
+              <p class="right" @click="hisHum5">{{ humiData[4].humi}}</p>
             </div>
             <div class="sensor6">
               <p style="margin: 0 0 0 0">监测点6</p>
-              <p class="left" @click="hisTem6">{{ "10℃" }}</p>
-              <p class="right" @click="hisHum6">{{ "55%" }}</p>
+              <p class="left" @click="hisTem6">{{humiData[5].temp}}</p>
+              <p class="right" @click="hisHum6">{{ humiData[5].humi}}</p>
             </div>
             <div class="sensor7">
               <p style="margin: 0 0 0 0">监测点7</p>
-              <p class="left" @click="hisTem7">{{ "10℃" }}</p>
-              <p class="right" @click="hisHum7">{{ "55%" }}</p>
+              <p class="left" @click="hisTem7">{{humiData[6].temp}}</p>
+              <p class="right" @click="hisHum7">{{ humiData[6].humi}}</p>
             </div>
             <div class="sensor8">
               <p style="margin: 0 0 0 0">监测点8</p>
-              <p class="left" @click="hisTem8">{{ "10℃" }}</p>
-              <p class="right" @click="hisHum8">{{ "55%" }}</p>
+              <p class="left" @click="hisTem8">{{humiData[6].temp}}</p>
+              <p class="right" @click="hisHum8">{{ humiData[6].humi}}</p>
             </div>
             <div class="top-right">
               <h4 class="title">当月设备报警信息条数排名</h4>
@@ -71,7 +71,7 @@
 
         <a-col :span="6">
           <a-card
-            title="皖A2222"
+            :title="this.carNum"
             :bordered="true"
             style="height: 358px"
             class="shadow"
@@ -263,7 +263,7 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
+                  <span> 胎温：50.23°C &nbsp;&nbsp;胎压：5bar </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -375,7 +375,7 @@
                 :precision="2"
                 :step="0.1"
                 :max="100"
-                min="-20"
+                :min="-20"
                 style="margin-left: -30px; margin-top: 10px"
               ></el-input-number>
               <p style="padding-left: 0px; padding-top: 17px; font-size: 20px">
@@ -692,18 +692,19 @@
 </template>
 
 <script>
-import { product, getdeviceList, getdeviceData } from "@/api/data";
+import { getDevice , getDeviceData} from "@/api/interface";
 import * as echarts from "echarts";
 import { Liquid, Gauge, Line, Area } from "@antv/g2plot";
 export default {
   created() {
     this.getQuery()
+    this.getDk()
   },
 
     watch:{
-    '$route'(){
-      this.getQuery()
-    }
+    // '$route'(){
+    //   this.getQuery()
+    // }
   },
 
   mounted() {
@@ -742,6 +743,10 @@ export default {
         lat: 31.771,
       },
       productkey:"", //传递过来的pk
+      carNum:"",   //传递过来的车牌号
+      humiDkList:[],
+      humiData:[],
+      doorDkList:[],
 
       devicerankList: [
         //报警条数排名
@@ -954,8 +959,45 @@ export default {
   methods: {
     getQuery(){
       this.productkey=this.$route.query.pk
+      this.carNum=this.$route.query.carnum
       console.log(this.productkey);
     },
+    async getDk() {
+      const res = await getDevice({
+        productKey: this.productkey,
+      });
+      // console.log(res);
+      if (res.code == 200) {
+        for (var i = 0; i < res.data.deviceInfo.length; i++) {
+          if(res.data.deviceInfo[i].deviceType=="TempAndHumi"){
+            this.humiDkList.push(res.data.deviceInfo[i].deviceKey)
+          }else if(res.data.deviceInfo[i].deviceType=="door"){
+            this.doorDkList.push(res.data.deviceInfo[i].deviceKey)
+          }
+        }
+      }
+      // console.log(this.humiDkList);
+      console.log(this.doorDkList);
+      this.getHumiData()
+    },
+     async getHumiData() {
+      const res = await getDeviceData({
+        productKey: this.productkey,
+        deviceKeyList: this.humiDkList,
+      });
+      // console.log(res);
+      if(res.code ==200){
+        for (var i = 0; i < res.data.deviceData.length; i++) {
+          var obj={
+            sensor:res.data.deviceData[i].deviceName,
+            temp:res.data.deviceData[i].temp,
+            humi:res.data.deviceData[i].humi
+          }
+          this.humiData.push(obj)
+        }
+        console.log(this.humiData);
+      }
+     },
     
     hisTem1() {
       console.log("t1");
@@ -1635,7 +1677,7 @@ export default {
   .right {
     font-size: 20px;
     font-weight: bold;
-    margin: -30px 10px 10px 50px;
+    margin: -30px 10px 10px 90px;
     // background: black;
   }
 }
@@ -1653,7 +1695,7 @@ export default {
   .right {
     font-size: 20px;
     font-weight: bold;
-    margin: -30px 10px 10px 50px;
+    margin: -30px 10px 10px 90px;
     // background: black;
   }
 }
@@ -1671,7 +1713,7 @@ export default {
   .right {
     font-size: 20px;
     font-weight: bold;
-    margin: -30px 10px 10px 50px;
+    margin: -30px 10px 10px 90px;
     // background: black;
   }
 }
@@ -1689,7 +1731,7 @@ export default {
   .right {
     font-size: 20px;
     font-weight: bold;
-    margin: -30px 10px 10px 50px;
+    margin: -30px 10px 10px 90px;
     // background: black;
   }
 }
@@ -1716,7 +1758,7 @@ export default {
   .right {
     font-size: 20px;
     font-weight: bold;
-    margin: -50px 10px 10px 50px;
+    margin: -50px 10px 10px 90px;
     // background: black;
   }
 }
@@ -1734,7 +1776,7 @@ export default {
   .right {
     font-size: 20px;
     font-weight: bold;
-    margin: -50px 10px 10px 50px;
+    margin: -50px 10px 10px 90px;
     // background: black;
   }
 }
@@ -1752,7 +1794,7 @@ export default {
   .right {
     font-size: 20px;
     font-weight: bold;
-    margin: -50px 10px 10px 50px;
+    margin: -50px 10px 10px 90px;
     // background: black;
   }
 }
@@ -1770,7 +1812,7 @@ export default {
   .right {
     font-size: 20px;
     font-weight: bold;
-    margin: -50px 10px 10px 50px;
+    margin: -50px 10px 10px 90px;
     // background: black;
   }
 }
