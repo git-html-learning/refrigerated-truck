@@ -93,15 +93,27 @@
           <!-- <bm-label content="安徽大学" :labelStyle="{color: 'red', fontSize : '24px'}" :offset="{width: -35, height: 30}"/> -->
         </bm-marker>
         <bm-info-window
-          :title="title"
           :position="position"
           :show="showFlag"
           @close="infoWindowClose()"
           @open="infoWindowOpen()"
+          :width="300"
+          :height="150"
         >
           <div>
-            <p>{{ "更新时间：&nbsp;&nbsp;" + time }}</p>
-            <p>{{ "当前速度：&nbsp;&nbsp;" + speed }}</p>
+            <!-- <p>{{ "更新时间：&nbsp;&nbsp;" + time }}</p> -->
+            <!-- <p>{{ "当前速度：&nbsp;&nbsp;" + speed }}</p> -->
+            <a-descriptions :title="title" :column="1">
+              <a-descriptions-item label="更新时间">
+                {{ this.time }}
+              </a-descriptions-item>
+              <a-descriptions-item label="Telephone">
+                1810000000
+              </a-descriptions-item>
+              <a-descriptions-item label="Live">
+                Hangzhou, Zhejiang
+              </a-descriptions-item>
+            </a-descriptions>
           </div>
         </bm-info-window>
         <bm-overview-map
@@ -114,7 +126,7 @@
 </template>
 
 <script>
-import { product } from "@/api/interface";
+import { product, getDevice, getDeviceData } from "@/api/interface";
 
 export default {
   created() {
@@ -130,58 +142,84 @@ export default {
       position: {},
       showFlag: false,
       time: "",
-      speed: "",    //详情窗口信息
+      speed: "", //详情窗口信息
 
-      markers: [
-        {
-          lng: 117.10856343,
-          lat: 31.46304981,
-          number: "皖A11111",
-          updateTime: "2021-03-24 13:14",
-          speed: "78Km/h",
-        },
-        {
-          lng: 117.092,
-          lat: 31.671,
-          number: "皖A22222",
-          updateTime: "2021-03-24 13:16",
-          speed: "80Km/h",
-        },
-        {
-          lng: 117.002,
-          lat: 31.631,
-          number: "皖A33333",
-          updateTime: "2021-03-24 13:24",
-          speed: "79Km/h",
-        },
-      ],
+      markers: [],
+      // markers: [
+      //   {
+      //     lng: 117.10856343,
+      //     lat: 31.46304981,
+      //     number: "皖A11111",
+      //     updateTime: "2021-03-24 13:14",
+      //     speed: "78Km/h",
+      //   },
+      //   {
+      //     lng: 117.092,
+      //     lat: 31.671,
+      //     number: "皖A22222",
+      //     updateTime: "2021-03-24 13:16",
+      //     speed: "80Km/h",
+      //   },
+      //   {
+      //     lng: 117.002,
+      //     lat: 31.631,
+      //     number: "皖A33333",
+      //     updateTime: "2021-03-24 13:24",
+      //     speed: "79Km/h",
+      //   },
+      // ],
 
       //获取数据得到：
-      pkList:[],
-      dkList:[],
-      
+      pkList: [],
+      dkList: [],
+      carNum: "",
     };
   },
 
   methods: {
     async getPk() {
-      //获取车辆信息概览
       const res = await product();
       // console.log(res);
       if (res.code == 200) {
         for (var i = 0; i < res.data.productInfo.length; i++) {
           if (res.data.productInfo[i].typeIdentify != "tysj") {
             // console.log(res.data.productInfo[i]);
-            this.pkList.push(res.data.productInfo[i].productKey)
+            this.pkList.push(res.data.productInfo[i].productKey);
           }
         }
         console.log(this.pkList);
+        this.getDk();
       }
     },
-    async getDk(){
-      //获取车辆经纬度
-
+    async getDk() {
+      const res = await getDevice({
+        productKey: this.pkList[0],
+      });
+      // console.log(res);
+      this.carNum = res.data.productName;
+      if (res.code == 200) {
+        this.dkList.push(res.data.deviceInfo[0].deviceKey);
+      }
+      console.log(this.dkList);
+      this.getGPS();
     },
+    async getGPS() {
+      const res = await getDeviceData({
+        productKey: this.pkList[0],
+        deviceKeyList: this.dkList,
+      });
+      console.log(res);
+      console.log(this.carNum);
+      var obj = {
+        number: this.carNum,
+        updateTime: res.data.deviceData[0].date,
+        lng: res.data.deviceData[0].gps.Lon / 100,
+        lat: res.data.deviceData[0].gps.Lat / 100,
+      };
+      this.markers.push(obj);
+      console.log(this.markers);
+    },
+
     lookDetail(data) {
       console.log(data);
       this.title = data.number;
@@ -191,7 +229,7 @@ export default {
         lat: data.lat,
       };
       this.time = data.updateTime;
-      this.speed = data.speed;
+      // this.speed = data.speed;
     },
     // 关闭弹窗
     infoWindowClose() {
