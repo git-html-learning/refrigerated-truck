@@ -12,23 +12,23 @@
             <a slot="extra" @click="open0">更多</a>
             <div class="sensor1">
               <p style="margin: 0 0 0 0">监测点1</p>
-              <div class="left" @click="hisTem1">{{humiData[0].temp}}</div>
-              <div class="right" @click="hisHum1">{{ humiData[0].humi}}</div>
+              <div class="left" @click="hisTem1">{{ humiData[0].temp }}</div>
+              <div class="right" @click="hisHum1">{{ humiData[0].humi }}</div>
             </div>
             <div class="sensor2">
               <p style="margin: 0 0 0 0">监测点2</p>
-              <div class="left" @click="hisTem2">{{humiData[1].temp}}</div>
-              <div class="right" @click="hisHum2">{{ humiData[1].humi}}</div>
+              <div class="left" @click="hisTem2">{{ humiData[1].temp }}</div>
+              <div class="right" @click="hisHum2">{{ humiData[1].humi }}</div>
             </div>
             <div class="sensor3">
               <p style="margin: 0 0 0 0">监测点3</p>
-              <div class="left" @click="hisTem3">{{humiData[2].temp}}</div>
-              <div class="right" @click="hisHum3">{{ humiData[2].humi}}</div>
+              <div class="left" @click="hisTem3">{{ humiData[2].temp }}</div>
+              <div class="right" @click="hisHum3">{{ humiData[2].humi }}</div>
             </div>
             <div class="sensor4">
               <p style="margin: 0 0 0 0">监测点4</p>
-              <div class="left" @click="hisTem4">{{humiData[3].temp}}</div>
-              <div class="right" @click="hisHum4">{{ humiData[3].humi}}</div>
+              <div class="left" @click="hisTem4">{{ humiData[3].temp }}</div>
+              <div class="right" @click="hisHum4">{{ humiData[3].humi }}</div>
             </div>
             <div class="carriage">
               <img src="../../static/pic/carriage.png" class="img" />
@@ -36,23 +36,23 @@
             </div>
             <div class="sensor5">
               <p style="margin: 0 0 0 0">监测点5</p>
-              <p class="left" @click="hisTem5">{{humiData[4].temp}}</p>
-              <p class="right" @click="hisHum5">{{ humiData[4].humi}}</p>
+              <p class="left" @click="hisTem5">{{ humiData[4].temp }}</p>
+              <p class="right" @click="hisHum5">{{ humiData[4].humi }}</p>
             </div>
             <div class="sensor6">
               <p style="margin: 0 0 0 0">监测点6</p>
-              <p class="left" @click="hisTem6">{{humiData[5].temp}}</p>
-              <p class="right" @click="hisHum6">{{ humiData[5].humi}}</p>
+              <p class="left" @click="hisTem6">{{ humiData[5].temp }}</p>
+              <p class="right" @click="hisHum6">{{ humiData[5].humi }}</p>
             </div>
             <div class="sensor7">
               <p style="margin: 0 0 0 0">监测点7</p>
-              <p class="left" @click="hisTem7">{{humiData[6].temp}}</p>
-              <p class="right" @click="hisHum7">{{ humiData[6].humi}}</p>
+              <p class="left" @click="hisTem7">{{ humiData[6].temp }}</p>
+              <p class="right" @click="hisHum7">{{ humiData[6].humi }}</p>
             </div>
             <div class="sensor8">
               <p style="margin: 0 0 0 0">监测点8</p>
-              <p class="left" @click="hisTem8">{{humiData[6].temp}}</p>
-              <p class="right" @click="hisHum8">{{ humiData[6].humi}}</p>
+              <p class="left" @click="hisTem8">{{ humiData[6].temp }}</p>
+              <p class="right" @click="hisHum8">{{ humiData[6].humi }}</p>
             </div>
             <div class="top-right">
               <h4 class="title">当月设备报警信息条数排名</h4>
@@ -78,7 +78,7 @@
             hoverable
           >
             <a slot="extra" @click="open1">更多</a>
-            <div id="oil" class="oil"></div>
+            <div id="oil1" class="oil"></div>
             <div id="vol" class="vol"></div>
             <div id="cap" class="cap"></div>
           </a-card>
@@ -692,24 +692,21 @@
 </template>
 
 <script>
-import { getDevice , getDeviceData} from "@/api/interface";
+import { getDevice, getDeviceData } from "@/api/interface";
 import * as echarts from "echarts";
 import { Liquid, Gauge, Line, Area } from "@antv/g2plot";
 export default {
   created() {
-    this.getQuery()
-    this.getDk()
-  },
-
-    watch:{
-    // '$route'(){
-    //   this.getQuery()
-    // }
+    this.getQuery();
+    this.getDk();
+    // this.drawOil();
+    // this.drawVol();
+    // this.drawCap();
+    // this.drawVib();
   },
 
   mounted() {
-    // console.log(this.$route.query.pk);
-    // this.draw()
+    console.log("1");
     this.drawOil();
     this.drawVol();
     this.drawCap();
@@ -742,11 +739,11 @@ export default {
         lng: 117.192,
         lat: 31.771,
       },
-      productkey:"", //传递过来的pk
-      carNum:"",   //传递过来的车牌号
-      humiDkList:[],
-      humiData:[],
-      doorDkList:[],
+      productkey: "", //传递过来的pk
+      carNum: "", //传递过来的车牌号
+      humiDkList: [],
+      humiData: [],
+      doorDkList: [],
 
       devicerankList: [
         //报警条数排名
@@ -860,51 +857,12 @@ export default {
         },
       ],
       data03: [
-        12,
-        13,
-        10,
-        13,
-        9,
-        23,
-        33,
-        45,
-        55,
-        60,
-        77,
-        56,
-        57,
-        43,
-        26,
-        19,
-        25,
-        23,
-        29,
-        25,
-        21,
+        12, 13, 10, 13, 9, 23, 33, 45, 55, 60, 77, 56, 57, 43, 26, 19, 25, 23,
+        29, 25, 21,
       ], // 胎温
       data04: [
-        8,
-        18,
-        19,
-        23,
-        29,
-        25,
-        21,
-        8,
-        9,
-        18,
-        6,
-        7,
-        11,
-        9,
-        16,
-        8,
-        17,
-        9,
-        32,
-        18,
-        19,
-        43,
+        8, 18, 19, 23, 29, 25, 21, 8, 9, 18, 6, 7, 11, 9, 16, 8, 17, 9, 32, 18,
+        19, 43,
       ], // 胎压
 
       data1: [
@@ -954,12 +912,11 @@ export default {
       ],
     };
   },
-  
 
   methods: {
-    getQuery(){
-      this.productkey=this.$route.query.pk
-      this.carNum=this.$route.query.carnum
+    getQuery() {
+      this.productkey = this.$route.query.pk;
+      this.carNum = this.$route.query.carnum;
       console.log(this.productkey);
     },
     async getDk() {
@@ -969,36 +926,36 @@ export default {
       // console.log(res);
       if (res.code == 200) {
         for (var i = 0; i < res.data.deviceInfo.length; i++) {
-          if(res.data.deviceInfo[i].deviceType=="TempAndHumi"){
-            this.humiDkList.push(res.data.deviceInfo[i].deviceKey)
-          }else if(res.data.deviceInfo[i].deviceType=="door"){
-            this.doorDkList.push(res.data.deviceInfo[i].deviceKey)
+          if (res.data.deviceInfo[i].deviceType == "TempAndHumi") {
+            this.humiDkList.push(res.data.deviceInfo[i].deviceKey);
+          } else if (res.data.deviceInfo[i].deviceType == "door") {
+            this.doorDkList.push(res.data.deviceInfo[i].deviceKey);
           }
         }
       }
       // console.log(this.humiDkList);
       console.log(this.doorDkList);
-      this.getHumiData()
+      this.getHumiData();
     },
-     async getHumiData() {
+    async getHumiData() {
       const res = await getDeviceData({
         productKey: this.productkey,
         deviceKeyList: this.humiDkList,
       });
       // console.log(res);
-      if(res.code ==200){
+      if (res.code == 200) {
         for (var i = 0; i < res.data.deviceData.length; i++) {
-          var obj={
-            sensor:res.data.deviceData[i].deviceName,
-            temp:res.data.deviceData[i].temp,
-            humi:res.data.deviceData[i].humi
-          }
-          this.humiData.push(obj)
+          var obj = {
+            sensor: res.data.deviceData[i].deviceName,
+            temp: res.data.deviceData[i].temp,
+            humi: res.data.deviceData[i].humi,
+          };
+          this.humiData.push(obj);
         }
         console.log(this.humiData);
       }
-     },
-    
+    },
+
     hisTem1() {
       console.log("t1");
       console.log(this.productkey);
@@ -1163,6 +1120,7 @@ export default {
     },
 
     drawOil() {
+      console.log("2");
       //油位图
       // const liquidPlot = new Liquid('oil', {
       //   min:0.1,
@@ -1181,7 +1139,7 @@ export default {
       // liquidPlot.render();
       // console.log("111");
 
-      var chartDom = document.getElementById("oil");
+      var chartDom = document.getElementById("oil1");
       var myChart = echarts.init(chartDom);
       var option = {
         series: [
@@ -1250,6 +1208,7 @@ export default {
         ],
       };
       option && myChart.setOption(option);
+
     },
 
     drawVol() {
