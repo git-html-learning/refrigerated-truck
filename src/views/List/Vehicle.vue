@@ -229,6 +229,7 @@ export default {
       productKey: "", //注册车辆生成的pk
       productkey: "", //删除车辆所需pk
       transpk: "", //组件传参pk
+      transnum:"", //传递的车牌号
 
       vehicleList: [], //车辆信息展示列表
       // vehicleList: [
@@ -272,12 +273,12 @@ export default {
       const res = await product();
       console.log(res);
       for (var i = 0; i < res.data.productInfo.length; i++) {
-        if (res.data.productInfo[i].typeIdentify == "tylcc") {
+        if (res.data.productInfo[i].typeIdentify != "tysj") {
           // console.log(res.data.productInfo[i]);
           var obj = {
             productName: res.data.productInfo[i].productName,
-            value1: res.data.productInfo[i].extraInfo.tempAndHumi.Value,
-            value2: res.data.productInfo[i].extraInfo.tireTempPress.Value,
+            value1: res.data.productInfo[i].productType,
+            value2: res.data.productInfo[i].protocolType,
             productkey: res.data.productInfo[i].productKey,
           };
           this.vehicleList.push(obj);
@@ -480,12 +481,14 @@ export default {
 
     trans(data) {
       this.transpk = data.productkey;
+      this.transnum = data.productName;
       // console.log(data.productkey);
       // console.log("##"+this.transpk);
       this.$router.push({
         path: "/list/details",
         query: {
           pk: this.transpk,
+          carnum:this.transnum
         },
       });
     },
