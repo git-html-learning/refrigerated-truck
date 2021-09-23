@@ -8,6 +8,25 @@ export function product(data) {     //获取产品列表,即为所有冷藏车�
     })
 }
 
+export function getDevice(data) {       //获取设备列表
+    return request({
+        url: '/api/v1/productDetail?productKey='+data.productKey,
+        method: 'GET',
+        data
+    })
+}
+
+export function getDeviceData(data) {       //获取设备最新数据
+    return request({
+        url: '/api/v1/batchDeviceData',
+        method: 'POST',
+        data:{
+            "productKey":data.productKey,
+            "deviceKeyList":data.deviceKeyList
+        }
+    })
+}
+
 export function registerVeh(data) {   //注册车辆
     return request({
         url: "/api/v1/product",
