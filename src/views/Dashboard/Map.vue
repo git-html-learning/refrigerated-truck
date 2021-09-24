@@ -11,7 +11,7 @@
               padding-left: 30px;
             "
           >
-            全部车辆 &nbsp;<span style="color: white; font-size: 24px">3</span>
+            全部车辆 &nbsp;<span style="color: white; font-size: 24px">1</span>
           </div>
         </a-col>
         <a-col :span="2">
@@ -24,7 +24,7 @@
             "
           >
             行驶 &nbsp;
-            <span style="color: rgb(83, 189, 119); font-size: 24px">1</span>
+            <span style="color: rgb(83, 189, 119); font-size: 24px">0</span>
           </div>
         </a-col>
         <a-col :span="2">
@@ -49,7 +49,7 @@
               padding-left: 30px;
             "
           >
-            离线 &nbsp; <span style="color: red; font-size: 24px">1</span>
+            离线 &nbsp; <span style="color: red; font-size: 24px">0</span>
           </div>
         </a-col>
         <a-col :span="2">
@@ -107,11 +107,11 @@
               <a-descriptions-item label="更新时间">
                 {{ this.time }}
               </a-descriptions-item>
-              <a-descriptions-item label="Telephone">
-                1810000000
+              <a-descriptions-item label="经度">
+                {{ this.position.lng }}
               </a-descriptions-item>
-              <a-descriptions-item label="Live">
-                Hangzhou, Zhejiang
+              <a-descriptions-item label="纬度">
+                {{ this.position.lat }}
               </a-descriptions-item>
             </a-descriptions>
           </div>
@@ -136,8 +136,8 @@ export default {
 
   data() {
     return {
-      lg: "117.10856343",
-      lt: "31.46304981", //地图中心
+      lg: "117.19349661992",
+      lt: "31.775350050341", //地图中心
       title: "",
       position: {},
       showFlag: false,
@@ -187,7 +187,7 @@ export default {
             this.pkList.push(res.data.productInfo[i].productKey);
           }
         }
-        console.log(this.pkList);
+        // console.log(this.pkList);
         this.getDk();
       }
     },
@@ -200,7 +200,7 @@ export default {
       if (res.code == 200) {
         this.dkList.push(res.data.deviceInfo[0].deviceKey);
       }
-      console.log(this.dkList);
+      // console.log(this.dkList);
       this.getGPS();
     },
     async getGPS() {
@@ -213,8 +213,8 @@ export default {
       var obj = {
         number: this.carNum,
         updateTime: res.data.deviceData[0].date,
-        lng: res.data.deviceData[0].gps.Lon / 100,
-        lat: res.data.deviceData[0].gps.Lat / 100,
+        lng: res.data.deviceData[0].gps.Lon,
+        lat: res.data.deviceData[0].gps.Lat,
       };
       this.markers.push(obj);
       console.log(this.markers);
