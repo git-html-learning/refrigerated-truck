@@ -12,23 +12,31 @@
             <a slot="extra" @click="open0">更多</a>
             <div class="sensor1">
               <p style="margin: 0 0 0 0">监测点1</p>
-              <div class="left" @click="hisTem1">{{ humiData[0].temp }}</div>
-              <div class="right" @click="hisHum1">{{ humiData[0].humi }}</div>
+              <div class="left" @click="hisTem1">{{ handleData[0].temp }}℃</div>
+              <div class="right" @click="hisHum1">
+                {{ handleData[0].humi }}%
+              </div>
             </div>
             <div class="sensor2">
               <p style="margin: 0 0 0 0">监测点2</p>
-              <div class="left" @click="hisTem2">{{ humiData[1].temp }}</div>
-              <div class="right" @click="hisHum2">{{ humiData[1].humi }}</div>
+              <div class="left" @click="hisTem2">{{ handleData[1].temp }}℃</div>
+              <div class="right" @click="hisHum2">
+                {{ handleData[1].humi }}%
+              </div>
             </div>
             <div class="sensor3">
               <p style="margin: 0 0 0 0">监测点3</p>
-              <div class="left" @click="hisTem3">{{ humiData[2].temp }}</div>
-              <div class="right" @click="hisHum3">{{ humiData[2].humi }}</div>
+              <div class="left" @click="hisTem3">{{ handleData[2].temp }}℃</div>
+              <div class="right" @click="hisHum3">
+                {{ handleData[2].humi }}%
+              </div>
             </div>
             <div class="sensor4">
               <p style="margin: 0 0 0 0">监测点4</p>
-              <div class="left" @click="hisTem4">{{ humiData[3].temp }}</div>
-              <div class="right" @click="hisHum4">{{ humiData[3].humi }}</div>
+              <div class="left" @click="hisTem4">{{ handleData[3].temp }}℃</div>
+              <div class="right" @click="hisHum4">
+                {{ handleData[3].humi }}%
+              </div>
             </div>
             <div class="carriage">
               <img src="../../static/pic/carriage.png" class="img" />
@@ -36,24 +44,24 @@
             </div>
             <div class="sensor5">
               <p style="margin: 0 0 0 0">监测点5</p>
-              <p class="left" @click="hisTem5">{{ humiData[4].temp }}</p>
-              <p class="right" @click="hisHum5">{{ humiData[4].humi }}</p>
+              <p class="left" @click="hisTem5">{{ handleData[4].temp }}℃</p>
+              <p class="right" @click="hisHum5">{{ handleData[4].humi }}%</p>
             </div>
             <div class="sensor6">
               <p style="margin: 0 0 0 0">监测点6</p>
-              <p class="left" @click="hisTem6">{{ humiData[5].temp }}</p>
-              <p class="right" @click="hisHum6">{{ humiData[5].humi }}</p>
+              <p class="left" @click="hisTem6">{{ handleData[5].temp }}℃</p>
+              <p class="right" @click="hisHum6">{{ handleData[5].humi }}%</p>
             </div>
             <div class="sensor7">
               <p style="margin: 0 0 0 0">监测点7</p>
-              <p class="left" @click="hisTem7">{{ humiData[6].temp }}</p>
-              <p class="right" @click="hisHum7">{{ humiData[6].humi }}</p>
+              <p class="left" @click="hisTem7">{{ handleData[6].temp }}℃</p>
+              <p class="right" @click="hisHum7">{{ handleData[6].humi }}%</p>
             </div>
-            <div class="sensor8">
+            <!-- <div class="sensor8">
               <p style="margin: 0 0 0 0">监测点8</p>
               <p class="left" @click="hisTem8">{{ humiData[6].temp }}</p>
               <p class="right" @click="hisHum8">{{ humiData[6].humi }}</p>
-            </div>
+            </div> -->
             <div class="top-right">
               <h4 class="title">当月设备报警信息条数排名</h4>
               <ul class="list">
@@ -78,7 +86,7 @@
             hoverable
           >
             <a slot="extra" @click="open1">更多</a>
-            <div id="oil1" class="oil"></div>
+            <div id="oil" class="oil"></div>
             <div id="vol" class="vol"></div>
             <div id="cap" class="cap"></div>
           </a-card>
@@ -89,7 +97,7 @@
         <a-col :span="9">
           <a-card title="车门" style="height: 220px" class="shadow" hoverable>
             <a slot="extra" @click="showdoor()">更多</a>
-            <a-col :span="8" style="text-align: center">
+            <a-col :span="12" style="text-align: center">
               <div>
                 <p v-show="door1">
                   <img src="../../static/icon/开门1.svg" />
@@ -106,7 +114,7 @@
                 />
               </div>
             </a-col>
-            <a-col :span="8" style="text-align: center">
+            <a-col :span="12" style="text-align: center">
               <div>
                 <p v-show="door2">
                   <img src="../../static/icon/开门1.svg" />
@@ -120,24 +128,6 @@
                   un-checked-children="关"
                   default-checked
                   @click="door2 = !door2"
-                />
-              </div>
-            </a-col>
-
-            <a-col :span="8" style="text-align: center">
-              <div>
-                <p v-show="door3">
-                  <img src="../../static/icon/开门1.svg" />
-                </p>
-                <p v-show="!door3">
-                  <img src="../../static/icon/关门1.svg" />
-                </p>
-                <p>&nbsp;&nbsp;门3</p>
-                <a-switch
-                  checked-children="开"
-                  un-checked-children="关"
-                  default-checked
-                  @click="door3 = !door3"
                 />
               </div>
             </a-col>
@@ -456,7 +446,7 @@
               <span>{{ item.name }}</span>
             </div>
             <div style="font-size: 22px; font-weight: 600; line-height: 50px">
-              <span>更新时间：{{ item.date }}</span>
+              <span>数据最后上传时间：{{ item.date }}</span>
             </div>
             <div
               id="chart"
@@ -692,44 +682,40 @@
 </template>
 
 <script>
-import { getDevice, getDeviceData } from "@/api/interface";
+import { getDevice, getDeviceData, getDeviceHisData } from "@/api/interface";
 import * as echarts from "echarts";
 import { Liquid, Gauge, Line, Area } from "@antv/g2plot";
 export default {
   created() {
     this.getQuery();
     this.getDk();
+  },
+
+  mounted() {
+    // console.log("1");
     // this.drawOil();
     // this.drawVol();
     // this.drawCap();
     // this.drawVib();
   },
-
-  mounted() {
-    console.log("1");
+  updated() {
     this.drawOil();
-    this.drawVol();
-    this.drawCap();
-    this.drawVib();
+    // this.drawVol();
 
-    this.tu1();
-    this.tu2();
-    this.tu3();
-
-    this.drawTyre1();
+    // this.drawCap();
+    // this.drawVib();
   },
 
   data() {
     return {
       showPage: "0", //初始页面
-      tabKey: "", //温湿度tabs初始值
+      tabKey: "1", //温湿度tabs初始值
       tabname: 0,
       oilData: "70", //油位
       volData: "22", //剩余容积
       capData: "45", //载重量
       door1: true,
       door2: true,
-      door3: true,
       light1: true,
       light2: true,
       light3: true,
@@ -743,8 +729,9 @@ export default {
       carNum: "", //传递过来的车牌号
       humiDkList: [],
       humiData: [],
+      handleData: [], //处理温湿度中间过渡
       doorDkList: [],
-
+      sensorList: [],
       devicerankList: [
         //报警条数排名
         { count: "52", deviceName: "温度传感器3" },
@@ -755,16 +742,11 @@ export default {
         { count: "10", deviceName: "胎温传感器5" },
         // {count:"9",deviceName:"温度传感器6",},
       ],
-      sensorList: [
-        { name: "温度传感器1", date: "2021-03-22 12:00:00" },
-        { name: "温度传感器2", date: "2021-03-22 12:00:01" },
-        { name: "温度传感器3", date: "2021-03-22 12:00:02" },
-        { name: "温度传感器4", date: "2021-03-22 12:00:03" },
-        { name: "温度传感器5", date: "2021-03-22 12:00:04" },
-        { name: "温度传感器6", date: "2021-03-22 12:00:05" },
-        { name: "温度传感器7", date: "2021-03-22 12:00:06" },
-        { name: "温度传感器8", date: "2021-03-22 12:00:07" },
-      ],
+      hisStartTime: "",
+      hisEndTime: "",
+      hisDate: [],
+      hisTemp: [],
+      hisHumi: [],
 
       data7: [
         { time: "00：00", num: 0 },
@@ -782,80 +764,53 @@ export default {
         { time: "21：00", num: 1 },
         { time: "23：15", num: 0.9 },
       ],
-      data4: [
-        { time: "00:00", value: 0 },
-        { time: "02:00", value: 22 },
-        { time: "04:00", value: 20 },
-        { time: "06:00", value: 50 },
-        { time: "08:00", value: 70 },
-        { time: "10:00", value: 80 },
-        { time: "12:00", value: 30 },
-        { time: "14:00", value: 40 },
-        { time: "16:00", value: 60 },
-        { time: "18:00", value: 55 },
-        { time: "20:00", value: 20 },
-        { time: "22:00", value: 0 },
-        { time: "24:00", value: 0 },
-      ],
-      data5: [
-        { time: "00:00", value: 0 },
-        { time: "02:00", value: 5 },
-        { time: "04:00", value: 9 },
-        { time: "06:00", value: 7 },
-        { time: "08:00", value: 4 },
-        { time: "10:00", value: 22 },
-        { time: "12:00", value: 14 },
-        { time: "14:00", value: 9 },
-        { time: "16:00", value: 8 },
-        { time: "18:00", value: 11 },
-        { time: "20:00", value: 19 },
-        { time: "22:00", value: 0 },
-        { time: "24:00", value: 0 },
-      ],
+
       data01: [],
       data02: [],
-      data011: [
-        {
-          name: "1",
-          temp: [12, 13, 10, 13, 9, 23, 21],
-          humi: [22, 18, 19, 23, 29, 55, 21],
-        },
-        {
-          name: "2",
-          temp: [12, 13, 10, 13, 9, 23, 21],
-          humi: [22, 18, 19, 23, 29, 55, 51],
-        },
-        {
-          name: "3",
-          temp: [12, 23, 10, 13, 9, 23, 21],
-          humi: [22, 38, 19, 23, 29, 55, 21],
-        },
-        {
-          name: "4",
-          temp: [22, 18, 19, 23, 29, 25, 21],
-          humi: [22, 18, 19, 23, 29, 25, 21],
-        },
-        {
-          name: "5",
-          temp: [13, 18, 19, 23, 29, 25, 21],
-          humi: [22, 18, 29, 23, 29, 55, 21],
-        },
-        {
-          name: "6",
-          temp: [8, 18, 19, 23, 29, 25, 21],
-          humi: [2, 18, 19, 23, 29, 55, 21],
-        },
-        {
-          name: "7",
-          temp: [9, 18, 19, 23, 29, 25, 21],
-          humi: [22, 18, 19, 53, 29, 55, 21],
-        },
-        {
-          name: "8",
-          temp: [10, 18, 19, 23, 29, 25, 21],
-          humi: [32, 18, 19, 43, 29, 55, 41],
-        },
-      ],
+      maxtemp:"",
+      mintemp:"",
+      maxhumi:"",
+      minhumi:"",
+      // data011: [
+      //   {
+      //     name: 1,
+      //     temp: [12, 13, 10, 13, 9, 23, 21, 12, 13, 10, 13, 9],
+      //     humi: [22, 18, 19, 23, 29, 55, 21],
+      //   },
+      //   {
+      //     name: 2,
+      //     temp: [12, 13, 10, 13, 9, 23, 21],
+      //     humi: [22, 18, 19, 23, 29, 55, 51],
+      //   },
+      //   {
+      //     name: 3,
+      //     temp: [12, 23, 10, 13, 9, 23, 21],
+      //     humi: [22, 38, 19, 23, 29, 55, 21],
+      //   },
+      //   {
+      //     name: 4,
+      //     temp: [22, 18, 19, 23, 29, 25, 21],
+      //     humi: [22, 18, 19, 23, 29, 25, 21],
+      //   },
+      //   {
+      //     name: 5,
+      //     temp: [13, 18, 19, 23, 29, 25, 21],
+      //     humi: [22, 18, 29, 23, 29, 55, 21],
+      //   },
+      //   {
+      //     name: 6,
+      //     temp: [8, 18, 19, 23, 29, 25, 21],
+      //     humi: [2, 18, 19, 23, 29, 55, 21],
+      //   },
+      //   {
+      //     name: 7,
+      //     temp: [9, 18, 19, 23, 29, 25, 21],
+      //     humi: [22, 18, 19, 53, 29, 55, 21],
+      //   },
+      // ],
+
+
+
       data03: [
         12, 13, 10, 13, 9, 23, 33, 45, 55, 60, 77, 56, 57, 43, 26, 19, 25, 23,
         29, 25, 21,
@@ -914,6 +869,42 @@ export default {
   },
 
   methods: {
+    timestampToTime(timestamp) {
+      var date = new Date(parseInt(timestamp) * 1000);
+      var year = date.getFullYear();
+      var month =
+        date.getMonth() + 1 < 10
+          ? "0" + (date.getMonth() + 1)
+          : date.getMonth() + 1;
+      var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+      var hours =
+        date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+      var minutes =
+        date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+      var seconds =
+        date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+
+      // 拼接 时间格式处理
+      return (
+        year +
+        "年" +
+        month +
+        "月" +
+        day +
+        "日 " +
+        hours +
+        ":" +
+        minutes +
+        ":" +
+        seconds
+      );
+
+      // return new Date(parseInt(timestamp) * 1000)
+      //   .toLocaleString()
+      //   .replace(/年|月/g, "-")
+      //   .replace(/日/g, " ");
+    },
+
     getQuery() {
       this.productkey = this.$route.query.pk;
       this.carNum = this.$route.query.carnum;
@@ -934,7 +925,7 @@ export default {
         }
       }
       // console.log(this.humiDkList);
-      console.log(this.doorDkList);
+      // console.log(this.doorDkList);
       this.getHumiData();
     },
     async getHumiData() {
@@ -949,21 +940,79 @@ export default {
             sensor: res.data.deviceData[i].deviceName,
             temp: res.data.deviceData[i].temp,
             humi: res.data.deviceData[i].humi,
+            time: res.data.deviceData[i].time,
+            oil: res.data.deviceData[i].oil,
+            dk: res.data.deviceData[i].deviceKey,
           };
           this.humiData.push(obj);
         }
-        console.log(this.humiData);
+        // console.log(this.humiData);
+        this.handleData = JSON.parse(JSON.stringify(this.humiData));
+        // console.log(this.handleData);
+        this.handleData.sort(function (a, b) {
+          var sensorA = a.sensor.toUpperCase(); // ignore upper and lowercase
+          var sensorB = b.sensor.toUpperCase(); // ignore upper and lowercase
+          if (sensorA < sensorB) {
+            return -1;
+          }
+          if (sensorA > sensorB) {
+            return 1;
+          }
+          return 0;
+        });
+        // console.log(this.handleData);
+        for (var i = 0; i < this.handleData.length; i++) {
+          this.handleData[i].sensor = this.handleData[i].sensor.replace(
+            "TH",
+            "温湿度节点"
+          );
+          this.handleData[i].time = this.timestampToTime(
+            this.handleData[i].time
+          );
+          var obj1 = {
+            name: this.handleData[i].sensor,
+            date: this.handleData[i].time,
+            dk: this.handleData[i].dk,
+          };
+          this.sensorList.push(obj1);
+        }
+        // console.log(this.handleData);
+        // console.log(this.sensorList);
       }
     },
 
     hisTem1() {
-      console.log("t1");
-      console.log(this.productkey);
+      console.log(this.sensorList);
       this.tabKey = "1";
       this.showPage = "1";
-      this.data01 = this.data011[0].temp;
-      this.data02 = this.data011[0].humi;
-      this.draw();
+      this.hisEndTime = Date.parse(new Date()) / 1000;
+
+      getDeviceHisData({
+        deviceKey: this.handleData[0].dk,
+        startTime: this.hisEndTime - 8 * 12800, //86400
+        endTime: this.hisEndTime,
+      }).then((res) => {
+        console.log(res);
+        if (res.code == 200) {
+          for (var i = 0; i < res.data.deviceData.length; i++) {
+            this.hisDate.push(res.data.deviceData[i].date);
+            this.hisTemp.push(res.data.deviceData[i].temp);
+            this.hisHumi.push(res.data.deviceData[i].humi);
+          }
+        }
+        console.log(this.hisDate);
+        console.log(this.hisTemp);
+        console.log(this.hisHumi);
+        this.maxtemp=Math.max.apply(null, this.hisTemp)
+        this.mintemp=Math.min.apply(null, this.hisTemp)
+        // console.log(this.maxtemp,this.mintemp);
+        this.maxhumi=Math.max.apply(null, this.hisHumi)
+        this.minhumi=Math.min.apply(null, this.hisHumi)
+        // console.log(this.maxhumi,this.minhumi);
+        this.data01 = this.hisTemp;
+        this.data02 = this.hisHumi;
+        this.draw();
+      });
     },
 
     hisHum1() {
@@ -971,13 +1020,14 @@ export default {
     },
     hisTem2() {
       console.log("t2");
-      this.tabKey = "2";
+      this.tabKey = "1";
       this.showPage = "1";
       console.log(this.tabKey);
       this.draw();
     },
     hisHum2() {
       console.log("h2");
+      this.showPage = "1";
     },
     hisTem3() {
       console.log("t3");
@@ -1015,26 +1065,59 @@ export default {
     hisHum8() {
       console.log("h8");
     },
-    click1() {
-      this.door3 = !this.door3;
-    },
 
     back() {
       this.showPage = "0";
-      // this.tabKey = "";
+      this.tabKey = "";
+      this.hisDate = [];
+      this.hisTemp = [];
+      this.hisHumi = [];
       // console.log(this.showPage);
     },
 
     tabclick(e) {
+      this.hisDate = [];
+      this.hisTemp = [];
+      this.hisHumi = [];
       this.tabname = e;
       console.log(e);
-      this.data01 = this.data011[e].temp;
-      this.data02 = this.data011[e].humi;
-      this.$nextTick(() => {
-        this.draw();
+      console.log(this.sensorList[e].dk);
+      getDeviceHisData({
+        deviceKey: this.sensorList[e].dk,
+        startTime: this.hisEndTime - 8 * 12800, //86400
+        endTime: this.hisEndTime,
+      }).then((res) => {
+        console.log(res);
+        if (res.code == 200) {
+          for (var i = 0; i < res.data.deviceData.length; i++) {
+            this.hisDate.push(res.data.deviceData[i].date);
+            this.hisTemp.push(res.data.deviceData[i].temp);
+            this.hisHumi.push(res.data.deviceData[i].humi);
+          }
+        }
+        console.log(this.hisDate);
+        console.log(this.hisTemp);
+        console.log(this.hisHumi);
+        this.maxtemp=Math.max.apply(null, this.hisTemp)
+        this.mintemp=Math.min.apply(null, this.hisTemp)
+        // console.log(this.maxtemp,this.mintemp);
+        this.maxhumi=Math.max.apply(null, this.hisHumi)
+        this.minhumi=Math.min.apply(null, this.hisHumi)
+        // console.log(this.maxhumi,this.minhumi);
+        this.data01 = this.hisTemp;
+        this.data02 = this.hisHumi;
+        this.$nextTick(() => {
+          this.draw();
+        });
       });
+      // this.data01 = this.data011[e].temp;
+      // this.data02 = this.data011[e].humi;
+      // this.$nextTick(() => {
+      //   this.draw();
+      // });
     },
     draw() {
+      // console.log(this.tabKey);
       //温湿度历史数据图
       var myChart = echarts.init(document.getElementById("chart"));
       var colors = ["#7cb305", "#1890ff"];
@@ -1063,14 +1146,14 @@ export default {
         xAxis: {
           type: "category",
           boundaryGap: false, //横轴顶格
-          data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+          data: this.hisDate,
         },
         yAxis: [
           {
             type: "value",
             name: "温度",
-            min: 0,
-            max: 30,
+            min: this.mintemp-2,
+            max: this.maxtemp+2,
             position: "left",
             axisLine: {
               show: true,
@@ -1085,8 +1168,8 @@ export default {
           {
             type: "value",
             name: "湿度",
-            min: 0,
-            max: 60,
+            min: this.minhumi-2,
+            max: this.maxhumi+2,
             position: "right",
             offset: 6,
             axisLine: {
@@ -1120,26 +1203,27 @@ export default {
     },
 
     drawOil() {
-      console.log("2");
+      // console.log("2");
       //油位图
-      // const liquidPlot = new Liquid('oil', {
-      //   min:0.1,
-      //   max:1.0,
-      //   percent: 0.5,
-      //   color: '#1890ff',
-      //   outline: {
-      //     border: 8,
-      //     distance: 8,
+      // const liquidPlot = new Liquid(document.getElementById("oil"), {
+      //   title: {
+      //     visible: true,
+      //     text: "当前油位",
       //   },
-      //   wave: {
-      //     length: 128,
-
+      //   width: 250,
+      //   height: 300,
+      //   min: 0,
+      //   max: 100,
+      //   value: 30,
+      //   liquidStyle: {
+      //     fill: "#000000",
+      //     stroke: "#999999",
       //   },
       // });
       // liquidPlot.render();
       // console.log("111");
 
-      var chartDom = document.getElementById("oil1");
+      var chartDom = document.getElementById("oil");
       var myChart = echarts.init(chartDom);
       var option = {
         series: [
@@ -1161,8 +1245,8 @@ export default {
             },
             pointer: {
               // 仪表盘指针
-              length: "70%",
-              width: 5,
+              length: "80%",
+              width: 10,
               itemStyle: {
                 color: "auto",
               },
@@ -1182,33 +1266,33 @@ export default {
               length: 10,
               lineStyle: {
                 color: "#fff",
-                width: 2,
+                width: 3,
               },
             },
             axisLabel: {
               // 刻度标签。
               color: "auto",
               distance: 2,
-              fontSize: 10,
+              fontSize: 15,
             },
             detail: {
               // 仪表盘详情，用于显示数据。
               valueAnimation: true,
               formatter: "{value} %",
               color: "auto",
-              fontSize: 20,
+              fontSize: 30,
             },
             data: [
               {
-                value: this.oilData,
-                name: "油位",
+                value: this.humiData[0].oil,
+                name: "当前油位",
+                fontSize: 30,
               },
             ],
           },
         ],
       };
       option && myChart.setOption(option);
-
     },
 
     drawVol() {
@@ -1821,8 +1905,9 @@ export default {
 .oil {
   // background: rgb(233, 219, 219);
   width: 100%;
-  height: 180px;
-  margin: -20px 0px 0px -35px;
+  height: 350px;
+  margin-top: -20px;
+  // margin: -10px 0px 0px 60px;
 }
 .vol {
   // background: rgb(160, 157, 157);
