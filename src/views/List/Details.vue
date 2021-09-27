@@ -105,7 +105,7 @@
                 <p v-show="!door1">
                   <img src="../../static/icon/关门1.svg" />
                 </p>
-                <p>&nbsp;&nbsp;门1</p>
+                <p>&nbsp;&nbsp;侧门</p>
                 <!-- <a-switch
                   checked-children="开"
                   un-checked-children="关"
@@ -124,7 +124,7 @@
                 <p v-show="!door2">
                   <img src="../../static/icon/关门1.svg" />
                 </p>
-                <p>&nbsp;&nbsp;门2</p>
+                <p>&nbsp;&nbsp;后门</p>
                 <!-- <a-switch
                   checked-children="开"
                   un-checked-children="关"
