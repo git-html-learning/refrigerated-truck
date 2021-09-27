@@ -12,30 +12,30 @@
             <a slot="extra" @click="open0">更多</a>
             <div class="sensor1">
               <p style="margin: 0 0 0 0">监测点1</p>
-              <div class="left" @click="hisTem1">{{ handleData[0].temp }}℃</div>
+              <div class="left" @click="hisTem1">{{ humiHandleData[0].temp }}℃</div>
               <div class="right" @click="hisHum1">
-                {{ handleData[0].humi }}%
+                {{ humiHandleData[0].humi }}%
               </div>
             </div>
             <div class="sensor2">
               <p style="margin: 0 0 0 0">监测点2</p>
-              <div class="left" @click="hisTem2">{{ handleData[1].temp }}℃</div>
+              <div class="left" @click="hisTem2">{{ humiHandleData[1].temp }}℃</div>
               <div class="right" @click="hisHum2">
-                {{ handleData[1].humi }}%
+                {{ humiHandleData[1].humi }}%
               </div>
             </div>
             <div class="sensor3">
               <p style="margin: 0 0 0 0">监测点3</p>
-              <div class="left" @click="hisTem3">{{ handleData[2].temp }}℃</div>
+              <div class="left" @click="hisTem3">{{ humiHandleData[2].temp }}℃</div>
               <div class="right" @click="hisHum3">
-                {{ handleData[2].humi }}%
+                {{ humiHandleData[2].humi }}%
               </div>
             </div>
             <div class="sensor4">
               <p style="margin: 0 0 0 0">监测点4</p>
-              <div class="left" @click="hisTem4">{{ handleData[3].temp }}℃</div>
+              <div class="left" @click="hisTem4">{{ humiHandleData[3].temp }}℃</div>
               <div class="right" @click="hisHum4">
-                {{ handleData[3].humi }}%
+                {{ humiHandleData[3].humi }}%
               </div>
             </div>
             <div class="carriage">
@@ -44,23 +44,23 @@
             </div>
             <div class="sensor5">
               <p style="margin: 0 0 0 0">监测点5</p>
-              <p class="left" @click="hisTem5">{{ handleData[4].temp }}℃</p>
-              <p class="right" @click="hisHum5">{{ handleData[4].humi }}%</p>
+              <p class="left" @click="hisTem5">{{ humiHandleData[4].temp }}℃</p>
+              <p class="right" @click="hisHum5">{{ humiHandleData[4].humi }}%</p>
             </div>
             <div class="sensor6">
               <p style="margin: 0 0 0 0">监测点6</p>
-              <p class="left" @click="hisTem6">{{ handleData[5].temp }}℃</p>
-              <p class="right" @click="hisHum6">{{ handleData[5].humi }}%</p>
+              <p class="left" @click="hisTem6">{{ humiHandleData[5].temp }}℃</p>
+              <p class="right" @click="hisHum6">{{ humiHandleData[5].humi }}%</p>
             </div>
             <div class="sensor7">
               <p style="margin: 0 0 0 0">监测点7</p>
-              <p class="left" @click="hisTem7">{{ handleData[6].temp }}℃</p>
-              <p class="right" @click="hisHum7">{{ handleData[6].humi }}%</p>
+              <p class="left" @click="hisTem7">{{ humiHandleData[6].temp }}℃</p>
+              <p class="right" @click="hisHum7">{{ humiHandleData[6].humi }}%</p>
             </div>
             <!-- <div class="sensor8">
               <p style="margin: 0 0 0 0">监测点8</p>
-              <p class="left" @click="hisTem8">{{ humiData[6].temp }}</p>
-              <p class="right" @click="hisHum8">{{ humiData[6].humi }}</p>
+              <p class="left" @click="hisTem8">{{ humiOriData[6].temp }}</p>
+              <p class="right" @click="hisHum8">{{ humiOriData[6].humi }}</p>
             </div> -->
             <div class="top-right">
               <h4 class="title">当月设备报警信息条数排名</h4>
@@ -106,12 +106,14 @@
                   <img src="../../static/icon/关门1.svg" />
                 </p>
                 <p>&nbsp;&nbsp;门1</p>
-                <a-switch
+                <!-- <a-switch
                   checked-children="开"
                   un-checked-children="关"
                   default-checked
                   @click="door1 = !door1"
-                />
+                /> -->
+                <el-tag v-show="door1"> 开启 </el-tag>
+                <el-tag v-show="!door1"> 关闭 </el-tag>
               </div>
             </a-col>
             <a-col :span="12" style="text-align: center">
@@ -123,12 +125,14 @@
                   <img src="../../static/icon/关门1.svg" />
                 </p>
                 <p>&nbsp;&nbsp;门2</p>
-                <a-switch
+                <!-- <a-switch
                   checked-children="开"
                   un-checked-children="关"
                   default-checked
                   @click="door2 = !door2"
-                />
+                /> -->
+                <el-tag v-show="door2"> 开启 </el-tag>
+                <el-tag v-show="!door2"> 关闭 </el-tag>
               </div>
             </a-col>
           </a-card>
@@ -197,7 +201,7 @@
             class="shadow"
             hoverable
           >
-            <div v-show="alert">
+            <div v-show="!alert">
               <a-col
                 :span="13"
                 style="
@@ -210,17 +214,16 @@
                   <img
                     src="../../static/icon/红色警报.svg"
                     style="height: 100px"
-                    @click="alert = !alert"
                   />
                 </span>
               </a-col>
               <a-col :span="11">
-                <div style="font-size: 30px; padding-top: 40px">报警</div>
+                <div style="font-size: 30px; padding-top: 40px" v-show="!alert">报警</div>
               </a-col>
             </div>
             <a-col :span="13">
               <div
-                v-show="!alert"
+                v-show="alert"
                 style="
                   padding-left: 20px;
                   padding-top: 10px;
@@ -230,7 +233,6 @@
                 <img
                   src="../../static/icon/未报警.svg"
                   style="height: 100px"
-                  @click="alert = !alert"
                 />
               </div>
             </a-col>
@@ -239,7 +241,7 @@
       </a-row>
 
       <a-row :gutter="[8, 8]">
-        <a-col :span="18">
+        <a-col :span="24">
           <a-card
             title="胎温胎压"
             hoverable
@@ -354,7 +356,7 @@
           </a-card>
         </a-col>
 
-        <a-col :span="6">
+        <!-- <a-col :span="6">
           <a-card title="冷机" hoverable style="height: 300px" class="shadow">
             <a-col :span="12" style="padding-left: 10px; padding-top: 50px">
               <img src="../../static/icon/制冷(温度计).svg" /> </a-col
@@ -373,7 +375,7 @@
               </p>
             </a-col>
           </a-card>
-        </a-col>
+        </a-col> -->
       </a-row>
 
       <a-row :gutter="[8, 8]">
@@ -694,16 +696,10 @@ export default {
   mounted() {
     // console.log("1");
     // this.drawOil();
-    // this.drawVol();
-    // this.drawCap();
     // this.drawVib();
   },
   updated() {
     this.drawOil();
-    // this.drawVol();
-
-    // this.drawCap();
-    // this.drawVib();
   },
 
   data() {
@@ -715,12 +711,12 @@ export default {
       volData: "22", //剩余容积
       capData: "45", //载重量
       door1: true,
-      door2: true,
+      door2: false,
       light1: true,
       light2: true,
       light3: true,
       alert: true,
-      num: "1", //冷机温度
+      // num: "1", //冷机温度
       coor: {
         lng: 117.192,
         lat: 31.771,
@@ -728,10 +724,10 @@ export default {
       productkey: "", //传递过来的pk
       carNum: "", //传递过来的车牌号
       humiDkList: [],
-      humiData: [],
-      handleData: [], //处理温湿度中间过渡
+      humiOriData: [],  //温湿度传感数据器原始数组
+      humiHandleData: [], //处理完的温湿度数据数组
       doorDkList: [],
-      sensorList: [],
+      alarmDkList:[],
       devicerankList: [
         //报警条数排名
         { count: "52", deviceName: "温度传感器3" },
@@ -742,11 +738,19 @@ export default {
         { count: "10", deviceName: "胎温传感器5" },
         // {count:"9",deviceName:"温度传感器6",},
       ],
+      sensorList: [],
       hisStartTime: "",
       hisEndTime: "",
       hisDate: [],
       hisTemp: [],
       hisHumi: [],
+      maxtemp: "",
+      mintemp: "",
+      maxhumi: "",
+      minhumi: "",
+
+      doorOriData:[],
+      doorHandleData:[],
 
       data7: [
         { time: "00：00", num: 0 },
@@ -765,51 +769,7 @@ export default {
         { time: "23：15", num: 0.9 },
       ],
 
-      data01: [],
-      data02: [],
-      maxtemp:"",
-      mintemp:"",
-      maxhumi:"",
-      minhumi:"",
-      // data011: [
-      //   {
-      //     name: 1,
-      //     temp: [12, 13, 10, 13, 9, 23, 21, 12, 13, 10, 13, 9],
-      //     humi: [22, 18, 19, 23, 29, 55, 21],
-      //   },
-      //   {
-      //     name: 2,
-      //     temp: [12, 13, 10, 13, 9, 23, 21],
-      //     humi: [22, 18, 19, 23, 29, 55, 51],
-      //   },
-      //   {
-      //     name: 3,
-      //     temp: [12, 23, 10, 13, 9, 23, 21],
-      //     humi: [22, 38, 19, 23, 29, 55, 21],
-      //   },
-      //   {
-      //     name: 4,
-      //     temp: [22, 18, 19, 23, 29, 25, 21],
-      //     humi: [22, 18, 19, 23, 29, 25, 21],
-      //   },
-      //   {
-      //     name: 5,
-      //     temp: [13, 18, 19, 23, 29, 25, 21],
-      //     humi: [22, 18, 29, 23, 29, 55, 21],
-      //   },
-      //   {
-      //     name: 6,
-      //     temp: [8, 18, 19, 23, 29, 25, 21],
-      //     humi: [2, 18, 19, 23, 29, 55, 21],
-      //   },
-      //   {
-      //     name: 7,
-      //     temp: [9, 18, 19, 23, 29, 25, 21],
-      //     humi: [22, 18, 19, 53, 29, 55, 21],
-      //   },
-      // ],
-
-
+      
 
       data03: [
         12, 13, 10, 13, 9, 23, 33, 45, 55, 60, 77, 56, 57, 43, 26, 19, 25, 23,
@@ -914,19 +874,24 @@ export default {
       const res = await getDevice({
         productKey: this.productkey,
       });
-      // console.log(res);
+      // console.log("alldk",res);
       if (res.code == 200) {
         for (var i = 0; i < res.data.deviceInfo.length; i++) {
           if (res.data.deviceInfo[i].deviceType == "TempAndHumi") {
             this.humiDkList.push(res.data.deviceInfo[i].deviceKey);
           } else if (res.data.deviceInfo[i].deviceType == "door") {
             this.doorDkList.push(res.data.deviceInfo[i].deviceKey);
+          }else if (res.data.deviceInfo[i].deviceType == "Alarm") {
+            this.alarmDkList.push(res.data.deviceInfo[i].deviceKey);
           }
         }
       }
       // console.log(this.humiDkList);
       // console.log(this.doorDkList);
+      // console.log("alarmDkList",this.alarmDkList);
       this.getHumiData();
+      this.getDoorData();
+      this.getAlarmData()
     },
     async getHumiData() {
       const res = await getDeviceData({
@@ -944,12 +909,12 @@ export default {
             oil: res.data.deviceData[i].oil,
             dk: res.data.deviceData[i].deviceKey,
           };
-          this.humiData.push(obj);
+          this.humiOriData.push(obj);
         }
-        // console.log(this.humiData);
-        this.handleData = JSON.parse(JSON.stringify(this.humiData));
-        // console.log(this.handleData);
-        this.handleData.sort(function (a, b) {
+        // console.log("humiOriData",this.humiOriData);
+        this.humiHandleData = JSON.parse(JSON.stringify(this.humiOriData));
+        // console.log(this.humiHandleData);
+        this.humiHandleData.sort(function (a, b) {
           var sensorA = a.sensor.toUpperCase(); // ignore upper and lowercase
           var sensorB = b.sensor.toUpperCase(); // ignore upper and lowercase
           if (sensorA < sensorB) {
@@ -960,25 +925,70 @@ export default {
           }
           return 0;
         });
-        // console.log(this.handleData);
-        for (var i = 0; i < this.handleData.length; i++) {
-          this.handleData[i].sensor = this.handleData[i].sensor.replace(
+        for (var i = 0; i < this.humiHandleData.length; i++) {
+          this.humiHandleData[i].sensor = this.humiHandleData[i].sensor.replace(
             "TH",
             "温湿度节点"
           );
-          this.handleData[i].time = this.timestampToTime(
-            this.handleData[i].time
+          this.humiHandleData[i].time = this.timestampToTime(
+            this.humiHandleData[i].time
           );
           var obj1 = {
-            name: this.handleData[i].sensor,
-            date: this.handleData[i].time,
-            dk: this.handleData[i].dk,
+            name: this.humiHandleData[i].sensor,
+            date: this.humiHandleData[i].time,
+            dk: this.humiHandleData[i].dk,
           };
           this.sensorList.push(obj1);
         }
-        // console.log(this.handleData);
+        // console.log("humiHandleData",this.humiHandleData);
         // console.log(this.sensorList);
       }
+    },
+    async getDoorData() {
+      const res = await getDeviceData({
+        productKey: this.productkey,
+        deviceKeyList: this.doorDkList,
+      });
+      // console.log("door",res);
+      if (res.code == 200) {
+        for (var i = 0; i < res.data.deviceData.length; i++) {
+          var obj = {
+            doorName: res.data.deviceData[i].deviceName,
+            state: res.data.deviceData[i].door,
+            date: res.data.deviceData[i].date,
+            dk: res.data.deviceData[i].deviceKey,
+          };
+          this.doorOriData.push(obj);
+        }
+        // console.log("doorOriData",this.doorOriData);
+        this.doorHandleData = JSON.parse(JSON.stringify(this.doorOriData));
+        // console.log("doorHandleData",this.doorHandleData);
+        this.doorHandleData.sort(function (a, b) {
+          var doorA = a.doorName.toUpperCase(); // ignore upper and lowercase
+          var doorB = b.doorName.toUpperCase(); // ignore upper and lowercase
+          if (doorA < doorB) {
+            return -1;
+          }
+          if (doorA > doorB) {
+            return 1;
+          }
+          return 0;
+        });
+        // console.log("doorHandleData",this.doorHandleData);
+        this.door1=this.doorHandleData[0].state.door_1
+        this.door2=this.doorHandleData[1].state.door_2
+        // console.log(this.door1);
+        // console.log(this.door2);
+      }
+    },
+    async getAlarmData() {
+      const res = await getDeviceData({
+        productKey: this.productkey,
+        deviceKeyList: this.alarmDkList,
+      });
+      // console.log("alarm",res);
+      this.alert=res.data.deviceData[0].alarm
+      // console.log("alert",this.alert);
     },
 
     hisTem1() {
@@ -988,8 +998,8 @@ export default {
       this.hisEndTime = Date.parse(new Date()) / 1000;
 
       getDeviceHisData({
-        deviceKey: this.handleData[0].dk,
-        startTime: this.hisEndTime - 8 * 12800, //86400
+        deviceKey: this.humiHandleData[0].dk,
+        startTime: this.hisEndTime - 4 * 86400, //86400
         endTime: this.hisEndTime,
       }).then((res) => {
         console.log(res);
@@ -1003,14 +1013,12 @@ export default {
         console.log(this.hisDate);
         console.log(this.hisTemp);
         console.log(this.hisHumi);
-        this.maxtemp=Math.max.apply(null, this.hisTemp)
-        this.mintemp=Math.min.apply(null, this.hisTemp)
+        this.maxtemp = Math.max.apply(null, this.hisTemp);
+        this.mintemp = Math.min.apply(null, this.hisTemp);
         // console.log(this.maxtemp,this.mintemp);
-        this.maxhumi=Math.max.apply(null, this.hisHumi)
-        this.minhumi=Math.min.apply(null, this.hisHumi)
+        this.maxhumi = Math.max.apply(null, this.hisHumi);
+        this.minhumi = Math.min.apply(null, this.hisHumi);
         // console.log(this.maxhumi,this.minhumi);
-        this.data01 = this.hisTemp;
-        this.data02 = this.hisHumi;
         this.draw();
       });
     },
@@ -1084,7 +1092,7 @@ export default {
       console.log(this.sensorList[e].dk);
       getDeviceHisData({
         deviceKey: this.sensorList[e].dk,
-        startTime: this.hisEndTime - 8 * 12800, //86400
+        startTime: this.hisEndTime - 4 * 86400, //86400
         endTime: this.hisEndTime,
       }).then((res) => {
         console.log(res);
@@ -1098,20 +1106,16 @@ export default {
         console.log(this.hisDate);
         console.log(this.hisTemp);
         console.log(this.hisHumi);
-        this.maxtemp=Math.max.apply(null, this.hisTemp)
-        this.mintemp=Math.min.apply(null, this.hisTemp)
+        this.maxtemp = Math.max.apply(null, this.hisTemp);
+        this.mintemp = Math.min.apply(null, this.hisTemp);
         // console.log(this.maxtemp,this.mintemp);
-        this.maxhumi=Math.max.apply(null, this.hisHumi)
-        this.minhumi=Math.min.apply(null, this.hisHumi)
+        this.maxhumi = Math.max.apply(null, this.hisHumi);
+        this.minhumi = Math.min.apply(null, this.hisHumi);
         // console.log(this.maxhumi,this.minhumi);
-        this.data01 = this.hisTemp;
-        this.data02 = this.hisHumi;
         this.$nextTick(() => {
           this.draw();
         });
       });
-      // this.data01 = this.data011[e].temp;
-      // this.data02 = this.data011[e].humi;
       // this.$nextTick(() => {
       //   this.draw();
       // });
@@ -1152,8 +1156,8 @@ export default {
           {
             type: "value",
             name: "温度",
-            min: this.mintemp-2,
-            max: this.maxtemp+2,
+            min: this.mintemp - 2,
+            max: this.maxtemp + 2,
             position: "left",
             axisLine: {
               show: true,
@@ -1168,8 +1172,8 @@ export default {
           {
             type: "value",
             name: "湿度",
-            min: this.minhumi-2,
-            max: this.maxhumi+2,
+            min: this.minhumi - 2,
+            max: this.maxhumi + 2,
             position: "right",
             offset: 6,
             axisLine: {
@@ -1188,14 +1192,14 @@ export default {
             name: "温度",
             type: "line",
             // stack: "总量",
-            data: this.data01,
+            data: this.hisTemp,
           },
           {
             name: "湿度",
             type: "line",
             yAxisIndex: 1, //解决了左右y轴相同刻度，选定哪条y
             // stack: "总量",
-            data: this.data02,
+            data: this.hisHumi,
           },
         ],
       };
@@ -1284,7 +1288,7 @@ export default {
             },
             data: [
               {
-                value: this.humiData[0].oil,
+                value: this.humiOriData[0].oil,
                 name: "当前油位",
                 fontSize: 30,
               },
