@@ -12,28 +12,36 @@
             <a slot="extra" @click="open0">更多</a>
             <div class="sensor1">
               <p style="margin: 0 0 0 0">监测点1</p>
-              <div class="left" @click="hisTem1">{{ humiHandleData[0].temp }}℃</div>
+              <div class="left" @click="hisTem1">
+                {{ humiHandleData[0].temp }}℃
+              </div>
               <div class="right" @click="hisHum1">
                 {{ humiHandleData[0].humi }}%
               </div>
             </div>
             <div class="sensor2">
               <p style="margin: 0 0 0 0">监测点2</p>
-              <div class="left" @click="hisTem2">{{ humiHandleData[1].temp }}℃</div>
+              <div class="left" @click="hisTem2">
+                {{ humiHandleData[1].temp }}℃
+              </div>
               <div class="right" @click="hisHum2">
                 {{ humiHandleData[1].humi }}%
               </div>
             </div>
             <div class="sensor3">
               <p style="margin: 0 0 0 0">监测点3</p>
-              <div class="left" @click="hisTem3">{{ humiHandleData[2].temp }}℃</div>
+              <div class="left" @click="hisTem3">
+                {{ humiHandleData[2].temp }}℃
+              </div>
               <div class="right" @click="hisHum3">
                 {{ humiHandleData[2].humi }}%
               </div>
             </div>
             <div class="sensor4">
               <p style="margin: 0 0 0 0">监测点4</p>
-              <div class="left" @click="hisTem4">{{ humiHandleData[3].temp }}℃</div>
+              <div class="left" @click="hisTem4">
+                {{ humiHandleData[3].temp }}℃
+              </div>
               <div class="right" @click="hisHum4">
                 {{ humiHandleData[3].humi }}%
               </div>
@@ -45,17 +53,23 @@
             <div class="sensor5">
               <p style="margin: 0 0 0 0">监测点5</p>
               <p class="left" @click="hisTem5">{{ humiHandleData[4].temp }}℃</p>
-              <p class="right" @click="hisHum5">{{ humiHandleData[4].humi }}%</p>
+              <p class="right" @click="hisHum5">
+                {{ humiHandleData[4].humi }}%
+              </p>
             </div>
             <div class="sensor6">
               <p style="margin: 0 0 0 0">监测点6</p>
               <p class="left" @click="hisTem6">{{ humiHandleData[5].temp }}℃</p>
-              <p class="right" @click="hisHum6">{{ humiHandleData[5].humi }}%</p>
+              <p class="right" @click="hisHum6">
+                {{ humiHandleData[5].humi }}%
+              </p>
             </div>
             <div class="sensor7">
               <p style="margin: 0 0 0 0">监测点7</p>
               <p class="left" @click="hisTem7">{{ humiHandleData[6].temp }}℃</p>
-              <p class="right" @click="hisHum7">{{ humiHandleData[6].humi }}%</p>
+              <p class="right" @click="hisHum7">
+                {{ humiHandleData[6].humi }}%
+              </p>
             </div>
             <!-- <div class="sensor8">
               <p style="margin: 0 0 0 0">监测点8</p>
@@ -106,13 +120,7 @@
                   <img src="../../static/icon/关门1.svg" />
                 </p>
                 <p>&nbsp;&nbsp;侧门</p>
-                <!-- <a-switch
-                  checked-children="开"
-                  un-checked-children="关"
-                  default-checked
-                  @click="door1 = !door1"
-                /> -->
-                <el-tag v-show="door1"> 开启 </el-tag>
+                <el-tag v-show="door1" type="danger"> 开启 </el-tag>
                 <el-tag v-show="!door1"> 关闭 </el-tag>
               </div>
             </a-col>
@@ -125,13 +133,7 @@
                   <img src="../../static/icon/关门1.svg" />
                 </p>
                 <p>&nbsp;&nbsp;后门</p>
-                <!-- <a-switch
-                  checked-children="开"
-                  un-checked-children="关"
-                  default-checked
-                  @click="door2 = !door2"
-                /> -->
-                <el-tag v-show="door2"> 开启 </el-tag>
+                <el-tag v-show="door2" type="danger"> 开启 </el-tag>
                 <el-tag v-show="!door2"> 关闭 </el-tag>
               </div>
             </a-col>
@@ -143,18 +145,21 @@
             <a slot="extra" @click="show()">更多</a>
             <a-col :span="8" style="text-align: center">
               <div>
-                <p v-show="light1">
-                  <img src="../../static/icon/开灯.svg" />
-                </p>
-                <p v-show="!light1">
-                  <img src="../../static/icon/关灯.svg" />
-                </p>
-                <p>照明灯</p>
+                <a-spin tip="等待响应" :spinning="spinning1">
+                  <p v-show="light1">
+                    <img src="../../static/icon/开灯.svg" />
+                  </p>
+                  <p v-show="!light1">
+                    <img src="../../static/icon/关灯.svg" />
+                  </p>
+                  <p>照明灯</p>
+                </a-spin>
+
                 <a-switch
                   checked-children="开"
                   un-checked-children="关"
                   default-checked
-                  @click="light1 = !light1"
+                  @change="changeLight1"
                 />
               </div>
             </a-col>
@@ -194,6 +199,7 @@
             </a-col>
           </a-card>
         </a-col>
+
         <a-col :span="6">
           <a-card
             title="报警装置"
@@ -218,7 +224,9 @@
                 </span>
               </a-col>
               <a-col :span="11">
-                <div style="font-size: 30px; padding-top: 40px" v-show="!alert">报警</div>
+                <div style="font-size: 30px; padding-top: 40px" v-show="!alert">
+                  报警
+                </div>
               </a-col>
             </div>
             <a-col :span="13">
@@ -230,10 +238,7 @@
                   text-align: center;
                 "
               >
-                <img
-                  src="../../static/icon/未报警.svg"
-                  style="height: 100px"
-                />
+                <img src="../../static/icon/未报警.svg" style="height: 100px" />
               </div>
             </a-col>
           </a-card>
@@ -255,7 +260,10 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温：50.23°C &nbsp;&nbsp;胎压：5bar </span>
+                  <span>
+                    胎温：{{ tireHandleData[0].tireTemp }}°C
+                    &nbsp;&nbsp;胎压：{{ tireHandleData[0].tirePress }}bar
+                  </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -263,7 +271,10 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
+                  <span>
+                    胎温：{{ tireHandleData[1].tireTemp }}°C
+                    &nbsp;&nbsp;胎压：{{ tireHandleData[1].tirePress }}bar
+                  </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -271,33 +282,10 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
-                </a-col>
-              </a-col>
-            </a-row>
-            <a-row type="flex" style="height: 60px; font-size: 18px">
-              <a-col :span="8">
-                <a-col :span="8" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
-                </a-col>
-                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
-                </a-col>
-              </a-col>
-              <a-col :span="8">
-                <a-col :span="8" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
-                </a-col>
-                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
-                </a-col>
-              </a-col>
-              <a-col :span="8">
-                <a-col :span="8" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
-                </a-col>
-                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
+                  <span>
+                    胎温：{{ tireHandleData[2].tireTemp }}°C
+                    &nbsp;&nbsp;胎压：{{ tireHandleData[2].tirePress }}bar
+                  </span>
                 </a-col>
               </a-col>
             </a-row>
@@ -307,7 +295,10 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
+                  <span>
+                    胎温：{{ tireHandleData[3].tireTemp }}°C
+                    &nbsp;&nbsp;胎压：{{ tireHandleData[3].tirePress }}bar
+                  </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -315,7 +306,10 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
+                  <span>
+                    胎温：{{ tireHandleData[4].tireTemp }}°C
+                    &nbsp;&nbsp;胎压：{{ tireHandleData[4].tirePress }}bar
+                  </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -323,7 +317,10 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
+                  <span>
+                    胎温：{{ tireHandleData[5].tireTemp }}°C
+                    &nbsp;&nbsp;胎压：{{ tireHandleData[5].tirePress }}bar
+                  </span>
                 </a-col>
               </a-col>
             </a-row>
@@ -333,7 +330,10 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
+                  <span>
+                    胎温：{{ tireHandleData[6].tireTemp }}°C
+                    &nbsp;&nbsp;胎压：{{ tireHandleData[6].tirePress }}bar
+                  </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -341,7 +341,10 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
+                  <span>
+                    胎温：{{ tireHandleData[7].tireTemp }}°C
+                    &nbsp;&nbsp;胎压：{{ tireHandleData[7].tirePress }}bar
+                  </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -349,7 +352,45 @@
                   <img src="../../static/icon/轮胎1.svg" @click="more1()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温：50°C &nbsp;&nbsp;胎压：5bar </span>
+                  <span>
+                    胎温：{{ tireHandleData[8].tireTemp }}°C
+                    &nbsp;&nbsp;胎压：{{ tireHandleData[8].tirePress }}bar
+                  </span>
+                </a-col>
+              </a-col>
+            </a-row>
+            <a-row type="flex" style="height: 60px; font-size: 18px">
+              <a-col :span="8">
+                <a-col :span="8" style="text-align: center">
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                </a-col>
+                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
+                  <span>
+                    胎温：{{ tireHandleData[9].tireTemp }}°C
+                    &nbsp;&nbsp;胎压：{{ tireHandleData[9].tirePress }}bar
+                  </span>
+                </a-col>
+              </a-col>
+              <a-col :span="8">
+                <a-col :span="8" style="text-align: center">
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                </a-col>
+                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
+                  <span>
+                    胎温：{{ tireHandleData[10].tireTemp }}°C
+                    &nbsp;&nbsp;胎压：{{ tireHandleData[10].tirePress }}bar
+                  </span>
+                </a-col>
+              </a-col>
+              <a-col :span="8">
+                <a-col :span="8" style="text-align: center">
+                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                </a-col>
+                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
+                  <span>
+                    胎温：{{ tireHandleData[11].tireTemp }}°C
+                    &nbsp;&nbsp;胎压：{{ tireHandleData[11].tirePress }}bar
+                  </span>
                 </a-col>
               </a-col>
             </a-row>
@@ -450,12 +491,14 @@
             <div style="font-size: 22px; font-weight: 600; line-height: 50px">
               <span>数据最后上传时间：{{ item.date }}</span>
             </div>
+            <a-spin tip="正在请求历史数据" :spinning="humiSpinning">
             <div
               id="chart"
               ref="chart"
               style="height: 300px; width: 1450px"
               v-if="tabname === index"
             ></div>
+            </a-spin>
           </a-tab-pane>
         </a-tabs>
       </div>
@@ -684,7 +727,7 @@
 </template>
 
 <script>
-import { getDevice, getDeviceData, getDeviceHisData } from "@/api/interface";
+import { getDevice, getDeviceData, getDeviceHisData ,changeLight } from "@/api/interface";
 import * as echarts from "echarts";
 import { Liquid, Gauge, Line, Area } from "@antv/g2plot";
 export default {
@@ -715,6 +758,8 @@ export default {
       light1: true,
       light2: true,
       light3: true,
+      spinning1: true,
+      humiSpinning: false,
       alert: true,
       // num: "1", //冷机温度
       coor: {
@@ -724,10 +769,11 @@ export default {
       productkey: "", //传递过来的pk
       carNum: "", //传递过来的车牌号
       humiDkList: [],
-      humiOriData: [],  //温湿度传感数据器原始数组
+      humiOriData: [], //温湿度传感数据器原始数组
       humiHandleData: [], //处理完的温湿度数据数组
       doorDkList: [],
-      alarmDkList:[],
+      alarmDkList: [],
+      tireDkList: [],
       devicerankList: [
         //报警条数排名
         { count: "52", deviceName: "温度传感器3" },
@@ -749,8 +795,14 @@ export default {
       maxhumi: "",
       minhumi: "",
 
-      doorOriData:[],
-      doorHandleData:[],
+      doorOriData: [],
+      doorHandleData: [],
+
+      tireOriData: [],
+      tireHandleData: [],
+
+      lightOriData:[],
+      lightHandleData:[],
 
       data7: [
         { time: "00：00", num: 0 },
@@ -768,8 +820,6 @@ export default {
         { time: "21：00", num: 1 },
         { time: "23：15", num: 0.9 },
       ],
-
-      
 
       data03: [
         12, 13, 10, 13, 9, 23, 33, 45, 55, 60, 77, 56, 57, 43, 26, 19, 25, 23,
@@ -881,8 +931,10 @@ export default {
             this.humiDkList.push(res.data.deviceInfo[i].deviceKey);
           } else if (res.data.deviceInfo[i].deviceType == "door") {
             this.doorDkList.push(res.data.deviceInfo[i].deviceKey);
-          }else if (res.data.deviceInfo[i].deviceType == "Alarm") {
+          } else if (res.data.deviceInfo[i].deviceType == "Alarm") {
             this.alarmDkList.push(res.data.deviceInfo[i].deviceKey);
+          } else if (res.data.deviceInfo[i].deviceType == "TireTempPress") {
+            this.tireDkList.push(res.data.deviceInfo[i].deviceKey);
           }
         }
       }
@@ -891,7 +943,8 @@ export default {
       // console.log("alarmDkList",this.alarmDkList);
       this.getHumiData();
       this.getDoorData();
-      this.getAlarmData()
+      this.getAlarmData();
+      this.getTireData();
     },
     async getHumiData() {
       const res = await getDeviceData({
@@ -951,6 +1004,7 @@ export default {
       });
       // console.log("door",res);
       if (res.code == 200) {
+        this.lightOriData=res.data.deviceData[0].electrical
         for (var i = 0; i < res.data.deviceData.length; i++) {
           var obj = {
             doorName: res.data.deviceData[i].deviceName,
@@ -961,6 +1015,7 @@ export default {
           this.doorOriData.push(obj);
         }
         // console.log("doorOriData",this.doorOriData);
+        console.log("lightOriData",this.lightOriData);
         this.doorHandleData = JSON.parse(JSON.stringify(this.doorOriData));
         // console.log("doorHandleData",this.doorHandleData);
         this.doorHandleData.sort(function (a, b) {
@@ -975,8 +1030,8 @@ export default {
           return 0;
         });
         // console.log("doorHandleData",this.doorHandleData);
-        this.door1=this.doorHandleData[0].state.door_1
-        this.door2=this.doorHandleData[1].state.door_2
+        this.door1 = this.doorHandleData[0].state.door_1;
+        this.door2 = this.doorHandleData[1].state.door_2;
         // console.log(this.door1);
         // console.log(this.door2);
       }
@@ -987,14 +1042,58 @@ export default {
         deviceKeyList: this.alarmDkList,
       });
       // console.log("alarm",res);
-      this.alert=res.data.deviceData[0].alarm
+      this.alert = res.data.deviceData[0].alarm;
       // console.log("alert",this.alert);
+    },
+    async getTireData() {
+      const res = await getDeviceData({
+        productKey: this.productkey,
+        deviceKeyList: this.tireDkList,
+      });
+      // console.log(res);
+      if (res.code == 200) {
+        for (var i = 0; i < res.data.deviceData.length; i++) {
+          var obj = {
+            tire: res.data.deviceData[i].deviceName,
+            tirePress: res.data.deviceData[i].tirePress,
+            tireTemp: res.data.deviceData[i].tireTemp,
+            time: res.data.deviceData[i].date,
+            dk: res.data.deviceData[i].deviceKey,
+          };
+          this.tireOriData.push(obj);
+        }
+        // console.log("tireOriData",this.tireOriData);
+        this.tireHandleData = JSON.parse(JSON.stringify(this.tireOriData));
+        this.tireHandleData.sort(function (a, b) {
+          var tireA = a.tire.toUpperCase(); // ignore upper and lowercase
+          var tireB = b.tire.toUpperCase(); // ignore upper and lowercase
+          if (tireA < tireB) {
+            return -1;
+          }
+          if (tireA > tireB) {
+            return 1;
+          }
+          return 0;
+        });
+        for (var i = 0; i < this.tireHandleData.length; i++) {
+          this.tireHandleData[i].tire = "胎" + (i + 1);
+          // var obj1 = {
+          //   name: this.humiHandleData[i].sensor,
+          //   date: this.humiHandleData[i].time,
+          //   dk: this.humiHandleData[i].dk,
+          // };
+          // this.sensorList.push(obj1);
+        }
+        console.log("tireHandleData", this.tireHandleData);
+        // console.log(this.sensorList);
+      }
     },
 
     hisTem1() {
       console.log(this.sensorList);
       this.tabKey = "1";
       this.showPage = "1";
+      this.humiSpinning=true
       this.hisEndTime = Date.parse(new Date()) / 1000;
 
       getDeviceHisData({
@@ -1020,6 +1119,8 @@ export default {
         this.minhumi = Math.min.apply(null, this.hisHumi);
         // console.log(this.maxhumi,this.minhumi);
         this.draw();
+        this.humiSpinning=false
+        // console.log("1");
       });
     },
 
@@ -1076,11 +1177,27 @@ export default {
 
     back() {
       this.showPage = "0";
-      this.tabKey = "";
+      this.tabKey = "1";
       this.hisDate = [];
       this.hisTemp = [];
       this.hisHumi = [];
       // console.log(this.showPage);
+    },
+
+    changeLight1(checked){
+      console.log(checked,this.productkey);
+      if(checked=== true){
+        console.log("开灯");
+        changeLight({
+          productKey:this.productkey,
+          checkCode:"EFEFEF0101CF"
+        }).then((res)=>{
+          console.log("开灯",res);
+        })
+      }else{
+        console.log("关灯");
+      }
+      this.light1=!(this.light1)
     },
 
     tabclick(e) {
@@ -1088,8 +1205,9 @@ export default {
       this.hisTemp = [];
       this.hisHumi = [];
       this.tabname = e;
-      console.log(e);
-      console.log(this.sensorList[e].dk);
+      // console.log(e);
+      // console.log(this.sensorList[e].dk);
+      this.humiSpinning=true
       getDeviceHisData({
         deviceKey: this.sensorList[e].dk,
         startTime: this.hisEndTime - 4 * 86400, //86400
@@ -1114,11 +1232,9 @@ export default {
         // console.log(this.maxhumi,this.minhumi);
         this.$nextTick(() => {
           this.draw();
+          this.humiSpinning=false
         });
       });
-      // this.$nextTick(() => {
-      //   this.draw();
-      // });
     },
     draw() {
       // console.log(this.tabKey);
