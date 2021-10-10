@@ -27,6 +27,30 @@ export function getDeviceData(data) {       //获取设备最新数据
     })
 }
 
+export function getDeviceHisData(data) {       //获取设备历史数据
+    return request({
+        url: '/api/v1/historyData',
+        method: 'POST',
+        data:{
+            "deviceKey":data.deviceKey,
+            "startTime":data.startTime, // 开始时间
+            "endTime":data.endTime, // 截止时间，一定要大于起始时间
+            "asc":1 // 0 逆序 1 升序
+            }
+    })
+}
+
+export function changeLight(data) {       //灯下发
+    return request({
+        url: '/api/v1//downRaw?productKey='+data.productKey+'&bodyType=json&timeout=2',
+        method: 'POST',
+        data:{
+            "productKey":data.productKey,
+            "checkCode":data.checkCode
+        }
+    })
+}
+
 export function registerVeh(data) {   //注册车辆
     return request({
         url: "/api/v1/product",
