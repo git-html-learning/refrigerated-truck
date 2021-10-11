@@ -15,36 +15,22 @@
               <div class="left" @click="hisTem1">
                 {{ humiHandleData[0].temp }}℃
               </div>
-              <div class="right" @click="hisHum1">
-                {{ humiHandleData[0].humi }}%
-              </div>
+              <div class="right">{{ humiHandleData[0].humi }}%</div>
             </div>
             <div class="sensor2">
               <p style="margin: 0 0 0 0">监测点2</p>
-              <div class="left" @click="hisTem2">
-                {{ humiHandleData[1].temp }}℃
-              </div>
-              <div class="right" @click="hisHum2">
-                {{ humiHandleData[1].humi }}%
-              </div>
+              <div class="left">{{ humiHandleData[1].temp }}℃</div>
+              <div class="right">{{ humiHandleData[1].humi }}%</div>
             </div>
             <div class="sensor3">
               <p style="margin: 0 0 0 0">监测点3</p>
-              <div class="left" @click="hisTem3">
-                {{ humiHandleData[2].temp }}℃
-              </div>
-              <div class="right" @click="hisHum3">
-                {{ humiHandleData[2].humi }}%
-              </div>
+              <div class="left">{{ humiHandleData[2].temp }}℃</div>
+              <div class="right">{{ humiHandleData[2].humi }}%</div>
             </div>
             <div class="sensor4">
               <p style="margin: 0 0 0 0">监测点4</p>
-              <div class="left" @click="hisTem4">
-                {{ humiHandleData[3].temp }}℃
-              </div>
-              <div class="right" @click="hisHum4">
-                {{ humiHandleData[3].humi }}%
-              </div>
+              <div class="left">{{ humiHandleData[3].temp }}℃</div>
+              <div class="right">{{ humiHandleData[3].humi }}%</div>
             </div>
             <div class="carriage">
               <img src="../../static/pic/carriage.png" class="img" />
@@ -52,24 +38,18 @@
             </div>
             <div class="sensor5">
               <p style="margin: 0 0 0 0">监测点5</p>
-              <p class="left" @click="hisTem5">{{ humiHandleData[4].temp }}℃</p>
-              <p class="right" @click="hisHum5">
-                {{ humiHandleData[4].humi }}%
-              </p>
+              <p class="left">{{ humiHandleData[4].temp }}℃</p>
+              <p class="right">{{ humiHandleData[4].humi }}%</p>
             </div>
             <div class="sensor6">
               <p style="margin: 0 0 0 0">监测点6</p>
-              <p class="left" @click="hisTem6">{{ humiHandleData[5].temp }}℃</p>
-              <p class="right" @click="hisHum6">
-                {{ humiHandleData[5].humi }}%
-              </p>
+              <p class="left">{{ humiHandleData[5].temp }}℃</p>
+              <p class="right">{{ humiHandleData[5].humi }}%</p>
             </div>
             <div class="sensor7">
               <p style="margin: 0 0 0 0">监测点7</p>
-              <p class="left" @click="hisTem7">{{ humiHandleData[6].temp }}℃</p>
-              <p class="right" @click="hisHum7">
-                {{ humiHandleData[6].humi }}%
-              </p>
+              <p class="left">{{ humiHandleData[6].temp }}℃</p>
+              <p class="right">{{ humiHandleData[6].humi }}%</p>
             </div>
             <!-- <div class="sensor8">
               <p style="margin: 0 0 0 0">监测点8</p>
@@ -475,9 +455,9 @@
           ></i>
         </div>
         <a-tabs
-          v-model="tabname"
+          v-model="humiTabname"
           tab-position="left"
-          :default-active-key="tabKey"
+          :default-active-key="humiTabKey"
           @tabClick="tabclick"
         >
           <a-tab-pane
@@ -492,12 +472,12 @@
               <span>数据最后上传时间：{{ item.date }}</span>
             </div>
             <a-spin tip="正在请求历史数据" :spinning="humiSpinning">
-            <div
-              id="chart"
-              ref="chart"
-              style="height: 300px; width: 1450px"
-              v-if="tabname === index"
-            ></div>
+              <div
+                id="chart"
+                ref="chart"
+                style="height: 300px; width: 1450px"
+                v-if="humiTabname === index"
+              ></div>
             </a-spin>
           </a-tab-pane>
         </a-tabs>
@@ -727,7 +707,12 @@
 </template>
 
 <script>
-import { getDevice, getDeviceData, getDeviceHisData ,changeLight } from "@/api/interface";
+import {
+  getDevice,
+  getDeviceData,
+  getDeviceHisData,
+  changeLight,
+} from "@/api/interface";
 import * as echarts from "echarts";
 import { Liquid, Gauge, Line, Area } from "@antv/g2plot";
 export default {
@@ -748,8 +733,8 @@ export default {
   data() {
     return {
       showPage: "0", //初始页面
-      tabKey: "1", //温湿度tabs初始值
-      tabname: 0,
+      humiTabKey: "1", //温湿度tabs初始值
+      humiTabname: 0,
       oilData: "70", //油位
       volData: "22", //剩余容积
       capData: "45", //载重量
@@ -800,9 +785,10 @@ export default {
 
       tireOriData: [],
       tireHandleData: [],
+      tireList: [],
 
-      lightOriData:[],
-      lightHandleData:[],
+      lightOriData: [],
+      lightHandleData: [],
 
       data7: [
         { time: "00：00", num: 0 },
@@ -1004,7 +990,7 @@ export default {
       });
       // console.log("door",res);
       if (res.code == 200) {
-        this.lightOriData=res.data.deviceData[0].electrical
+        this.lightOriData = res.data.deviceData[0].electrical;
         for (var i = 0; i < res.data.deviceData.length; i++) {
           var obj = {
             doorName: res.data.deviceData[i].deviceName,
@@ -1015,7 +1001,7 @@ export default {
           this.doorOriData.push(obj);
         }
         // console.log("doorOriData",this.doorOriData);
-        console.log("lightOriData",this.lightOriData);
+        console.log("lightOriData", this.lightOriData);
         this.doorHandleData = JSON.parse(JSON.stringify(this.doorOriData));
         // console.log("doorHandleData",this.doorHandleData);
         this.doorHandleData.sort(function (a, b) {
@@ -1077,23 +1063,23 @@ export default {
         });
         for (var i = 0; i < this.tireHandleData.length; i++) {
           this.tireHandleData[i].tire = "胎" + (i + 1);
-          // var obj1 = {
-          //   name: this.humiHandleData[i].sensor,
-          //   date: this.humiHandleData[i].time,
-          //   dk: this.humiHandleData[i].dk,
-          // };
-          // this.sensorList.push(obj1);
+          var obj1 = {
+            name: this.tireHandleData[i].tire,
+            date: this.tireHandleData[i].time,
+            dk: this.tireHandleData[i].dk,
+          };
+          this.tireList.push(obj1);
         }
         console.log("tireHandleData", this.tireHandleData);
-        // console.log(this.sensorList);
+        console.log("tireList", this.tireList);
       }
     },
 
     hisTem1() {
       console.log(this.sensorList);
-      this.tabKey = "1";
+      this.humiTabKey = "1";
       this.showPage = "1";
-      this.humiSpinning=true
+      this.humiSpinning = true;
       this.hisEndTime = Date.parse(new Date()) / 1000;
 
       getDeviceHisData({
@@ -1119,95 +1105,44 @@ export default {
         this.minhumi = Math.min.apply(null, this.hisHumi);
         // console.log(this.maxhumi,this.minhumi);
         this.draw();
-        this.humiSpinning=false
+        this.humiSpinning = false;
         // console.log("1");
       });
     },
 
-    hisHum1() {
-      console.log("h1");
-    },
-    hisTem2() {
-      console.log("t2");
-      this.tabKey = "1";
-      this.showPage = "1";
-      console.log(this.tabKey);
-      this.draw();
-    },
-    hisHum2() {
-      console.log("h2");
-      this.showPage = "1";
-    },
-    hisTem3() {
-      console.log("t3");
-    },
-    hisHum3() {
-      console.log("h3");
-    },
-    hisTem4() {
-      console.log("t4");
-    },
-    hisHum4() {
-      console.log("h4");
-    },
-    hisTem5() {
-      console.log("t5");
-    },
-    hisHum5() {
-      console.log("h5");
-    },
-    hisTem6() {
-      console.log("t6");
-    },
-    hisHum6() {
-      console.log("h6");
-    },
-    hisTem7() {
-      console.log("t7");
-    },
-    hisHum7() {
-      console.log("h7");
-    },
-    hisTem8() {
-      console.log("t8");
-    },
-    hisHum8() {
-      console.log("h8");
-    },
-
     back() {
       this.showPage = "0";
-      this.tabKey = "1";
+      this.humiTabKey = "1";
       this.hisDate = [];
       this.hisTemp = [];
       this.hisHumi = [];
       // console.log(this.showPage);
     },
 
-    changeLight1(checked){
-      console.log(checked,this.productkey);
-      if(checked=== true){
+    changeLight1(checked) {
+      console.log(checked, this.productkey);
+      if (checked === true) {
         console.log("开灯");
         changeLight({
-          productKey:this.productkey,
-          checkCode:"EFEFEF0101CF"
-        }).then((res)=>{
-          console.log("开灯",res);
-        })
-      }else{
+          productKey: this.productkey,
+          checkCode: "EFEFEF0101CF",
+        }).then((res) => {
+          console.log("开灯", res);
+        });
+      } else {
         console.log("关灯");
       }
-      this.light1=!(this.light1)
+      this.light1 = !this.light1;
     },
 
     tabclick(e) {
       this.hisDate = [];
       this.hisTemp = [];
       this.hisHumi = [];
-      this.tabname = e;
+      this.humiTabname = e;
       // console.log(e);
       // console.log(this.sensorList[e].dk);
-      this.humiSpinning=true
+      this.humiSpinning = true;
       getDeviceHisData({
         deviceKey: this.sensorList[e].dk,
         startTime: this.hisEndTime - 4 * 86400, //86400
@@ -1232,12 +1167,12 @@ export default {
         // console.log(this.maxhumi,this.minhumi);
         this.$nextTick(() => {
           this.draw();
-          this.humiSpinning=false
+          this.humiSpinning = false;
         });
       });
     },
     draw() {
-      // console.log(this.tabKey);
+      // console.log(this.humiTabKey);
       //温湿度历史数据图
       var myChart = echarts.init(document.getElementById("chart"));
       var colors = ["#7cb305", "#1890ff"];
