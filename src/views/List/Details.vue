@@ -237,7 +237,7 @@
             <a-row type="flex" style="height: 60px; font-size: 18px">
               <a-col :span="8">
                 <a-col :span="8" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="hisTire()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
@@ -248,7 +248,7 @@
               </a-col>
               <a-col :span="8">
                 <a-col :span="8" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="hisTire()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
@@ -259,7 +259,7 @@
               </a-col>
               <a-col :span="8">
                 <a-col :span="8" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="hisTire()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
@@ -272,7 +272,7 @@
             <a-row type="flex" style="height: 60px; font-size: 18px">
               <a-col :span="8">
                 <a-col :span="8" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="hisTire()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
@@ -283,7 +283,7 @@
               </a-col>
               <a-col :span="8">
                 <a-col :span="8" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="hisTire()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
@@ -294,7 +294,7 @@
               </a-col>
               <a-col :span="8">
                 <a-col :span="8" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="hisTire()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
@@ -307,7 +307,7 @@
             <a-row type="flex" style="height: 60px; font-size: 18px">
               <a-col :span="8">
                 <a-col :span="8" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="hisTire()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
@@ -318,7 +318,7 @@
               </a-col>
               <a-col :span="8">
                 <a-col :span="8" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="hisTire()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
@@ -329,7 +329,7 @@
               </a-col>
               <a-col :span="8">
                 <a-col :span="8" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="hisTire()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
@@ -342,7 +342,7 @@
             <a-row type="flex" style="height: 60px; font-size: 18px">
               <a-col :span="8">
                 <a-col :span="8" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="hisTire()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
@@ -353,7 +353,7 @@
               </a-col>
               <a-col :span="8">
                 <a-col :span="8" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="hisTire()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
@@ -364,7 +364,7 @@
               </a-col>
               <a-col :span="8">
                 <a-col :span="8" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="more1()" />
+                  <img src="../../static/icon/轮胎1.svg" @click="hisTire()" />
                 </a-col>
                 <a-col :span="16" style="padding-top: 4px; font-weight: bold">
                   <span>
@@ -450,7 +450,7 @@
         <div>
           <i
             class="iconfont icon-ai207"
-            @click="back()"
+            @click="humiBack()"
             style="fontsize: 20px; padding: 0px 0px 0px 10px; align: left"
           ></i>
         </div>
@@ -484,221 +484,46 @@
       </div>
     </div>
 
-    <div v-show="showPage === '2'">
-      <div class="home1">
-        <i
-          class="iconfont icon-ai207"
-          @click="back()"
-          style="fontsize: 30px; padding: 0px 0px 0px 10px; align: left"
-        ></i>
-        <a-tabs size="large">
-          <a-tab-pane key="1" tab="照明灯">
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              照明灯
-            </h1>
-            <h2 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h2>
-            <br /><br /><br />
-            <div id="main1" style="padding-left: 20px; height: 250px"></div>
-          </a-tab-pane>
-          <a-tab-pane key="2" tab="杀菌灯">
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              杀菌灯
-            </h1>
-            <h3 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h3>
-            <br /><br /><br />
-            <div id="main2" style="padding-left: 20px; height: 250px"></div>
-          </a-tab-pane>
-          <a-tab-pane key="3" tab="其它">
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              其它
-            </h1>
-            <h2 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h2>
-            <br /><br /><br />
-            <div id="main3" style="padding-left: 20px; height: 250px"></div
-          ></a-tab-pane>
-        </a-tabs>
-      </div>
-    </div>
-
     <div v-show="showPage === '3'">
       <div class="home1">
-        <i
-          class="iconfont icon-ai207"
-          @click="back()"
-          style="fontsize: 30px; padding: 0px 0px 0px 10px; align: left"
-        ></i
-        ><br />
+        <div>
+          <i
+            class="iconfont icon-ai207"
+            @click="tireBack()"
+            style="fontsize: 20px; padding: 0px 0px 0px 10px; align: left"
+          ></i>
+        </div>
         <a-tabs
-          size="large"
-          style="height: 800px; padding-left: 20px; padding-top: 10px"
+          v-model="tireTabname"
+          :default-active-key="tireTabKey"
+          @tabClick="tabclick1"
         >
-          <a-tab-pane key="1" tab="胎1">
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              胎1
-            </h1>
-            <h2 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h2>
-            <div id="chart1" style="height: 350px; width: 1450px"></div>
-          </a-tab-pane>
-          <a-tab-pane key="2" tab="胎2">
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              胎2
-            </h1>
-            <h2 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h2>
-            <br /><br /><br />
-            <br /><br /><br />
-          </a-tab-pane>
-          <a-tab-pane key="3" tab="胎3">
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              胎3
-            </h1>
-            <h2 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h2>
-            <br /><br /><br />
-            <br /><br /><br />
-          </a-tab-pane>
-          <a-tab-pane key="4" tab="胎4">
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              胎4
-            </h1>
-            <h2 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h2>
-            <br /><br /><br />
-            <br /><br /><br />
-          </a-tab-pane>
-          <a-tab-pane key="5" tab="胎5">
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              胎5
-            </h1>
-            <h2 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h2>
-            <br /><br /><br />
-            <br /><br /><br />
-          </a-tab-pane>
-          <a-tab-pane key="6" tab="胎6">
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              胎6
-            </h1>
-            <h2 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h2>
-            <br /><br /><br />
-            <br /><br /><br />
-          </a-tab-pane>
-          <a-tab-pane key="7" tab="胎7">
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              胎7
-            </h1>
-            <h2 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h2>
-            <br /><br /><br />
-            <br /><br /><br />
-          </a-tab-pane>
-          <a-tab-pane key="8" tab="胎8">
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              胎8
-            </h1>
-            <h2 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h2>
-            <br /><br /><br />
-            <br /><br /><br />
-          </a-tab-pane>
-          <a-tab-pane key="9" tab="胎9">
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              胎9
-            </h1>
-            <h2 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h2>
-            <br /><br /><br />
-            <br /><br /><br />
-          </a-tab-pane>
-          <a-tab-pane key="10" tab="胎10">
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              胎10
-            </h1>
-            <h2 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h2>
-            <br /><br /><br />
-            <br /><br /><br />
-          </a-tab-pane>
-          <a-tab-pane key="11" tab="胎11">
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              胎11
-            </h1>
-            <h2 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h2>
-            <br /><br /><br />
-            <br /><br /><br />
-          </a-tab-pane>
-          <a-tab-pane key="12" tab="胎12">
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              胎12
-            </h1>
-            <h2 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h2>
-            <br /><br /><br />
-            <br /><br /><br />
-          </a-tab-pane>
-        </a-tabs>
-      </div>
-    </div>
-
-    <div v-show="showPage === '4'">
-      <div class="home1">
-        <i
-          class="iconfont icon-ai207"
-          @click="back()"
-          style="fontsize: 30px; padding: 0px 0px 0px 10px; align: left"
-        ></i
-        ><br />
-        <a-tabs default-active-key="1" size="large">
-          <a-tab-pane key="1" tab="门 1">
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              门 1
-            </h1>
-            <h2 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h2>
-            <br /><br /><br />
-            <div id="main2" style="padding-left: 20px; height: 250px"></div>
-          </a-tab-pane>
-          <a-tab-pane key="2" tab="门 2" force-render>
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              门 2
-            </h1>
-            <h2 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h2>
-            <br /><br /><br />
-            <div id="main2" style="padding-left: 20px; height: 250px"></div>
-          </a-tab-pane>
-          <a-tab-pane key="3" tab="门 3">
-            <h1 style="font-size: 30px; padding-top: 30px; padding-left: 30px">
-              门 3
-            </h1>
-            <h2 style="font-size: 22px; padding-left: 30px">
-              更新时间：2021-03-20 20:11:00
-            </h2>
-            <br /><br /><br />
-            <div id="main2" style="padding-left: 20px; height: 250px"></div>
+          <a-tab-pane
+            v-for="(item, index) in tireList"
+            :key="index"
+            :tab="item.name"
+          >
+            <div style="font-size: 26px; font-weight: 600; margin-left: 50px">
+              <span>{{ item.name }}</span>
+            </div>
+            <div
+              style="
+                font-size: 22px;
+                font-weight: 600;
+                line-height: 50px;
+                margin-left: 50px;
+              "
+            >
+              <span>数据最后上传时间：{{ item.date }}</span>
+            </div>
+            <a-spin tip="正在请求历史数据" :spinning="tireSpinning">
+              <div
+                id="chart1"
+                ref="chart1"
+                style="height: 300px; width: 1450px; margin-left: 50px"
+                v-if="tireTabname === index"
+              ></div>
+            </a-spin>
           </a-tab-pane>
         </a-tabs>
       </div>
@@ -734,7 +559,9 @@ export default {
     return {
       showPage: "0", //初始页面
       humiTabKey: "1", //温湿度tabs初始值
+      tireTabKey: "1", //胎温tabs初始值
       humiTabname: 0,
+      tireTabname: 0,
       oilData: "70", //油位
       volData: "22", //剩余容积
       capData: "45", //载重量
@@ -745,6 +572,7 @@ export default {
       light3: true,
       spinning1: true,
       humiSpinning: false,
+      tireSpinning: false,
       alert: true,
       // num: "1", //冷机温度
       coor: {
@@ -779,6 +607,13 @@ export default {
       mintemp: "",
       maxhumi: "",
       minhumi: "",
+      hisTireDate: [],
+      hisTireTemp: [],
+      hisTirePress: [],
+      maxtiretemp: "",
+      mintiretemp: "",
+      maxtirepress: "",
+      mintirepress: "",
 
       doorOriData: [],
       doorHandleData: [],
@@ -1071,7 +906,7 @@ export default {
           this.tireList.push(obj1);
         }
         console.log("tireHandleData", this.tireHandleData);
-        console.log("tireList", this.tireList);
+        // console.log("tireList", this.tireList);
       }
     },
 
@@ -1110,12 +945,20 @@ export default {
       });
     },
 
-    back() {
+    humiBack() {
       this.showPage = "0";
       this.humiTabKey = "1";
       this.hisDate = [];
       this.hisTemp = [];
       this.hisHumi = [];
+      // console.log(this.showPage);
+    },
+    tireBack() {
+      this.showPage = "0";
+      this.tireTabKey = "1";
+      this.hisTireDate = [];
+      this.hisTireTemp = [];
+      this.hisTirePress = [];
       // console.log(this.showPage);
     },
 
@@ -1169,6 +1012,40 @@ export default {
           this.draw();
           this.humiSpinning = false;
         });
+      });
+    },
+    tabclick1(e) {
+      this.hisTireDate = [];
+      this.hisTireTemp = [];
+      this.hisTirePress = [];
+      this.tireTabname = e;
+      this.tireSpinning = true;
+
+      getDeviceHisData({
+        deviceKey: this.tireHandleData[0].dk,
+        startTime: this.hisEndTime - 4 * 86400, //86400
+        endTime: this.hisEndTime,
+      }).then((res) => {
+        console.log(res);
+        if (res.code == 200) {
+          for (var i = 0; i < res.data.deviceData.length; i++) {
+            this.hisTireDate.push(res.data.deviceData[i].date);
+            this.hisTireTemp.push(res.data.deviceData[i].tireTemp);
+            this.hisTirePress.push(res.data.deviceData[i].tirePress);
+          }
+        }
+        console.log(this.hisTireDate);
+        console.log(this.hisTireTemp);
+        console.log(this.hisTirePress);
+        this.maxtiretemp = Math.max.apply(null, this.hisTireTemp);
+        this.mintiretemp = Math.min.apply(null, this.hisTireTemp);
+        // console.log(this.maxtiretemp,this.mintiretemp);
+        this.maxtirepress = Math.max.apply(null, this.hisTirePress);
+        this.mintirepress = Math.min.apply(null, this.hisTirePress);
+        // console.log(this.maxtirepress,this.mintirepress);
+        this.drawTyre1();
+        this.tireSpinning = false;
+        // console.log("1");
       });
     },
     draw() {
@@ -1566,48 +1443,49 @@ export default {
         });
     },
 
-    more1() {
+    hisTire() {
+      // this.showPage = "3";
+      // this.drawTyre1();
+      console.log("tireList", this.tireList);
+      this.tireTabKey = "1";
       this.showPage = "3";
-      this.drawTyre1();
+      this.tireSpinning = true;
+      this.hisEndTime = Date.parse(new Date()) / 1000;
+
+      getDeviceHisData({
+        deviceKey: this.tireHandleData[0].dk,
+        startTime: this.hisEndTime - 4 * 86400, //86400
+        endTime: this.hisEndTime,
+      }).then((res) => {
+        console.log(res);
+        if (res.code == 200) {
+          for (var i = 0; i < res.data.deviceData.length; i++) {
+            this.hisTireDate.push(res.data.deviceData[i].date);
+            this.hisTireTemp.push(res.data.deviceData[i].tireTemp);
+            this.hisTirePress.push(res.data.deviceData[i].tirePress);
+          }
+        }
+        console.log(this.hisTireDate);
+        console.log(this.hisTireTemp);
+        console.log(this.hisTirePress);
+        this.maxtiretemp = Math.max.apply(null, this.hisTireTemp);
+        this.mintiretemp = Math.min.apply(null, this.hisTireTemp);
+        // console.log(this.maxtiretemp,this.mintiretemp);
+        this.maxtirepress = Math.max.apply(null, this.hisTirePress);
+        this.mintirepress = Math.min.apply(null, this.hisTirePress);
+        // console.log(this.maxtirepress,this.mintirepress);
+        this.drawTyre1();
+        this.tireSpinning = false;
+        // console.log("1");
+      });
     },
     show() {
-      this.showPage = "2";
+      // this.showPage = "2";
+      console.log("1111");
     },
     showdoor() {
-      this.showPage = "4";
-    },
-
-    tu1() {
-      //照明灯图
-      const linePlot = new Line("main1", {
-        data: this.data1,
-        padding: "auto",
-        xField: "time",
-        yField: "value",
-        stepType: "vh",
-      });
-      linePlot.render();
-    },
-    tu2() {
-      //杀菌灯图
-      const linePlot = new Line("main2", {
-        data: this.data2,
-        xField: "time",
-        yField: "value",
-        stepType: "vh",
-      });
-      linePlot.render();
-    },
-    tu3() {
-      //其它
-      const linePlot = new Line("main3", {
-        data: this.data3,
-        padding: "auto",
-        xField: "time",
-        yField: "value",
-        stepType: "vh",
-      });
-      linePlot.render();
+      // this.showPage = "4";
+      console.log("2222");
     },
 
     drawVib() {
@@ -1662,35 +1540,14 @@ export default {
           axisTick: {
             alignWithLabel: true,
           },
-          data: [
-            "00:00",
-            "01:15",
-            "02:30",
-            "03:45",
-            "05:00",
-            "06:15",
-            "07:30",
-            "08:45",
-            "10:00",
-            "11:15",
-            "12:30",
-            "13:45",
-            "15:00",
-            "16:15",
-            "17:30",
-            "18:45",
-            "20:00",
-            "21:15",
-            "22:30",
-            "23:45",
-          ],
+          data: this.hisTireDate,
         },
         yAxis: [
           {
             type: "value",
             name: "胎温",
-            min: 0,
-            max: 100,
+            min: this.mintiretemp - 2,
+            max: this.maxtiretemp + 2,
             position: "left",
             axisLine: {
               show: true,
@@ -1705,8 +1562,8 @@ export default {
           {
             type: "value",
             name: "胎压",
-            min: 0,
-            max: 50,
+            min: this.mintirepress - 100,
+            max: this.maxtirepress + 100,
             position: "right",
             offset: 6,
             axisLine: {
@@ -1726,14 +1583,14 @@ export default {
             name: "胎温",
             type: "line",
             color: colors[0],
-            data: this.data03,
+            data: this.hisTireTemp,
           },
           {
             name: "胎压",
             type: "line",
             color: colors[1],
             yAxisIndex: 1,
-            data: this.data04,
+            data: this.hisTirePress,
           },
         ],
       };
