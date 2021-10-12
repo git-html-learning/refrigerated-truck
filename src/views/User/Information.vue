@@ -1,10 +1,7 @@
 <template>
   <div>
     <div>
-      <el-row
-        :grid="{ gutter: 16, xs: 2, sm: 2, md: 2, lg: 2, xl: 2, xxl: 2 }"
-        
-      >
+      <el-row :grid="{ gutter: 16, xs: 2, sm: 2, md: 2, lg: 2, xl: 2, xxl: 2 }">
         <el-col :span="5" style="margin-right: 20px">
           <a-card hoverable style="text-align: center; height: 960px">
             <br />
