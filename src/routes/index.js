@@ -34,20 +34,9 @@ export default new Router({
               path: '/dashboard/map',
               name: '车辆全图监控',
               component: () => import('@/views/Dashboard/Map'),
-              icon: 'none'
+              icon: 'none',
+              // meta:{requireAuth:true}
             },
-            // {
-            //   path: '/dashboard/monitor',
-            //   name: '测试页',
-            //   component: () => import('@/views/Dashboard/Monitor'),
-            //   icon: 'none'
-            // },
-            // {
-            //   path: '/dashboard/workplace',
-            //   name: '工作台',
-            //   component: () => import('@/views/Dashboard/Workplace'),
-            //   icon: 'none'
-            // }
           ]
         },
         {
@@ -62,37 +51,33 @@ export default new Router({
               name: '警报',
               component: () => import('@/views/Notice/Warning'),
               icon: 'none'
-            },
-            // {
-            //   path: '/detail/basic',
-            //   name: '设备设置',
-            //   component: () => import('@/views/Detail/BasicDetail'),
-            //   icon: 'none'
-            // }          
+            },        
           ]
         },
-        {
-          path: '/monitor',
-          name: '数字货舱',
-          // component: RouteView,
-          component: () => import('@/layouts/RouteView'),
-          icon: 'warning',
-          children: [
-            {
-              path: '/monitor/vibration',
-              name: '震动监控',
-              component: () => import('@/views/Monitor/Vibration'),
-              icon: 'none'
-            },
-            {
-              path: '/monitor/refrigerator',
-              name: '冷机监控',
-              component: () => import('@/views/Monitor/Refrigerator'),
-              icon: 'none'
-            }
+
+        // {
+        //   path: '/monitor',
+        //   name: '数字货舱',
+        //   // component: RouteView,
+        //   component: () => import('@/layouts/RouteView'),
+        //   icon: 'warning',
+        //   children: [
+        //     {
+        //       path: '/monitor/vibration',
+        //       name: '震动监控',
+        //       component: () => import('@/views/Monitor/Vibration'),
+        //       icon: 'none'
+        //     },
+        //     {
+        //       path: '/monitor/refrigerator',
+        //       name: '冷机监控',
+        //       component: () => import('@/views/Monitor/Refrigerator'),
+        //       icon: 'none'
+        //     }
           
-          ]
-        },
+        //   ]
+        // },
+
         {
           path: '/list',
           name: '信息管理',
@@ -112,17 +97,12 @@ export default new Router({
               component: () => import('@/views/List/Vehicle'),
               icon: 'none'
             },
-            // {
-            //   path: '/list/card',
-            //   name: '仓库历史数据',
-            //   component: () => import('@/views/List/CardList'),
-            //   icon: 'none'
-            // }
             {
               path: '/list/details',
               name: '车辆详情页',
               component: () => import('@/views/List/Details'),
-              icon: 'none'
+              icon: 'none',
+              invisible:true
             },
           ]
         },
