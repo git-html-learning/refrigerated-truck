@@ -175,14 +175,11 @@
   </div>
 </template>
 <script>
+import { product } from "@/api/interface";
 import {
-  product,
   registerVeh,
   deleteProduct,
   tempAndHumi,
-  refrigerator,
-  capacity,
-  load,
   oil,
   light01,
   light02,
@@ -190,7 +187,7 @@ import {
   door,
   shake01,
   shake02,
-} from "@/api/interface";
+} from "@/api/vehicle";
 
 export default {
   data() {
@@ -202,7 +199,6 @@ export default {
       productname: "", //注册车辆号码
       num1: "8",
 
-
       num5: "1",
       num6: "1",
       num7: "1",
@@ -213,7 +209,7 @@ export default {
       productKey: "", //注册车辆生成的pk
       productkey: "", //删除车辆所需pk
       transpk: "", //组件传参pk
-      transnum:"", //传递的车牌号
+      transnum: "", //传递的车牌号
 
       vehicleList: [], //车辆信息展示列表
       // vehicleList: [
@@ -249,7 +245,6 @@ export default {
   created() {
     this.getproduct();
   },
-
 
   methods: {
     async getproduct() {
@@ -436,7 +431,7 @@ export default {
         path: "/list/details",
         query: {
           pk: this.transpk,
-          carnum:this.transnum
+          carnum: this.transnum,
         },
       });
     },
