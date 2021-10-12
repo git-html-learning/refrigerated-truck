@@ -538,7 +538,6 @@ import {
   changeLight,
 } from "@/api/interface";
 import * as echarts from "echarts";
-import { Liquid, Gauge, Line, Area } from "@antv/g2plot";
 export default {
   created() {
     this.getQuery();
