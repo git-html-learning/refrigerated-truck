@@ -81,8 +81,6 @@
           >
             <a slot="extra" @click="open1">更多</a>
             <div id="oil" class="oil"></div>
-            <div id="vol" class="vol"></div>
-            <div id="cap" class="cap"></div>
           </a-card>
         </a-col>
       </a-row>
@@ -138,7 +136,7 @@
                 <a-switch
                   checked-children="开"
                   un-checked-children="关"
-                  default-checked
+                  :defaultChecked="defaultChecked"
                   @change="changeLight1"
                 />
               </div>
@@ -548,8 +546,6 @@ export default {
 
   mounted() {
     // console.log("1");
-    // this.drawOil();
-    // this.drawVib();
   },
   updated() {
     this.drawOil();
@@ -567,10 +563,11 @@ export default {
       capData: "45", //载重量
       door1: true,
       door2: false,
-      light1: true,
+      light1: null,
+      defaultChecked: null,
       light2: true,
       light3: true,
-      spinning1: true,
+      spinning1: false,
       humiSpinning: false,
       tireSpinning: false,
       alert: true,
@@ -589,12 +586,12 @@ export default {
       tireDkList: [],
       devicerankList: [
         //报警条数排名
-        { count: "52", deviceName: "温度传感器3" },
-        { count: "26", deviceName: "温度传感器2" },
-        { count: "22", deviceName: "温度传感器1" },
-        { count: "20", deviceName: "胎温传感器3" },
-        { count: "12", deviceName: "胎压传感器8" },
-        { count: "10", deviceName: "胎温传感器5" },
+        { count: "5", deviceName: "温度传感器3" },
+        { count: "2", deviceName: "温度传感器2" },
+        { count: "2", deviceName: "温度传感器1" },
+        { count: "2", deviceName: "胎温传感器3" },
+        { count: "1", deviceName: "胎压传感器8" },
+        { count: "1", deviceName: "胎温传感器5" },
         // {count:"9",deviceName:"温度传感器6",},
       ],
       sensorList: [],
@@ -640,61 +637,6 @@ export default {
         { time: "19：15", num: 0.5 },
         { time: "21：00", num: 1 },
         { time: "23：15", num: 0.9 },
-      ],
-
-      data03: [
-        12, 13, 10, 13, 9, 23, 33, 45, 55, 60, 77, 56, 57, 43, 26, 19, 25, 23,
-        29, 25, 21,
-      ], // 胎温
-      data04: [
-        8, 18, 19, 23, 29, 25, 21, 8, 9, 18, 6, 7, 11, 9, 16, 8, 17, 9, 32, 18,
-        19, 43,
-      ], // 胎压
-
-      data1: [
-        { time: "00:00", value: 0 },
-        { time: "02:00", value: 1 },
-        { time: "04:00", value: 1 },
-        { time: "06:00", value: 1 },
-        { time: "08:00", value: 1 },
-        { time: "10:00", value: 0 },
-        { time: "12:00", value: 0 },
-        { time: "14:00", value: 0 },
-        { time: "16:00", value: 0 },
-        { time: "18:00", value: 1 },
-        { time: "20:00", value: 1 },
-        { time: "22:00", value: 1 },
-        { time: "24:00", value: 1 },
-      ],
-      data2: [
-        { time: "00:00", value: 0 },
-        { time: "02:00", value: 0 },
-        { time: "04:00", value: 0 },
-        { time: "06:00", value: 1 },
-        { time: "08:00", value: 1 },
-        { time: "10:00", value: 1 },
-        { time: "12:00", value: 1 },
-        { time: "14:00", value: 1 },
-        { time: "16:00", value: 1 },
-        { time: "18:00", value: 1 },
-        { time: "20:00", value: 1 },
-        { time: "22:00", value: 1 },
-        { time: "24:00", value: 1 },
-      ],
-      data3: [
-        { time: "00:00", value: 0 },
-        { time: "02:00", value: 1 },
-        { time: "04:00", value: 1 },
-        { time: "06:00", value: 1 },
-        { time: "08:00", value: 1 },
-        { time: "10:00", value: 0 },
-        { time: "12:00", value: 1 },
-        { time: "14:00", value: 1 },
-        { time: "16:00", value: 1 },
-        { time: "18:00", value: 1 },
-        { time: "20:00", value: 1 },
-        { time: "22:00", value: 1 },
-        { time: "24:00", value: 1 },
       ],
     };
   },
@@ -826,6 +768,16 @@ export default {
       // console.log("door",res);
       if (res.code == 200) {
         this.lightOriData = res.data.deviceData[0].electrical;
+        switch (this.lightOriData[0]) {
+          case 0:
+            this.light1 = false;
+            this.defaultChecked = false;
+            break;
+          case 1:
+            this.light1 = true;
+            this.defaultChecked = true;
+            break;
+        }
         for (var i = 0; i < res.data.deviceData.length; i++) {
           var obj = {
             doorName: res.data.deviceData[i].deviceName,
@@ -837,6 +789,8 @@ export default {
         }
         // console.log("doorOriData",this.doorOriData);
         console.log("lightOriData", this.lightOriData);
+        console.log("light1", this.light1);
+        console.log("defaultChecked", this.defaultChecked);
         this.doorHandleData = JSON.parse(JSON.stringify(this.doorOriData));
         // console.log("doorHandleData",this.doorHandleData);
         this.doorHandleData.sort(function (a, b) {
@@ -905,233 +859,9 @@ export default {
           };
           this.tireList.push(obj1);
         }
-        console.log("tireHandleData", this.tireHandleData);
+        // console.log("tireHandleData", this.tireHandleData);
         // console.log("tireList", this.tireList);
       }
-    },
-
-    hisTem1() {
-      console.log(this.sensorList);
-      this.humiTabKey = "1";
-      this.showPage = "1";
-      this.humiSpinning = true;
-      this.hisEndTime = Date.parse(new Date()) / 1000;
-
-      getDeviceHisData({
-        deviceKey: this.humiHandleData[0].dk,
-        startTime: this.hisEndTime - 4 * 86400, //86400
-        endTime: this.hisEndTime,
-      }).then((res) => {
-        console.log(res);
-        if (res.code == 200) {
-          for (var i = 0; i < res.data.deviceData.length; i++) {
-            this.hisDate.push(res.data.deviceData[i].date);
-            this.hisTemp.push(res.data.deviceData[i].temp);
-            this.hisHumi.push(res.data.deviceData[i].humi);
-          }
-        }
-        console.log(this.hisDate);
-        console.log(this.hisTemp);
-        console.log(this.hisHumi);
-        this.maxtemp = Math.max.apply(null, this.hisTemp);
-        this.mintemp = Math.min.apply(null, this.hisTemp);
-        // console.log(this.maxtemp,this.mintemp);
-        this.maxhumi = Math.max.apply(null, this.hisHumi);
-        this.minhumi = Math.min.apply(null, this.hisHumi);
-        // console.log(this.maxhumi,this.minhumi);
-        this.draw();
-        this.humiSpinning = false;
-        // console.log("1");
-      });
-    },
-
-    humiBack() {
-      this.showPage = "0";
-      this.humiTabKey = "1";
-      this.hisDate = [];
-      this.hisTemp = [];
-      this.hisHumi = [];
-      // console.log(this.showPage);
-    },
-    tireBack() {
-      this.showPage = "0";
-      this.tireTabKey = "1";
-      this.hisTireDate = [];
-      this.hisTireTemp = [];
-      this.hisTirePress = [];
-      // console.log(this.showPage);
-    },
-
-    changeLight1(checked) {
-      console.log(checked, this.productkey);
-      if (checked === true) {
-        console.log("开灯");
-        changeLight({
-          productKey: this.productkey,
-          checkCode: "EFEFEF0101CF",
-        }).then((res) => {
-          console.log("开灯", res);
-        });
-      } else {
-        console.log("关灯");
-      }
-      this.light1 = !this.light1;
-    },
-
-    tabclick(e) {
-      this.hisDate = [];
-      this.hisTemp = [];
-      this.hisHumi = [];
-      this.humiTabname = e;
-      // console.log(e);
-      // console.log(this.sensorList[e].dk);
-      this.humiSpinning = true;
-      getDeviceHisData({
-        deviceKey: this.sensorList[e].dk,
-        startTime: this.hisEndTime - 4 * 86400, //86400
-        endTime: this.hisEndTime,
-      }).then((res) => {
-        console.log(res);
-        if (res.code == 200) {
-          for (var i = 0; i < res.data.deviceData.length; i++) {
-            this.hisDate.push(res.data.deviceData[i].date);
-            this.hisTemp.push(res.data.deviceData[i].temp);
-            this.hisHumi.push(res.data.deviceData[i].humi);
-          }
-        }
-        console.log(this.hisDate);
-        console.log(this.hisTemp);
-        console.log(this.hisHumi);
-        this.maxtemp = Math.max.apply(null, this.hisTemp);
-        this.mintemp = Math.min.apply(null, this.hisTemp);
-        // console.log(this.maxtemp,this.mintemp);
-        this.maxhumi = Math.max.apply(null, this.hisHumi);
-        this.minhumi = Math.min.apply(null, this.hisHumi);
-        // console.log(this.maxhumi,this.minhumi);
-        this.$nextTick(() => {
-          this.draw();
-          this.humiSpinning = false;
-        });
-      });
-    },
-    tabclick1(e) {
-      this.hisTireDate = [];
-      this.hisTireTemp = [];
-      this.hisTirePress = [];
-      this.tireTabname = e;
-      this.tireSpinning = true;
-
-      getDeviceHisData({
-        deviceKey: this.tireHandleData[0].dk,
-        startTime: this.hisEndTime - 4 * 86400, //86400
-        endTime: this.hisEndTime,
-      }).then((res) => {
-        console.log(res);
-        if (res.code == 200) {
-          for (var i = 0; i < res.data.deviceData.length; i++) {
-            this.hisTireDate.push(res.data.deviceData[i].date);
-            this.hisTireTemp.push(res.data.deviceData[i].tireTemp);
-            this.hisTirePress.push(res.data.deviceData[i].tirePress);
-          }
-        }
-        console.log(this.hisTireDate);
-        console.log(this.hisTireTemp);
-        console.log(this.hisTirePress);
-        this.maxtiretemp = Math.max.apply(null, this.hisTireTemp);
-        this.mintiretemp = Math.min.apply(null, this.hisTireTemp);
-        // console.log(this.maxtiretemp,this.mintiretemp);
-        this.maxtirepress = Math.max.apply(null, this.hisTirePress);
-        this.mintirepress = Math.min.apply(null, this.hisTirePress);
-        // console.log(this.maxtirepress,this.mintirepress);
-        this.drawTyre1();
-        this.tireSpinning = false;
-        // console.log("1");
-      });
-    },
-    draw() {
-      // console.log(this.humiTabKey);
-      //温湿度历史数据图
-      var myChart = echarts.init(document.getElementById("chart"));
-      var colors = ["#7cb305", "#1890ff"];
-      var option = {
-        color: colors,
-        title: {
-          text: "温湿度历史数据",
-          left: "center",
-        },
-        tooltip: {
-          trigger: "axis",
-          axisPointer: {
-            type: "cross",
-          },
-        },
-        legend: {
-          data: ["温度", "湿度"],
-          left: 80,
-        },
-        grid: {
-          left: "3%",
-          right: "4%",
-          bottom: "3%",
-          containLabel: true,
-        },
-        xAxis: {
-          type: "category",
-          boundaryGap: false, //横轴顶格
-          data: this.hisDate,
-        },
-        yAxis: [
-          {
-            type: "value",
-            name: "温度",
-            min: this.mintemp - 2,
-            max: this.maxtemp + 2,
-            position: "left",
-            axisLine: {
-              show: true,
-              lineStyle: {
-                color: colors[0],
-              },
-            },
-            axisLabel: {
-              formatter: "{value} ℃",
-            },
-          },
-          {
-            type: "value",
-            name: "湿度",
-            min: this.minhumi - 2,
-            max: this.maxhumi + 2,
-            position: "right",
-            offset: 6,
-            axisLine: {
-              show: true,
-              lineStyle: {
-                color: colors[1],
-              },
-            },
-            axisLabel: {
-              formatter: "{value} %",
-            },
-          },
-        ],
-        series: [
-          {
-            name: "温度",
-            type: "line",
-            // stack: "总量",
-            data: this.hisTemp,
-          },
-          {
-            name: "湿度",
-            type: "line",
-            yAxisIndex: 1, //解决了左右y轴相同刻度，选定哪条y
-            // stack: "总量",
-            data: this.hisHumi,
-          },
-        ],
-      };
-      option && myChart.setOption(option);
     },
 
     drawOil() {
@@ -1227,225 +957,52 @@ export default {
       option && myChart.setOption(option);
     },
 
-    drawVol() {
-      //剩余容积图
-      var chartDom = document.getElementById("vol");
-      var myChart = echarts.init(chartDom);
-      var option = {
-        series: [
-          {
-            type: "gauge",
-            splitNumber: 5,
-            axisLine: {
-              // 仪表盘轴线(轮廓线)相关配置。
-              lineStyle: {
-                // 仪表盘轴线样式。
-                width: 10,
-                color: [
-                  [0.3, "#f04864"],
-                  [1, "#1890ff"],
-                ],
-              },
-            },
-            pointer: {
-              // 仪表盘指针
-              length: "70%",
-              width: 5,
-              itemStyle: {
-                color: "auto",
-              },
-            },
-            axisTick: {
-              // 刻度(线)样式。
-              distance: -30,
-              length: 0,
-              lineStyle: {
-                color: "#fff",
-                width: 2,
-              },
-            },
-            splitLine: {
-              // 分隔线样式
-              distance: -30,
-              length: 10,
-              lineStyle: {
-                color: "#fff",
-                width: 2,
-              },
-            },
-            axisLabel: {
-              // 刻度标签。
-              color: "auto",
-              distance: 2,
-              fontSize: 10,
-            },
-            detail: {
-              // 仪表盘详情，用于显示数据。
-              valueAnimation: true,
-              formatter: "{value} %",
-              color: "auto",
-              fontSize: 20,
-            },
-            data: [
-              {
-                value: this.volData,
-                name: "剩余容积",
-              },
-            ],
-          },
-        ],
-      };
-      option && myChart.setOption(option);
+    hisTem1() {
+      console.log(this.sensorList);
+      this.humiTabKey = "1";
+      this.showPage = "1";
+      this.humiSpinning = true;
+      this.hisEndTime = Date.parse(new Date()) / 1000;
+
+      getDeviceHisData({
+        deviceKey: this.humiHandleData[0].dk,
+        startTime: this.hisEndTime - 4 * 86400, //86400
+        endTime: this.hisEndTime,
+      }).then((res) => {
+        console.log(res);
+        if (res.code == 200) {
+          for (var i = 0; i < res.data.deviceData.length; i++) {
+            this.hisDate.push(res.data.deviceData[i].date);
+            this.hisTemp.push(res.data.deviceData[i].temp);
+            this.hisHumi.push(res.data.deviceData[i].humi);
+          }
+        }
+        console.log(this.hisDate);
+        console.log(this.hisTemp);
+        console.log(this.hisHumi);
+        this.maxtemp = Math.max.apply(null, this.hisTemp);
+        this.mintemp = Math.min.apply(null, this.hisTemp);
+        // console.log(this.maxtemp,this.mintemp);
+        this.maxhumi = Math.max.apply(null, this.hisHumi);
+        this.minhumi = Math.min.apply(null, this.hisHumi);
+        // console.log(this.maxhumi,this.minhumi);
+        this.drawHumi();
+        this.humiSpinning = false;
+        // console.log("1");
+      });
     },
 
-    drawCap() {
-      //载重量图
-      var chartDom = document.getElementById("cap");
-      var myChart = echarts.init(chartDom);
-      var option = {
-        series: [
-          {
-            type: "gauge",
-            splitNumber: 5,
-            axisLine: {
-              // 仪表盘轴线(轮廓线)相关配置。
-              lineStyle: {
-                // 仪表盘轴线样式。
-                width: 10,
-                color: [
-                  [0.7, "#1890ff"],
-                  [1, "#f04864"],
-                ],
-              },
-            },
-            pointer: {
-              // 仪表盘指针
-              length: "70%",
-              width: 5,
-              itemStyle: {
-                color: "auto",
-              },
-            },
-            axisTick: {
-              // 刻度(线)样式。
-              distance: -30,
-              length: 0,
-              lineStyle: {
-                color: "#fff",
-                width: 2,
-              },
-            },
-            splitLine: {
-              // 分隔线样式
-              distance: -30,
-              length: 10,
-              lineStyle: {
-                color: "#fff",
-                width: 2,
-              },
-            },
-            axisLabel: {
-              // 刻度标签。
-              color: "auto",
-              distance: 2,
-              fontSize: 10,
-            },
-            detail: {
-              // 仪表盘详情，用于显示数据。
-              valueAnimation: true,
-              formatter: "{value} %",
-              color: "auto",
-              fontSize: 20,
-            },
-            data: [
-              {
-                value: this.capData,
-                name: "载重量",
-              },
-            ],
-          },
-        ],
-      };
-      option && myChart.setOption(option);
-    },
-
-    open0() {
-      this.$prompt("设置温度报警值/°C", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-      })
-        .then(({ value }) => {
-          this.$message({
-            type: "success",
-            message: "温度报警值: " + value,
-          });
-        })
-        .catch(() => {
-          this.$message({
-            type: "info",
-            message: "取消输入",
-          });
-        });
-    },
-
-    open1() {
-      this.$prompt("设置油位报警值/%", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-      })
-        .then(({ value }) => {
-          this.$message({
-            type: "success",
-            message: "油位低于: " + value + "报警",
-          });
-        })
-        .catch(() => {
-          this.$message({
-            type: "info",
-            message: "取消输入",
-          });
-        });
-    },
-    open() {
-      this.$prompt("设置震动报警值/g", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-      })
-        .then(({ value }) => {
-          this.$message({
-            type: "success",
-            message: "车辆震动值: " + value,
-          });
-        })
-        .catch(() => {
-          this.$message({
-            type: "info",
-            message: "取消输入",
-          });
-        });
-    },
-    open2() {
-      this.$prompt("设置报警值", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-      })
-        .then(({ value }) => {
-          this.$message({
-            type: "success",
-            message: "胎温胎压低于: " + value + "报警",
-          });
-        })
-        .catch(() => {
-          this.$message({
-            type: "info",
-            message: "取消输入",
-          });
-        });
+    humiBack() {
+      this.showPage = "0";
+      this.humiTabKey = "1";
+      this.hisDate = [];
+      this.hisTemp = [];
+      this.hisHumi = [];
+      // console.log(this.showPage);
     },
 
     hisTire() {
       // this.showPage = "3";
-      // this.drawTyre1();
       console.log("tireList", this.tireList);
       this.tireTabKey = "1";
       this.showPage = "3";
@@ -1474,42 +1031,250 @@ export default {
         this.maxtirepress = Math.max.apply(null, this.hisTirePress);
         this.mintirepress = Math.min.apply(null, this.hisTirePress);
         // console.log(this.maxtirepress,this.mintirepress);
-        this.drawTyre1();
+        this.drawTyre();
         this.tireSpinning = false;
         // console.log("1");
       });
     },
-    show() {
-      // this.showPage = "2";
-      console.log("1111");
-    },
-    showdoor() {
-      // this.showPage = "4";
-      console.log("2222");
+
+    tireBack() {
+      this.showPage = "0";
+      this.tireTabKey = "1";
+      this.hisTireDate = [];
+      this.hisTireTemp = [];
+      this.hisTirePress = [];
+      // console.log(this.showPage);
     },
 
-    drawVib() {
-      //详情页震动图
-      const linePlot = new Line("main7", {
-        data: this.data7,
-        xField: "time",
-        yField: "num",
-        yAxis: {
-          min: 0,
-          max: 5,
-        },
-        meta: {
-          time: {
-            alias: " ",
-          },
-          num: {
-            alias: "g",
-          },
-        },
-      });
-      linePlot.render();
+    changeLight1(checked) {
+      // console.log(checked, this.productkey);
+      this.spinning1 = true;
+      if (checked === true) {
+        console.log("正在开灯");
+        let data1 = {
+          productKey: this.productkey,
+          checkCode: "EFEFEF0101CF",
+        };
+        changeLight(data1).then((res) => {
+          // console.log("开灯结果", res);
+          if (res.code == 200) {
+            getDeviceData({
+              productKey: this.productkey,
+              deviceKeyList: this.doorDkList,
+            }).then((res) => {
+              // console.log(res);
+              if (res.code == 200) {
+                this.lightOriData = res.data.deviceData[0].electrical;
+                switch (this.lightOriData[0]) {
+                  case 0:
+                    this.light1 = false;
+                    this.defaultChecked = false;
+                    break;
+                  case 1:
+                    this.light1 = true;
+                    this.defaultChecked = true;
+                    break;
+                }
+                console.log("light1", this.light1);
+                console.log("defaultChecked", this.defaultChecked);
+                this.spinning1 = false;
+              }
+            });
+          }
+        });
+      } else {
+        console.log("正在关灯");
+        let data2 = {
+          productKey: this.productkey,
+          checkCode: "EFEFEF0100CE",
+        };
+        changeLight(data2).then((res) => {
+          // console.log("关灯结果", res);
+          if (res.code == 200) {
+            getDeviceData({
+              productKey: this.productkey,
+              deviceKeyList: this.doorDkList,
+            }).then((res) => {
+              // console.log(res);
+              if (res.code == 200) {
+                this.lightOriData = res.data.deviceData[0].electrical;
+                switch (this.lightOriData[0]) {
+                  case 0:
+                    this.light1 = false;
+                    this.defaultChecked = false;
+                    break;
+                  case 1:
+                    this.light1 = true;
+                    this.defaultChecked = true;
+                    break;
+                }
+                console.log("light1", this.light1);
+                console.log("defaultChecked", this.defaultChecked);
+                this.spinning1 = false;
+              }
+            });
+          }
+        });
+      }
+      // this.light1 = !this.light1;
     },
-    drawTyre1() {
+
+    tabclick(e) {
+      this.hisDate = [];
+      this.hisTemp = [];
+      this.hisHumi = [];
+      this.humiTabname = e;
+      // console.log(e);
+      // console.log(this.sensorList[e].dk);
+      this.humiSpinning = true;
+      getDeviceHisData({
+        deviceKey: this.sensorList[e].dk,
+        startTime: this.hisEndTime - 4 * 86400, //86400
+        endTime: this.hisEndTime,
+      }).then((res) => {
+        console.log(res);
+        if (res.code == 200) {
+          for (var i = 0; i < res.data.deviceData.length; i++) {
+            this.hisDate.push(res.data.deviceData[i].date);
+            this.hisTemp.push(res.data.deviceData[i].temp);
+            this.hisHumi.push(res.data.deviceData[i].humi);
+          }
+        }
+        console.log(this.hisDate);
+        console.log(this.hisTemp);
+        console.log(this.hisHumi);
+        this.maxtemp = Math.max.apply(null, this.hisTemp);
+        this.mintemp = Math.min.apply(null, this.hisTemp);
+        // console.log(this.maxtemp,this.mintemp);
+        this.maxhumi = Math.max.apply(null, this.hisHumi);
+        this.minhumi = Math.min.apply(null, this.hisHumi);
+        // console.log(this.maxhumi,this.minhumi);
+        this.$nextTick(() => {
+          this.drawHumi();
+          this.humiSpinning = false;
+        });
+      });
+    },
+    tabclick1(e) {
+      this.hisTireDate = [];
+      this.hisTireTemp = [];
+      this.hisTirePress = [];
+      this.tireTabname = e;
+      this.tireSpinning = true;
+
+      getDeviceHisData({
+        deviceKey: this.tireHandleData[0].dk,
+        startTime: this.hisEndTime - 4 * 86400, //86400
+        endTime: this.hisEndTime,
+      }).then((res) => {
+        console.log(res);
+        if (res.code == 200) {
+          for (var i = 0; i < res.data.deviceData.length; i++) {
+            this.hisTireDate.push(res.data.deviceData[i].date);
+            this.hisTireTemp.push(res.data.deviceData[i].tireTemp);
+            this.hisTirePress.push(res.data.deviceData[i].tirePress);
+          }
+        }
+        console.log(this.hisTireDate);
+        console.log(this.hisTireTemp);
+        console.log(this.hisTirePress);
+        this.maxtiretemp = Math.max.apply(null, this.hisTireTemp);
+        this.mintiretemp = Math.min.apply(null, this.hisTireTemp);
+        // console.log(this.maxtiretemp,this.mintiretemp);
+        this.maxtirepress = Math.max.apply(null, this.hisTirePress);
+        this.mintirepress = Math.min.apply(null, this.hisTirePress);
+        // console.log(this.maxtirepress,this.mintirepress);
+        this.drawTyre();
+        this.tireSpinning = false;
+        // console.log("1");
+      });
+    },
+    drawHumi() {
+      // console.log(this.humiTabKey);
+      //温湿度历史数据图
+      var myChart = echarts.init(document.getElementById("chart"));
+      var colors = ["#7cb305", "#1890ff"];
+      var option = {
+        color: colors,
+        title: {
+          text: "温湿度历史数据",
+          left: "center",
+        },
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            type: "cross",
+          },
+        },
+        legend: {
+          data: ["温度", "湿度"],
+          left: 80,
+        },
+        grid: {
+          left: "3%",
+          right: "4%",
+          bottom: "3%",
+          containLabel: true,
+        },
+        xAxis: {
+          type: "category",
+          boundaryGap: false, //横轴顶格
+          data: this.hisDate,
+        },
+        yAxis: [
+          {
+            type: "value",
+            name: "温度",
+            min: this.mintemp - 2,
+            max: this.maxtemp + 2,
+            position: "left",
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: colors[0],
+              },
+            },
+            axisLabel: {
+              formatter: "{value} ℃",
+            },
+          },
+          {
+            type: "value",
+            name: "湿度",
+            min: this.minhumi - 2,
+            max: this.maxhumi + 2,
+            position: "right",
+            offset: 6,
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: colors[1],
+              },
+            },
+            axisLabel: {
+              formatter: "{value} %",
+            },
+          },
+        ],
+        series: [
+          {
+            name: "温度",
+            type: "line",
+            // stack: "总量",
+            data: this.hisTemp,
+          },
+          {
+            name: "湿度",
+            type: "line",
+            yAxisIndex: 1, //解决了左右y轴相同刻度，选定哪条y
+            // stack: "总量",
+            data: this.hisHumi,
+          },
+        ],
+      };
+      option && myChart.setOption(option);
+    },
+    drawTyre() {
       //轮胎历史数据
       var myChart = echarts.init(document.getElementById("chart1"));
       var colors = ["#5470C6", "#91CC75"];
@@ -1596,6 +1361,112 @@ export default {
       };
       option && myChart.setOption(option);
     },
+
+    open0() {
+      this.$prompt("设置温度报警值/°C", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+      })
+        .then(({ value }) => {
+          this.$message({
+            type: "success",
+            message: "温度报警值: " + value,
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "取消输入",
+          });
+        });
+    },
+
+    open1() {
+      this.$prompt("设置油位报警值/%", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+      })
+        .then(({ value }) => {
+          this.$message({
+            type: "success",
+            message: "油位低于: " + value + "报警",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "取消输入",
+          });
+        });
+    },
+    open() {
+      this.$prompt("设置震动报警值/g", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+      })
+        .then(({ value }) => {
+          this.$message({
+            type: "success",
+            message: "车辆震动值: " + value,
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "取消输入",
+          });
+        });
+    },
+    open2() {
+      this.$prompt("设置报警值", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+      })
+        .then(({ value }) => {
+          this.$message({
+            type: "success",
+            message: "胎温胎压低于: " + value + "报警",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "取消输入",
+          });
+        });
+    },
+
+    show() {
+      // this.showPage = "2";
+      console.log("1111");
+    },
+    showdoor() {
+      // this.showPage = "4";
+      console.log("2222");
+    },
+
+    drawVib() {
+      //详情页震动图
+      const linePlot = new Line("main7", {
+        data: this.data7,
+        xField: "time",
+        yField: "num",
+        yAxis: {
+          min: 0,
+          max: 5,
+        },
+        meta: {
+          time: {
+            alias: " ",
+          },
+          num: {
+            alias: "g",
+          },
+        },
+      });
+      linePlot.render();
+    },
+    
   },
 };
 </script>
@@ -1820,18 +1691,6 @@ export default {
   height: 350px;
   margin-top: -20px;
   // margin: -10px 0px 0px 60px;
-}
-.vol {
-  // background: rgb(160, 157, 157);
-  width: 50%;
-  height: 180px;
-  margin: -50px 0px 0px -10px;
-}
-.cap {
-  // background: rgb(212, 205, 205);
-  width: 50%;
-  height: 180px;
-  margin: -180px 0px 0px 160px;
 }
 .map {
   width: 102%;
