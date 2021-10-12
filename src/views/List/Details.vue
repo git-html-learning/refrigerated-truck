@@ -543,6 +543,7 @@ export default {
   created() {
     this.getQuery();
     this.getDk();
+    // this.refresh();
   },
 
   mounted() {
@@ -624,23 +625,6 @@ export default {
 
       lightOriData: [],
       lightHandleData: [],
-
-      data7: [
-        { time: "00：00", num: 0 },
-        { time: "01：45", num: 0 },
-        { time: "03：30", num: 2 },
-        { time: "05：15", num: 3 },
-        { time: "07：00", num: 2 },
-        { time: "08：45", num: 4.9 },
-        { time: "10：30", num: 2 },
-        { time: "11：15", num: 3 },
-        { time: "13：00", num: 1.1 },
-        { time: "15：45", num: 3 },
-        { time: "17：30", num: 0.9 },
-        { time: "19：15", num: 0.5 },
-        { time: "21：00", num: 1 },
-        { time: "23：15", num: 0.9 },
-      ],
     };
   },
 
@@ -680,6 +664,15 @@ export default {
       //   .replace(/年|月/g, "-")
       //   .replace(/日/g, " ");
     },
+    test() {
+      console.log("111");
+      this.getQuery();
+      this.getDk();
+    },
+    refresh() {
+      //定时器
+      setInterval(this.test, 5000);
+    },
 
     getQuery() {
       this.productkey = this.$route.query.pk;
@@ -687,6 +680,10 @@ export default {
       console.log(this.productkey);
     },
     async getDk() {
+      this.humiDkList = [];
+      this.doorDkList = [];
+      this.alarmDkList = [];
+      this.tireDkList = [];
       const res = await getDevice({
         productKey: this.productkey,
       });
@@ -713,6 +710,8 @@ export default {
       this.getTireData();
     },
     async getHumiData() {
+      this.humiOriData = [];
+      this.sensorList = [];
       const res = await getDeviceData({
         productKey: this.productkey,
         deviceKeyList: this.humiDkList,
@@ -759,12 +758,14 @@ export default {
           };
           this.sensorList.push(obj1);
         }
-        // console.log("humiHandleData",this.humiHandleData);
+        console.log("humiHandleData", this.humiHandleData);
         // console.log(this.sensorList);
         this.getVibData();
       }
     },
     async getDoorData() {
+      this.doorOriData = [];
+      this.lightOriData = [];
       const res = await getDeviceData({
         productKey: this.productkey,
         deviceKeyList: this.doorDkList,
@@ -808,7 +809,7 @@ export default {
           }
           return 0;
         });
-        // console.log("doorHandleData",this.doorHandleData);
+        console.log("doorHandleData", this.doorHandleData);
         this.door1 = this.doorHandleData[0].state.door_1;
         this.door2 = this.doorHandleData[1].state.door_2;
         // console.log(this.door1);
@@ -822,9 +823,11 @@ export default {
       });
       // console.log("alarm",res);
       this.alert = res.data.deviceData[0].alarm;
-      // console.log("alert",this.alert);
+      console.log("alert", this.alert);
     },
     async getTireData() {
+      this.tireOriData = [];
+      this.tireList = [];
       const res = await getDeviceData({
         productKey: this.productkey,
         deviceKeyList: this.tireDkList,
@@ -863,11 +866,13 @@ export default {
           };
           this.tireList.push(obj1);
         }
-        // console.log("tireHandleData", this.tireHandleData);
+        console.log("tireHandleData", this.tireHandleData);
         // console.log("tireList", this.tireList);
       }
     },
     async getVibData() {
+      this.hisVibDate = [];
+      this.hisVib = [];
       this.hisEndTime = Date.parse(new Date()) / 1000;
       const res = await getDeviceHisData({
         deviceKey: this.humiHandleData[1].dk,
