@@ -19,3 +19,11 @@ export function userRegister(data) {
     }
   })
 }
+
+export function  person(data) {
+  return request({
+    url: '/api/v1/user/通宇项目测试',
+    method: 'GET',
+    data
+  })
+}
