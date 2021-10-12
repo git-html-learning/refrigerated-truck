@@ -276,6 +276,7 @@ export default {
                 type: "success",
               });
               this.$refs[formName].resetFields();
+              this.show1 = "1";
             } else {
               this.$message({
                 message: res.msg,
