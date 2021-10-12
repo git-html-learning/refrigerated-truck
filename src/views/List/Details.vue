@@ -493,6 +493,7 @@
         </div>
         <a-tabs
           v-model="tireTabname"
+          type="card"
           :default-active-key="tireTabKey"
           @tabClick="tabclick1"
         >
@@ -611,6 +612,8 @@ export default {
       mintiretemp: "",
       maxtirepress: "",
       mintirepress: "",
+      hisVibDate: [],
+      hisVib: [],
 
       doorOriData: [],
       doorHandleData: [],
@@ -758,6 +761,7 @@ export default {
         }
         // console.log("humiHandleData",this.humiHandleData);
         // console.log(this.sensorList);
+        this.getVibData();
       }
     },
     async getDoorData() {
@@ -861,6 +865,28 @@ export default {
         }
         // console.log("tireHandleData", this.tireHandleData);
         // console.log("tireList", this.tireList);
+      }
+    },
+    async getVibData() {
+      this.hisEndTime = Date.parse(new Date()) / 1000;
+      const res = await getDeviceHisData({
+        deviceKey: this.humiHandleData[1].dk,
+        startTime: this.hisEndTime - 60 * 86400, //86400
+        endTime: this.hisEndTime,
+      });
+      // console.log(res);
+      if (res.code == 200) {
+        for (var i = 0; i < res.data.deviceData.length; i++) {
+          this.hisVibDate.push(res.data.deviceData[i].date);
+          var value =
+            res.data.deviceData[i].acc.X +
+            res.data.deviceData[i].acc.Y +
+            res.data.deviceData[i].acc.Z;
+          this.hisVib.push(value);
+        }
+        console.log("hisVibDate", this.hisVibDate);
+        console.log("hisVib", this.hisVib);
+        this.drawVib();
       }
     },
 
@@ -1011,7 +1037,7 @@ export default {
 
       getDeviceHisData({
         deviceKey: this.tireHandleData[0].dk,
-        startTime: this.hisEndTime - 4 * 86400, //86400
+        startTime: this.hisEndTime - 10 * 86400, //86400
         endTime: this.hisEndTime,
       }).then((res) => {
         console.log(res);
@@ -1164,7 +1190,7 @@ export default {
 
       getDeviceHisData({
         deviceKey: this.tireHandleData[0].dk,
-        startTime: this.hisEndTime - 4 * 86400, //86400
+        startTime: this.hisEndTime - 10 * 86400, //86400
         endTime: this.hisEndTime,
       }).then((res) => {
         console.log(res);
@@ -1362,6 +1388,58 @@ export default {
       option && myChart.setOption(option);
     },
 
+    drawVib() {
+      //详情页震动图
+      var myChart = echarts.init(document.getElementById("main7"));
+      // var myChart = echarts.init(this.$refs.main);
+      var colors = ["#5470C6"];
+      var option = {
+        color: colors,
+        tooltip: {
+          trigger: "axis",
+        },
+        grid: {
+          left: "2%",
+          right: "4%",
+          bottom: "4%",
+          containLabel: true,
+        },
+        xAxis: {
+          type: "category",
+          axisTick: {
+            alignWithLabel: true,
+          },
+          data: this.hisVibDate,
+        },
+        yAxis: [
+          {
+            type: "value",
+            name: "震动值",
+            position: "left",
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: colors[0],
+              },
+            },
+            axisLabel: {
+              formatter: "{value}",
+            },
+          },
+        ],
+
+        series: [
+          {
+            name: "震动值",
+            type: "line",
+            color: colors[0],
+            data: this.hisVib,
+          },
+        ],
+      };
+      option && myChart.setOption(option);
+    },
+
     open0() {
       this.$prompt("设置温度报警值/°C", {
         confirmButtonText: "确定",
@@ -1444,29 +1522,6 @@ export default {
       // this.showPage = "4";
       console.log("2222");
     },
-
-    drawVib() {
-      //详情页震动图
-      const linePlot = new Line("main7", {
-        data: this.data7,
-        xField: "time",
-        yField: "num",
-        yAxis: {
-          min: 0,
-          max: 5,
-        },
-        meta: {
-          time: {
-            alias: " ",
-          },
-          num: {
-            alias: "g",
-          },
-        },
-      });
-      linePlot.render();
-    },
-    
   },
 };
 </script>
