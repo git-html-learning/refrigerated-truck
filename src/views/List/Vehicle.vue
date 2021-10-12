@@ -45,21 +45,6 @@
                 >
                   <a-input-number v-model="num1" :min="1" style="width: 120%" />
                 </a-form-model-item>
-                <a-form-model-item label="冷机数量" :wrapper-col="{ span: 2 }">
-                  <a-input-number v-model="num2" :min="1" style="width: 120%" />
-                </a-form-model-item>
-                <a-form-model-item
-                  label="容量监测设备数量"
-                  :wrapper-col="{ span: 2 }"
-                >
-                  <a-input-number v-model="num3" :min="1" style="width: 120%" />
-                </a-form-model-item>
-                <a-form-model-item
-                  label="载重监测设备数量"
-                  :wrapper-col="{ span: 2 }"
-                >
-                  <a-input-number v-model="num4" :min="1" style="width: 120%" />
-                </a-form-model-item>
                 <a-form-model-item
                   label="油位监测设备数量"
                   :wrapper-col="{ span: 2 }"
@@ -216,9 +201,8 @@ export default {
       loading: false, //注册加载
       productname: "", //注册车辆号码
       num1: "8",
-      num2: "1",
-      num3: "1",
-      num4: "1",
+
+
       num5: "1",
       num6: "1",
       num7: "1",
@@ -271,7 +255,7 @@ export default {
     async getproduct() {
       //获取产品信息
       const res = await product();
-      console.log(res);
+      // console.log(res);
       for (var i = 0; i < res.data.productInfo.length; i++) {
         if (res.data.productInfo[i].typeIdentify != "tysj") {
           // console.log(res.data.productInfo[i]);
@@ -325,9 +309,6 @@ export default {
       const res = await registerVeh({
         productName: this.productname,
         num1: this.num1,
-        num2: this.num2,
-        num3: this.num3,
-        num4: this.num4,
         num5: this.num5,
         num6: this.num6,
         num7: this.num7,
@@ -351,39 +332,6 @@ export default {
       const res = await tempAndHumi({
         productKey: _this.productKey,
         number1: _this.num1,
-      });
-      // console.log(res);
-      if (res.code == 200) {
-        _this.batchRef();
-      }
-    },
-    async batchRef() {
-      var _this = this;
-      const res = await refrigerator({
-        productKey: _this.productKey,
-        number2: _this.num2,
-      });
-      // console.log(res);
-      if (res.code == 200) {
-        _this.batchCap();
-      }
-    },
-    async batchCap() {
-      var _this = this;
-      const res = await capacity({
-        productKey: _this.productKey,
-        number3: _this.num3,
-      });
-      // console.log(res);
-      if (res.code == 200) {
-        _this.batchLoad();
-      }
-    },
-    async batchLoad() {
-      var _this = this;
-      const res = await load({
-        productKey: _this.productKey,
-        number4: _this.num4,
       });
       // console.log(res);
       if (res.code == 200) {
