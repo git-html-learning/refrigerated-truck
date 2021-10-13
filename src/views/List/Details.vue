@@ -15,22 +15,36 @@
               <div class="left" @click="hisTem1">
                 {{ humiHandleData[0].temp }}℃
               </div>
-              <div class="right">{{ humiHandleData[0].humi }}%</div>
+              <div class="right" @click="hisTem1">
+                {{ humiHandleData[0].humi }}%
+              </div>
             </div>
             <div class="sensor2">
               <p style="margin: 0 0 0 0">监测点2</p>
-              <div class="left">{{ humiHandleData[1].temp }}℃</div>
-              <div class="right">{{ humiHandleData[1].humi }}%</div>
+              <div class="left" @click="hisTem1">
+                {{ humiHandleData[1].temp }}℃
+              </div>
+              <div class="right" @click="hisTem1">
+                {{ humiHandleData[1].humi }}%
+              </div>
             </div>
             <div class="sensor3">
               <p style="margin: 0 0 0 0">监测点3</p>
-              <div class="left">{{ humiHandleData[2].temp }}℃</div>
-              <div class="right">{{ humiHandleData[2].humi }}%</div>
+              <div class="left" @click="hisTem1">
+                {{ humiHandleData[2].temp }}℃
+              </div>
+              <div class="right" @click="hisTem1">
+                {{ humiHandleData[2].humi }}%
+              </div>
             </div>
             <div class="sensor4">
               <p style="margin: 0 0 0 0">监测点4</p>
-              <div class="left">{{ humiHandleData[3].temp }}℃</div>
-              <div class="right">{{ humiHandleData[3].humi }}%</div>
+              <div class="left" @click="hisTem1">
+                {{ humiHandleData[3].temp }}℃
+              </div>
+              <div class="right" @click="hisTem1">
+                {{ humiHandleData[3].humi }}%
+              </div>
             </div>
             <div class="carriage">
               <img src="../../static/pic/carriage.png" class="img" />
@@ -38,18 +52,24 @@
             </div>
             <div class="sensor5">
               <p style="margin: 0 0 0 0">监测点5</p>
-              <p class="left">{{ humiHandleData[4].temp }}℃</p>
-              <p class="right">{{ humiHandleData[4].humi }}%</p>
+              <p class="left" @click="hisTem1">{{ humiHandleData[4].temp }}℃</p>
+              <p class="right" @click="hisTem1">
+                {{ humiHandleData[4].humi }}%
+              </p>
             </div>
             <div class="sensor6">
               <p style="margin: 0 0 0 0">监测点6</p>
-              <p class="left">{{ humiHandleData[5].temp }}℃</p>
-              <p class="right">{{ humiHandleData[5].humi }}%</p>
+              <p class="left" @click="hisTem1">{{ humiHandleData[5].temp }}℃</p>
+              <p class="right" @click="hisTem1">
+                {{ humiHandleData[5].humi }}%
+              </p>
             </div>
             <div class="sensor7">
               <p style="margin: 0 0 0 0">监测点7</p>
-              <p class="left">{{ humiHandleData[6].temp }}℃</p>
-              <p class="right">{{ humiHandleData[6].humi }}%</p>
+              <p class="left" @click="hisTem1">{{ humiHandleData[6].temp }}℃</p>
+              <p class="right" @click="hisTem1">
+                {{ humiHandleData[6].humi }}%
+              </p>
             </div>
             <!-- <div class="sensor8">
               <p style="margin: 0 0 0 0">监测点8</p>
@@ -98,8 +118,8 @@
                   <img src="../../static/icon/关门1.svg" />
                 </p>
                 <p>&nbsp;&nbsp;侧门</p>
-                <el-tag v-show="door1" type="danger"> 开启 </el-tag>
-                <el-tag v-show="!door1"> 关闭 </el-tag>
+                <el-tag v-show="door1" type="danger"> 已开启 </el-tag>
+                <el-tag v-show="!door1"> 已关闭 </el-tag>
               </div>
             </a-col>
             <a-col :span="12" style="text-align: center">
@@ -111,8 +131,8 @@
                   <img src="../../static/icon/关门1.svg" />
                 </p>
                 <p>&nbsp;&nbsp;后门</p>
-                <el-tag v-show="door2" type="danger"> 开启 </el-tag>
-                <el-tag v-show="!door2"> 关闭 </el-tag>
+                <el-tag v-show="door2" type="danger"> 已开启 </el-tag>
+                <el-tag v-show="!door2"> 已关闭 </el-tag>
               </div>
             </a-col>
           </a-card>
@@ -398,7 +418,21 @@
       </a-row>
 
       <a-row :gutter="[8, 8]">
-        <a-col :span="12">
+        <a-col :span="24">
+          <a-card
+            title="车辆震动曲线图"
+            style="height: 300px"
+            class="shadow"
+            hoverable
+          >
+            <a slot="extra" @click="open">更多</a>
+            <div id="main7" style="height: 200px"></div>
+          </a-card>
+        </a-col>
+      </a-row>
+
+      <a-row :gutter="[8, 8]">
+        <a-col :span="24">
           <a-card
             title="皖A2222    行进中（已行驶99km 速度50km/h）"
             style="height: 285px"
@@ -426,18 +460,6 @@
                 :isOpen="true"
               ></bm-overview-map>
             </baidu-map>
-          </a-card>
-        </a-col>
-
-        <a-col :span="12">
-          <a-card
-            title="车辆震动曲线图"
-            style="height: 285px"
-            class="shadow"
-            hoverable
-          >
-            <a slot="extra" @click="open">更多</a>
-            <div id="main7" style="height: 200px"></div>
           </a-card>
         </a-col>
       </a-row>
@@ -1752,7 +1774,7 @@ export default {
   // margin: -10px 0px 0px 60px;
 }
 .map {
-  width: 102%;
+  width: 100%;
   height: 227px;
   margin: -10px 0px 0px -10px;
 }
