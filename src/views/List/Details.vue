@@ -65,7 +65,7 @@
               </p>
             </div>
             <div class="sensor7">
-              <p style="margin: 0 0 0 0">监测点7</p>
+              <p style="margin: 0 0 0 0">监测点7(厢外)</p>
               <p class="left" @click="hisTem1">{{ humiHandleData[6].temp }}℃</p>
               <p class="right" @click="hisTem1">
                 {{ humiHandleData[6].humi }}%
@@ -858,7 +858,7 @@ export default {
         for (var i = 0; i < res.data.deviceData.length; i++) {
           var obj = {
             tire: res.data.deviceData[i].deviceName,
-            tirePress: res.data.deviceData[i].tirePress,
+            tirePress: res.data.deviceData[i].tirePress/10000,
             tireTemp: res.data.deviceData[i].tireTemp,
             time: res.data.deviceData[i].date,
             dk: res.data.deviceData[i].deviceKey,
@@ -1063,7 +1063,7 @@ export default {
 
       getDeviceHisData({
         deviceKey: this.tireHandleData[0].dk,
-        startTime: this.hisEndTime - 10 * 86400, //86400
+        startTime: this.hisEndTime - 20 * 86400, //86400
         endTime: this.hisEndTime,
       }).then((res) => {
         console.log(res);
@@ -1071,7 +1071,7 @@ export default {
           for (var i = 0; i < res.data.deviceData.length; i++) {
             this.hisTireDate.push(res.data.deviceData[i].date);
             this.hisTireTemp.push(res.data.deviceData[i].tireTemp);
-            this.hisTirePress.push(res.data.deviceData[i].tirePress);
+            this.hisTirePress.push(res.data.deviceData[i].tirePress/10000);
           }
         }
         console.log(this.hisTireDate);
@@ -1215,8 +1215,8 @@ export default {
       this.tireSpinning = true;
 
       getDeviceHisData({
-        deviceKey: this.tireHandleData[0].dk,
-        startTime: this.hisEndTime - 10 * 86400, //86400
+        deviceKey: this.tireHandleData[e].dk,
+        startTime: this.hisEndTime - 20 * 86400, //86400
         endTime: this.hisEndTime,
       }).then((res) => {
         console.log(res);
@@ -1224,7 +1224,7 @@ export default {
           for (var i = 0; i < res.data.deviceData.length; i++) {
             this.hisTireDate.push(res.data.deviceData[i].date);
             this.hisTireTemp.push(res.data.deviceData[i].tireTemp);
-            this.hisTirePress.push(res.data.deviceData[i].tirePress);
+            this.hisTirePress.push(res.data.deviceData[i].tirePress/10000);
           }
         }
         console.log(this.hisTireDate);
@@ -1379,8 +1379,8 @@ export default {
           {
             type: "value",
             name: "胎压",
-            min: this.mintirepress - 100,
-            max: this.maxtirepress + 100,
+            min: this.mintirepress - 0.001,
+            max: this.maxtirepress + 0.001,
             position: "right",
             offset: 6,
             axisLine: {
