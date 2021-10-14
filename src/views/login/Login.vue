@@ -28,7 +28,7 @@
                 <a-form-item>
                   <a-input
                     size="large"
-                    placeholder="用户名：通宇项目测试"
+                    placeholder="请输入用户名"
                     v-model="loginform.username"
                   >
                     <a-icon slot="prefix" type="user" />
@@ -37,7 +37,7 @@
                 <a-form-item>
                   <a-input
                     size="large"
-                    placeholder="密码：123456"
+                    placeholder="请输入密码"
                     type="password"
                     v-model="loginform.password"
                   >
@@ -241,8 +241,8 @@ export default {
       countDown: 60,
       form: this.$form.createForm(this),
       loginform: {
-        username: "通宇项目测试",
-        password: "123456",
+        username: "",
+        password: "",
       },
       loading: false,
     };
