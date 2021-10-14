@@ -192,13 +192,19 @@ export default {
       }
     },
     async getDk() {
+      this.dkList=[]
       const res = await getDevice({
         productKey: this.pkList[0],
       });
       // console.log(res);
       this.carNum = res.data.productName;
       if (res.code == 200) {
-        this.dkList.push(res.data.deviceInfo[0].deviceKey);
+        for(var i=0;i<res.data.deviceInfo.length;i++){
+          if(res.data.deviceInfo[i].deviceName=="GPS"){
+            this.dkList.push(res.data.deviceInfo[i].deviceKey);
+          }
+        }
+        
       }
       // console.log(this.dkList);
       this.getGPS();
@@ -208,13 +214,13 @@ export default {
         productKey: this.pkList[0],
         deviceKeyList: this.dkList,
       });
-      console.log(res);
+      // console.log(res);
       console.log(this.carNum);
       var obj = {
         number: this.carNum,
         updateTime: res.data.deviceData[0].date,
-        lng: res.data.deviceData[0].gps.Lon,
-        lat: res.data.deviceData[0].gps.Lat,
+        lng: res.data.deviceData[0].Lon,
+        lat: res.data.deviceData[0].Lat,
       };
       this.markers.push(obj);
       console.log(this.markers);
