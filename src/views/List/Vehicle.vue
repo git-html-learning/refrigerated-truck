@@ -116,13 +116,13 @@
                 </a-avatar>
               </a-card-meta>
               <p style="padding-left: 64px">
-                温湿度传感器数量:
+                车辆类型:
                 <span style="font-weight: 600; font-size: 20px">
                   {{ item.value1 }}
                 </span>
               </p>
               <p style="padding-left: 80px">
-                胎温胎压传感器数量:
+                通信协议:
                 <span style="font-weight: 600; font-size: 20px">
                   {{ item.value2 }}
                 </span>
