@@ -15,7 +15,19 @@
       <div class="home-item-bottom">
         <!-- <p style="font-size: 20px; padding: 0px 0px 0px 10px; align: left">类别</p> -->
         <a-tabs default-active-key="1" size="large">
-          <a-tab-pane key="1" tab="全部">
+          <a-tab-pane key="1" tab="车辆行驶">
+            <div>
+              <a-table
+                :columns="vehColumns"
+                :data-source="vehData"
+                bordered
+                :pagination="paginationOpt"
+              >
+                <a slot="number" slot-scope="text">{{ text }}</a>
+              </a-table>
+            </div>
+          </a-tab-pane>
+          <a-tab-pane key="2" tab="全部">
             <div>
               <a-table
                 :columns="totalColumns"
@@ -37,7 +49,7 @@
             </div>
           </a-tab-pane>
 
-          <a-tab-pane key="2" tab="胎温">
+          <a-tab-pane key="3" tab="胎温">
             <div>
               <a-table
                 :columns="totalColumns"
@@ -58,7 +70,7 @@
               </a-table>
             </div>
           </a-tab-pane>
-          <a-tab-pane key="3" tab="胎压">
+          <a-tab-pane key="4" tab="胎压">
             <div>
               <a-table
                 :columns="totalColumns"
@@ -79,7 +91,7 @@
               </a-table>
             </div>
           </a-tab-pane>
-          <a-tab-pane key="4" tab="震动">
+          <a-tab-pane key="5" tab="震动">
             <div>
               <a-table
                 :columns="totalColumns"
@@ -97,18 +109,6 @@
                     {{ tag.toUpperCase() }}
                   </a-tag>
                 </span>
-              </a-table>
-            </div>
-          </a-tab-pane>
-          <a-tab-pane key="5" tab="冷机">
-            <div>
-              <a-table
-                :columns="refColumns"
-                :data-source="refData"
-                bordered
-                :pagination="paginationOpt"
-              >
-                <a slot="number" slot-scope="text">{{ text }}</a>
               </a-table>
             </div>
           </a-tab-pane>
@@ -158,7 +158,7 @@ export default {
           dataIndex: "tags",
           key: "tags",
           align: "center",
-          
+
           scopedSlots: { customRender: "tags" },
         },
         {
@@ -199,7 +199,7 @@ export default {
           location: "轮胎1",
           value: "100℃",
           tags: ["报警"],
-          section:"20 ~ 80℃",
+          section: "20 ~ 80℃",
           driver: "张三",
         },
         {
@@ -208,7 +208,7 @@ export default {
           location: "油位",
           value: "1%",
           tags: ["报警"],
-          section:"30 ~ 100%",
+          section: "30 ~ 100%",
           driver: "李四",
         },
         {
@@ -217,7 +217,7 @@ export default {
           location: "温度测量点1",
           value: "60℃",
           tags: ["预警"],
-          section:"0 ~ 20℃",
+          section: "0 ~ 20℃",
           driver: "王五",
         },
         {
@@ -226,7 +226,7 @@ export default {
           location: "温度测量点2",
           value: "70℃",
           tags: ["报警"],
-          section:"0 ~ 20℃",
+          section: "0 ~ 20℃",
           driver: "无名",
         },
         {
@@ -235,7 +235,7 @@ export default {
           location: "温度测量点3",
           value: "72℃",
           tags: ["报警"],
-          section:"0 ~ 20℃",
+          section: "0 ~ 20℃",
           driver: "小芮",
         },
         {
@@ -244,7 +244,7 @@ export default {
           location: "温度测量点4",
           value: "60℃",
           tags: ["预警"],
-          section:"0 ~ 20℃",
+          section: "0 ~ 20℃",
           driver: "司机",
         },
         {
@@ -253,7 +253,7 @@ export default {
           location: "温度测量点4",
           value: "60℃",
           tags: ["预警"],
-          section:"0 ~ 20℃",
+          section: "0 ~ 20℃",
           driver: "司机",
         },
         {
@@ -262,12 +262,12 @@ export default {
           location: "胎温传感器1",
           value: "100℃",
           tags: ["报警"],
-          section:"20 ~ 80℃",
+          section: "20 ~ 80℃",
           driver: "司机",
         },
       ],
 
-      refColumns: [
+      vehColumns: [
         {
           title: "车牌号",
           dataIndex: "number",
@@ -276,79 +276,92 @@ export default {
           scopedSlots: { customRender: "number" },
         },
         {
-          title: "冷机设备号",
-          dataIndex: "id",
-          key: "id",
+          title: "开始时间",
+          dataIndex: "startTime",
+          key: "startTime",
           align: "center",
         },
         {
-          title: "更新时间",
-          dataIndex: "updateTime",
+          title: "起点",
+          dataIndex: "startingPoint",
+          key: "startingPoint",
+          align: "center",
+        },
+        {
+          title: "到达时间",
+          dataIndex: "arriveTime",
           key: "updateTime",
           align: "center",
         },
         {
-          title: "电源",
-          dataIndex: "power",
-          key: "power",
+          title: "终点",
+          dataIndex: "arrivePoint",
+          key: "arrivePoint",
           align: "center",
         },
         {
-          title: "温度/℃",
-          dataIndex: "temp",
-          key: "temp",
+          title: "报警次数",
+          dataIndex: "numbers",
+          key: "numbers",
           align: "center",
         },
       ],
-      refData: [
+      vehData: [
         {
           number: "皖11111",
-          id: "977579",
-          updateTime: "2021-03-10 21:39",
-          power: "开",
-          temp: "2.0",
+          startTime: "2021-03-10 11:39",
+          startingPoint: "合肥",
+          arriveTime: "2021-03-10 21:39",
+          arrivePoint: "上海",
+          numbers: 10,
         },
         {
           number: "皖22222",
-          id: "902147",
-          updateTime: "2021-03-10 21:33",
-          power: "开",
-          temp: "9.0",
+          startTime: "2021-03-10 11:39",
+          startingPoint: "合肥",
+          arriveTime: "2021-03-10 21:39",
+          arrivePoint: "上海",
+          numbers: 10,
         },
         {
           number: "皖33333",
-          id: "214893",
-          updateTime: "2021-03-10 21:23",
-          power: "开",
-          temp: "5.0",
+          startTime: "2021-03-10 11:39",
+          startingPoint: "合肥",
+          arriveTime: "2021-03-10 21:39",
+          arrivePoint: "上海",
+          numbers: 10,
         },
         {
           number: "皖44444",
-          id: "564390",
-          updateTime: "2021-03-10 22:33",
-          power: "关",
-          temp: "8.2",
+          startTime: "2021-03-10 11:39",
+          startingPoint: "合肥",
+          arriveTime: "2021-03-10 21:39",
+          arrivePoint: "上海",
+          numbers: 10,
         },
         {
           number: "皖55555",
-          id: "489732",
-          updateTime: "2021-03-10 11:33",
-          power: "开",
-          temp: "9.1",
+          startTime: "2021-03-10 11:39",
+          startingPoint: "合肥",
+          arriveTime: "2021-03-10 21:39",
+          arrivePoint: "上海",
+          numbers: 10,
         },
         {
           number: "皖66666",
-          id: "532890",
-          updateTime: "2021-03-10 20:33",
-          power: "关",
-          temp: "9.2",
+          startTime: "2021-03-10 11:39",
+          startingPoint: "合肥",
+          arriveTime: "2021-03-10 21:39",
+          arrivePoint: "上海",
+          numbers: 10,
         },
         {
           number: "皖66666",
-          id: "532890",
-          updateTime: "2021-03-10 20:33",
-          power: "关",
-          temp: "9.2",
+          startTime: "2021-03-10 11:39",
+          startingPoint: "合肥",
+          arriveTime: "2021-03-10 21:39",
+          arrivePoint: "上海",
+          numbers: 10,
         },
       ],
     };
