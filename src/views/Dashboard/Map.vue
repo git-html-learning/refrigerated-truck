@@ -98,7 +98,7 @@
           @close="infoWindowClose()"
           @open="infoWindowOpen()"
           :width="300"
-          :height="150"
+          :height="200"
         >
           <div>
             <!-- <p>{{ "更新时间：&nbsp;&nbsp;" + time }}</p> -->
@@ -112,6 +112,16 @@
               </a-descriptions-item>
               <a-descriptions-item label="纬度">
                 {{ this.position.lat }}
+              </a-descriptions-item>
+            </a-descriptions>
+            <a-descriptions :column="2">
+              <a-descriptions-item label="门1状态">
+                <el-tag v-show="door1" type="danger"> 已开启 </el-tag>
+                <el-tag v-show="!door1"> 已关闭 </el-tag>
+              </a-descriptions-item>
+              <a-descriptions-item label="门1状态">
+                <el-tag v-show="door2" type="danger"> 已开启 </el-tag>
+                <el-tag v-show="!door2"> 已关闭 </el-tag>
               </a-descriptions-item>
             </a-descriptions>
           </div>
@@ -171,7 +181,12 @@ export default {
 
       //获取数据得到：
       pkList: [],
-      dkList: [],
+      gpsDkList: [],
+      doorDkList: [],
+      doorOriData: [],
+      doorHandleData: [],
+      door1: true,
+      door2: false,
       carNum: "",
     };
   },
@@ -192,30 +207,33 @@ export default {
       }
     },
     async getDk() {
-      this.dkList=[]
+      this.gpsDkList = [];
+      this.doorDkList = [];
       const res = await getDevice({
         productKey: this.pkList[0],
       });
       // console.log(res);
       this.carNum = res.data.productName;
       if (res.code == 200) {
-        for(var i=0;i<res.data.deviceInfo.length;i++){
-          if(res.data.deviceInfo[i].deviceName=="GPS"){
-            this.dkList.push(res.data.deviceInfo[i].deviceKey);
+        for (var i = 0; i < res.data.deviceInfo.length; i++) {
+          if (res.data.deviceInfo[i].deviceName == "GPS") {
+            this.gpsDkList.push(res.data.deviceInfo[i].deviceKey);
+          } else if (res.data.deviceInfo[i].deviceType == "door") {
+            this.doorDkList.push(res.data.deviceInfo[i].deviceKey);
           }
         }
-        
       }
-      // console.log(this.dkList);
+      // console.log(this.gpsDkList);
       this.getGPS();
+      this.getDoorData();
     },
     async getGPS() {
       const res = await getDeviceData({
         productKey: this.pkList[0],
-        deviceKeyList: this.dkList,
+        deviceKeyList: this.gpsDkList,
       });
       // console.log(res);
-      console.log(this.carNum);
+      // console.log(this.carNum);
       var obj = {
         number: this.carNum,
         updateTime: res.data.deviceData[0].date,
@@ -223,7 +241,45 @@ export default {
         lat: res.data.deviceData[0].Lat,
       };
       this.markers.push(obj);
-      console.log(this.markers);
+      console.log("markers", this.markers);
+    },
+    async getDoorData() {
+      this.doorOriData = [];
+      const res = await getDeviceData({
+        productKey: this.pkList[0],
+        deviceKeyList: this.doorDkList,
+      });
+      // console.log("door",res);
+      if (res.code == 200) {
+        for (var i = 0; i < res.data.deviceData.length; i++) {
+          var obj = {
+            doorName: res.data.deviceData[i].deviceName,
+            state: res.data.deviceData[i].door,
+            date: res.data.deviceData[i].date,
+            dk: res.data.deviceData[i].deviceKey,
+          };
+          this.doorOriData.push(obj);
+        }
+        // console.log("doorOriData",this.doorOriData);
+        this.doorHandleData = JSON.parse(JSON.stringify(this.doorOriData));
+        // console.log("doorHandleData",this.doorHandleData);
+        this.doorHandleData.sort(function (a, b) {
+          var doorA = a.doorName.toUpperCase(); // ignore upper and lowercase
+          var doorB = b.doorName.toUpperCase(); // ignore upper and lowercase
+          if (doorA < doorB) {
+            return -1;
+          }
+          if (doorA > doorB) {
+            return 1;
+          }
+          return 0;
+        });
+        console.log("doorHandleData", this.doorHandleData);
+        this.door1 = this.doorHandleData[0].state.door_1;
+        this.door2 = this.doorHandleData[1].state.door_2;
+        // console.log(this.door1);
+        // console.log(this.door2);
+      }
     },
 
     lookDetail(data) {
