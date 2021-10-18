@@ -116,14 +116,14 @@
                 </a-avatar>
               </a-card-meta>
               <p style="padding-left: 64px">
-                车辆类型:
-                <span style="font-weight: 600; font-size: 20px">
+                购买时间:
+                <span style="font-weight: 600; font-size: 18px">
                   {{ item.value1 }}
                 </span>
               </p>
               <p style="padding-left: 80px">
-                通信协议:
-                <span style="font-weight: 600; font-size: 20px">
+                下次保养时间:
+                <span style="font-weight: 600; font-size: 18px">
                   {{ item.value2 }}
                 </span>
               </p>
@@ -256,8 +256,8 @@ export default {
           // console.log(res.data.productInfo[i]);
           var obj = {
             productName: res.data.productInfo[i].productName,
-            value1: res.data.productInfo[i].productType,
-            value2: res.data.productInfo[i].protocolType,
+            value1: res.data.productInfo[i].extraInfo.buyingTime,
+            value2: res.data.productInfo[i].extraInfo.maintenanceTime,
             productkey: res.data.productInfo[i].productKey,
           };
           this.vehicleList.push(obj);
