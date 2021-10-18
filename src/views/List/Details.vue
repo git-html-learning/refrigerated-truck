@@ -106,7 +106,7 @@
       </a-row>
 
       <a-row :gutter="[8, 8]">
-        <a-col :span="9">
+        <a-col :span="6">
           <a-card title="车门" style="height: 220px" class="shadow" hoverable>
             <a slot="extra" @click="showdoor()">更多</a>
             <a-col :span="12" style="text-align: center">
@@ -145,10 +145,16 @@
               <div>
                 <a-spin tip="等待响应" :spinning="spinning1">
                   <p v-show="light1">
-                    <img src="../../static/icon/开灯.svg" />
+                    <img
+                      src="../../static/icon/开灯1.svg"
+                      style="width: 60px"
+                    />
                   </p>
                   <p v-show="!light1">
-                    <img src="../../static/icon/关灯.svg" />
+                    <img
+                      src="../../static/icon/关灯1.svg"
+                      style="width: 60px"
+                    />
                   </p>
                   <p>照明灯</p>
                 </a-spin>
@@ -164,10 +170,10 @@
             <a-col :span="8" style="text-align: center">
               <div>
                 <p v-show="light2">
-                  <img src="../../static/icon/开灯.svg" />
+                  <img src="../../static/icon/开灯1.svg" style="width: 60px" />
                 </p>
                 <p v-show="!light2">
-                  <img src="../../static/icon/关灯.svg" />
+                  <img src="../../static/icon/关灯1.svg" style="width: 60px" />
                 </p>
                 <p>杀菌灯</p>
                 <a-switch
@@ -181,10 +187,10 @@
             <a-col :span="8" style="text-align: center">
               <div>
                 <p v-show="light3">
-                  <img src="../../static/icon/开灯.svg" />
+                  <img src="../../static/icon/开灯1.svg" style="width: 60px" />
                 </p>
                 <p v-show="!light3">
-                  <img src="../../static/icon/关灯.svg" />
+                  <img src="../../static/icon/关灯1.svg" style="width: 60px" />
                 </p>
                 <p>其它</p>
                 <a-switch
@@ -198,14 +204,14 @@
           </a-card>
         </a-col>
 
-        <a-col :span="6">
+        <a-col :span="9">
           <a-card
             title="报警装置"
             style="height: 220px"
             class="shadow"
             hoverable
           >
-            <div v-show="!alert">
+            <!-- <div v-show="!alert">
               <a-col
                 :span="13"
                 style="
@@ -238,26 +244,78 @@
               >
                 <img src="../../static/icon/未报警.svg" style="height: 100px" />
               </div>
+            </a-col> -->
+
+            <a-col
+              :span="8"
+              style="padding-left: 20px; padding-top: 10px; text-align: center"
+            >
+              <span v-show="!alert">
+                <img
+                  src="../../static/icon/红色警报.svg"
+                  style="width: 100px"
+                /><br />困人报警
+              </span>
+              <span v-show="alert">
+                <img
+                  src="../../static/icon/未报警.svg"
+                  style="width: 100px"
+                /><br />无困人报警
+              </span>
+            </a-col>
+            <a-col
+              :span="8"
+              style="padding-left: 20px; padding-top: 10px; text-align: center"
+            >
+              <span v-show="!alert">
+                <img
+                  src="../../static/icon/红色警报.svg"
+                  style="width: 100px"
+                /><br />温湿度报警
+              </span>
+              <span v-show="alert">
+                <img
+                  src="../../static/icon/未报警.svg"
+                  style="width: 100px"
+                /><br />无温湿度报警
+              </span>
+            </a-col>
+            <a-col
+              :span="8"
+              style="padding-left: 20px; padding-top: 10px; text-align: center"
+            >
+              <span v-show="!alert">
+                <img
+                  src="../../static/icon/红色警报.svg"
+                  style="width: 100px"
+                /><br />胎温胎压报警
+              </span>
+              <span v-show="alert">
+                <img
+                  src="../../static/icon/未报警.svg"
+                  style="width: 100px"
+                /><br />无胎温胎压报警
+              </span>
             </a-col>
           </a-card>
         </a-col>
       </a-row>
 
       <a-row :gutter="[8, 8]">
-        <a-col :span="24">
+        <a-col :span="12">
           <a-card
             title="胎温胎压"
             hoverable
-            style="height: 300px"
+            style="height: 350px"
             class="shadow"
           >
             <a slot="extra" @click="open2">更多</a>
-            <a-row type="flex" style="height: 60px; font-size: 18px">
+            <!-- <a-row type="flex" style="height: 60px; font-size: 18px">
               <a-col :span="8">
-                <a-col :span="8" style="text-align: center">
+                <a-col :span="6" style="text-align: center">
                   <img src="../../static/icon/轮胎1.svg" @click="hisTire()" />
                 </a-col>
-                <a-col :span="16" style="padding-top: 4px; font-weight: bold">
+                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
                   <span>
                     胎温：{{ tireHandleData[0].tireTemp }}°C
                     &nbsp;&nbsp;胎压：{{ tireHandleData[0].tirePress }}bar
@@ -391,6 +449,166 @@
                   </span>
                 </a-col>
               </a-col>
+            </a-row> -->
+
+            <a-row type="flex" style="height: 40px; font-size: 16px">
+              <a-col :span="8">
+                <a-col :span="6" style="text-align: center">
+                  <img
+                    src="../../static/icon/轮胎1.svg"
+                    @click="hisTire()"
+                    style="width: 30px"
+                  />
+                </a-col>
+                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                </a-col>
+              </a-col>
+              <a-col :span="8">
+                <a-col :span="6" style="text-align: center">
+                  <img
+                    src="../../static/icon/轮胎1.svg"
+                    @click="hisTire()"
+                    style="width: 30px"
+                  />
+                </a-col>
+                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                </a-col>
+              </a-col>
+              <a-col :span="8">
+                <a-col :span="6" style="text-align: center">
+                  <img
+                    src="../../static/icon/轮胎1.svg"
+                    @click="hisTire()"
+                    style="width: 30px"
+                  />
+                </a-col>
+                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                </a-col>
+              </a-col>
+            </a-row>
+            <a-row type="flex" style="height: 40px; font-size: 16px">
+              <a-col :span="8">
+                <a-col :span="6" style="text-align: center">
+                  <img
+                    src="../../static/icon/轮胎1.svg"
+                    @click="hisTire()"
+                    style="width: 30px"
+                  />
+                </a-col>
+                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                </a-col>
+              </a-col>
+              <a-col :span="8">
+                <a-col :span="6" style="text-align: center">
+                  <img
+                    src="../../static/icon/轮胎1.svg"
+                    @click="hisTire()"
+                    style="width: 30px"
+                  />
+                </a-col>
+                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                </a-col>
+              </a-col>
+              <a-col :span="8">
+                <a-col :span="6" style="text-align: center">
+                  <img
+                    src="../../static/icon/轮胎1.svg"
+                    @click="hisTire()"
+                    style="width: 30px"
+                  />
+                </a-col>
+                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                </a-col>
+              </a-col>
+            </a-row>
+            <a-row>
+              <a-col :span="2"></a-col>
+              <a-col :span="21">
+                <img src="../../static/pic/3.png" style="width: 100%" />
+              </a-col>
+              <a-col :span="1"></a-col>
+            </a-row>
+            <a-row type="flex" style="height: 40px; font-size: 16px">
+              <a-col :span="8">
+                <a-col :span="6" style="text-align: center">
+                  <img
+                    src="../../static/icon/轮胎1.svg"
+                    @click="hisTire()"
+                    style="width: 30px"
+                  />
+                </a-col>
+                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                </a-col>
+              </a-col>
+              <a-col :span="8">
+                <a-col :span="6" style="text-align: center">
+                  <img
+                    src="../../static/icon/轮胎1.svg"
+                    @click="hisTire()"
+                    style="width: 30px"
+                  />
+                </a-col>
+                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                </a-col>
+              </a-col>
+              <a-col :span="8">
+                <a-col :span="6" style="text-align: center">
+                  <img
+                    src="../../static/icon/轮胎1.svg"
+                    @click="hisTire()"
+                    style="width: 30px"
+                  />
+                </a-col>
+                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                </a-col>
+              </a-col>
+            </a-row>
+            <a-row type="flex" style="height: 40px; font-size: 16px">
+              <a-col :span="8">
+                <a-col :span="6" style="text-align: center">
+                  <img
+                    src="../../static/icon/轮胎1.svg"
+                    @click="hisTire()"
+                    style="width: 30px"
+                  />
+                </a-col>
+                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                </a-col>
+              </a-col>
+              <a-col :span="8">
+                <a-col :span="6" style="text-align: center">
+                  <img
+                    src="../../static/icon/轮胎1.svg"
+                    @click="hisTire()"
+                    style="width: 30px"
+                  />
+                </a-col>
+                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                </a-col>
+              </a-col>
+              <a-col :span="8">
+                <a-col :span="6" style="text-align: center">
+                  <img
+                    src="../../static/icon/轮胎1.svg"
+                    @click="hisTire()"
+                    style="width: 30px"
+                  />
+                </a-col>
+                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                </a-col>
+              </a-col>
             </a-row>
           </a-card>
         </a-col>
@@ -415,18 +633,19 @@
             </a-col>
           </a-card>
         </a-col> -->
-      </a-row>
 
-      <a-row :gutter="[8, 8]">
-        <a-col :span="24">
+        <a-col :span="12">
           <a-card
             title="车辆震动曲线图"
-            style="height: 300px"
+            style="height: 350px"
             class="shadow"
             hoverable
           >
             <a slot="extra" @click="open">更多</a>
-            <div id="main7" style="height: 200px"></div>
+            <div
+              id="main7"
+              style="height: 290px; margin-left: 20px; margin-top: -20px"
+            ></div>
           </a-card>
         </a-col>
       </a-row>
@@ -858,7 +1077,7 @@ export default {
         for (var i = 0; i < res.data.deviceData.length; i++) {
           var obj = {
             tire: res.data.deviceData[i].deviceName,
-            tirePress: res.data.deviceData[i].tirePress/10000,
+            tirePress: res.data.deviceData[i].tirePress / 10000,
             tireTemp: res.data.deviceData[i].tireTemp,
             time: res.data.deviceData[i].date,
             dk: res.data.deviceData[i].deviceKey,
@@ -1071,7 +1290,7 @@ export default {
           for (var i = 0; i < res.data.deviceData.length; i++) {
             this.hisTireDate.push(res.data.deviceData[i].date);
             this.hisTireTemp.push(res.data.deviceData[i].tireTemp);
-            this.hisTirePress.push(res.data.deviceData[i].tirePress/10000);
+            this.hisTirePress.push(res.data.deviceData[i].tirePress / 10000);
           }
         }
         console.log(this.hisTireDate);
@@ -1224,7 +1443,7 @@ export default {
           for (var i = 0; i < res.data.deviceData.length; i++) {
             this.hisTireDate.push(res.data.deviceData[i].date);
             this.hisTireTemp.push(res.data.deviceData[i].tireTemp);
-            this.hisTirePress.push(res.data.deviceData[i].tirePress/10000);
+            this.hisTirePress.push(res.data.deviceData[i].tirePress / 10000);
           }
         }
         console.log(this.hisTireDate);
