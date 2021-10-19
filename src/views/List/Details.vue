@@ -108,7 +108,7 @@
       <a-row :gutter="[8, 8]">
         <a-col :span="6">
           <a-card title="车门" style="height: 220px" class="shadow" hoverable>
-            <a slot="extra" @click="showdoor()">更多</a>
+            <a slot="extra" @click="hisDoor()">更多</a>
             <a-col :span="12" style="text-align: center">
               <div>
                 <p v-show="door1">
@@ -768,6 +768,25 @@
         </a-tabs>
       </div>
     </div>
+
+    <div v-show="showPage === '4'">
+      <div class="home1">
+        <div>
+          <i
+            class="iconfont icon-ai207"
+            @click="doorBack()"
+            style="fontsize: 20px; padding: 0px 0px 0px 10px; align: left"
+          ></i>
+        </div>
+        <a-spin tip="正在请求历史数据" :spinning="doorSpinning">
+          <div
+            id="chart3"
+            ref="chart3"
+            style="height: 500px; width: 1450px; margin-left: 50px"
+          ></div>
+        </a-spin>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -812,6 +831,7 @@ export default {
       spinning1: false,
       humiSpinning: false,
       tireSpinning: false,
+      doorSpinning: false,
       alert: true,
       // num: "1", //冷机温度
       coor: {
@@ -858,6 +878,9 @@ export default {
 
       doorOriData: [],
       doorHandleData: [],
+      hisDoorDate: [],
+      hisDoor1: [],
+      hisDoor2: [],
 
       tireOriData: [],
       tireHandleData: [],
@@ -1237,7 +1260,7 @@ export default {
 
       getDeviceHisData({
         deviceKey: this.humiHandleData[0].dk,
-        startTime: this.hisEndTime - 4 * 86400, //86400
+        startTime: this.hisEndTime - 10 * 86400, //86400
         endTime: this.hisEndTime,
       }).then((res) => {
         console.log(res);
@@ -1270,6 +1293,54 @@ export default {
       this.hisTemp = [];
       this.hisHumi = [];
       // console.log(this.showPage);
+    },
+
+    hisDoor() {
+      this.showPage = "4";
+      this.doorSpinning = true;
+      this.hisEndTime = Date.parse(new Date()) / 1000;
+      getDeviceHisData({
+        deviceKey: this.doorDkList[0],
+        startTime: this.hisEndTime - 10 * 86400, //86400
+        endTime: this.hisEndTime,
+      }).then((res) => {
+        // console.log(res);
+        if (res.code == 200) {
+          for (var i = 0; i < res.data.deviceData.length; i++) {
+            this.hisDoorDate.push(res.data.deviceData[i].date);
+            this.hisDoor1.push(res.data.deviceData[i].door.door_1);
+            this.hisDoor2.push(res.data.deviceData[i].door.door_2);
+          }
+        }
+        console.log(this.hisDoorDate);
+        // console.log(this.hisDoor1);
+        // console.log(this.hisDoor2);
+        for (var i = 0; i < this.hisDoor1.length; i++) {
+          switch (this.hisDoor1[i]) {
+            case false:
+              this.hisDoor1[i] = 0;
+              break;
+            case true:
+              this.hisDoor1[i] = 1;
+              break;
+          }
+        }
+        for (var i = 0; i < this.hisDoor2.length; i++) {
+          switch (this.hisDoor2[i]) {
+            case false:
+              this.hisDoor2[i] = 0;
+              break;
+            case true:
+              this.hisDoor2[i] = 1;
+              break;
+          }
+        }
+        console.log(this.hisDoor1);
+        console.log(this.hisDoor2);
+        this.drawDoor();
+        this.doorSpinning = false;
+        // console.log("1");
+      });
     },
 
     hisTire() {
@@ -1315,6 +1386,12 @@ export default {
       this.hisTireTemp = [];
       this.hisTirePress = [];
       // console.log(this.showPage);
+    },
+    doorBack() {
+      this.showPage = "0";
+      this.hisDoorDate = [];
+      this.hisDoor1 = [];
+      this.hisDoor2 = [];
     },
 
     changeLight1(checked) {
@@ -1400,7 +1477,7 @@ export default {
       this.humiSpinning = true;
       getDeviceHisData({
         deviceKey: this.sensorList[e].dk,
-        startTime: this.hisEndTime - 4 * 86400, //86400
+        startTime: this.hisEndTime - 10 * 86400, //86400
         endTime: this.hisEndTime,
       }).then((res) => {
         console.log(res);
@@ -1632,6 +1709,62 @@ export default {
       };
       option && myChart.setOption(option);
     },
+    drawDoor() {
+      var myChart = echarts.init(document.getElementById("chart3"));
+      var colors = ["#5470C6", "#91CC75"];
+      var option = {
+        color: colors,
+        title: {
+          text: "车门状态(0为关，1为开)",
+          left: "center",
+          textStyle: {
+            fontSize: 28,
+          },
+        },
+        tooltip: {
+          trigger: "axis",
+        },
+        legend: {
+          data: ["门1", "门2"],
+          left: 80,
+        },
+        grid: {
+          left: "3%",
+          right: "4%",
+          bottom: "3%",
+          containLabel: true,
+        },
+        toolbox: {
+          feature: {
+            saveAsImage: {},
+          },
+        },
+        xAxis: {
+          type: "category",
+          data: this.hisDoorDate,
+        },
+        yAxis: {
+          type: "value",
+          interval: 1,
+        },
+        series: [
+          {
+            name: "门1",
+            type: "line",
+            step: "start",
+            data: this.hisDoor1,
+          },
+          {
+            name: "门2",
+            type: "line",
+            step: "middle",
+            data: this.hisDoor2,
+          },
+        ],
+      };
+
+      option && myChart.setOption(option);
+    },
 
     drawVib() {
       //详情页震动图
@@ -1762,10 +1895,6 @@ export default {
     show() {
       // this.showPage = "2";
       console.log("1111");
-    },
-    showdoor() {
-      // this.showPage = "4";
-      console.log("2222");
     },
   },
 };
