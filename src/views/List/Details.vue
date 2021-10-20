@@ -5,12 +5,12 @@
         <a-col :span="18">
           <a-card
             title="厢内温湿度监测"
-            style="height: 358px"
+            style="height: 400px"
             class="shadow"
             hoverable
           >
             <a slot="extra" @click="open0">更多</a>
-            <div class="sensor1">
+            <!-- <div class="sensor1">
               <p style="margin: 0 0 0 0">监测点1</p>
               <div class="left" @click="hisTem1">
                 {{ humiHandleData[0].temp }}℃
@@ -48,7 +48,6 @@
             </div>
             <div class="carriage">
               <img src="../../static/pic/carriage.png" class="img" />
-              <!-- <img width="32" src="../static/pic/honen.png" /> -->
             </div>
             <div class="sensor5">
               <p style="margin: 0 0 0 0">监测点5</p>
@@ -70,13 +69,14 @@
               <p class="right" @click="hisTem1">
                 {{ humiHandleData[6].humi }}%
               </p>
-            </div>
+            </div> -->
             <!-- <div class="sensor8">
               <p style="margin: 0 0 0 0">监测点8</p>
               <p class="left" @click="hisTem8">{{ humiOriData[6].temp }}</p>
               <p class="right" @click="hisHum8">{{ humiOriData[6].humi }}</p>
             </div> -->
-            <div class="top-right">
+
+            <!-- <div class="top-right">
               <h4 class="title">当月设备报警信息条数排名</h4>
               <ul class="list">
                 <li :key="index" v-for="(item, index) in devicerankList">
@@ -87,7 +87,180 @@
                   <span>{{ item.count }}</span>
                 </li>
               </ul>
-            </div>
+            </div> -->
+
+            <a-row type="flex" style="height: 50px; font-size: 16px">
+              <a-col :span="4">
+                <a-col :span="6" style="padding-top: 12px; text-align: center">
+                  <p style="font-size: 14px">监测点1</p>
+                </a-col>
+                <a-col
+                  :span="18"
+                  style="padding-top: 0px; font-weight: bold"
+                  @click="hisTem1"
+                >
+                  <div class="container">
+                    <span style="padding-left: 16px; font-size: 14px">
+                      温度：<span style="font-size: 20px"
+                        >{{ humiHandleData[0].temp }}℃</span
+                      >
+                    </span>
+                    <span style="padding-left: 16px; font-size: 14px">
+                      湿度：<span style="font-size: 20px"
+                        >{{ humiHandleData[0].humi }}%</span
+                      >
+                    </span>
+                  </div>
+                </a-col>
+              </a-col>
+              <a-col :span="4">
+                <a-col :span="6" style="padding-top: 12px; text-align: center">
+                  <p style="font-size: 14px">监测点2</p>
+                </a-col>
+                <a-col
+                  :span="18"
+                  style="padding-top: 0px; font-weight: bold"
+                  @click="hisTem1"
+                >
+                  <div class="container">
+                    <span style="padding-left: 16px; font-size: 14px">
+                      温度：<span style="font-size: 20px"
+                        >{{ humiHandleData[1].temp }}℃</span
+                      >
+                    </span>
+                    <span style="padding-left: 16px; font-size: 14px">
+                      湿度：<span style="font-size: 20px"
+                        >{{ humiHandleData[1].humi }}%</span
+                      >
+                    </span>
+                  </div>
+                </a-col>
+              </a-col>
+              <a-col :span="4">
+                <a-col :span="6" style="padding-top: 12px; text-align: center">
+                  <p style="font-size: 14px">监测点3</p>
+                </a-col>
+                <a-col
+                  :span="18"
+                  style="padding-top: 0px; font-weight: bold"
+                  @click="hisTem1"
+                >
+                  <div class="container">
+                    <span style="padding-left: 16px; font-size: 14px">
+                      温度：<span style="font-size: 20px"
+                        >{{ humiHandleData[2].temp }}℃</span
+                      >
+                    </span>
+                    <span style="padding-left: 16px; font-size: 14px">
+                      湿度：<span style="font-size: 20px"
+                        >{{ humiHandleData[2].humi }}%</span
+                      >
+                    </span>
+                  </div>
+                </a-col>
+              </a-col>
+              <a-col :span="4">
+                <a-col :span="6" style="padding-top: 12px; text-align: center">
+                  <p style="font-size: 14px">监测点4</p>
+                </a-col>
+                <a-col
+                  :span="18"
+                  style="padding-top: 0px; font-weight: bold"
+                  @click="hisTem1"
+                >
+                  <div class="container">
+                    <span style="padding-left: 16px; font-size: 14px">
+                      温度：<span style="font-size: 20px"
+                        >{{ humiHandleData[3].temp }}℃</span
+                      >
+                    </span>
+                    <span style="padding-left: 16px; font-size: 14px">
+                      湿度：<span style="font-size: 20px"
+                        >{{ humiHandleData[3].humi }}%</span
+                      >
+                    </span>
+                  </div>
+                </a-col>
+              </a-col>
+              <a-col :span="4">
+                <a-col :span="6" style="padding-top: 12px; text-align: center">
+                  <p style="font-size: 14px">监测点5</p>
+                </a-col>
+                <a-col
+                  :span="18"
+                  style="padding-top: 0px; font-weight: bold"
+                  @click="hisTem1"
+                >
+                  <div class="container">
+                    <span style="padding-left: 16px; font-size: 14px">
+                      温度：<span style="font-size: 20px"
+                        >{{ humiHandleData[4].temp }}℃</span
+                      >
+                    </span>
+                    <span style="padding-left: 16px; font-size: 14px">
+                      湿度：<span style="font-size: 20px"
+                        >{{ humiHandleData[4].humi }}%</span
+                      >
+                    </span>
+                  </div>
+                </a-col>
+              </a-col>
+              <a-col :span="4">
+                <a-col :span="6" style="padding-top: 12px; text-align: center">
+                  <p style="font-size: 14px">监测点6</p>
+                </a-col>
+                <a-col
+                  :span="18"
+                  style="padding-top: 0px; font-weight: bold"
+                  @click="hisTem1"
+                >
+                  <div class="container">
+                    <span style="padding-left: 16px; font-size: 14px">
+                      温度：<span style="font-size: 20px"
+                        >{{ humiHandleData[5].temp }}℃</span
+                      >
+                    </span>
+                    <span style="padding-left: 16px; font-size: 14px">
+                      湿度：<span style="font-size: 20px"
+                        >{{ humiHandleData[5].humi }}%</span
+                      >
+                    </span>
+                  </div>
+                </a-col>
+              </a-col>
+            </a-row>
+
+            <a-row>
+              <a-col :span="24">
+                <div class="carriage1">
+                  <img src="../../static/pic/carriage2.png" width="700px" />
+                </div>
+              </a-col>
+            </a-row>
+
+            <a-row>
+              <a-col :span="12" style="padding-top: 28px; text-align: right">
+                <p style="font-size: 14px">厢外监测点(监测点7)</p>
+              </a-col>
+              <a-col
+                :span="12"
+                style="padding-top: 10px; font-weight: bold"
+                @click="hisTem1"
+              >
+                <div class="container">
+                  <span style="padding-left: 16px; font-size: 14px">
+                    温度：<span style="font-size: 20px"
+                      >{{ humiHandleData[6].temp }}℃</span
+                    >
+                  </span>
+                  <span style="padding-left: 16px; font-size: 14px">
+                    湿度：<span style="font-size: 20px"
+                      >{{ humiHandleData[6].humi }}%</span
+                    >
+                  </span>
+                </div>
+              </a-col>
+            </a-row>
           </a-card>
         </a-col>
 
@@ -95,7 +268,7 @@
           <a-card
             :title="this.carNum"
             :bordered="true"
-            style="height: 358px"
+            style="height: 400px"
             class="shadow"
             hoverable
           >
@@ -192,7 +365,7 @@
                 <p v-show="!light3">
                   <img src="../../static/icon/关灯1.svg" style="width: 60px" />
                 </p>
-                <p>其它</p>
+                <p>消毒灯</p>
                 <a-switch
                   checked-children="开"
                   un-checked-children="关"
@@ -653,7 +826,7 @@
       <a-row :gutter="[8, 8]">
         <a-col :span="24">
           <a-card
-            title="皖A2222    行进中（已行驶99km 速度50km/h）"
+            :title="title1"
             style="height: 285px"
             class="shadow"
             hoverable
@@ -814,6 +987,7 @@ export default {
 
   data() {
     return {
+      title1: "",
       showPage: "0", //初始页面
       humiTabKey: "1", //温湿度tabs初始值
       tireTabKey: "1", //胎温tabs初始值
@@ -941,6 +1115,7 @@ export default {
       this.productkey = this.$route.query.pk;
       this.carNum = this.$route.query.carnum;
       console.log(this.productkey);
+      this.title1 = this.carNum + "    行进中（已行驶99km 速度50km/h）";
     },
     async getDk() {
       this.humiDkList = [];
@@ -1918,207 +2093,214 @@ export default {
   background: #ffffff;
 }
 
-.sensor1 {
-  // background: rgb(216, 213, 213);
-  margin: 0px 5px 15px 5px;
-  width: 100px;
-  height: 50px;
-  .left {
-    font-size: 20px;
-    width: 50px;
-    font-weight: bold;
-    // background: black;
-  }
-  .right {
-    font-size: 20px;
-    font-weight: bold;
-    margin: -30px 10px 10px 90px;
-    // background: black;
-  }
+.container {
+  display: flex;
+  flex-direction: column;
 }
-.sensor2 {
-  // background: rgb(230, 223, 223);
-  margin: -65px 5px 15px 200px;
-  width: 100px;
-  height: 50px;
-  .left {
-    font-size: 20px;
-    width: 50px;
-    font-weight: bold;
-    // background: black;
-  }
-  .right {
-    font-size: 20px;
-    font-weight: bold;
-    margin: -30px 10px 10px 90px;
-    // background: black;
-  }
+.carriage1 {
+  margin: 20px 0px 0px 240px;
 }
-.sensor3 {
-  // background: rgb(230, 223, 223);
-  margin: -65px 5px 15px 400px;
-  width: 100px;
-  height: 50px;
-  .left {
-    font-size: 20px;
-    font-weight: bold;
-    width: 50px;
-    // background: black;
-  }
-  .right {
-    font-size: 20px;
-    font-weight: bold;
-    margin: -30px 10px 10px 90px;
-    // background: black;
-  }
-}
-.sensor4 {
-  // background: rgb(230, 223, 223);
-  margin: -65px 5px 15px 600px;
-  width: 100px;
-  height: 50px;
-  .left {
-    font-size: 20px;
-    font-weight: bold;
-    width: 50px;
-    // background: black;
-  }
-  .right {
-    font-size: 20px;
-    font-weight: bold;
-    margin: -30px 10px 10px 90px;
-    // background: black;
-  }
-}
-.carriage {
-  // background: rgb(230, 223, 223);
-  margin: 0px 5px 15px 0px;
-  width: 705px;
-  height: 150px;
-  .img {
-    margin: 0px 0px 0px 40px;
-  }
-}
-.sensor5 {
-  // background: rgb(230, 223, 223);
-  margin: 15px 5px 15px 5px;
-  width: 100px;
-  height: 50px;
-  .left {
-    font-size: 20px;
-    font-weight: bold;
-    width: 50px;
-    // background: black;
-  }
-  .right {
-    font-size: 20px;
-    font-weight: bold;
-    margin: -50px 10px 10px 90px;
-    // background: black;
-  }
-}
-.sensor6 {
-  // background: rgb(230, 223, 223);
-  margin: -65px 5px 15px 200px;
-  width: 100px;
-  height: 50px;
-  .left {
-    font-size: 20px;
-    font-weight: bold;
-    width: 50px;
-    // background: black;
-  }
-  .right {
-    font-size: 20px;
-    font-weight: bold;
-    margin: -50px 10px 10px 90px;
-    // background: black;
-  }
-}
-.sensor7 {
-  // background: rgb(230, 223, 223);
-  margin: -65px 5px 15px 400px;
-  width: 100px;
-  height: 50px;
-  .left {
-    font-size: 20px;
-    font-weight: bold;
-    width: 50px;
-    // background: black;
-  }
-  .right {
-    font-size: 20px;
-    font-weight: bold;
-    margin: -50px 10px 10px 90px;
-    // background: black;
-  }
-}
-.sensor8 {
-  // background: rgb(230, 223, 223);
-  margin: -65px 5px 15px 600px;
-  width: 100px;
-  height: 50px;
-  .left {
-    font-size: 20px;
-    font-weight: bold;
-    width: 50px;
-    // background: black;
-  }
-  .right {
-    font-size: 20px;
-    font-weight: bold;
-    margin: -50px 10px 10px 90px;
-    // background: black;
-  }
-}
-.top-right {
-  // background: rgb(204, 200, 200);
-  margin: -290px 5px 0px 800px;
-  height: 260px;
-  .title {
-    font-size: 14px;
-    font-weight: 600;
-    margin-left: 20px;
-  }
-  .list {
-    margin: 25px 0 0;
-    padding: 0;
-    list-style: none;
-    // background: #000;
-    li {
-      margin-top: 16px;
-      span {
-        color: rgba(0, 0, 0, 0.65);
-        font-size: 14px;
-        line-height: 22px;
-        &:first-child {
-          background-color: #f5f5f5;
-          border-radius: 20px;
-          display: inline-block;
-          font-size: 12px;
-          font-weight: 600;
-          margin-right: 24px;
-          height: 20px;
-          line-height: 20px;
-          width: 20px;
-          text-align: center;
-        }
-        &.active {
-          background-color: #314659;
-          color: #fff;
-        }
-        &:last-child {
-          float: right;
-        }
-      }
-    }
-  }
-}
+// .sensor1 {
+//   // background: rgb(216, 213, 213);
+//   margin: 0px 5px 15px 5px;
+//   width: 100px;
+//   height: 50px;
+//   .left {
+//     font-size: 20px;
+//     width: 50px;
+//     font-weight: bold;
+//     // background: black;
+//   }
+//   .right {
+//     font-size: 20px;
+//     font-weight: bold;
+//     margin: -30px 10px 10px 90px;
+//     // background: black;
+//   }
+// }
+// .sensor2 {
+//   // background: rgb(230, 223, 223);
+//   margin: -65px 5px 15px 200px;
+//   width: 100px;
+//   height: 50px;
+//   .left {
+//     font-size: 20px;
+//     width: 50px;
+//     font-weight: bold;
+//     // background: black;
+//   }
+//   .right {
+//     font-size: 20px;
+//     font-weight: bold;
+//     margin: -30px 10px 10px 90px;
+//     // background: black;
+//   }
+// }
+// .sensor3 {
+//   // background: rgb(230, 223, 223);
+//   margin: -65px 5px 15px 400px;
+//   width: 100px;
+//   height: 50px;
+//   .left {
+//     font-size: 20px;
+//     font-weight: bold;
+//     width: 50px;
+//     // background: black;
+//   }
+//   .right {
+//     font-size: 20px;
+//     font-weight: bold;
+//     margin: -30px 10px 10px 90px;
+//     // background: black;
+//   }
+// }
+// .sensor4 {
+//   // background: rgb(230, 223, 223);
+//   margin: -65px 5px 15px 600px;
+//   width: 100px;
+//   height: 50px;
+//   .left {
+//     font-size: 20px;
+//     font-weight: bold;
+//     width: 50px;
+//     // background: black;
+//   }
+//   .right {
+//     font-size: 20px;
+//     font-weight: bold;
+//     margin: -30px 10px 10px 90px;
+//     // background: black;
+//   }
+// }
+// .carriage {
+//   // background: rgb(230, 223, 223);
+//   margin: 0px 5px 15px 0px;
+//   width: 705px;
+//   height: 150px;
+//   .img {
+//     margin: 0px 0px 0px 40px;
+//   }
+// }
+// .sensor5 {
+//   // background: rgb(230, 223, 223);
+//   margin: 15px 5px 15px 5px;
+//   width: 100px;
+//   height: 50px;
+//   .left {
+//     font-size: 20px;
+//     font-weight: bold;
+//     width: 50px;
+//     // background: black;
+//   }
+//   .right {
+//     font-size: 20px;
+//     font-weight: bold;
+//     margin: -50px 10px 10px 90px;
+//     // background: black;
+//   }
+// }
+// .sensor6 {
+//   // background: rgb(230, 223, 223);
+//   margin: -65px 5px 15px 200px;
+//   width: 100px;
+//   height: 50px;
+//   .left {
+//     font-size: 20px;
+//     font-weight: bold;
+//     width: 50px;
+//     // background: black;
+//   }
+//   .right {
+//     font-size: 20px;
+//     font-weight: bold;
+//     margin: -50px 10px 10px 90px;
+//     // background: black;
+//   }
+// }
+// .sensor7 {
+//   // background: rgb(230, 223, 223);
+//   margin: -65px 5px 15px 400px;
+//   width: 100px;
+//   height: 50px;
+//   .left {
+//     font-size: 20px;
+//     font-weight: bold;
+//     width: 50px;
+//     // background: black;
+//   }
+//   .right {
+//     font-size: 20px;
+//     font-weight: bold;
+//     margin: -50px 10px 10px 90px;
+//     // background: black;
+//   }
+// }
+// .sensor8 {
+//   // background: rgb(230, 223, 223);
+//   margin: -65px 5px 15px 600px;
+//   width: 100px;
+//   height: 50px;
+//   .left {
+//     font-size: 20px;
+//     font-weight: bold;
+//     width: 50px;
+//     // background: black;
+//   }
+//   .right {
+//     font-size: 20px;
+//     font-weight: bold;
+//     margin: -50px 10px 10px 90px;
+//     // background: black;
+//   }
+// }
+// .top-right {
+//   // background: rgb(204, 200, 200);
+//   margin: -290px 5px 0px 800px;
+//   height: 260px;
+//   .title {
+//     font-size: 14px;
+//     font-weight: 600;
+//     margin-left: 20px;
+//   }
+//   .list {
+//     margin: 25px 0 0;
+//     padding: 0;
+//     list-style: none;
+//     // background: #000;
+//     li {
+//       margin-top: 16px;
+//       span {
+//         color: rgba(0, 0, 0, 0.65);
+//         font-size: 14px;
+//         line-height: 22px;
+//         &:first-child {
+//           background-color: #f5f5f5;
+//           border-radius: 20px;
+//           display: inline-block;
+//           font-size: 12px;
+//           font-weight: 600;
+//           margin-right: 24px;
+//           height: 20px;
+//           line-height: 20px;
+//           width: 20px;
+//           text-align: center;
+//         }
+//         &.active {
+//           background-color: #314659;
+//           color: #fff;
+//         }
+//         &:last-child {
+//           float: right;
+//         }
+//       }
+//     }
+//   }
+// }
 .oil {
   // background: rgb(233, 219, 219);
   width: 100%;
   height: 350px;
-  margin-top: -20px;
+  margin-top: 0px;
   // margin: -10px 0px 0px 60px;
 }
 .map {
