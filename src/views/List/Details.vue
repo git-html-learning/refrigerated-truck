@@ -1581,28 +1581,32 @@ export default {
         changeLight(data1).then((res) => {
           // console.log("开灯结果", res);
           if (res.code == 200) {
-            getDeviceData({
-              productKey: this.productkey,
-              deviceKeyList: this.doorDkList,
-            }).then((res) => {
-              // console.log(res);
-              if (res.code == 200) {
-                this.lightOriData = res.data.deviceData[0].electrical;
-                switch (this.lightOriData[0]) {
-                  case 0:
-                    this.light1 = false;
-                    this.defaultChecked = false;
-                    break;
-                  case 1:
-                    this.light1 = true;
-                    this.defaultChecked = true;
-                    break;
-                }
-                console.log("light1", this.light1);
-                console.log("defaultChecked", this.defaultChecked);
-                this.spinning1 = false;
-              }
-            });
+            //查询是否开灯成功
+            // getDeviceData({
+            //   productKey: this.productkey,
+            //   deviceKeyList: this.doorDkList,
+            // }).then((res) => {
+            //   // console.log(res);
+            //   if (res.code == 200) {
+            //     this.lightOriData = res.data.deviceData[0].electrical;
+            //     switch (this.lightOriData[0]) {
+            //       case 0:
+            //         this.light1 = false;
+            //         this.defaultChecked = false;
+            //         break;
+            //       case 1:
+            //         this.light1 = true;
+            //         this.defaultChecked = true;
+            //         break;
+            //     }
+            //     console.log("light1", this.light1);
+            //     console.log("defaultChecked", this.defaultChecked);
+            //     this.spinning1 = false;
+            //   }
+            // });
+            this.light1=true
+            this.defaultChecked=true
+            this.spinning1 = false;
           }
         });
       } else {
@@ -1614,28 +1618,32 @@ export default {
         changeLight(data2).then((res) => {
           // console.log("关灯结果", res);
           if (res.code == 200) {
-            getDeviceData({
-              productKey: this.productkey,
-              deviceKeyList: this.doorDkList,
-            }).then((res) => {
-              // console.log(res);
-              if (res.code == 200) {
-                this.lightOriData = res.data.deviceData[0].electrical;
-                switch (this.lightOriData[0]) {
-                  case 0:
-                    this.light1 = false;
-                    this.defaultChecked = false;
-                    break;
-                  case 1:
-                    this.light1 = true;
-                    this.defaultChecked = true;
-                    break;
-                }
-                console.log("light1", this.light1);
-                console.log("defaultChecked", this.defaultChecked);
-                this.spinning1 = false;
-              }
-            });
+            //查询是否关灯成功
+            // getDeviceData({
+            //   productKey: this.productkey,
+            //   deviceKeyList: this.doorDkList,
+            // }).then((res) => {
+            //   // console.log(res);
+            //   if (res.code == 200) {
+            //     this.lightOriData = res.data.deviceData[0].electrical;
+            //     switch (this.lightOriData[0]) {
+            //       case 0:
+            //         this.light1 = false;
+            //         this.defaultChecked = false;
+            //         break;
+            //       case 1:
+            //         this.light1 = true;
+            //         this.defaultChecked = true;
+            //         break;
+            //     }
+            //     console.log("light1", this.light1);
+            //     console.log("defaultChecked", this.defaultChecked);
+            //     this.spinning1 = false;
+            //   }
+            // });
+            this.light1=false
+            this.defaultChecked=false
+            this.spinning1 = false;
           }
         });
       }
