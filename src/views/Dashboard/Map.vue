@@ -142,7 +142,14 @@ export default {
   created() {
     // console.log(this.markers.lng);
     this.getPk();
+    // this.refresh();
   },
+  // beforeDestroy() {
+  //   console.log("222");
+  //   if (this.timer) {
+  //     clearInterval(this.refresh);
+  //   }
+  // },
 
   data() {
     return {
@@ -192,6 +199,16 @@ export default {
   },
 
   methods: {
+    // test() {
+    //   console.log("111");
+    //   this.getPk();
+    // },
+    // refresh() {
+    //   //定时器
+    //   this.timer = setInterval(() => {
+    //     this.test();
+    //   }, 2000);
+    // },
     async getPk() {
       const res = await product();
       // console.log(res);
@@ -228,6 +245,7 @@ export default {
       this.getDoorData();
     },
     async getGPS() {
+      this.markers = [];
       const res = await getDeviceData({
         productKey: this.pkList[0],
         deviceKeyList: this.gpsDkList,
@@ -241,6 +259,8 @@ export default {
         lat: res.data.deviceData[0].Lat,
       };
       this.markers.push(obj);
+      this.lg = this.markers[0].lng;
+      this.lt = this.markers[0].lat;
       console.log("markers", this.markers);
     },
     async getDoorData() {
