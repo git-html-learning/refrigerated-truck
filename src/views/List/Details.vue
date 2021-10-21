@@ -9,7 +9,7 @@
             class="shadow"
             hoverable
           >
-            <a slot="extra" @click="open0">更多</a>
+            <a slot="extra" @click="openHumi">更多</a>
             <!-- <div class="sensor1">
               <p style="margin: 0 0 0 0">监测点1</p>
               <div class="left" @click="hisTem1">
@@ -272,7 +272,7 @@
             class="shadow"
             hoverable
           >
-            <a slot="extra" @click="open1">更多</a>
+            <a slot="extra" @click="openOil">更多</a>
             <div id="oil" class="oil"></div>
           </a-card>
         </a-col>
@@ -313,7 +313,7 @@
 
         <a-col :span="9">
           <a-card title="灯开关" style="height: 220px" class="shadow" hoverable>
-            <a slot="extra" @click="show()">更多</a>
+            <!-- <a slot="extra" @click="show()">更多</a> -->
             <a-col :span="8" style="text-align: center">
               <div>
                 <a-spin tip="等待响应" :spinning="spinning1">
@@ -482,7 +482,7 @@
             style="height: 350px"
             class="shadow"
           >
-            <a slot="extra" @click="open2">更多</a>
+            <a slot="extra" @click="openTire">更多</a>
             <!-- <a-row type="flex" style="height: 60px; font-size: 18px">
               <a-col :span="8">
                 <a-col :span="6" style="text-align: center">
@@ -814,7 +814,7 @@
             class="shadow"
             hoverable
           >
-            <a slot="extra" @click="open">更多</a>
+            <a slot="extra" @click="openVib">更多</a>
             <div
               id="main7"
               style="height: 290px; margin-left: 20px; margin-top: -20px"
@@ -856,6 +856,45 @@
         </a-col>
       </a-row>
     </div>
+
+    <a-modal
+      title="设置温湿度阈值"
+      :visible="humiDialogVisible"
+      @ok="setHumiValue"
+      @cancel="humiDialogVisible = false"
+      width="500px"
+    >
+      <a-form-model :label-col="{ span: 7 }">
+        <a-form-model-item label="温度下限/℃" :wrapper-col="{ span: 12 }">
+          <a-input v-model="tempDown" />
+        </a-form-model-item>
+        <a-form-model-item label="温度上限/℃" :wrapper-col="{ span: 12 }">
+          <a-input v-model="tempUp" />
+        </a-form-model-item>
+        <a-form-model-item label="湿度下限/%" :wrapper-col="{ span: 12 }">
+          <a-input v-model="humiDown" />
+        </a-form-model-item>
+        <a-form-model-item label="湿度上限/%" :wrapper-col="{ span: 12 }">
+          <a-input v-model="humiUp" />
+        </a-form-model-item>
+      </a-form-model>
+    </a-modal>
+    <a-modal
+      title="设置胎温胎压阈值"
+      :visible="tireDialogVisible"
+      @ok="setTireValue"
+      @cancel="tireDialogVisible = false"
+      width="500px"
+    >
+      <a-form-model :label-col="{ span: 7 }">
+        <a-form-model-item label="胎温上限/℃" :wrapper-col="{ span: 12 }">
+          <a-input v-model="tireTempUp" />
+        </a-form-model-item>
+        <a-form-model-item label="胎压上限/bar" :wrapper-col="{ span: 12 }">
+          <a-input v-model="tirePressUp" />
+        </a-form-model-item>
+      </a-form-model>
+    </a-modal>
 
     <div v-show="showPage === '1'">
       <div class="home1">
@@ -1062,6 +1101,15 @@ export default {
 
       lightOriData: [],
       lightHandleData: [],
+
+      tempUp: "40",
+      humiUp: "100",
+      tempDown: "-30",
+      humiDown: "40",
+      tireTempUp: "90",
+      tirePressUp: "10",
+      humiDialogVisible: false,
+      tireDialogVisible: false,
     };
   },
 
@@ -1604,8 +1652,8 @@ export default {
             //     this.spinning1 = false;
             //   }
             // });
-            this.light1=true
-            this.defaultChecked=true
+            this.light1 = true;
+            this.defaultChecked = true;
             this.spinning1 = false;
           }
         });
@@ -1641,8 +1689,8 @@ export default {
             //     this.spinning1 = false;
             //   }
             // });
-            this.light1=false
-            this.defaultChecked=false
+            this.light1 = false;
+            this.defaultChecked = false;
             this.spinning1 = false;
           }
         });
@@ -2001,26 +2049,15 @@ export default {
       option && myChart.setOption(option);
     },
 
-    open0() {
-      this.$prompt("设置温度报警值/°C", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-      })
-        .then(({ value }) => {
-          this.$message({
-            type: "success",
-            message: "温度报警值: " + value,
-          });
-        })
-        .catch(() => {
-          this.$message({
-            type: "info",
-            message: "取消输入",
-          });
-        });
+    openHumi() {
+      this.humiDialogVisible = true;
+    },
+    setHumiValue() {
+      this.$message.success("修改成功!");
+      this.humiDialogVisible = false;
     },
 
-    open1() {
+    openOil() {
       this.$prompt("设置油位报警值/%", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
@@ -2038,7 +2075,7 @@ export default {
           });
         });
     },
-    open() {
+    openVib() {
       this.$prompt("设置震动报警值/g", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
@@ -2056,23 +2093,12 @@ export default {
           });
         });
     },
-    open2() {
-      this.$prompt("设置报警值", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-      })
-        .then(({ value }) => {
-          this.$message({
-            type: "success",
-            message: "胎温胎压低于: " + value + "报警",
-          });
-        })
-        .catch(() => {
-          this.$message({
-            type: "info",
-            message: "取消输入",
-          });
-        });
+    openTire() {
+      this.tireDialogVisible = true;
+    },
+    setTireValue() {
+      this.$message.success("修改成功!");
+      this.tireDialogVisible = false;
     },
 
     show() {
