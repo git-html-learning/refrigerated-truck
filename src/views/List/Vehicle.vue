@@ -250,7 +250,7 @@ export default {
     async getproduct() {
       //获取产品信息
       const res = await product();
-      // console.log(res);
+      console.log(res);
       for (var i = 0; i < res.data.productInfo.length; i++) {
         if (res.data.productInfo[i].typeIdentify != "tysj") {
           // console.log(res.data.productInfo[i]);

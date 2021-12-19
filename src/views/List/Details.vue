@@ -1202,7 +1202,7 @@ export default {
         productKey: this.productkey,
         deviceKeyList: this.humiDkList,
       });
-      // console.log(res);
+      console.log(res);
       if (res.code == 200) {
         for (var i = 0; i < res.data.deviceData.length; i++) {
           var obj = {
