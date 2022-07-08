@@ -21,13 +21,15 @@
                   @click="hisTem1"
                 >
                   <div class="container">
-                    <span style="padding-left: 16px; font-size: 14px">
+                    <span style="padding-left: 16px; font-size: 14px" 
+                    :class="[humiHandleData[0].temp<this.tempUp&& humiHandleData[0].temp>this.tempDown? '' : 'error']">
                       温度：<span style="font-size: 20px"
                         >{{ humiHandleData[0].temp }}℃</span
                       >
                     </span>
                     <span style="padding-left: 16px; font-size: 14px">
                       湿度：<span style="font-size: 20px"
+                         :class="[humiHandleData[0].humi<this.humiUp&& humiHandleData[0].humi>this.humiDown? '' : 'error']"
                         >{{ humiHandleData[0].humi }}%</span
                       >
                     </span>
@@ -44,13 +46,17 @@
                   @click="hisTem1"
                 >
                   <div class="container">
-                    <span style="padding-left: 16px; font-size: 14px">
+                    <span style="padding-left: 16px; font-size: 14px"
+                
+                    >
                       温度：<span style="font-size: 20px"
+                          :class="[humiHandleData[1].temp<this.tempUp&& humiHandleData[1].temp>this.tempDown? '' : 'error']"
                         >{{ humiHandleData[1].temp }}℃</span
                       >
                     </span>
                     <span style="padding-left: 16px; font-size: 14px">
                       湿度：<span style="font-size: 20px"
+                         :class="[humiHandleData[1].humi<this.humiUp&& humiHandleData[1].humi>this.humiDown? '' : 'error']"
                         >{{ humiHandleData[1].humi }}%</span
                       >
                     </span>
@@ -67,13 +73,17 @@
                   @click="hisTem1"
                 >
                   <div class="container">
-                    <span style="padding-left: 16px; font-size: 14px">
+                    <span style="padding-left: 16px; font-size: 14px"
+
+                    >
                       温度：<span style="font-size: 20px"
+                      :class="[humiHandleData[2].temp<this.tempUp&& humiHandleData[2].temp>this.tempDown? '' : 'error']"
                         >{{ humiHandleData[2].temp }}℃</span
                       >
                     </span>
                     <span style="padding-left: 16px; font-size: 14px">
                       湿度：<span style="font-size: 20px"
+                       :class="[humiHandleData[2].humi<this.humiUp&& humiHandleData[2].humi>this.humiDown? '' : 'error']"
                         >{{ humiHandleData[2].humi }}%</span
                       >
                     </span>
@@ -92,10 +102,13 @@
                   <div class="container">
                     <span style="padding-left: 16px; font-size: 14px">
                       温度：<span style="font-size: 20px"
+                        :class="[humiHandleData[3].temp<this.tempUp&& humiHandleData[3].temp>this.tempDown? '' : 'error']"
                         >{{ humiHandleData[3].temp }}℃</span
                       >
                     </span>
-                    <span style="padding-left: 16px; font-size: 14px">
+                    <span style="padding-left: 16px; font-size: 14px"
+                      :class="[humiHandleData[3].humi<this.humiUp&& humiHandleData[3].humi>this.humiDown? '' : 'error']"
+                    >
                       湿度：<span style="font-size: 20px"
                         >{{ humiHandleData[3].humi }}%</span
                       >
@@ -115,11 +128,13 @@
                   <div class="container">
                     <span style="padding-left: 16px; font-size: 14px">
                       温度：<span style="font-size: 20px"
+                         :class="[humiHandleData[4].temp<this.tempUp&& humiHandleData[4].temp>this.tempDown? '' : 'error']"
                         >{{ humiHandleData[4].temp }}℃</span
                       >
                     </span>
                     <span style="padding-left: 16px; font-size: 14px">
                       湿度：<span style="font-size: 20px"
+                          :class="[humiHandleData[4].humi<this.humiUp&& humiHandleData[4].humi>this.humiDown? '' : 'error']"
                         >{{ humiHandleData[4].humi }}%</span
                       >
                     </span>
@@ -138,11 +153,13 @@
                   <div class="container">
                     <span style="padding-left: 16px; font-size: 14px">
                       温度：<span style="font-size: 20px"
+                         :class="[humiHandleData[5].temp<this.tempUp&& humiHandleData[5].temp>this.tempDown? '' : 'error']"
                         >{{ humiHandleData[5].temp }}℃</span
                       >
                     </span>
                     <span style="padding-left: 16px; font-size: 14px">
                       湿度：<span style="font-size: 20px"
+                        :class="[humiHandleData[5].humi<this.humiUp&& humiHandleData[5].humi>this.humiDown? '' : 'error']"
                         >{{ humiHandleData[5].humi }}%</span
                       >
                     </span>
@@ -171,11 +188,13 @@
                 <div class="container">
                   <span style="padding-left: 16px; font-size: 14px">
                     温度：<span style="font-size: 20px"
+                     :class="[humiHandleData[6].temp<this.tempUp&& humiHandleData[6].temp>this.tempDown? '' : 'error']"
                       >{{ humiHandleData[6].temp }}℃</span
                     >
                   </span>
                   <span style="padding-left: 16px; font-size: 14px">
                     湿度：<span style="font-size: 20px"
+                    :class="[humiHandleData[6].humi<this.humiUp&& humiHandleData[6].humi>this.humiDown? '' : 'error']"
                       >{{ humiHandleData[6].humi }}%</span
                     >
                   </span>
@@ -555,7 +574,10 @@
                   />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                  <span style = "font-size: 13px"> 胎温: </span> <span style = "font-size: 16px"
+                     :class="[tireHandleData[0].tireTemp<this.tireTempUp? '' : 'error']">{{tireHandleData[0].tireTemp}}℃</span> &nbsp;&nbsp; <span style = "font-size: 13px">胎压:</span><span style = "font-size: 16px"
+                      :class="[tireHandleData[0].tirePress<this.tirePressUp? '' : 'error']"
+                     >{{tireHandleData[0].tirePress}}kPa </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -567,7 +589,11 @@
                   />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+        <span style = "font-size: 13px"> 胎温: </span> <span style = "font-size: 16px"
+        :class="[tireHandleData[1].tireTemp<this.tireTempUp? '' : 'error']"
+        >{{tireHandleData[1].tireTemp}}℃</span> &nbsp;&nbsp; <span style = "font-size: 13px">胎压:</span><span style = "font-size: 16px"
+        :class="[tireHandleData[1].tirePress<this.tirePressUp? '' : 'error']"
+        >{{tireHandleData[1].tirePress}}kPa </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -579,7 +605,11 @@
                   />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                 <span style = "font-size: 13px"> 胎温: </span> <span style = "font-size: 16px"
+                   :class="[tireHandleData[4].tireTemp<this.tireTempUp? '' : 'error']"
+                 >{{tireHandleData[4].tireTemp}}℃</span> &nbsp;&nbsp; <span style = "font-size: 13px">胎压:</span><span style = "font-size: 16px"
+                   :class="[tireHandleData[4].tirePress<this.tirePressUp? '' : 'error']"
+                 >{{tireHandleData[4].tirePress}}kPa </span>
                 </a-col>
               </a-col>
             </a-row>
@@ -593,7 +623,11 @@
                   />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                   <span style = "font-size: 13px"> 胎温: </span> <span style = "font-size: 16px"
+                    :class="[tireHandleData[5].tireTemp<this.tireTempUp? '' : 'error']"
+                   >{{tireHandleData[5].tireTemp}}℃</span> &nbsp;&nbsp; <span style = "font-size: 13px">胎压:</span><span style = "font-size: 16px"
+                    :class="[tireHandleData[5].tirePress<this.tirePressUp? '' : 'error']"
+                   >{{tireHandleData[5].tirePress}}kPa </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -605,7 +639,11 @@
                   />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                  <span style = "font-size: 13px"> 胎温: </span> <span style = "font-size: 16px"
+                   :class="[tireHandleData[8].tireTemp<this.tireTempUp? '' : 'error']"
+                  >{{tireHandleData[8].tireTemp}}℃</span> &nbsp;&nbsp; <span style = "font-size: 13px">胎压:</span><span style = "font-size: 16px"
+                   :class="[tireHandleData[8].tirePress<this.tirePressUp? '' : 'error']"
+                  >{{tireHandleData[8].tirePress}}kPa </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -617,14 +655,18 @@
                   />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                <span style = "font-size: 13px"> 胎温: </span> <span style = "font-size: 16px"
+                 :class="[tireHandleData[9].tireTemp<this.tireTempUp? '' : 'error']"
+                >{{tireHandleData[9].tireTemp}}℃</span> &nbsp;&nbsp; <span style = "font-size: 13px">胎压:</span><span style = "font-size: 16px"
+                 :class="[tireHandleData[9].tirePress<this.tirePressUp? '' : 'error']"
+                >{{tireHandleData[9].tirePress}}kPa </span>
                 </a-col>
               </a-col>
             </a-row>
             <a-row>
               <a-col :span="2"></a-col>
               <a-col :span="21">
-                <img src="../../static/pic/3.png" style="width: 100%" />
+                <img src="../../static/pic/3.png" style="width: 70%; margin-left: 15%" />
               </a-col>
               <a-col :span="1"></a-col>
             </a-row>
@@ -638,7 +680,11 @@
                   />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+            <span style = "font-size: 13px"> 胎温: </span> <span style = "font-size: 16px"
+             :class="[tireHandleData[2].tireTemp<this.tireTempUp? '' : 'error']"
+            >{{tireHandleData[2].tireTemp}}℃</span> &nbsp;&nbsp; <span style = "font-size: 13px">胎压:</span><span style = "font-size: 16px"
+            :class="[tireHandleData[2].tirePress<this.tirePressUp? '' : 'error']"
+            >{{tireHandleData[2].tirePress}}kPa </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -650,7 +696,11 @@
                   />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                <span style = "font-size: 13px"> 胎温: </span> <span style = "font-size: 16px"
+                 :class="[tireHandleData[3].tireTemp<this.tireTempUp? '' : 'error']"
+                >{{tireHandleData[3].tireTemp}}℃</span> &nbsp;&nbsp; <span style = "font-size: 13px">胎压:</span><span style = "font-size: 16px"
+                 :class="[tireHandleData[3].tirePress<this.tirePressUp? '' : 'error']"
+                >{{tireHandleData[3].tirePress}}kPa </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -662,7 +712,11 @@
                   />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                   <span style = "font-size: 13px"> 胎温: </span> <span style = "font-size: 16px"
+                    :class="[tireHandleData[6].tireTemp<this.tireTempUp? '' : 'error']"
+                   >{{tireHandleData[6].tireTemp}}℃</span> &nbsp;&nbsp; <span style = "font-size: 13px">胎压:</span><span style = "font-size: 16px"
+                   :class="[tireHandleData[6].tirePress<this.tirePressUp? '' : 'error']"
+                   >{{tireHandleData[6].tirePress}}kPa </span>
                 </a-col>
               </a-col>
             </a-row>
@@ -676,7 +730,10 @@
                   />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+               <span style = "font-size: 13px"> 胎温: </span> <span style = "font-size: 16px"
+                 :class="[tireHandleData[7].tireTemp<this.tireTempUp? '' : 'error']">{{tireHandleData[7].tireTemp}}℃</span> &nbsp;&nbsp; <span style = "font-size: 13px">胎压:</span><span style = "font-size: 16px"
+                  :class="[tireHandleData[7].tirePress<this.tirePressUp? '' : 'error']"
+                 >{{tireHandleData[7].tirePress}}kPa </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -688,7 +745,11 @@
                   />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                 <span style = "font-size: 13px"> 胎温: </span> <span style = "font-size: 16px"
+                   :class="[tireHandleData[10].tireTemp<this.tireTempUp? '' : 'error']"
+                 >{{tireHandleData[10].tireTemp}}℃</span> &nbsp;&nbsp; <span style = "font-size: 13px">胎压:</span><span style = "font-size: 16px"
+                  :class="[tireHandleData[10].tirePress<this.tirePressUp? '' : 'error']"
+                 >{{tireHandleData[10].tirePress}}kPa </span>
                 </a-col>
               </a-col>
               <a-col :span="8">
@@ -700,7 +761,11 @@
                   />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span> 胎温:正常 &nbsp;&nbsp; 胎压:正常 </span>
+                 <span style = "font-size: 13px"> 胎温: </span> <span style = "font-size: 16px"
+                  :class="[tireHandleData[11].tireTemp<this.tireTempUp? '' : 'error']"
+                 >{{tireHandleData[11].tireTemp}}℃</span> &nbsp;&nbsp; <span style = "font-size: 13px">胎压:</span><span style = "font-size: 16px"
+                  :class="[tireHandleData[11].tirePress<this.tirePressUp? '' : 'error']"
+                 >{{tireHandleData[11].tirePress}}kPa </span>
                 </a-col>
               </a-col>
             </a-row>
@@ -1104,7 +1169,8 @@ export default {
 						this.humiDown = res.data.extraInfo.thresholdValue.tempAndHumi.humiDown;
 					this.humiUp = res.data.extraInfo.thresholdValue.tempAndHumi.humiUp;
 						this.tempDown = res.data.extraInfo.thresholdValue.tempAndHumi.tempDown;
-						this.tempUp = res.data.extraInfo.thresholdValue.tempAndHumi.tempUp;
+            this.tempUp = res.data.extraInfo.thresholdValue.tempAndHumi.tempUp;
+            console.log(this.oil)
         }
       })
       this.productkey = this.$route.query.pk;
@@ -1274,8 +1340,8 @@ export default {
         for (var i = 0; i < res.data.deviceData.length; i++) {
           var obj = {
             tire: res.data.deviceData[i].deviceName,
-            tirePress: res.data.deviceData[i].tirePress / 10000,
-            tireTemp: res.data.deviceData[i].tireTemp,
+            tirePress: (res.data.deviceData[i].tirePress *10/ 10000).toFixed(1),
+            tireTemp: res.data.deviceData[i].tireTemp.toFixed(1),
             time: res.data.deviceData[i].date,
             dk: res.data.deviceData[i].deviceKey,
           };
@@ -1335,6 +1401,7 @@ export default {
     drawOil() {
       var chartDom = document.getElementById("oil");
       var myChart = echarts.init(chartDom);
+      var value = this.oil/100;
       var option = {
         series: [
           {
@@ -1348,7 +1415,7 @@ export default {
                 // 仪表盘轴线样式。
                 width: 10,
                 color: [
-                  [0.3, "#f04864"],
+                  [value, "#f04864"],
                   [1, "#1890ff"],
                 ],
               },
@@ -2026,6 +2093,7 @@ export default {
             if (res.msg == "ok") {
               this.$message.success("修改成功!");
                this.humiDialogVisible = false;
+                this.getQuery();
             }
           })
         }
@@ -2046,8 +2114,9 @@ export default {
       person(username).then((res)=>{
         // console.log(res)
         if (res.msg == "ok") {
-          res.data.extraInfo.thresholdValue.tempAndHumi.oil  = value
-          // console.log(res.data)
+          console.log(value)
+          res.data.extraInfo.thresholdValue.oil  = value
+          console.log(res.data)
           editPerson(res.data).then((res)=>{
             // console.log(res)
             if (res.msg == "ok") {
@@ -2055,6 +2124,7 @@ export default {
             type: "success",
             message: "油位低于: " + value + "报警",
           });
+           this.getQuery();
             }
           })
         }
@@ -2089,6 +2159,7 @@ export default {
             type: "success",
             message: "车辆震动值: " + value,
           });
+           this.getQuery();
             }
           })
         }
@@ -2118,6 +2189,7 @@ export default {
             if (res.msg == "ok") {
       this.$message.success("修改成功!");
       this.tireDialogVisible = false;
+       this.getQuery();
             }
           })
         }
@@ -2365,5 +2437,8 @@ export default {
   width: 100%;
   height: 227px;
   margin: -10px 0px 0px -10px;
+}
+.error {
+  color: red;
 }
 </style>
