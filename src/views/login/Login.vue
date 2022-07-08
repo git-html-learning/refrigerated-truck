@@ -305,6 +305,7 @@ export default {
         if (res.msg != "ok") {
           alert("用户名或者密码错误！");
         } else {
+          window.sessionStorage.setItem("username",this.loginform.username)
           this.$store
             .dispatch("user/login", this.loginform)
             .then(() => {

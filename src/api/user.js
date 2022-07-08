@@ -20,10 +20,17 @@ export function userRegister(data) {
   })
 }
 
-export function  person(data) {
+export function  person(username) {
   return request({
-    url: '/api/v1/user/通宇项目测试',
+    url: '/api/v1/user/'+username,
     method: 'GET',
+  })
+}
+// 修改用户信息
+export function  editPerson(data) {
+  return request({
+    url: '/api/v1/user',
+    method: 'PUT',
     data
   })
 }

@@ -396,7 +396,7 @@
       </a-row>
 
       <a-row :gutter="[8, 8]">
-        <a-col :span="12">
+        <a-col :span="16">
           <a-card
             title="胎温胎压"
             hoverable
@@ -728,7 +728,7 @@
           </a-card>
         </a-col> -->
 
-        <a-col :span="12">
+        <a-col :span="8">
           <a-card
             title="车辆震动曲线图"
             style="height: 350px"
@@ -930,6 +930,9 @@ import {
   getDeviceHisData,
   changeLight,
 } from "@/api/interface";
+import {
+person,editPerson
+} from "@/api/user";
 import * as echarts from "echarts";
 export default {
   created() {
@@ -1031,6 +1034,8 @@ export default {
       humiDown: "40",
       tireTempUp: "90",
       tirePressUp: "10",
+      shake:"",
+      oil:"",
       humiDialogVisible: false,
       tireDialogVisible: false,
       timer:"",
@@ -1088,6 +1093,20 @@ export default {
     },
 
     getQuery() {
+      var username = window.sessionStorage.getItem("username")
+      person(username).then((res)=>{
+        console.log(res)
+        if (res.msg == "ok") {
+       this.tireTempUp= res.data.extraInfo.thresholdValue.tire.tireTemp;
+					this.tirePressUp = res.data.extraInfo.thresholdValue.tire.tirePress;
+						this.shake = res.data.extraInfo.thresholdValue.shake;
+						this.oil = res.data.extraInfo.thresholdValue.oil;
+						this.humiDown = res.data.extraInfo.thresholdValue.tempAndHumi.humiDown;
+					this.humiUp = res.data.extraInfo.thresholdValue.tempAndHumi.humiUp;
+						this.tempDown = res.data.extraInfo.thresholdValue.tempAndHumi.tempDown;
+						this.tempUp = res.data.extraInfo.thresholdValue.tempAndHumi.tempUp;
+        }
+      })
       this.productkey = this.$route.query.pk;
       this.carNum = this.$route.query.carnum;
       console.log(this.productkey);
@@ -1134,6 +1153,9 @@ export default {
       console.log(res);
       if (res.code == 200) {
         for (var i = 0; i < res.data.deviceData.length; i++) {
+          if (res.data.deviceData[i].oil<0) {
+            res.data.deviceData[i].oil = 0
+          }
           var obj = {
             sensor: res.data.deviceData[i].deviceName,
             temp: res.data.deviceData[i].temp,
@@ -1941,6 +1963,12 @@ export default {
             alignWithLabel: true,
           },
           data: this.hisVibDate,
+              axisLabel: {
+                  formatter: function(value) {
+                      return value.slice(5, 10)+'\n'+value.slice(11,16);
+                  }
+                },
+
         },
         yAxis: [
           {
@@ -1978,8 +2006,32 @@ export default {
       this.humiDialogVisible = true;
     },
     setHumiValue() {
-      this.$message.success("修改成功!");
-      this.humiDialogVisible = false;
+      // console.log(this.humiUp)
+      // console.log(this.humiDown)
+      //  console.log(this.tempUp)
+ 
+      //1. 获取当前用户信息
+      var username = window.sessionStorage.getItem("username")
+      console.log(username)
+      person(username).then((res)=>{
+        // console.log(res)
+        if (res.msg == "ok") {
+          res.data.extraInfo.thresholdValue.tempAndHumi.tempDown  = this.tempDown
+          res.data.extraInfo.thresholdValue.tempAndHumi.tempUp  = this.tempUp
+          res.data.extraInfo.thresholdValue.tempAndHumi.humiDown  = this.humiDown
+          res.data.extraInfo.thresholdValue.tempAndHumi.humiUp  = this.humiUp
+          // console.log(res.data)
+          editPerson(res.data).then((res)=>{
+            // console.log(res)
+            if (res.msg == "ok") {
+              this.$message.success("修改成功!");
+               this.humiDialogVisible = false;
+            }
+          })
+        }
+      })
+
+      //2. 更改用户信息
     },
 
     openOil() {
@@ -1988,10 +2040,26 @@ export default {
         cancelButtonText: "取消",
       })
         .then(({ value }) => {
-          this.$message({
+                //1. 获取当前用户信息
+      var username = window.sessionStorage.getItem("username")
+      console.log(username)
+      person(username).then((res)=>{
+        // console.log(res)
+        if (res.msg == "ok") {
+          res.data.extraInfo.thresholdValue.tempAndHumi.oil  = value
+          // console.log(res.data)
+          editPerson(res.data).then((res)=>{
+            // console.log(res)
+            if (res.msg == "ok") {
+                  this.$message({
             type: "success",
             message: "油位低于: " + value + "报警",
           });
+            }
+          })
+        }
+      })
+
         })
         .catch(() => {
           this.$message({
@@ -2006,10 +2074,26 @@ export default {
         cancelButtonText: "取消",
       })
         .then(({ value }) => {
-          this.$message({
+                          //1. 获取当前用户信息
+      var username = window.sessionStorage.getItem("username")
+      console.log(username)
+      person(username).then((res)=>{
+        // console.log(res)
+        if (res.msg == "ok") {
+          res.data.extraInfo.thresholdValue.shake = value
+          // console.log(res.data)
+          editPerson(res.data).then((res)=>{
+            // console.log(res)
+            if (res.msg == "ok") {
+       this.$message({
             type: "success",
             message: "车辆震动值: " + value,
           });
+            }
+          })
+        }
+      })
+   
         })
         .catch(() => {
           this.$message({
@@ -2022,8 +2106,23 @@ export default {
       this.tireDialogVisible = true;
     },
     setTireValue() {
+                      //1. 获取当前用户信息
+      var username = window.sessionStorage.getItem("username")
+      console.log(username)
+      person(username).then((res)=>{
+        // console.log(res)
+        if (res.msg == "ok") {
+          res.data.extraInfo.thresholdValue.tire.tireTemp  = this.tireTempUp
+          res.data.extraInfo.thresholdValue.tire.tirePress  = this.tirePressUp
+          editPerson(res.data).then((res)=>{
+            if (res.msg == "ok") {
       this.$message.success("修改成功!");
       this.tireDialogVisible = false;
+            }
+          })
+        }
+      })
+
     },
 
     show() {

@@ -158,7 +158,8 @@ export default {
   },
   methods: {
     async getInfo() {
-      const res = await person();
+      var username = window.sessionStorage.getItem("username")
+      const res = await person(username);
       console.log(res);
       if (res.code == 200) {
         this.email = res.data.email;
