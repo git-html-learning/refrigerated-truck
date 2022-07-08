@@ -1013,8 +1013,6 @@ import * as echarts from "echarts";
 export default {
   created() {
     this.getQuery();
-    this.getDk();
-    // this.refresh();
   },
 
   mounted() {
@@ -1112,7 +1110,16 @@ export default {
       tireDialogVisible: false,
     };
   },
-
+ watch: {
+    $route(to, from) {
+      //监听路由  每次跳转到该页面的时候，只渲染一遍，所以需要每次跳转的时候都要获取一次数据
+      if (to.path == "/list/details") {
+        this.getQuery()
+        console.log("进入详情页")
+      }
+      deep: true;
+    },
+ },
   methods: {
     timestampToTime(timestamp) {
       var date = new Date(parseInt(timestamp) * 1000);
@@ -1143,11 +1150,6 @@ export default {
         ":" +
         seconds
       );
-
-      // return new Date(parseInt(timestamp) * 1000)
-      //   .toLocaleString()
-      //   .replace(/年|月/g, "-")
-      //   .replace(/日/g, " ");
     },
     test() {
       console.log("111");
@@ -1164,6 +1166,7 @@ export default {
       this.carNum = this.$route.query.carnum;
       console.log(this.productkey);
       this.title1 = this.carNum + "    行进中（已行驶99km 速度50km/h）";
+      this.getDk()
     },
     async getDk() {
       this.humiDkList = [];
@@ -1375,8 +1378,8 @@ export default {
             res.data.deviceData[i].acc.Z;
           this.hisVib.push(value);
         }
-        console.log("hisVibDate", this.hisVibDate);
-        console.log("hisVib", this.hisVib);
+        // console.log("hisVibDate", this.hisVibDate);
+        // console.log("hisVib", this.hisVib);
         this.drawVib();
       }
     },
