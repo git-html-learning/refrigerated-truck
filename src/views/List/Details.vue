@@ -1385,26 +1385,6 @@ export default {
     },
 
     drawOil() {
-      // console.log("2");
-      //油位图
-      // const liquidPlot = new Liquid(document.getElementById("oil"), {
-      //   title: {
-      //     visible: true,
-      //     text: "当前油位",
-      //   },
-      //   width: 250,
-      //   height: 300,
-      //   min: 0,
-      //   max: 100,
-      //   value: 30,
-      //   liquidStyle: {
-      //     fill: "#000000",
-      //     stroke: "#999999",
-      //   },
-      // });
-      // liquidPlot.render();
-      // console.log("111");
-
       var chartDom = document.getElementById("oil");
       var myChart = echarts.init(chartDom);
       var option = {
