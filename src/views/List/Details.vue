@@ -10,85 +10,6 @@
             hoverable
           >
             <a slot="extra" @click="openHumi">更多</a>
-            <!-- <div class="sensor1">
-              <p style="margin: 0 0 0 0">监测点1</p>
-              <div class="left" @click="hisTem1">
-                {{ humiHandleData[0].temp }}℃
-              </div>
-              <div class="right" @click="hisTem1">
-                {{ humiHandleData[0].humi }}%
-              </div>
-            </div>
-            <div class="sensor2">
-              <p style="margin: 0 0 0 0">监测点2</p>
-              <div class="left" @click="hisTem1">
-                {{ humiHandleData[1].temp }}℃
-              </div>
-              <div class="right" @click="hisTem1">
-                {{ humiHandleData[1].humi }}%
-              </div>
-            </div>
-            <div class="sensor3">
-              <p style="margin: 0 0 0 0">监测点3</p>
-              <div class="left" @click="hisTem1">
-                {{ humiHandleData[2].temp }}℃
-              </div>
-              <div class="right" @click="hisTem1">
-                {{ humiHandleData[2].humi }}%
-              </div>
-            </div>
-            <div class="sensor4">
-              <p style="margin: 0 0 0 0">监测点4</p>
-              <div class="left" @click="hisTem1">
-                {{ humiHandleData[3].temp }}℃
-              </div>
-              <div class="right" @click="hisTem1">
-                {{ humiHandleData[3].humi }}%
-              </div>
-            </div>
-            <div class="carriage">
-              <img src="../../static/pic/carriage.png" class="img" />
-            </div>
-            <div class="sensor5">
-              <p style="margin: 0 0 0 0">监测点5</p>
-              <p class="left" @click="hisTem1">{{ humiHandleData[4].temp }}℃</p>
-              <p class="right" @click="hisTem1">
-                {{ humiHandleData[4].humi }}%
-              </p>
-            </div>
-            <div class="sensor6">
-              <p style="margin: 0 0 0 0">监测点6</p>
-              <p class="left" @click="hisTem1">{{ humiHandleData[5].temp }}℃</p>
-              <p class="right" @click="hisTem1">
-                {{ humiHandleData[5].humi }}%
-              </p>
-            </div>
-            <div class="sensor7">
-              <p style="margin: 0 0 0 0">监测点7(厢外)</p>
-              <p class="left" @click="hisTem1">{{ humiHandleData[6].temp }}℃</p>
-              <p class="right" @click="hisTem1">
-                {{ humiHandleData[6].humi }}%
-              </p>
-            </div> -->
-            <!-- <div class="sensor8">
-              <p style="margin: 0 0 0 0">监测点8</p>
-              <p class="left" @click="hisTem8">{{ humiOriData[6].temp }}</p>
-              <p class="right" @click="hisHum8">{{ humiOriData[6].humi }}</p>
-            </div> -->
-
-            <!-- <div class="top-right">
-              <h4 class="title">当月设备报警信息条数排名</h4>
-              <ul class="list">
-                <li :key="index" v-for="(item, index) in devicerankList">
-                  <span :class="index < 3 ? 'active' : null">{{
-                    index + 1
-                  }}</span>
-                  <span>{{ item.deviceName }}</span>
-                  <span>{{ item.count }}</span>
-                </li>
-              </ul>
-            </div> -->
-
             <a-row type="flex" style="height: 50px; font-size: 16px">
               <a-col :span="4">
                 <a-col :span="6" style="padding-top: 12px; text-align: center">
@@ -233,7 +154,7 @@
             <a-row>
               <a-col :span="24">
                 <div class="carriage1">
-                  <img src="../../static/pic/carriage2.png" width="700px" />
+                  <img src="../../static/pic/carriage2.png" width="80%" height = "160vh" />
                 </div>
               </a-col>
             </a-row>
@@ -1017,10 +938,14 @@ export default {
 
   mounted() {
     // console.log("1");
+     this.timer = setInterval(this.getQuery, 60000);
   },
   updated() {
     this.drawOil();
   },
+ beforeDestroy() {
+    clearInterval(this.timer);
+ },
 
   data() {
     return {
@@ -1108,6 +1033,7 @@ export default {
       tirePressUp: "10",
       humiDialogVisible: false,
       tireDialogVisible: false,
+      timer:"",
     };
   },
  watch: {
@@ -1454,6 +1380,10 @@ export default {
           },
         ],
       };
+           window.addEventListener("resize", function() {
+       myChart.resize();
+      });
+
       option && myChart.setOption(option);
     },
 
@@ -1835,6 +1765,9 @@ export default {
         ],
       };
       option && myChart.setOption(option);
+                 window.addEventListener("resize", function() {
+       myChart.resize();
+      });
     },
     drawTyre() {
       //轮胎历史数据
@@ -1922,6 +1855,9 @@ export default {
         ],
       };
       option && myChart.setOption(option);
+                 window.addEventListener("resize", function() {
+       myChart.resize();
+      });
     },
     drawDoor() {
       var myChart = echarts.init(document.getElementById("chart3"));
@@ -1978,6 +1914,9 @@ export default {
       };
 
       option && myChart.setOption(option);
+                 window.addEventListener("resize", function() {
+       myChart.resize();
+      });
     },
 
     drawVib() {
@@ -2030,6 +1969,9 @@ export default {
         ],
       };
       option && myChart.setOption(option);
+                 window.addEventListener("resize", function() {
+       myChart.resize();
+      });
     },
 
     openHumi() {
