@@ -1,7 +1,8 @@
 <template>
   <div>
     <div
-      style="height: 40px; background: rgb(53, 62, 67); border-top-left-radius: 10px; border-top-right-radius: 10px;"
+      style="height: 40px; background: rgb(53, 62, 67); border-top-left-radius: 10px; border-top-right-radius: 10px; cursor: pointer"
+      @click = "detailPage"
     >
       <a-row>
         <a-col :span="3">
@@ -88,10 +89,9 @@
           :position="{ lng: markers[index].lng, lat: markers[index].lat }"
           @click="lookDetail(item)"
           :dragging="false"
-          animation="BMAP_ANIMATION_BOUNCE"
           :icon="{
             url: require('../../static/pic/卡车.png'),
-            size: { width: 50, height: 50 },
+            size: { width: 35, height: 35 },
           }"
         >
         </bm-marker>
@@ -198,6 +198,9 @@ export default {
   },
 
   methods: {
+    detailPage() {
+ this.$router.push({ path: "/list/vehicle" });
+    },
     async getPk() {
       const res = await product();
       console.log(res);

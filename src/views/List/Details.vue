@@ -289,40 +289,7 @@
 
         <a-col :span="9">
           <a-card title="报警装置" style="height: 220px" class="shadow" hoverable>
-            <!-- <div v-show="!alert">
-              <a-col
-                :span="13"
-                style="
-                  padding-left: 20px;
-                  padding-top: 10px;
-                  text-align: center;
-                "
-              >
-                <span>
-                  <img
-                    src="../../static/icon/红色警报.svg"
-                    style="height: 100px"
-                  />
-                </span>
-              </a-col>
-              <a-col :span="11">
-                <div style="font-size: 30px; padding-top: 40px" v-show="!alert">
-                  报警
-                </div>
-              </a-col>
-            </div>
-            <a-col :span="13">
-              <div
-                v-show="alert"
-                style="
-                  padding-left: 20px;
-                  padding-top: 10px;
-                  text-align: center;
-                "
-              >
-                <img src="../../static/icon/未报警.svg" style="height: 100px" />
-              </div>
-            </a-col>-->
+
 
             <a-col :span="8" style="padding-left: 20px; padding-top: 10px; text-align: center">
               <span v-show="!alert">
