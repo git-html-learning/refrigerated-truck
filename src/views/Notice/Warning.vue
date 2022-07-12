@@ -12,7 +12,7 @@
         <div class="warningdiagram" id="warningdiagram"></div>
       </div>
 
-      <div class="home-item-bottom">
+      <div class="home-item-bottom" >
         <!-- <p style="font-size: 20px; padding: 0px 0px 0px 10px; align: left">类别</p> -->
         <a-tabs default-active-key="1" size="large">
           <a-tab-pane key="1" tab="车辆行驶">
@@ -23,7 +23,7 @@
                 bordered
                 :pagination="paginationOpt"
               >
-                <a slot="number" slot-scope="text">{{ text }}</a>
+                <a slot="number" slot-scope="text" @click = "detailPage(text)">{{ text }}</a>
               </a-table>
             </div>
           </a-tab-pane>
@@ -35,12 +35,12 @@
                 bordered
                 :pagination="paginationOpt"
               >
-                <a slot="number" slot-scope="text">{{ text }}</a>
+                <a slot="number" slot-scope="text" @click = "detailPage(text)">{{ text }}</a>
                 <span slot="tags" slot-scope="tags">
                   <a-tag
                     v-for="tag in tags"
                     :key="tag"
-                    :color="tag === '报警' ? 'red' : 'purple'"
+                    :color="tag === '严重' ? 'red' : tag === '紧急' ?'orange':tag === '通知'?'pink':'purple' "
                   >
                     {{ tag.toUpperCase() }}
                   </a-tag>
@@ -57,12 +57,12 @@
                 bordered
                 :pagination="paginationOpt"
               >
-                <a slot="number" slot-scope="text">{{ text }}</a>
+               <a slot="number" slot-scope="text" @click = "detailPage(text)">{{ text }}</a>
                 <span slot="tags" slot-scope="tags">
                   <a-tag
                     v-for="tag in tags"
                     :key="tag"
-                    :color="tag === '报警' ? 'red' : 'purple'"
+                    :color="tag === '严重' ? 'red' : tag === '紧急' ?'orange':tag === '通知'?'pink':'purple' "
                   >
                     {{ tag.toUpperCase() }}
                   </a-tag>
@@ -78,12 +78,12 @@
                 bordered
                 :pagination="paginationOpt"
               >
-                <a slot="number" slot-scope="text">{{ text }}</a>
+             <a slot="number" slot-scope="text" @click = "detailPage(text)">{{ text }}</a>
                 <span slot="tags" slot-scope="tags">
                   <a-tag
                     v-for="tag in tags"
                     :key="tag"
-                    :color="tag === '报警' ? 'red' : 'purple'"
+                     :color="tag === '严重' ? 'red' : tag === '紧急' ?'orange':tag === '通知'?'pink':'purple' "
                   >
                     {{ tag.toUpperCase() }}
                   </a-tag>
@@ -99,12 +99,12 @@
                 bordered
                 :pagination="paginationOpt"
               >
-                <a slot="number" slot-scope="text">{{ text }}</a>
+       <a slot="number" slot-scope="text" @click = "detailPage(text)">{{ text }}</a>
                 <span slot="tags" slot-scope="tags">
                   <a-tag
                     v-for="tag in tags"
                     :key="tag"
-                    :color="tag === '报警' ? 'red' : 'purple'"
+                    :color="tag === '严重' ? 'red' : tag === '紧急' ?'orange':tag === '通知'?'pink':'purple' "
                   >
                     {{ tag.toUpperCase() }}
                   </a-tag>
@@ -194,76 +194,76 @@ export default {
       ],
       totalData: [
         {
-          number: "皖11111",
+          number: "kaile001",
           updateTime: "2021-03-10 21:39",
           location: "轮胎1",
           value: "100℃",
-          tags: ["报警"],
+          tags: ["通知"],
           section: "20 ~ 80℃",
           driver: "张三",
         },
         {
-          number: "皖22222",
+          number: "kaile001",
           updateTime: "2021-03-10 21:33",
           location: "油位",
           value: "1%",
-          tags: ["报警"],
+          tags: ["紧急"],
           section: "30 ~ 100%",
           driver: "李四",
         },
         {
-          number: "皖33333",
+          number: "A7670C",
           updateTime: "2021-03-10 21:23",
           location: "温度测量点1",
           value: "60℃",
-          tags: ["预警"],
+          tags: ["严重"],
           section: "0 ~ 20℃",
           driver: "王五",
         },
         {
-          number: "皖44444",
+          number: "kaile001",
           updateTime: "2021-03-10 22:33",
           location: "温度测量点2",
           value: "70℃",
-          tags: ["报警"],
+          tags: ["预警"],
           section: "0 ~ 20℃",
           driver: "无名",
         },
         {
-          number: "皖55555",
+          number: "A7670C",
           updateTime: "2021-03-10 11:33",
           location: "温度测量点3",
           value: "72℃",
-          tags: ["报警"],
+          tags: ["通知"],
           section: "0 ~ 20℃",
           driver: "小芮",
         },
         {
-          number: "皖66666",
+          number: "A7670C",
           updateTime: "2021-03-10 20:33",
           location: "温度测量点4",
           value: "60℃",
-          tags: ["预警"],
+          tags: ["紧急"],
           section: "0 ~ 20℃",
-          driver: "司机",
+          driver: "王五",
         },
         {
-          number: "皖66666",
+          number: "A7670C",
           updateTime: "2021-03-10 20:33",
           location: "温度测量点4",
           value: "60℃",
-          tags: ["预警"],
+          tags: ["紧急"],
           section: "0 ~ 20℃",
-          driver: "司机",
+          driver: "张三",
         },
         {
-          number: "皖77777",
+          number: "kaile001",
           updateTime: "2021-03-10 20:33",
           location: "胎温传感器1",
           value: "100℃",
-          tags: ["报警"],
+          tags: ["严重"],
           section: "20 ~ 80℃",
-          driver: "司机",
+          driver: "李四",
         },
       ],
 
@@ -308,7 +308,7 @@ export default {
       ],
       vehData: [
         {
-          number: "皖11111",
+          number: "A7670C",
           startTime: "2021-03-10 11:39",
           startingPoint: "合肥",
           arriveTime: "2021-03-10 21:39",
@@ -316,53 +316,13 @@ export default {
           numbers: 10,
         },
         {
-          number: "皖22222",
+          number: "kaile001",
           startTime: "2021-03-10 11:39",
           startingPoint: "合肥",
           arriveTime: "2021-03-10 21:39",
           arrivePoint: "上海",
           numbers: 10,
-        },
-        {
-          number: "皖33333",
-          startTime: "2021-03-10 11:39",
-          startingPoint: "合肥",
-          arriveTime: "2021-03-10 21:39",
-          arrivePoint: "上海",
-          numbers: 10,
-        },
-        {
-          number: "皖44444",
-          startTime: "2021-03-10 11:39",
-          startingPoint: "合肥",
-          arriveTime: "2021-03-10 21:39",
-          arrivePoint: "上海",
-          numbers: 10,
-        },
-        {
-          number: "皖55555",
-          startTime: "2021-03-10 11:39",
-          startingPoint: "合肥",
-          arriveTime: "2021-03-10 21:39",
-          arrivePoint: "上海",
-          numbers: 10,
-        },
-        {
-          number: "皖66666",
-          startTime: "2021-03-10 11:39",
-          startingPoint: "合肥",
-          arriveTime: "2021-03-10 21:39",
-          arrivePoint: "上海",
-          numbers: 10,
-        },
-        {
-          number: "皖66666",
-          startTime: "2021-03-10 11:39",
-          startingPoint: "合肥",
-          arriveTime: "2021-03-10 21:39",
-          arrivePoint: "上海",
-          numbers: 10,
-        },
+        }
       ],
     };
   },
@@ -393,6 +353,26 @@ export default {
       });
       columnPlot.render();
     },
+    detailPage(data) {
+      console.log("点击跳转到详情页")
+ console.log(data)
+ var transPk = ""
+ var transName = ""
+ if (data == "A7670C") {
+transName = data
+transPk = "cauief34s1f1bbrmq430"
+ } else if (data == "kaile001") {
+   transName = data
+transPk = "c51vnhu0c9hht95g2dtg"
+ }
+   this.$router.push({
+        path: "/list/details",
+        query: {
+          pk: transPk,
+          carnum: transName,
+        },
+      });
+    }
   },
 };
 </script>
@@ -460,7 +440,8 @@ export default {
     }
     .home-item-bottom {
       width: 100%;
-      height: 520px;
+      height: 550px;
+      padding: 10px;
       background: #ffffff;
       margin: 10px 10px 0px 0px;
       box-shadow: 5px 5px 5px #dad8d8;
