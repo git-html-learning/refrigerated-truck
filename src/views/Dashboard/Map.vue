@@ -58,7 +58,7 @@
             "
           >
             离线 &nbsp;
-            <span style="color: red; font-size: 24px; line-height: 32px;">0</span>
+            <span style="color: red; font-size: 24px; line-height: 32px;">{{offlineNum}}</span>
           </div>
         </a-col>
         <a-col :span="3">
@@ -193,7 +193,7 @@ export default {
       door2: false,
       carNum: "",
       totalNum: 0,
-      offlineNum: 0
+      offlineNum: 0,
     };
   },
 
@@ -265,9 +265,17 @@ export default {
                 lat: "",
                 door1: false,
                 door2: false,
+                offline: true,
               };  
           item.deviceData.forEach(item1 => {
             if (item1.deviceName == "GPS") {
+              var time  = Math.round(new Date() / 1000);
+              // console.log(time)
+              if (time - item1.time>172800) {
+                obj.offline  = true;
+              } else {
+                obj.offline  = false;
+              }
              obj.lng = item1.Lon,
              obj.lat = item1.Lat,
              obj.updateTime= item1.date
@@ -283,6 +291,15 @@ this.markers.push(obj);
           
         });
         console.log(this.markers);
+        this.offlineNum = this.totalNum;
+        if (this.markers.length !==0) {
+          this.markers.forEach(item=>{
+            if (item.offline == false) {
+           this.offlineNum -=1
+            }
+          })
+        }
+        console.log(this.offlineNum)
       }
       // var obj = {
       //   number: this.carNum,
