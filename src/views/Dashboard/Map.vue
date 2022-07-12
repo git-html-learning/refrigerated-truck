@@ -378,8 +378,6 @@ this.markers.push(obj);
     },
     detailPage() {
 console.log("进入详情页")
-// console.log(this.transPk)
-// console.log(this.transName)
   this.$router.push({
         path: "/list/details",
         query: {
