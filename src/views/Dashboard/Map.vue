@@ -2,7 +2,7 @@
   <div>
     <div
       style="height: 40px; background: rgb(53, 62, 67); border-top-left-radius: 10px; border-top-right-radius: 10px; cursor: pointer"
-      @click = "detailPage"
+      @click = "vehiclePage"
     >
       <a-row>
         <a-col :span="3">
@@ -375,6 +375,10 @@ this.markers.push(obj);
     // 打开弹窗
     infoWindowOpen() {
       this.showFlag = true;
+    },
+    vehiclePage() {
+  this.$router.push({
+        path: "/list/vehicle",})
     },
     detailPage() {
 console.log("进入详情页")

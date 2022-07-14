@@ -14,7 +14,7 @@
                   <div class="container">
                     <span
                       style="padding-left: 16px; font-size: 14px"
-                      :class="[humiHandleData[0].temp<this.tempUp&& humiHandleData[0].temp>this.tempDown? '' : 'error']"
+                      :class="[parseInt(humiHandleData[0].temp)<parseInt(this.tempUp)&& parseInt(humiHandleData[0].temp)>parseInt(this.tempDown)? '' : 'error']"
                     >
                       温度：
                       <span style="font-size: 20px">{{ humiHandleData[0].temp }}℃</span>
@@ -23,7 +23,7 @@
                       湿度：
                       <span
                         style="font-size: 20px"
-                        :class="[humiHandleData[0].humi<this.humiUp&& humiHandleData[0].humi>this.humiDown? '' : 'error']"
+                  :class="[parseInt(humiHandleData[0].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[0].humi)>parseInt(this.humiDown)? '' : 'error']"
                       >{{ humiHandleData[0].humi }}%</span>
                     </span>
                   </div>
@@ -39,14 +39,14 @@
                       温度：
                       <span
                         style="font-size: 20px"
-                        :class="[humiHandleData[1].temp<this.tempUp&& humiHandleData[1].temp>this.tempDown? '' : 'error']"
+    :class="[parseInt(humiHandleData[1].temp)<parseInt(this.tempUp)&& parseInt(humiHandleData[1].temp)>parseInt(this.tempDown)? '' : 'error']"
                       >{{ humiHandleData[1].temp }}℃</span>
                     </span>
                     <span style="padding-left: 16px; font-size: 14px">
                       湿度：
                       <span
                         style="font-size: 20px"
-                        :class="[humiHandleData[1].humi<this.humiUp&& humiHandleData[1].humi>this.humiDown? '' : 'error']"
+         :class="[parseInt(humiHandleData[1].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[1].humi)>parseInt(this.humiDown)? '' : 'error']"
                       >{{ humiHandleData[1].humi }}%</span>
                     </span>
                   </div>
@@ -62,14 +62,14 @@
                       温度：
                       <span
                         style="font-size: 20px"
-                        :class="[humiHandleData[2].temp<this.tempUp&& humiHandleData[2].temp>this.tempDown? '' : 'error']"
+    :class="[parseInt(humiHandleData[2].temp)<parseInt(this.tempUp)&& parseInt(humiHandleData[2].temp)>parseInt(this.tempDown)? '' : 'error']"
                       >{{ humiHandleData[2].temp }}℃</span>
                     </span>
                     <span style="padding-left: 16px; font-size: 14px">
                       湿度：
                       <span
                         style="font-size: 20px"
-                        :class="[humiHandleData[2].humi<this.humiUp&& humiHandleData[2].humi>this.humiDown? '' : 'error']"
+                         :class="[parseInt(humiHandleData[2].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[2].humi)>parseInt(this.humiDown)? '' : 'error']"
                       >{{ humiHandleData[2].humi }}%</span>
                     </span>
                   </div>
@@ -85,12 +85,12 @@
                       温度：
                       <span
                         style="font-size: 20px"
-                        :class="[humiHandleData[3].temp<this.tempUp&& humiHandleData[3].temp>this.tempDown? '' : 'error']"
+                      :class="[parseInt(humiHandleData[3].temp)<parseInt(this.tempUp)&& parseInt(humiHandleData[3].temp)>parseInt(this.tempDown)? '' : 'error']"
                       >{{ humiHandleData[3].temp }}℃</span>
                     </span>
                     <span
                       style="padding-left: 16px; font-size: 14px"
-                      :class="[humiHandleData[3].humi<this.humiUp&& humiHandleData[3].humi>this.humiDown? '' : 'error']"
+                :class="[parseInt(humiHandleData[3].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[3].humi)>parseInt(this.humiDown)? '' : 'error']"
                     >
                       湿度：
                       <span style="font-size: 20px">{{ humiHandleData[3].humi }}%</span>
@@ -108,14 +108,14 @@
                       温度：
                       <span
                         style="font-size: 20px"
-                        :class="[humiHandleData[4].temp<this.tempUp&& humiHandleData[4].temp>this.tempDown? '' : 'error']"
+                        :class="[parseInt(humiHandleData[4].temp)<parseInt(this.tempUp)&& parseInt(humiHandleData[4].temp)>parseInt(this.tempDown)? '' : 'error']"
                       >{{ humiHandleData[4].temp }}℃</span>
                     </span>
                     <span style="padding-left: 16px; font-size: 14px">
                       湿度：
                       <span
                         style="font-size: 20px"
-                        :class="[humiHandleData[4].humi<this.humiUp&& humiHandleData[4].humi>this.humiDown? '' : 'error']"
+                         :class="[parseInt(humiHandleData[4].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[4].humi)>parseInt(this.humiDown)? '' : 'error']"
                       >{{ humiHandleData[4].humi }}%</span>
                     </span>
                   </div>
@@ -131,14 +131,14 @@
                       温度：
                       <span
                         style="font-size: 20px"
-                        :class="[humiHandleData[5].temp<this.tempUp&& humiHandleData[5].temp>this.tempDown? '' : 'error']"
+                       :class="[parseInt(humiHandleData[5].temp)<parseInt(this.tempUp)&& parseInt(humiHandleData[5].temp)>parseInt(this.tempDown)? '' : 'error']"
                       >{{ humiHandleData[5].temp }}℃</span>
                     </span>
                     <span style="padding-left: 16px; font-size: 14px">
                       湿度：
                       <span
                         style="font-size: 20px"
-                        :class="[humiHandleData[5].humi<this.humiUp&& humiHandleData[5].humi>this.humiDown? '' : 'error']"
+                          :class="[parseInt(humiHandleData[5].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[5].humi)>parseInt(this.humiDown)? '' : 'error']"
                       >{{ humiHandleData[5].humi }}%</span>
                     </span>
                   </div>
@@ -164,14 +164,14 @@
                     温度：
                     <span
                       style="font-size: 20px"
-                      :class="[humiHandleData[6].temp<this.tempUp&& humiHandleData[6].temp>this.tempDown? '' : 'error']"
+                     :class="[parseInt(humiHandleData[6].temp)<parseInt(this.tempUp)&& parseInt(humiHandleData[6].temp)>parseInt(this.tempDown)? '' : 'error']"
                     >{{ humiHandleData[6].temp }}℃</span>
                   </span>
                   <span style="padding-left: 16px; font-size: 14px">
                     湿度：
                     <span
                       style="font-size: 20px"
-                      :class="[humiHandleData[6].humi<this.humiUp&& humiHandleData[6].humi>this.humiDown? '' : 'error']"
+                     :class="[parseInt(humiHandleData[6].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[6].humi)>parseInt(this.humiDown)? '' : 'error']"
                     >{{ humiHandleData[6].humi }}%</span>
                   </span>
                 </div>
