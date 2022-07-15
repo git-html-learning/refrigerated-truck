@@ -289,11 +289,9 @@ export default {
     },
 
     add() {
-      // this.showInfo = "2";
       this.visible = true;
       this.productname = "";
       this.productKey = "";
-      // this.num1 = "8";
     },
 
     async handleOk() {

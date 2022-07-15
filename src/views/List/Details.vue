@@ -187,6 +187,10 @@
             style="height: 400px"
             class="shadow"
             hoverable
+              v-loading="oilsShow"
+              element-loading-text="没有注册该设备!!!"
+              element-loading-spinner="none"
+              element-loading-background="rgba(255,255,255,0.9)"
           >
             <a slot="extra" @click="openOil">更多</a>
             <div id="oil" class="oil"></div>
@@ -327,7 +331,12 @@
 
       <a-row :gutter="[8, 8]">
         <a-col :span="16">
-          <a-card title="胎温胎压" hoverable style="height: 350px" class="shadow">
+          <a-card title="胎温胎压" hoverable style="height: 350px" class="shadow"
+           v-loading="tireShow"
+              element-loading-text="没有注册该设备!!!"
+              element-loading-spinner="none"
+              element-loading-background="rgba(255,255,255,0.9)"
+>
             <a slot="extra" @click="openTire">更多</a>
 
             <a-row type="flex" style="height: 40px; font-size: 16px">
@@ -553,7 +562,12 @@
         </a-col>
 
         <a-col :span="8">
-          <a-card title="车辆震动曲线图" style="height: 350px" class="shadow" hoverable>
+          <a-card title="车辆震动曲线图" style="height: 350px" class="shadow" hoverable
+              v-loading="vibShow"
+              element-loading-text="没有注册该设备!!!"
+              element-loading-spinner="none"
+              element-loading-background="rgba(255,255,255,0.9)"
+          >
             <a slot="extra" @click="openVib">更多</a>
             <div id="main7" style="height: 290px; margin-left: 20px; margin-top: -20px"></div>
           </a-card>
@@ -566,7 +580,7 @@
             <baidu-map
               class="map"
               :center="center"
-              :zoom="15"
+              :zoom="13"
               :scroll-wheel-zoom="true"
             >
               <bm-marker
@@ -783,6 +797,7 @@ export default {
   mounted() {
     // console.log("1");
     this.timer = setInterval(this.getQuery, 60000);
+
   },
   updated() {
     this.drawOil();
@@ -887,6 +902,12 @@ export default {
         lat:""
       },
       gpsDkList:[],
+      oilDkList:[],
+      oilData:"",
+      tireShow: false,
+      accDkList:[],
+      oilsShow: false,
+      vibShow: false,
     };
   },
   watch: {
@@ -895,6 +916,8 @@ export default {
       if (to.path == "/list/details") {
         this.getQuery();
         console.log("进入详情页");
+                  this.humiDataShow = true;
+      this.tireDataShow=true      
       }
       deep: true;
     }
@@ -969,10 +992,13 @@ export default {
       this.doorDkList = [];
       this.alarmDkList = [];
       this.tireDkList = [];
+        this.gpsDkList = [];
+      this.oilDkList = [];
+      this.accDkList = [];
       const res = await getDevice({
         productKey: this.productkey
       });
-      // console.log("alldk",res);
+      console.log("alldk",res);
       if (res.code == 200) {
         for (var i = 0; i < res.data.deviceInfo.length; i++) {
           if (res.data.deviceInfo[i].deviceType == "TempAndHumi") {
@@ -987,14 +1013,46 @@ export default {
            else if (res.data.deviceInfo[i].deviceType == "gps") {
             this.gpsDkList.push(res.data.deviceInfo[i].deviceKey);
           }
-          // console.log(this.gpsDkList)
+                else if (res.data.deviceInfo[i].deviceType == "oil") {
+            this.oilDkList.push(res.data.deviceInfo[i].deviceKey);
+          }
+                        else if (res.data.deviceInfo[i].deviceType == "acc") {
+            this.accDkList.push(res.data.deviceInfo[i].deviceKey);
+          }
         }
       }
+      console.log(this.gpsDkList)
+      console.log(this.oilDkList)
+      console.log(this.tireDkList)
+      console.log(this.accDkList)
       this.getHumiData();
       this.getDoorData();
       this.getAlarmData();
       this.getTireData();
       this.getGpsData();
+      this.getOilData();
+    },
+    async  getOilData(){
+      console.log(this.oilDkList)
+      if (this.oilDkList.length !==0) {
+        this.oilsShow = false;
+         const res = await getDeviceData({
+        productKey: this.productkey,
+        deviceKeyList: this.oilDkList
+      });
+      console.log(res)
+      if (res.msg == "ok") {
+       if (res.data.deviceData[0].oil <0) {
+         this.oilData = 0;
+       } else {
+ this.oilData = res.data.deviceData[0].oil
+        console.log(this.oilData)
+       }
+       
+      } else {
+       this.oilsShow = true;
+      }
+      }
 
     },
     async getGpsData() {
@@ -1004,8 +1062,8 @@ export default {
       });
       console.log(res)
       if (res.msg == "ok") {
-        this.center.lng = res.data.deviceData[0].Lon
-        this.center.lat = res.data.deviceData[0].Lat
+        this.center.lng = res.data.deviceData[0].gps.Lon
+        this.center.lat = res.data.deviceData[0].gps.Lat
       } else {
              this.center.lng = "117.19046"
         this.center.lat = "31.772366"
@@ -1064,7 +1122,6 @@ export default {
           this.sensorList.push(obj1);
         }
         console.log("humiHandleData", this.humiHandleData);
-        // console.log(this.sensorList);
         this.getVibData();
       }
     },
@@ -1133,11 +1190,14 @@ export default {
     async getTireData() {
       this.tireOriData = [];
       this.tireList = [];
+      console.log(this.tireDkList)
+      if (this.tireDkList.length !==0) {
+         this.tireShow = false;
       const res = await getDeviceData({
         productKey: this.productkey,
         deviceKeyList: this.tireDkList
       });
-      // console.log(res);
+      console.log(res);
       if (res.code == 200) {
         for (var i = 0; i < res.data.deviceData.length; i++) {
           var obj = {
@@ -1176,18 +1236,24 @@ export default {
         }
         console.log("tireHandleData", this.tireHandleData);
         // console.log("tireList", this.tireList);
+      } 
+      } else {
+this.tireShow = true
       }
+
     },
     async getVibData() {
       this.hisVibDate = [];
       this.hisVib = [];
+      if (this.accDkList.length !==0) {
+        this.vibShow = false;
       this.hisEndTime = Date.parse(new Date()) / 1000;
       const res = await getDeviceHisData({
-        deviceKey: this.humiHandleData[1].dk,
+        deviceKey: this.accDkList[0],
         startTime: this.hisEndTime - 60 * 86400, //86400
         endTime: this.hisEndTime
       });
-      // console.log(res);
+      console.log(res);
       if (res.code == 200) {
         for (var i = 0; i < res.data.deviceData.length; i++) {
           this.hisVibDate.push(res.data.deviceData[i].date);
@@ -1198,9 +1264,13 @@ export default {
           this.hisVib.push(value);
         }
         // console.log("hisVibDate", this.hisVibDate);
-        // console.log("hisVib", this.hisVib);
+        console.log("hisVib", this.hisVib)
         this.drawVib();
       }
+      } else {
+        this.vibShow = true
+      }
+
     },
 
     drawOil() {
@@ -1266,7 +1336,7 @@ export default {
             },
             data: [
               {
-                value: this.humiOriData[0].oil,
+                value: this.oilData,
                 name: "当前油位",
                 fontSize: 30
               }
@@ -2024,202 +2094,6 @@ export default {
 .carriage1 {
   margin: 20px 0px 0px 240px;
 }
-// .sensor1 {
-//   // background: rgb(216, 213, 213);
-//   margin: 0px 5px 15px 5px;
-//   width: 100px;
-//   height: 50px;
-//   .left {
-//     font-size: 20px;
-//     width: 50px;
-//     font-weight: bold;
-//     // background: black;
-//   }
-//   .right {
-//     font-size: 20px;
-//     font-weight: bold;
-//     margin: -30px 10px 10px 90px;
-//     // background: black;
-//   }
-// }
-// .sensor2 {
-//   // background: rgb(230, 223, 223);
-//   margin: -65px 5px 15px 200px;
-//   width: 100px;
-//   height: 50px;
-//   .left {
-//     font-size: 20px;
-//     width: 50px;
-//     font-weight: bold;
-//     // background: black;
-//   }
-//   .right {
-//     font-size: 20px;
-//     font-weight: bold;
-//     margin: -30px 10px 10px 90px;
-//     // background: black;
-//   }
-// }
-// .sensor3 {
-//   // background: rgb(230, 223, 223);
-//   margin: -65px 5px 15px 400px;
-//   width: 100px;
-//   height: 50px;
-//   .left {
-//     font-size: 20px;
-//     font-weight: bold;
-//     width: 50px;
-//     // background: black;
-//   }
-//   .right {
-//     font-size: 20px;
-//     font-weight: bold;
-//     margin: -30px 10px 10px 90px;
-//     // background: black;
-//   }
-// }
-// .sensor4 {
-//   // background: rgb(230, 223, 223);
-//   margin: -65px 5px 15px 600px;
-//   width: 100px;
-//   height: 50px;
-//   .left {
-//     font-size: 20px;
-//     font-weight: bold;
-//     width: 50px;
-//     // background: black;
-//   }
-//   .right {
-//     font-size: 20px;
-//     font-weight: bold;
-//     margin: -30px 10px 10px 90px;
-//     // background: black;
-//   }
-// }
-// .carriage {
-//   // background: rgb(230, 223, 223);
-//   margin: 0px 5px 15px 0px;
-//   width: 705px;
-//   height: 150px;
-//   .img {
-//     margin: 0px 0px 0px 40px;
-//   }
-// }
-// .sensor5 {
-//   // background: rgb(230, 223, 223);
-//   margin: 15px 5px 15px 5px;
-//   width: 100px;
-//   height: 50px;
-//   .left {
-//     font-size: 20px;
-//     font-weight: bold;
-//     width: 50px;
-//     // background: black;
-//   }
-//   .right {
-//     font-size: 20px;
-//     font-weight: bold;
-//     margin: -50px 10px 10px 90px;
-//     // background: black;
-//   }
-// }
-// .sensor6 {
-//   // background: rgb(230, 223, 223);
-//   margin: -65px 5px 15px 200px;
-//   width: 100px;
-//   height: 50px;
-//   .left {
-//     font-size: 20px;
-//     font-weight: bold;
-//     width: 50px;
-//     // background: black;
-//   }
-//   .right {
-//     font-size: 20px;
-//     font-weight: bold;
-//     margin: -50px 10px 10px 90px;
-//     // background: black;
-//   }
-// }
-// .sensor7 {
-//   // background: rgb(230, 223, 223);
-//   margin: -65px 5px 15px 400px;
-//   width: 100px;
-//   height: 50px;
-//   .left {
-//     font-size: 20px;
-//     font-weight: bold;
-//     width: 50px;
-//     // background: black;
-//   }
-//   .right {
-//     font-size: 20px;
-//     font-weight: bold;
-//     margin: -50px 10px 10px 90px;
-//     // background: black;
-//   }
-// }
-// .sensor8 {
-//   // background: rgb(230, 223, 223);
-//   margin: -65px 5px 15px 600px;
-//   width: 100px;
-//   height: 50px;
-//   .left {
-//     font-size: 20px;
-//     font-weight: bold;
-//     width: 50px;
-//     // background: black;
-//   }
-//   .right {
-//     font-size: 20px;
-//     font-weight: bold;
-//     margin: -50px 10px 10px 90px;
-//     // background: black;
-//   }
-// }
-// .top-right {
-//   // background: rgb(204, 200, 200);
-//   margin: -290px 5px 0px 800px;
-//   height: 260px;
-//   .title {
-//     font-size: 14px;
-//     font-weight: 600;
-//     margin-left: 20px;
-//   }
-//   .list {
-//     margin: 25px 0 0;
-//     padding: 0;
-//     list-style: none;
-//     // background: #000;
-//     li {
-//       margin-top: 16px;
-//       span {
-//         color: rgba(0, 0, 0, 0.65);
-//         font-size: 14px;
-//         line-height: 22px;
-//         &:first-child {
-//           background-color: #f5f5f5;
-//           border-radius: 20px;
-//           display: inline-block;
-//           font-size: 12px;
-//           font-weight: 600;
-//           margin-right: 24px;
-//           height: 20px;
-//           line-height: 20px;
-//           width: 20px;
-//           text-align: center;
-//         }
-//         &.active {
-//           background-color: #314659;
-//           color: #fff;
-//         }
-//         &:last-child {
-//           float: right;
-//         }
-//       }
-//     }
-//   }
-// }
 .oil {
   // background: rgb(233, 219, 219);
   width: 100%;
@@ -2229,7 +2103,7 @@ export default {
 }
 .map {
   width: 100%;
-  height: 227px;
+  height: 251px;
   margin: -10px 0px 0px -10px;
 }
 .error {
