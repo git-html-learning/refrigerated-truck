@@ -280,8 +280,8 @@ export default {
               } else {
                 obj.offline  = false;
               }
-             obj.lng = item1.Lon,
-             obj.lat = item1.Lat,
+             obj.lng = item1.gps.Lon,
+             obj.lat = item1.gps.Lat,
              obj.updateTime= item1.date
               
             } if (item1.deviceName =="door_1" ) {
@@ -305,54 +305,12 @@ this.markers.push(obj);
         }
         console.log(this.offlineNum)
       }
-      // var obj = {
-      //   number: this.carNum,
-      //   updateTime: res.data.deviceData[0].date,
-      //   lng: res.data.deviceData[0].Lon,
-      //   lat: res.data.deviceData[0].Lat,
-      // };
-      // this.markers.push(obj);
+
       this.lg = this.markers[0].lng;
       this.lt = this.markers[0].lat;
-      // console.log("markers", this.markers);
+
     },
-    // async getDoorData() {
-    //   this.doorOriData = [];
-    //   const res = await getDeviceData({
-    //     productKey: this.pkList[0],
-    //     deviceKeyList: this.doorDkList
-    //   });
-    //   if (res.code == 200) {
-    //     for (var i = 0; i < res.data.deviceData.length; i++) {
-    //       var obj = {
-    //         doorName: res.data.deviceData[i].deviceName,
-    //         state: res.data.deviceData[i].door,
-    //         date: res.data.deviceData[i].date,
-    //         dk: res.data.deviceData[i].deviceKey
-    //       };
-    //       this.doorOriData.push(obj);
-    //     }
-    //     // console.log("doorOriData",this.doorOriData);
-    //     this.doorHandleData = JSON.parse(JSON.stringify(this.doorOriData));
-    //     // console.log("doorHandleData",this.doorHandleData);
-    //     this.doorHandleData.sort(function(a, b) {
-    //       var doorA = a.doorName.toUpperCase(); // ignore upper and lowercase
-    //       var doorB = b.doorName.toUpperCase(); // ignore upper and lowercase
-    //       if (doorA < doorB) {
-    //         return -1;
-    //       }
-    //       if (doorA > doorB) {
-    //         return 1;
-    //       }
-    //       return 0;
-    //     });
-    //     console.log("doorHandleData", this.doorHandleData);
-    //     this.door1 = this.doorHandleData[0].state.door_1;
-    //     this.door2 = this.doorHandleData[1].state.door_2;
-    //     // console.log(this.door1);
-    //     // console.log(this.door2);
-    //   }
-    // },
+
 
     lookDetail(data) {
       console.log(data);
