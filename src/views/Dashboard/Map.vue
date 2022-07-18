@@ -306,8 +306,8 @@ this.markers.push(obj);
         console.log(this.offlineNum)
       }
 
-      this.lg = this.markers[0].lng;
-      this.lt = this.markers[0].lat;
+      this.lg = this.markers[1].lng;
+      this.lt = this.markers[1].lat;
 
     },
 

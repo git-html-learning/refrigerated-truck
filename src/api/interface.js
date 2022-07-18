@@ -42,7 +42,7 @@ export function getDeviceHisData(data) {       //获取设备历史数据
 
 export function changeLight(data) {       //灯下发
     return request({
-        url: '/api/v1//downRaw?productKey='+data.productKey+'&bodyType=json&timeout=2',
+        url: '/api/v1/downRaw?productKey='+data.productKey+'&bodyType=json&timeout=2',
         method: 'POST',
         data:data.checkCode
     })

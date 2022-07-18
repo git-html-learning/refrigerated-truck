@@ -1263,8 +1263,6 @@ this.tireShow = true
             res.data.deviceData[i].acc.Z;
           this.hisVib.push(value);
         }
-        // console.log("hisVibDate", this.hisVibDate);
-        console.log("hisVib", this.hisVib)
         this.drawVib();
       }
       } else {
@@ -1499,7 +1497,7 @@ this.tireShow = true
     },
 
     changeLight1(checked) {
-      // console.log(checked, this.productkey);
+      console.log(this.light1)
       this.spinning1 = true;
       if (checked === true) {
         console.log("正在开灯");
@@ -1508,6 +1506,7 @@ this.tireShow = true
           checkCode: "EFEFEF0101CF"
         };
         changeLight(data1).then(res => {
+          console.log(res)
           if (res.code == 200) {
             this.light1 = true;
             this.defaultChecked = true;
@@ -1521,6 +1520,7 @@ this.tireShow = true
           checkCode: "EFEFEF0100CE"
         };
         changeLight(data2).then(res => {
+           console.log(res)
           // console.log("关灯结果", res);
           if (res.code == 200) {
             //查询是否关灯成功

@@ -15,6 +15,11 @@ export default new Router({
       invisible: true
     },
     {
+      path: '/homePage',
+      component: () => import('@/views/homepage/index'),
+      hidden: true
+    },
+    {
       path: '/',
       name: '首页',
       // component: MenuView,
@@ -35,7 +40,6 @@ export default new Router({
               name: '车辆全图监控',
               component: () => import('@/views/Dashboard/Map'),
               icon: 'none',
-              // meta:{requireAuth:true}
             },
           ]
         },
@@ -55,28 +59,7 @@ export default new Router({
           ]
         },
 
-        // {
-        //   path: '/monitor',
-        //   name: '数字货舱',
-        //   // component: RouteView,
-        //   component: () => import('@/layouts/RouteView'),
-        //   icon: 'warning',
-        //   children: [
-        //     {
-        //       path: '/monitor/vibration',
-        //       name: '震动监控',
-        //       component: () => import('@/views/Monitor/Vibration'),
-        //       icon: 'none'
-        //     },
-        //     {
-        //       path: '/monitor/refrigerator',
-        //       name: '冷机监控',
-        //       component: () => import('@/views/Monitor/Refrigerator'),
-        //       icon: 'none'
-        //     }
-          
-        //   ]
-        // },
+
 
         {
           path: '/list',
@@ -128,73 +111,6 @@ export default new Router({
            
           ]
         },
-        
-        // {
-        //   path: '/result',
-        //   name: '结果页',
-        //   component: RouteView,
-        //   icon: 'check-circle-o',
-        //   children: [
-        //     {
-        //       path: '/result/success',
-        //       name: '成功',
-        //       component: () => import('@/views/Result/Success'),
-        //       icon: 'none'
-        //     },
-        //     {
-        //       path: '/result/error',
-        //       name: '失败',
-        //       component: () => import('@/views/Result/Error'),
-        //       icon: 'none'
-        //     }
-        //   ]
-        // },
-        // {
-        //   path: '/exception',
-        //   name: '异常页',
-        //   component: RouteView,
-        //   icon: 'warning',
-        //   children: [
-        //     {
-        //       path: '/exception/404',
-        //       name: '404',
-        //       component: () => import('@/views/Exception/404'),
-        //       icon: 'none'
-        //     },
-        //     {
-        //       path: '/exception/403',
-        //       name: '403',
-        //       component: () => import('@/views/Exception/403'),
-        //       icon: 'none'
-        //     },
-        //     {
-        //       path: '/exception/500',
-        //       name: '500',
-        //       component: () => import('@/views/Exception/500'),
-        //       icon: 'none'
-        //     }
-        //   ]
-        // },
-        // {
-        //   path: '/account',
-        //   name: '个人页',
-        //   // component: RouteView,
-        //   icon: 'user',
-        //   children: [
-        //     {
-        //       path: '/account/center',
-        //       name: '个人中心',
-        //       component: () => import('@/views/Account/Center'),
-        //       icon: 'none'
-        //     },
-        //     {
-        //       path: '/account/setting',
-        //       name: '个人设置',
-        //       component: () => import('@/views/Account/Settings'),
-        //       icon: 'none'
-        //     }
-        //   ]
-        // }
       ]
     }
   ]
