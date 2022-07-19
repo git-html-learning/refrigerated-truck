@@ -23,7 +23,7 @@
                       湿度：
                       <span
                         style="font-size: 20px"
-                  :class="[parseInt(humiHandleData[0].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[0].humi)>parseInt(this.humiDown)? '' : 'error']"
+                        :class="[parseInt(humiHandleData[0].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[0].humi)>parseInt(this.humiDown)? '' : 'error']"
                       >{{ humiHandleData[0].humi }}%</span>
                     </span>
                   </div>
@@ -39,14 +39,14 @@
                       温度：
                       <span
                         style="font-size: 20px"
-    :class="[parseInt(humiHandleData[1].temp)<parseInt(this.tempUp)&& parseInt(humiHandleData[1].temp)>parseInt(this.tempDown)? '' : 'error']"
+                        :class="[parseInt(humiHandleData[1].temp)<parseInt(this.tempUp)&& parseInt(humiHandleData[1].temp)>parseInt(this.tempDown)? '' : 'error']"
                       >{{ humiHandleData[1].temp }}℃</span>
                     </span>
                     <span style="padding-left: 16px; font-size: 14px">
                       湿度：
                       <span
                         style="font-size: 20px"
-         :class="[parseInt(humiHandleData[1].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[1].humi)>parseInt(this.humiDown)? '' : 'error']"
+                        :class="[parseInt(humiHandleData[1].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[1].humi)>parseInt(this.humiDown)? '' : 'error']"
                       >{{ humiHandleData[1].humi }}%</span>
                     </span>
                   </div>
@@ -62,14 +62,14 @@
                       温度：
                       <span
                         style="font-size: 20px"
-    :class="[parseInt(humiHandleData[2].temp)<parseInt(this.tempUp)&& parseInt(humiHandleData[2].temp)>parseInt(this.tempDown)? '' : 'error']"
+                        :class="[parseInt(humiHandleData[2].temp)<parseInt(this.tempUp)&& parseInt(humiHandleData[2].temp)>parseInt(this.tempDown)? '' : 'error']"
                       >{{ humiHandleData[2].temp }}℃</span>
                     </span>
                     <span style="padding-left: 16px; font-size: 14px">
                       湿度：
                       <span
                         style="font-size: 20px"
-                         :class="[parseInt(humiHandleData[2].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[2].humi)>parseInt(this.humiDown)? '' : 'error']"
+                        :class="[parseInt(humiHandleData[2].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[2].humi)>parseInt(this.humiDown)? '' : 'error']"
                       >{{ humiHandleData[2].humi }}%</span>
                     </span>
                   </div>
@@ -85,12 +85,12 @@
                       温度：
                       <span
                         style="font-size: 20px"
-                      :class="[parseInt(humiHandleData[3].temp)<parseInt(this.tempUp)&& parseInt(humiHandleData[3].temp)>parseInt(this.tempDown)? '' : 'error']"
+                        :class="[parseInt(humiHandleData[3].temp)<parseInt(this.tempUp)&& parseInt(humiHandleData[3].temp)>parseInt(this.tempDown)? '' : 'error']"
                       >{{ humiHandleData[3].temp }}℃</span>
                     </span>
                     <span
                       style="padding-left: 16px; font-size: 14px"
-                :class="[parseInt(humiHandleData[3].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[3].humi)>parseInt(this.humiDown)? '' : 'error']"
+                      :class="[parseInt(humiHandleData[3].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[3].humi)>parseInt(this.humiDown)? '' : 'error']"
                     >
                       湿度：
                       <span style="font-size: 20px">{{ humiHandleData[3].humi }}%</span>
@@ -115,7 +115,7 @@
                       湿度：
                       <span
                         style="font-size: 20px"
-                         :class="[parseInt(humiHandleData[4].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[4].humi)>parseInt(this.humiDown)? '' : 'error']"
+                        :class="[parseInt(humiHandleData[4].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[4].humi)>parseInt(this.humiDown)? '' : 'error']"
                       >{{ humiHandleData[4].humi }}%</span>
                     </span>
                   </div>
@@ -131,14 +131,14 @@
                       温度：
                       <span
                         style="font-size: 20px"
-                       :class="[parseInt(humiHandleData[5].temp)<parseInt(this.tempUp)&& parseInt(humiHandleData[5].temp)>parseInt(this.tempDown)? '' : 'error']"
+                        :class="[parseInt(humiHandleData[5].temp)<parseInt(this.tempUp)&& parseInt(humiHandleData[5].temp)>parseInt(this.tempDown)? '' : 'error']"
                       >{{ humiHandleData[5].temp }}℃</span>
                     </span>
                     <span style="padding-left: 16px; font-size: 14px">
                       湿度：
                       <span
                         style="font-size: 20px"
-                          :class="[parseInt(humiHandleData[5].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[5].humi)>parseInt(this.humiDown)? '' : 'error']"
+                        :class="[parseInt(humiHandleData[5].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[5].humi)>parseInt(this.humiDown)? '' : 'error']"
                       >{{ humiHandleData[5].humi }}%</span>
                     </span>
                   </div>
@@ -164,14 +164,14 @@
                     温度：
                     <span
                       style="font-size: 20px"
-                     :class="[parseInt(humiHandleData[6].temp)<parseInt(this.tempUp)&& parseInt(humiHandleData[6].temp)>parseInt(this.tempDown)? '' : 'error']"
+                      :class="[parseInt(humiHandleData[6].temp)<parseInt(this.tempUp)&& parseInt(humiHandleData[6].temp)>parseInt(this.tempDown)? '' : 'error']"
                     >{{ humiHandleData[6].temp }}℃</span>
                   </span>
                   <span style="padding-left: 16px; font-size: 14px">
                     湿度：
                     <span
                       style="font-size: 20px"
-                     :class="[parseInt(humiHandleData[6].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[6].humi)>parseInt(this.humiDown)? '' : 'error']"
+                      :class="[parseInt(humiHandleData[6].humi)<parseInt(this.humiUp)&& parseInt(humiHandleData[6].humi)>parseInt(this.humiDown)? '' : 'error']"
                     >{{ humiHandleData[6].humi }}%</span>
                   </span>
                 </div>
@@ -187,10 +187,10 @@
             style="height: 400px"
             class="shadow"
             hoverable
-              v-loading="oilsShow"
-              element-loading-text="没有注册该设备!!!"
-              element-loading-spinner="none"
-              element-loading-background="rgba(255,255,255,0.9)"
+            v-loading="oilsShow"
+            element-loading-text="没有注册该设备!!!"
+            element-loading-spinner="none"
+            element-loading-background="rgba(255,255,255,0.9)"
           >
             <a slot="extra" @click="openOil">更多</a>
             <div id="oil" class="oil"></div>
@@ -293,8 +293,6 @@
 
         <a-col :span="9">
           <a-card title="报警装置" style="height: 220px" class="shadow" hoverable>
-
-
             <a-col :span="8" style="padding-left: 20px; padding-top: 10px; text-align: center">
               <span v-show="!alert">
                 <img src="../../static/icon/红色警报.svg" style="width: 100px" />
@@ -331,12 +329,16 @@
 
       <a-row :gutter="[8, 8]">
         <a-col :span="16">
-          <a-card title="胎温胎压" hoverable style="height: 350px" class="shadow"
-           v-loading="tireShow"
-              element-loading-text="没有注册该设备!!!"
-              element-loading-spinner="none"
-              element-loading-background="rgba(255,255,255,0.9)"
->
+          <a-card
+            title="胎温胎压"
+            hoverable
+            style="height: 350px"
+            class="shadow"
+            v-loading="tireShow"
+            element-loading-text="没有注册该设备!!!"
+            element-loading-spinner="none"
+            element-loading-background="rgba(255,255,255,0.9)"
+          >
             <a slot="extra" @click="openTire">更多</a>
 
             <a-row type="flex" style="height: 40px; font-size: 16px">
@@ -562,14 +564,18 @@
         </a-col>
 
         <a-col :span="8">
-          <a-card title="车辆震动曲线图" style="height: 350px" class="shadow" hoverable
-              v-loading="vibShow"
-              element-loading-text="没有注册该设备!!!"
-              element-loading-spinner="none"
-              element-loading-background="rgba(255,255,255,0.9)"
+          <a-card
+            title="车辆震动曲线图"
+            style="height: 350px"
+            class="shadow"
+            hoverable
+            v-loading="vibShow"
+            element-loading-text="没有注册该设备!!!"
+            element-loading-spinner="none"
+            element-loading-background="rgba(255,255,255,0.9)"
           >
             <a slot="extra" @click="openVib">更多</a>
-            <div id="main7" style="height: 290px; margin-left: 20px; margin-top: -20px"></div>
+            <div id="main7" style="height: 290px; width: 100%;margin-left: 20px; margin-top: -20px"></div>
           </a-card>
         </a-col>
       </a-row>
@@ -577,12 +583,7 @@
       <a-row :gutter="[8, 8]">
         <a-col :span="24">
           <a-card :title="title1" style="height: 285px" class="shadow" hoverable>
-            <baidu-map
-              class="map"
-              :center="center"
-              :zoom="13"
-              :scroll-wheel-zoom="true"
-            >
+            <baidu-map class="map" :center="center" :zoom="13" :scroll-wheel-zoom="true">
               <bm-marker
                 :position="center"
                 :dragging="false"
@@ -745,7 +746,47 @@
               <span>数据最后上传时间：{{ item.date }}</span>
             </div>
             <div v-if="!tireDataShow" style="text-align: center;">
-             <svg t="1657546223449" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2017" width="200" height="200"><path d="M102.4 896a409.6 51.2 0 1 0 819.2 0 409.6 51.2 0 1 0-819.2 0Z" fill="#4A68CC" opacity=".1" p-id="2018"></path><path d="M116.736 376.832c0 8.704 6.656 15.36 15.36 15.36s15.36-6.656 15.36-15.36-6.656-15.36-15.36-15.36c-8.192 0-15.36 7.168-15.36 15.36zM926.72 832c-19.456 5.12-23.552 9.216-28.16 28.16-5.12-19.456-9.216-23.552-28.16-28.16 18.944-5.12 23.552-9.216 28.16-28.16 4.608 18.944 8.704 23.552 28.16 28.16zM202.24 323.072c-25.088 6.656-30.208 11.776-36.864 36.864-6.656-25.088-11.776-30.208-36.864-36.864 25.088-6.656 30.208-12.288 36.864-36.864 6.144 25.088 11.776 30.208 36.864 36.864zM816.64 235.008c-15.36 4.096-18.432 7.168-22.528 22.528-4.096-15.36-7.168-18.432-22.528-22.528 15.36-4.096 18.432-7.168 22.528-22.528 3.584 15.36 7.168 18.432 22.528 22.528zM882.688 156.16c-39.936 10.24-48.128 18.944-58.88 58.88-10.24-39.936-18.944-48.128-58.88-58.88 39.936-10.24 48.128-18.944 58.88-58.88 10.24 39.424 18.944 48.128 58.88 58.88z" fill="#4A68CC" opacity=".5" p-id="2019"></path><path d="M419.84 713.216v4.096l33.792 31.232 129.536-62.976L465.92 760.832v36.864l18.944-18.432v-0.512 0.512l18.944 18.432 100.352-122.88v-4.096z" fill="#4A68CC" opacity=".2" p-id="2020"></path><path d="M860.16 551.936v-1.024c0-1.024-0.512-1.536-0.512-2.56v-0.512l-110.08-287.232c-15.872-48.64-60.928-81.408-112.128-81.408H387.072c-51.2 0-96.256 32.768-112.128 81.408L164.864 547.84v0.512c-0.512 1.024-0.512 1.536-0.512 2.56V757.76c0 65.024 52.736 117.76 117.76 117.76h460.8c65.024 0 117.76-52.736 117.76-117.76v-204.8c-0.512-0.512-0.512-0.512-0.512-1.024zM303.616 271.36s0-0.512 0.512-0.512C315.392 233.984 349.184 209.92 387.072 209.92h249.856c37.888 0 71.68 24.064 83.456 60.416 0 0 0 0.512 0.512 0.512l101.888 266.24H588.8c-8.704 0-15.36 6.656-15.36 15.36 0 33.792-27.648 61.44-61.44 61.44s-61.44-27.648-61.44-61.44c0-8.704-6.656-15.36-15.36-15.36H201.728L303.616 271.36zM829.44 757.76c0 48.128-38.912 87.04-87.04 87.04H281.6c-48.128 0-87.04-38.912-87.04-87.04v-189.44h226.816c7.168 43.52 45.056 76.8 90.624 76.8s83.456-33.28 90.624-76.8H829.44v189.44z" fill="#4A68CC" opacity=".5" p-id="2021"></path><path d="M512 578.56c-14.336 0-25.6-11.264-25.6-25.6V501.76H253.44l83.968-219.136 0.512-1.024c7.168-21.504 26.624-35.84 49.152-35.84h249.856c22.528 0 41.984 14.336 49.152 35.84l0.512 1.024L770.56 501.76H537.6v51.2c0 14.336-11.264 25.6-25.6 25.6z" fill="#4A68CC" opacity=".2" p-id="2022"></path></svg>
+              <svg
+                t="1657546223449"
+                class="icon"
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                p-id="2017"
+                width="200"
+                height="200"
+              >
+                <path
+                  d="M102.4 896a409.6 51.2 0 1 0 819.2 0 409.6 51.2 0 1 0-819.2 0Z"
+                  fill="#4A68CC"
+                  opacity=".1"
+                  p-id="2018"
+                />
+                <path
+                  d="M116.736 376.832c0 8.704 6.656 15.36 15.36 15.36s15.36-6.656 15.36-15.36-6.656-15.36-15.36-15.36c-8.192 0-15.36 7.168-15.36 15.36zM926.72 832c-19.456 5.12-23.552 9.216-28.16 28.16-5.12-19.456-9.216-23.552-28.16-28.16 18.944-5.12 23.552-9.216 28.16-28.16 4.608 18.944 8.704 23.552 28.16 28.16zM202.24 323.072c-25.088 6.656-30.208 11.776-36.864 36.864-6.656-25.088-11.776-30.208-36.864-36.864 25.088-6.656 30.208-12.288 36.864-36.864 6.144 25.088 11.776 30.208 36.864 36.864zM816.64 235.008c-15.36 4.096-18.432 7.168-22.528 22.528-4.096-15.36-7.168-18.432-22.528-22.528 15.36-4.096 18.432-7.168 22.528-22.528 3.584 15.36 7.168 18.432 22.528 22.528zM882.688 156.16c-39.936 10.24-48.128 18.944-58.88 58.88-10.24-39.936-18.944-48.128-58.88-58.88 39.936-10.24 48.128-18.944 58.88-58.88 10.24 39.424 18.944 48.128 58.88 58.88z"
+                  fill="#4A68CC"
+                  opacity=".5"
+                  p-id="2019"
+                />
+                <path
+                  d="M419.84 713.216v4.096l33.792 31.232 129.536-62.976L465.92 760.832v36.864l18.944-18.432v-0.512 0.512l18.944 18.432 100.352-122.88v-4.096z"
+                  fill="#4A68CC"
+                  opacity=".2"
+                  p-id="2020"
+                />
+                <path
+                  d="M860.16 551.936v-1.024c0-1.024-0.512-1.536-0.512-2.56v-0.512l-110.08-287.232c-15.872-48.64-60.928-81.408-112.128-81.408H387.072c-51.2 0-96.256 32.768-112.128 81.408L164.864 547.84v0.512c-0.512 1.024-0.512 1.536-0.512 2.56V757.76c0 65.024 52.736 117.76 117.76 117.76h460.8c65.024 0 117.76-52.736 117.76-117.76v-204.8c-0.512-0.512-0.512-0.512-0.512-1.024zM303.616 271.36s0-0.512 0.512-0.512C315.392 233.984 349.184 209.92 387.072 209.92h249.856c37.888 0 71.68 24.064 83.456 60.416 0 0 0 0.512 0.512 0.512l101.888 266.24H588.8c-8.704 0-15.36 6.656-15.36 15.36 0 33.792-27.648 61.44-61.44 61.44s-61.44-27.648-61.44-61.44c0-8.704-6.656-15.36-15.36-15.36H201.728L303.616 271.36zM829.44 757.76c0 48.128-38.912 87.04-87.04 87.04H281.6c-48.128 0-87.04-38.912-87.04-87.04v-189.44h226.816c7.168 43.52 45.056 76.8 90.624 76.8s83.456-33.28 90.624-76.8H829.44v189.44z"
+                  fill="#4A68CC"
+                  opacity=".5"
+                  p-id="2021"
+                />
+                <path
+                  d="M512 578.56c-14.336 0-25.6-11.264-25.6-25.6V501.76H253.44l83.968-219.136 0.512-1.024c7.168-21.504 26.624-35.84 49.152-35.84h249.856c22.528 0 41.984 14.336 49.152 35.84l0.512 1.024L770.56 501.76H537.6v51.2c0 14.336-11.264 25.6-25.6 25.6z"
+                  fill="#4A68CC"
+                  opacity=".2"
+                  p-id="2022"
+                />
+              </svg>
               <p>该轮胎20天内无数据</p>
             </div>
             <div v-if="tireDataShow">
@@ -790,18 +831,20 @@ import {
 import { person, editPerson } from "@/api/user";
 import * as echarts from "echarts";
 export default {
-  created() {
-    this.getQuery();
-  },
+  // created() {
+    
+  // },
 
   mounted() {
-    // console.log("1");
+this.getQuery();
     this.timer = setInterval(this.getQuery, 60000);
+  },
+//   updated() {
+//   //       this.getQuery();
+            
+//  this.drawOil();
 
-  },
-  updated() {
-    this.drawOil();
-  },
+//   },
   beforeDestroy() {
     clearInterval(this.timer);
   },
@@ -898,16 +941,18 @@ export default {
       humiDataShow: true,
       tireDataShow: true,
       center: {
-        lng:"",
-        lat:""
+        lng: "",
+        lat: ""
       },
-      gpsDkList:[],
-      oilDkList:[],
-      oilData:"",
+      gpsDkList: [],
+      oilDkList: [],
+      oilData: "",
       tireShow: false,
-      accDkList:[],
+      accDkList: [],
       oilsShow: false,
       vibShow: false,
+      typeIdentify:"",
+
     };
   },
   watch: {
@@ -916,11 +961,30 @@ export default {
       if (to.path == "/list/details") {
         this.getQuery();
         console.log("进入详情页");
-                  this.humiDataShow = true;
-      this.tireDataShow=true      
+        this.humiDataShow = true;
+        this.tireDataShow = true;
       }
       deep: true;
-    }
+    },
+   hisVib() {
+     console.log(this.hisVib)
+     if (this.hisVib.length !==0) {
+         this.$nextTick(() => {
+    // 确保dom异步加载完毕
+    this.drawVib()
+  })
+
+     } 
+   },
+   oilData() {
+         this.$nextTick(() => {
+    // 确保dom异步加载完毕
+  this.drawOil()
+  })
+
+   },
+
+
   },
   methods: {
     timestampToTime(timestamp) {
@@ -981,101 +1045,112 @@ export default {
           console.log(this.oil);
         }
       });
-      this.productkey = this.$route.query.pk;
-      this.carNum = this.$route.query.carnum;
+      // this.productkey = this.$route.query.pk;
+      // this.carNum = this.$route.query.carnum;
+      this.productkey = window.sessionStorage.getItem("productKey")
+      this.carNum = window.sessionStorage.getItem("carNum")
+      this.typeIdentify = window.sessionStorage.getItem("typeIdentify")
       console.log(this.productkey);
+      console.log(this.typeIdentify);
       this.title1 = this.carNum + "    行进中（已行驶99km 速度50km/h）";
       this.getDk();
     },
-    async getDk() {
+    getDk() {
       this.humiDkList = [];
       this.doorDkList = [];
       this.alarmDkList = [];
       this.tireDkList = [];
-        this.gpsDkList = [];
+      this.gpsDkList = [];
       this.oilDkList = [];
       this.accDkList = [];
-      const res = await getDevice({
+      // const res = await
+      getDevice({
         productKey: this.productkey
-      });
-      console.log("alldk",res);
-      if (res.code == 200) {
-        for (var i = 0; i < res.data.deviceInfo.length; i++) {
-          if (res.data.deviceInfo[i].deviceType == "TempAndHumi") {
-            this.humiDkList.push(res.data.deviceInfo[i].deviceKey);
-          } else if (res.data.deviceInfo[i].deviceType == "door") {
-            this.doorDkList.push(res.data.deviceInfo[i].deviceKey);
-          } else if (res.data.deviceInfo[i].deviceType == "Alarm") {
-            this.alarmDkList.push(res.data.deviceInfo[i].deviceKey);
-          } else if (res.data.deviceInfo[i].deviceType == "TireTempPress") {
-            this.tireDkList.push(res.data.deviceInfo[i].deviceKey);
-          }
-           else if (res.data.deviceInfo[i].deviceType == "gps") {
-            this.gpsDkList.push(res.data.deviceInfo[i].deviceKey);
-          }
-                else if (res.data.deviceInfo[i].deviceType == "oil") {
-            this.oilDkList.push(res.data.deviceInfo[i].deviceKey);
-          }
-                        else if (res.data.deviceInfo[i].deviceType == "acc") {
-            this.accDkList.push(res.data.deviceInfo[i].deviceKey);
+      }).then(res => {
+        console.log("alldk", res);
+        if (res.code == 200) {
+          for (var i = 0; i < res.data.deviceInfo.length; i++) {
+            if (res.data.deviceInfo[i].deviceType == "TempAndHumi") {
+              this.humiDkList.push(res.data.deviceInfo[i].deviceKey);
+            } else if (res.data.deviceInfo[i].deviceType == "door") {
+              this.doorDkList.push(res.data.deviceInfo[i].deviceKey);
+            } else if (res.data.deviceInfo[i].deviceType == "Alarm") {
+              this.alarmDkList.push(res.data.deviceInfo[i].deviceKey);
+            } else if (res.data.deviceInfo[i].deviceType == "TireTempPress") {
+              this.tireDkList.push(res.data.deviceInfo[i].deviceKey);
+            } else if (res.data.deviceInfo[i].deviceType == "gps") {
+              this.gpsDkList.push(res.data.deviceInfo[i].deviceKey);
+            } else if (res.data.deviceInfo[i].deviceType == "oil") {
+              this.oilDkList.push(res.data.deviceInfo[i].deviceKey);
+            } else if (res.data.deviceInfo[i].deviceType == "acc") {
+              this.accDkList.push(res.data.deviceInfo[i].deviceKey);
+            }
           }
         }
-      }
-      console.log(this.gpsDkList)
-      console.log(this.oilDkList)
-      console.log(this.tireDkList)
-      console.log(this.accDkList)
-      this.getHumiData();
-      this.getDoorData();
-      this.getAlarmData();
-      this.getTireData();
-      this.getGpsData();
-      this.getOilData();
-    },
-    async  getOilData(){
-      console.log(this.oilDkList)
-      if (this.oilDkList.length !==0) {
-        this.oilsShow = false;
-         const res = await getDeviceData({
-        productKey: this.productkey,
-        deviceKeyList: this.oilDkList
+        console.log(this.gpsDkList);
+        console.log(this.oilDkList);
+        console.log(this.tireDkList);
+        console.log(this.accDkList);
+        
+        this.getDoorData();
+        this.getAlarmData();
+        this.getTireData();
+        this.getGpsData();
+       this.getHumiData();
       });
-      console.log(res)
-      if (res.msg == "ok") {
-       if (res.data.deviceData[0].oil <0) {
-         this.oilData = 0;
-       } else {
- this.oilData = res.data.deviceData[0].oil
-        console.log(this.oilData)
-       }
-       
-      } else {
-       this.oilsShow = true;
-      }
-      }
-
     },
-    async getGpsData() {
-     const res = await getDeviceData({
+    getOilData() {
+      console.log(this.oilDkList);
+      if (this.oilDkList.length !== 0) {
+        this.oilsShow = false;
+        //  const res = await
+        getDeviceData({
+          productKey: this.productkey,
+          deviceKeyList: this.oilDkList
+        }).then(res => {
+                  console.log(res);
+        if (res.msg == "ok") {
+          if (res.data.deviceData[0].oil < 0) {
+            this.oilData = 0;
+          } else {
+            this.oilData = res.data.deviceData[0].oil;
+            console.log(this.oilData);
+          }
+
+
+          
+        } else {
+          this.oilsShow = true;
+        }
+        });
+
+      }
+    },
+   getGpsData() {
+      // const res = await 
+      getDeviceData({
         productKey: this.productkey,
         deviceKeyList: this.gpsDkList
-      });
-      console.log(res)
+      }).then((res)=>{
+      console.log(res);
       if (res.msg == "ok") {
-        this.center.lng = res.data.deviceData[0].gps.Lon
-        this.center.lat = res.data.deviceData[0].gps.Lat
+        this.center.lng = res.data.deviceData[0].gps.Lon;
+        this.center.lat = res.data.deviceData[0].gps.Lat;
       } else {
-             this.center.lng = "117.19046"
-        this.center.lat = "31.772366"
+        this.center.lng = "117.19046";
+        this.center.lat = "31.772366";
       }
+      })
+
     },
-    async getHumiData() {
+    getHumiData() {
       this.humiOriData = [];
       this.sensorList = [];
-      const res = await getDeviceData({
+      // const res = await 
+      getDeviceData({
         productKey: this.productkey,
         deviceKeyList: this.humiDkList
-      });
+      }).then((res)=>{
       console.log(res);
       if (res.code == 200) {
         for (var i = 0; i < res.data.deviceData.length; i++) {
@@ -1123,16 +1198,20 @@ export default {
         }
         console.log("humiHandleData", this.humiHandleData);
         this.getVibData();
+         this.getOilData();
       }
+      })
+
     },
-    async getDoorData() {
+getDoorData() {
       this.doorOriData = [];
       this.lightOriData = [];
-      const res = await getDeviceData({
+      // const res = await 
+      getDeviceData({
         productKey: this.productkey,
         deviceKeyList: this.doorDkList
-      });
-      // console.log("door",res);
+      }).then((res)=>{
+        console.log(res)
       if (res.code == 200) {
         this.lightOriData = res.data.deviceData[0].electrical;
         switch (this.lightOriData[0]) {
@@ -1155,11 +1234,11 @@ export default {
           this.doorOriData.push(obj);
         }
         // console.log("doorOriData",this.doorOriData);
-        console.log("lightOriData", this.lightOriData);
-        console.log("light1", this.light1);
-        console.log("defaultChecked", this.defaultChecked);
+        // console.log("lightOriData", this.lightOriData);
+        // console.log("light1", this.light1);
+        // console.log("defaultChecked", this.defaultChecked);
         this.doorHandleData = JSON.parse(JSON.stringify(this.doorOriData));
-        // console.log("doorHandleData",this.doorHandleData);
+        console.log("doorHandleData",this.doorHandleData);
         this.doorHandleData.sort(function(a, b) {
           var doorA = a.doorName.toUpperCase(); // ignore upper and lowercase
           var doorB = b.doorName.toUpperCase(); // ignore upper and lowercase
@@ -1174,105 +1253,114 @@ export default {
         console.log("doorHandleData", this.doorHandleData);
         this.door1 = this.doorHandleData[0].state.door_1;
         this.door2 = this.doorHandleData[1].state.door_2;
-        // console.log(this.door1);
-        // console.log(this.door2);
       }
+      })
     },
-    async getAlarmData() {
-      const res = await getDeviceData({
+  getAlarmData() {
+      // const res = await 
+      getDeviceData({
         productKey: this.productkey,
         deviceKeyList: this.alarmDkList
-      });
-      // console.log("alarm",res);
+      }).then((res)=>{
+        console.log(res)
+        if(res.msg == "ok" ){
       this.alert = res.data.deviceData[0].alarm;
       console.log("alert", this.alert);
+        }
+
+      })
+
     },
-    async getTireData() {
+    getTireData() {
       this.tireOriData = [];
       this.tireList = [];
-      console.log(this.tireDkList)
-      if (this.tireDkList.length !==0) {
-         this.tireShow = false;
-      const res = await getDeviceData({
-        productKey: this.productkey,
-        deviceKeyList: this.tireDkList
-      });
-      console.log(res);
-      if (res.code == 200) {
-        for (var i = 0; i < res.data.deviceData.length; i++) {
-          var obj = {
-            tire: res.data.deviceData[i].deviceName,
-            tirePress: (
-              (res.data.deviceData[i].tirePress * 10) /
-              10000
-            ).toFixed(1),
-            tireTemp: res.data.deviceData[i].tireTemp.toFixed(1),
-            time: res.data.deviceData[i].date,
-            dk: res.data.deviceData[i].deviceKey
-          };
-          this.tireOriData.push(obj);
-        }
-        console.log("tireOriData", this.tireOriData);
-        this.tireHandleData = JSON.parse(JSON.stringify(this.tireOriData));
-        this.tireHandleData.sort(function(a, b) {
-          var tireA = a.tire.toUpperCase(); // ignore upper and lowercase
-          var tireB = b.tire.toUpperCase(); // ignore upper and lowercase
-          if (tireA < tireB) {
-            return -1;
+      console.log(this.tireDkList);
+      if (this.tireDkList.length !== 0) {
+        this.tireShow = false;
+        // const res = await 
+        getDeviceData({
+          productKey: this.productkey,
+          deviceKeyList: this.tireDkList
+        }).then((res)=>{
+                  console.log(res);
+        if (res.code == 200) {
+          for (var i = 0; i < res.data.deviceData.length; i++) {
+            var obj = {
+              tire: res.data.deviceData[i].deviceName,
+              tirePress: (
+                (res.data.deviceData[i].tirePress * 10) /
+                10000
+              ).toFixed(1),
+              tireTemp: res.data.deviceData[i].tireTemp.toFixed(1),
+              time: res.data.deviceData[i].date,
+              dk: res.data.deviceData[i].deviceKey
+            };
+            this.tireOriData.push(obj);
           }
-          if (tireA > tireB) {
-            return 1;
+          console.log("tireOriData", this.tireOriData);
+          this.tireHandleData = JSON.parse(JSON.stringify(this.tireOriData));
+          this.tireHandleData.sort(function(a, b) {
+            var tireA = a.tire.toUpperCase(); // ignore upper and lowercase
+            var tireB = b.tire.toUpperCase(); // ignore upper and lowercase
+            if (tireA < tireB) {
+              return -1;
+            }
+            if (tireA > tireB) {
+              return 1;
+            }
+            return 0;
+          });
+          for (var i = 0; i < this.tireHandleData.length; i++) {
+            this.tireHandleData[i].tire = "胎" + (i + 1);
+            var obj1 = {
+              name: this.tireHandleData[i].tire,
+              date: this.tireHandleData[i].time,
+              dk: this.tireHandleData[i].dk
+            };
+            this.tireList.push(obj1);
           }
-          return 0;
-        });
-        for (var i = 0; i < this.tireHandleData.length; i++) {
-          this.tireHandleData[i].tire = "胎" + (i + 1);
-          var obj1 = {
-            name: this.tireHandleData[i].tire,
-            date: this.tireHandleData[i].time,
-            dk: this.tireHandleData[i].dk
-          };
-          this.tireList.push(obj1);
+          console.log("tireHandleData", this.tireHandleData);
+          // console.log("tireList", this.tireList);
         }
-        console.log("tireHandleData", this.tireHandleData);
-        // console.log("tireList", this.tireList);
-      } 
-      } else {
-this.tireShow = true
-      }
+        })
 
+      } else {
+        this.tireShow = true;
+      }
     },
-    async getVibData() {
+  getVibData() {
       this.hisVibDate = [];
       this.hisVib = [];
-      if (this.accDkList.length !==0) {
+      if (this.accDkList.length !== 0) {
         this.vibShow = false;
-      this.hisEndTime = Date.parse(new Date()) / 1000;
-      const res = await getDeviceHisData({
-        deviceKey: this.accDkList[0],
-        startTime: this.hisEndTime - 60 * 86400, //86400
-        endTime: this.hisEndTime
-      });
-      console.log(res);
-      if (res.code == 200) {
-        for (var i = 0; i < res.data.deviceData.length; i++) {
-          this.hisVibDate.push(res.data.deviceData[i].date);
-          var value =
-            res.data.deviceData[i].acc.X +
-            res.data.deviceData[i].acc.Y +
-            res.data.deviceData[i].acc.Z;
-          this.hisVib.push(value);
+        this.hisEndTime = Date.parse(new Date()) / 1000;
+        // const res = await 
+        getDeviceHisData({
+          deviceKey: this.accDkList[0],
+          startTime: this.hisEndTime - 60 * 86400, //86400
+          endTime: this.hisEndTime
+        }).then((res)=>{
+     console.log(res);
+        if (res.code == 200) {
+          for (var i = 0; i < res.data.deviceData.length; i++) {
+            this.hisVibDate.push(res.data.deviceData[i].date);
+            var value =
+              res.data.deviceData[i].acc.X +
+              res.data.deviceData[i].acc.Y +
+              res.data.deviceData[i].acc.Z;
+            this.hisVib.push(value);
+          } 
         }
-        this.drawVib();
-      }
+        })
+   
       } else {
-        this.vibShow = true
+        this.vibShow = true;
       }
-
     },
 
     drawOil() {
       var chartDom = document.getElementById("oil");
+      console.log(chartDom)
       var myChart = echarts.init(chartDom);
       var value = this.oil / 100;
       var option = {
@@ -1345,10 +1433,8 @@ this.tireShow = true
       window.addEventListener("resize", function() {
         myChart.resize();
       });
-
       option && myChart.setOption(option);
     },
-
     hisTem1() {
       console.log(this.sensorList);
       this.humiTabKey = "1";
@@ -1356,7 +1442,6 @@ this.tireShow = true
       this.humiSpinning = true;
       this.hisEndTime = Date.parse(new Date()) / 1000;
       clearInterval(this.timer);
-
       getDeviceHisData({
         deviceKey: this.humiHandleData[0].dk,
         startTime: this.hisEndTime - 10 * 86400, //86400
@@ -1461,22 +1546,21 @@ this.tireShow = true
             this.hisTireTemp.push(res.data.deviceData[i].tireTemp);
             this.hisTirePress.push(res.data.deviceData[i].tirePress / 10000);
           }
-                  console.log(this.hisTireDate);
-        console.log(this.hisTireTemp);
-        console.log(this.hisTirePress);
-        this.maxtiretemp = Math.max.apply(null, this.hisTireTemp);
-        this.mintiretemp = Math.min.apply(null, this.hisTireTemp);
-        // console.log(this.maxtiretemp,this.mintiretemp);
-        this.maxtirepress = Math.max.apply(null, this.hisTirePress);
-        this.mintirepress = Math.min.apply(null, this.hisTirePress);
-        // console.log(this.maxtirepress,this.mintirepress);
-        this.drawTyre();
-        this.tireSpinning = false;
-        // console.log("1");
+          console.log(this.hisTireDate);
+          console.log(this.hisTireTemp);
+          console.log(this.hisTirePress);
+          this.maxtiretemp = Math.max.apply(null, this.hisTireTemp);
+          this.mintiretemp = Math.min.apply(null, this.hisTireTemp);
+          // console.log(this.maxtiretemp,this.mintiretemp);
+          this.maxtirepress = Math.max.apply(null, this.hisTirePress);
+          this.mintirepress = Math.min.apply(null, this.hisTirePress);
+          // console.log(this.maxtirepress,this.mintirepress);
+          this.drawTyre();
+          this.tireSpinning = false;
+          // console.log("1");
         } else {
           this.tireDataShow = false;
         }
-
       });
     },
 
@@ -1497,59 +1581,28 @@ this.tireShow = true
     },
 
     changeLight1(checked) {
-      console.log(this.light1)
+      console.log(this.light1);
       this.spinning1 = true;
       if (checked === true) {
         console.log("正在开灯");
-        let data1 = {
-          productKey: this.productkey,
-          checkCode: "EFEFEF0101CF"
-        };
+        let data1 = "EFEFEF0101CF" +" "+this.typeIdentify
         changeLight(data1).then(res => {
-          console.log(res)
-          if (res.code == 200) {
+          console.log(res);
+       
             this.light1 = true;
             this.defaultChecked = true;
             this.spinning1 = false;
-          }
+   
         });
       } else {
         console.log("正在关灯");
-        let data2 = {
-          productKey: this.productkey,
-          checkCode: "EFEFEF0100CE"
-        };
+        let data2 = "EFEFEF0100CE" +" "+this.typeIdentify
         changeLight(data2).then(res => {
-           console.log(res)
-          // console.log("关灯结果", res);
-          if (res.code == 200) {
-            //查询是否关灯成功
-            // getDeviceData({
-            //   productKey: this.productkey,
-            //   deviceKeyList: this.doorDkList,
-            // }).then((res) => {
-            //   // console.log(res);
-            //   if (res.code == 200) {
-            //     this.lightOriData = res.data.deviceData[0].electrical;
-            //     switch (this.lightOriData[0]) {
-            //       case 0:
-            //         this.light1 = false;
-            //         this.defaultChecked = false;
-            //         break;
-            //       case 1:
-            //         this.light1 = true;
-            //         this.defaultChecked = true;
-            //         break;
-            //     }
-            //     console.log("light1", this.light1);
-            //     console.log("defaultChecked", this.defaultChecked);
-            //     this.spinning1 = false;
-            //   }
-            // });
+          console.log(res);
             this.light1 = false;
             this.defaultChecked = false;
             this.spinning1 = false;
-          }
+     
         });
       }
       // this.light1 = !this.light1;
@@ -1560,8 +1613,6 @@ this.tireShow = true
       this.hisTemp = [];
       this.hisHumi = [];
       this.humiTabname = e;
-      // console.log(e);
-      // console.log(this.sensorList[e].dk);
       this.humiSpinning = true;
       getDeviceHisData({
         deviceKey: this.sensorList[e].dk,
@@ -1868,9 +1919,11 @@ this.tireShow = true
     },
 
     drawVib() {
+
       //详情页震动图
-      var myChart = echarts.init(document.getElementById("main7"));
-      // var myChart = echarts.init(this.$refs.main);
+      var chartDom =document.getElementById("main7")
+ console.log(chartDom)
+      var myChart = echarts.init(chartDom);
       var colors = ["#5470C6"];
       var option = {
         color: colors,

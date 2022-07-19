@@ -8,6 +8,7 @@ export function login(data) {
   })
 }
 
+//注册用户
 export function userRegister(data) {
   return request({
     url: '/session',
@@ -34,3 +35,16 @@ export function  editPerson(data) {
     data
   })
 }
+
+
+// 管理员登录
+export function  adminLogin(data) {
+  return request({
+    url: '/admin',
+    method: 'post',
+    data
+  })
+}
+
+
+

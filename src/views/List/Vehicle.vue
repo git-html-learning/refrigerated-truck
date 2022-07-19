@@ -16,13 +16,7 @@
               <a-button type="primary" @click="reset">重置</a-button>
             </a-form-model-item>
 
-            <a-button
-              type="primary"
-              style="float: right"
-              size="large"
-              @click="add"
-              >车辆注册
-            </a-button>
+            <a-button type="primary" style="float: right" size="large" @click="add">车辆注册</a-button>
             <a-modal
               title="车辆注册"
               :visible="visible"
@@ -39,58 +33,29 @@
                 <a-form-model-item label="车牌号" :wrapper-col="{ span: 12 }">
                   <a-input v-model="productname" />
                 </a-form-model-item>
-                <a-form-model-item
-                  label="温湿度传感器数量"
-                  :wrapper-col="{ span: 2 }"
-                >
+                <a-form-model-item label="温湿度传感器数量" :wrapper-col="{ span: 2 }">
                   <a-input-number v-model="num1" :min="1" style="width: 120%" />
                 </a-form-model-item>
-                <a-form-model-item
-                  label="油位监测设备数量"
-                  :wrapper-col="{ span: 2 }"
-                >
+                <a-form-model-item label="油位监测设备数量" :wrapper-col="{ span: 2 }">
                   <a-input-number v-model="num5" :min="1" style="width: 120%" />
                 </a-form-model-item>
-                <a-form-model-item
-                  label="照明灯数量"
-                  :wrapper-col="{ span: 2 }"
-                >
+                <a-form-model-item label="照明灯数量" :wrapper-col="{ span: 2 }">
                   <a-input-number v-model="num6" :min="1" style="width: 120%" />
                 </a-form-model-item>
-                <a-form-model-item
-                  label="杀菌灯数量"
-                  :wrapper-col="{ span: 2 }"
-                >
+                <a-form-model-item label="杀菌灯数量" :wrapper-col="{ span: 2 }">
                   <a-input-number v-model="num7" :min="1" style="width: 120%" />
                 </a-form-model-item>
-                <a-form-model-item
-                  label="胎温胎压传感器数量"
-                  :wrapper-col="{ span: 2 }"
-                >
+                <a-form-model-item label="胎温胎压传感器数量" :wrapper-col="{ span: 2 }">
                   <a-input-number v-model="num8" :min="1" style="width: 120%" />
                 </a-form-model-item>
                 <a-form-model-item label="门数量" :wrapper-col="{ span: 2 }">
                   <a-input-number v-model="num9" :min="1" style="width: 120%" />
                 </a-form-model-item>
-                <a-form-model-item
-                  label="横向震动监测数量"
-                  :wrapper-col="{ span: 2 }"
-                >
-                  <a-input-number
-                    v-model="num10"
-                    :min="1"
-                    style="width: 120%"
-                  />
+                <a-form-model-item label="横向震动监测数量" :wrapper-col="{ span: 2 }">
+                  <a-input-number v-model="num10" :min="1" style="width: 120%" />
                 </a-form-model-item>
-                <a-form-model-item
-                  label="纵向震动监测数量"
-                  :wrapper-col="{ span: 2 }"
-                >
-                  <a-input-number
-                    v-model="num11"
-                    :min="1"
-                    style="width: 120%"
-                  />
+                <a-form-model-item label="纵向震动监测数量" :wrapper-col="{ span: 2 }">
+                  <a-input-number v-model="num11" :min="1" style="width: 120%" />
                 </a-form-model-item>
               </a-form-model>
             </a-modal>
@@ -105,44 +70,23 @@
               <a-card-meta :title="item.productName">
                 <!-- <a-avatar :size="64" slot="avatar" 
                   style="background: white;border-style:solid;border-width:2px;border-color:#1890ff"
-                > -->
+                >-->
                 <a-avatar :size="64" slot="avatar" style="background: #1890ff">
                   <!-- <i class="iconfont icon-cangku"></i> -->
                   <!-- <img src="../../static/pic/冷藏车.png" /> -->
-                  <img
-                    src="../../static/icon/冷藏车1.svg"
-                    style="width: 60px"
-                  />
+                  <img src="../../static/icon/冷藏车1.svg" style="width: 60px" />
                 </a-avatar>
               </a-card-meta>
               <p style="padding-left: 64px">
                 购买时间:
-                <span style="font-weight: 600; font-size: 18px">
-                  {{ item.value1 }}
-                </span>
+                <span style="font-weight: 600; font-size: 18px">{{ item.value1 }}</span>
               </p>
               <p style="padding-left: 80px">
                 下次保养时间:
-                <span style="font-weight: 600; font-size: 18px">
-                  {{ item.value2 }}
-                </span>
+                <span style="font-weight: 600; font-size: 18px">{{ item.value2 }}</span>
               </p>
-              <a style="float: right; font-size: 15px" @click="cut(item)"
-                >删除</a
-              >
-              <a style="float: left; font-size: 15px" @click="trans(item)">
-                <!-- <router-link 
-                  :to="{
-                    path:'/list/details',
-                    query:{
-                      pk : 123
-                    }
-                    }"
-                >
-                查看
-                </router-link> -->
-                查看
-              </a>
+              <a style="float: right; font-size: 15px" @click="cut(item)">删除</a>
+              <a style="float: left; font-size: 15px" @click="trans(item)">查看</a>
             </a-card>
           </a-col>
         </a-row>
@@ -171,11 +115,13 @@
     </a-form-item>
         
       </div>
-    </div> -->
+    </div>-->
   </div>
 </template>
 <script>
 import { product } from "@/api/interface";
+import { userRegister, login, adminLogin } from "@/api/user";
+import axios from "axios";
 import {
   registerVeh,
   deleteProduct,
@@ -186,7 +132,7 @@ import {
   tireTempPress,
   door,
   shake01,
-  shake02,
+  shake02
 } from "@/api/vehicle";
 
 export default {
@@ -212,6 +158,7 @@ export default {
       transnum: "", //传递的车牌号
 
       vehicleList: [], //车辆信息展示列表
+      adminToken: ""
       // vehicleList: [
       //   {
       //     number: "皖A11111",
@@ -259,6 +206,7 @@ export default {
             value1: res.data.productInfo[i].extraInfo.buyingTime,
             value2: res.data.productInfo[i].extraInfo.maintenanceTime,
             productkey: res.data.productInfo[i].productKey,
+            typeIdentify: res.data.productInfo[i].typeIdentify,
           };
           this.vehicleList.push(obj);
         }
@@ -308,12 +256,58 @@ export default {
         num8: this.num8,
         num9: this.num9,
         num10: this.num10,
-        num11: this.num11,
+        num11: this.num11
       });
       console.log(res);
       if (res.code == 200) {
         _this.productKey = res.data.productKey;
         _this.batchTem();
+        var obj = {
+          username: this.productname,
+          password: "123456",
+          phone: "",
+          email: "",
+          extraInfo: {
+            productKey: _this.productKey,
+            role: "user"
+          }
+        };
+        console.log(obj);
+        userRegister(obj).then(res => {
+          console.log(res);
+          adminLogin({
+            username: "弘恩科技",
+            password: "hongenkj&ahu@2020"
+          }).then(res => {
+            console.log(res);
+            this.adminToken = res.data.token;
+            console.log(this.adminToken);
+            var _this = this;
+            axios({
+              method: "put",
+              url:
+                "https://api.ahusmart.com/api/v1/admin/user/" +
+                this.productname,
+              headers: {
+                token: this.adminToken
+              },
+              data: {
+                username: this.productname,
+                password: "123456",
+                phone: "",
+                email: "",
+                extraInfo: {
+                  productKey: _this.productKey,
+                  role: "user"
+                }
+              }
+            }).then(res => {
+              console.log(res);
+            });
+          });
+        });
+        //获取管理员token并修改用户信息
+
         // _this.vehicleList = [];
         // _this.$message.success("注册成功!");
         // _this.getproduct();
@@ -324,7 +318,7 @@ export default {
       // console.log(_this.productKey);
       const res = await tempAndHumi({
         productKey: _this.productKey,
-        number1: _this.num1,
+        number1: _this.num1
       });
       // console.log(res);
       if (res.code == 200) {
@@ -335,7 +329,7 @@ export default {
       var _this = this;
       const res = await oil({
         productKey: _this.productKey,
-        number5: _this.num5,
+        number5: _this.num5
       });
       // console.log(res);
       if (res.code == 200) {
@@ -346,7 +340,7 @@ export default {
       var _this = this;
       const res = await light01({
         productKey: _this.productKey,
-        number6: _this.num6,
+        number6: _this.num6
       });
       // console.log(res);
       if (res.code == 200) {
@@ -357,7 +351,7 @@ export default {
       var _this = this;
       const res = await light02({
         productKey: _this.productKey,
-        number7: _this.num7,
+        number7: _this.num7
       });
       // console.log(res);
       if (res.code == 200) {
@@ -368,7 +362,7 @@ export default {
       var _this = this;
       const res = await tireTempPress({
         productKey: _this.productKey,
-        number8: _this.num8,
+        number8: _this.num8
       });
       // console.log(res);
       if (res.code == 200) {
@@ -379,7 +373,7 @@ export default {
       var _this = this;
       const res = await door({
         productKey: _this.productKey,
-        number9: _this.num9,
+        number9: _this.num9
       });
       // console.log(res);
       if (res.code == 200) {
@@ -390,7 +384,7 @@ export default {
       var _this = this;
       const res = await shake01({
         productKey: _this.productKey,
-        number10: _this.num10,
+        number10: _this.num10
       });
       // console.log(res);
       if (res.code == 200) {
@@ -401,7 +395,7 @@ export default {
       var _this = this;
       const res = await shake02({
         productKey: _this.productKey,
-        number11: _this.num11,
+        number11: _this.num11
       });
       console.log(res);
       if (res.code == 200) {
@@ -421,27 +415,31 @@ export default {
     },
 
     trans(data) {
+      console.log(data)
       this.transpk = data.productkey;
       this.transnum = data.productName;
-      // console.log(data.productkey);
-      // console.log("##"+this.transpk);
+      var typeIdentify = data.typeIdentify
+      window.sessionStorage.setItem("productKey", this.transpk);
+      window.sessionStorage.setItem("carNum", this.transnum);
+      window.sessionStorage.setItem("typeIdentify", typeIdentify);
       this.$router.push({
-        path: "/list/details",
-        query: {
-          pk: this.transpk,
-          carnum: this.transnum,
-        },
+        path: "/list/details"
+        // query: {
+        //   pk: this.transpk,
+        //   carnum: this.transnum,
+        // },
       });
     },
 
     cut(data) {
       //删除车辆
       // console.log(data.productkey);
+      this.productname = data.productName;
       this.productkey = data.productkey;
       this.$confirm("此操作将永久删除该车辆, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
-        type: "warning",
+        type: "warning"
       })
         .then(() => {
           this.confirm();
@@ -452,16 +450,34 @@ export default {
     },
     async confirm() {
       const res = await deleteProduct({
-        key: this.productkey,
+        key: this.productkey
       });
       // console.log(res);
       if (res.code == 200) {
+         adminLogin({
+            username: "弘恩科技",
+            password: "hongenkj&ahu@2020"
+          }).then(res => {
+            console.log(res);
+            this.adminToken = res.data.token;
+             axios({
+          method: "delete",
+          url: "https://api.ahusmart.com/api/v1/admin/user/" + this.productname,
+          headers: {
+            token: this.adminToken
+          },
+        }).then(res => {
+          console.log(res);
+        });
+          })
+        // console.log(this.adminToken)
+       
         this.$message.success("删除成功!");
         this.vehicleList = [];
         this.getproduct();
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
