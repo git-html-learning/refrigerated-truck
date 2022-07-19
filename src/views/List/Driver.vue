@@ -94,7 +94,7 @@
         </div>
       </div>
       <div>
-        <div v-show="driverList.length != 0">
+        <div v-show="driverList.length != 0" style = "padding: 10px 20px;">
           <a-row :gutter="16">
             <a-col :span="8" v-for="(item, index) in driverList" :key="index">
               <a-card  class="vehicle"  hoverable>
@@ -362,13 +362,14 @@ export default {
 .home {
   background: #ffffff;
   width: 100%;
-  margin: 10px auto;
+  margin: 20px auto;
   .home-item {
+    padding: 10px 20px;
     background: #ffffff;
     box-shadow: 5px 5px 5px #e2e1e1;
     border-radius: 10px;
     .top {
-      margin: 20px;
+      margin: 10px;
       padding: 0px 0px 10px 0px;
       .title {
         font-size: 30px;

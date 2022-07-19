@@ -63,7 +63,7 @@
         </div>
       </div>
 
-      <div v-show="vehicleList.length != 0">
+      <div v-show="vehicleList.length != 0" style = "padding: 10px 20px;">
         <a-row :gutter="16">
           <a-col :span="8" v-for="(item, index) in vehicleList" :key="index">
             <a-card hoverable class="vehicle">
@@ -79,11 +79,11 @@
               </a-card-meta>
               <p style="padding-left: 64px">
                 购买时间:
-                <span style="font-weight: 600; font-size: 18px">{{ item.value1 }}</span>
+                <span style="font-weight: 600; font-size: 15px">{{ item.value1 }}</span>
               </p>
               <p style="padding-left: 80px">
                 下次保养时间:
-                <span style="font-weight: 600; font-size: 18px">{{ item.value2 }}</span>
+                <span style="font-weight: 600; font-size: 15px">{{ item.value2 }}</span>
               </p>
               <a style="float: right; font-size: 15px" @click="cut(item)">删除</a>
               <a style="float: left; font-size: 15px" @click="trans(item)">查看</a>
@@ -200,11 +200,22 @@ export default {
       console.log(res);
       for (var i = 0; i < res.data.productInfo.length; i++) {
         if (res.data.productInfo[i].typeIdentify != "tysj") {
-          // console.log(res.data.productInfo[i]);
+          var time1 = res.data.productInfo[i].createdAt.split('T')
+          console.log(time1)
+          var time2 = time1[0].split('-')
+          console.log(time2)
+          var num2 = time2[0].slice(3,4)
+          var num1 = time2[0].slice(0,3)
+          console.log(num1)
+          console.log(num2)
+          num2 = parseInt(num2)
+          var num3 = num2+2;
+          console.log(num3)
+
           var obj = {
             productName: res.data.productInfo[i].productName,
-            value1: res.data.productInfo[i].extraInfo.buyingTime,
-            value2: res.data.productInfo[i].extraInfo.maintenanceTime,
+            value1: time1[0],
+            value2: num1+num3+"-"+time2[1]+"-"+time2[2],
             productkey: res.data.productInfo[i].productKey,
             typeIdentify: res.data.productInfo[i].typeIdentify,
           };
@@ -485,14 +496,15 @@ export default {
 .home {
   background: #ffffff;
   width: 100%;
-  margin: 10px auto;
+  padding: 10px auto;
 
   .home-item {
+    padding: 10px 20px;
     background: #ffffff;
     box-shadow: 5px 5px 5px #e2e1e1;
     border-radius: 10px;
     .top {
-      margin: 20px;
+      margin: 10px;
       padding: 0px 0px 10px 0px;
       .title {
         font-size: 30px;
