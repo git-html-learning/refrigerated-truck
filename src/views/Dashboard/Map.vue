@@ -78,7 +78,7 @@
       </a-row>
     </div>
     <div class="home">
-      <baidu-map class="map" :center="{ lng: lg, lat: lt }" :zoom="12" :scroll-wheel-zoom="true">
+      <baidu-map class="map" :center="{ lng: lg, lat: lt }" :zoom="9" :scroll-wheel-zoom="true">
         <bm-map-type
           :map-types="['BMAP_NORMAL_MAP', 'BMAP_HYBRID_MAP']"
           anchor="BMAP_ANCHOR_TOP_LEFT"
@@ -305,6 +305,13 @@ this.markers.push(obj);
           
         });
         console.log(this.markers);
+        this.markers.forEach(item=>{
+          if (item.lng =="0") {
+   item.lng = "117.191753"
+          } if (item.lat == "0") {
+            item.lat = "31.771937"
+          }
+        })
         this.offlineNum = this.totalNum;
         if (this.markers.length !==0) {
           this.markers.forEach(item=>{

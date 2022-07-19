@@ -20,21 +20,21 @@ export default {
             currentRole: "loading"
         }
     },
-    // created() {
-    //     var username = window.sessionStorage.getItem("username")
-    //     console.log(username)
-    //     person(username).then((res)=>{
-    //         console.log(res)
-    //         if (res.msg == "ok") {
-    //             var role = res.data.extraInfo.role
-    //             console.log(role)
-    //             if (role == "admin") {
-    //                 this.currentRole = "admin"
-    //             } else if (role == "user") {
-    //                 this.currentRole ="user"
-    //             }
-    //         }
-    //     })
-    // }
+    created() {
+        var username = window.sessionStorage.getItem("username")
+        console.log(username)
+        person(username).then((res)=>{
+            console.log(res)
+            if (res.msg == "ok") {
+                var role = res.data.extraInfo.role
+                console.log(role)
+                if (role == "admin") {
+                    this.currentRole = "admin"
+                } else if (role == "user") {
+                    this.currentRole ="user"
+                }
+            }
+        })
+    }
 }
 </script>
