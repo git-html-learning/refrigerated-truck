@@ -309,7 +309,7 @@ export default {
           this.$store
             .dispatch("user/login", this.loginform)
             .then(() => {
-              this.$router.push({ path: "/dashboard/map" });
+              this.$router.push({ path: "/homepage" });
               this.loading = false;
             })
             .catch(() => {

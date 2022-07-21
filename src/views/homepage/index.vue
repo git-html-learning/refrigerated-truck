@@ -27,10 +27,12 @@ export default {
             console.log(res)
             if (res.msg == "ok") {
                 var role = res.data.extraInfo.role
+                window.sessionStorage.setItem("role",role)
                 console.log(role)
                 if (role == "admin") {
                     this.currentRole = "admin"
                 } else if (role == "user") {
+                  window.sessionStorage.setItem("productKey",res.data.extraInfo.productKey)
                     this.currentRole ="user"
                 }
             }

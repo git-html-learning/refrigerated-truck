@@ -31,17 +31,22 @@
       <a-menu-divider /> -->
       <a-menu-item>
         <router-link to="/user/information">
-          <a-icon type="user" />
           <span>个人中心</span>
+        </router-link>
+      </a-menu-item>
+                  <a-menu-item>
+        <router-link to="/homepage">
+
+          <span>返回监控大屏</span>
         </router-link>
       </a-menu-item>
       <a-menu-item>
         <router-link to="/login">
-          <a-icon type="poweroff" />
           <span>退出登录</span>
         </router-link>
       </a-menu-item>
       
+
     </a-menu>
   </a-dropdown>
 </template>

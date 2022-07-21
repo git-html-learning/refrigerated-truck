@@ -28,21 +28,21 @@ export default new Router({
       icon: 'none',
       invisible: true,
       children: [
-        {
-          path: '/dashboard',
-          name: '首页',
-          // component: RouteView,
-          component: () => import('@/layouts/RouteView'),
-          icon: 'dashboard',
-          children: [
-            {
-              path: '/dashboard/map',
-              name: '车辆全图监控',
-              component: () => import('@/views/Dashboard/Map'),
-              icon: 'none',
-            },
-          ]
-        },
+        // {
+        //   path: '/dashboard',
+        //   name: '首页',
+        //   // component: RouteView,
+        //   component: () => import('@/layouts/RouteView'),
+        //   icon: 'dashboard',
+        //   children: [
+        //     {
+        //       path: '/dashboard/map',
+        //       name: '车辆全图监控',
+        //       component: () => import('@/views/Dashboard/Map'),
+        //       icon: 'none',
+        //     },
+        //   ]
+        // },
         {
           path: '/notice',
           name: '通知',
