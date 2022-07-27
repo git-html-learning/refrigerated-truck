@@ -10,7 +10,7 @@
             <tr
               style="text-align: center; color: #d7d8db; text-align: center; height: 40px; line-height: 40px; font-size: 16px;font-weight:600"
             >
-              <td colspan="3" style = "color: #43bfdb">最新温湿度数据</td>
+              <td colspan="3" style="color: #43bfdb">最新温湿度数据</td>
             </tr>
             <tr
               style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
@@ -90,7 +90,7 @@
             </tr>
           </table>
         </el-col>
-        <el-col :span="8" style="background-color: #132435; margin-left: 10px;">
+        <el-col :span="span" style="background-color: #132435; margin-left: 10px;">
           <!-- <p
             style="color: #43bfdb; font-size: 18px; text-align: center;height: 30px; line-height: 30px"
           >温湿度历史数据</p>-->
@@ -121,7 +121,7 @@
             </div>
           </div>
         </el-col>
-        <el-col :span="5" style="background-color: #132435; margin-left: 10px;">
+        <el-col :span="5" style="background-color: #132435; margin-left: 10px;" v-show="ifOil">
           <div v-show="oilShow" id="oil" style=" height: 310px; "></div>
           <div v-show="!oilShow" id="oil" style=" height: 310px; ">
             <p style="color: #43bfdb; font-size :18px; margin-top: 10px; margin-left: 20px">油位数据</p>
@@ -170,7 +170,7 @@
     </div>
     <div class="light" style="height: 280px; margin-top: 20px;">
       <el-row>
-        <el-col :span="6">
+        <el-col :span="6" v-show="ifLight">
           <div style="background-color: #132435;width: 100%; height: 280px;">
             <div style="height: 40px; line-height: 40px;font-size: 18px; color: #43bfdb">灯开关</div>
             <el-row type="flex" justify style="margin-top: 50px;">
@@ -296,188 +296,305 @@
             </el-row>
           </div>
         </el-col>
-        <el-col :span = "5" style = "margin-left: 10px;">
-             <div style="background-color: #132435;width: 100%; height: 280px;" v-show = "accShow">
-                   <!-- <div style="height: 40px; line-height: 40px;font-size: 18px; color: #fff">车辆震动曲线图</div> -->
-                   <div id = "acc" style = "height: 280px; width: 100%; "></div>
-             </div>
-            <div style="background-color: #132435;width: 100%; height: 280px;" v-show = "!accShow">
-                <p style="color: #43bfdb; font-size :18px;  margin-left: 20px">车辆震动曲线图</p>
+        <el-col :span="5" style="margin-left: 10px;" v-show="ifAcc">
+          <div
+            v-show="accShow"
+            id="acc"
+            style="background-color: #132435;width: 100%; height: 280px;"
+          ></div>
+          <div
+            v-show="!accShow"
+            id="acc"
+            style="background-color: #132435;width: 100%; height: 280px;"
+          >
+            <p
+              style="color: #43bfdb; font-size :18px; padding -top: 10px; margin-left: 20px"
+            >车辆震动曲线图</p>
             <div style="text-align: center;margin-top: 50px; ">
               <svg
-                t="1658394947186"
+                t="1658394419942"
                 class="icon"
                 viewBox="0 0 1024 1024"
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
-                p-id="3060"
+                p-id="1777"
                 width="120"
                 height="120"
               >
                 <path
-                  d="M879.616 768.135l-86.299-253.268-3.192-9.367-6.277-18.41-3.543-10.408-5.922-17.408v60.037l5.922 17.408 3.543 10.407 6.277 18.41 3.192 9.368 67.457 197.986c1.077 3.182-1.056 6.51-4.778 7.437l-62.668 15.613-3.193 0.797-6.276 1.563-3.543 0.877-5.923 1.478v17.478l5.923-1.482 3.543-0.877 6.276-1.564 3.193-0.797 68.179-16.979a26.29 26.29 0 0 0 15.922-10.936 19.894 19.894 0 0 0 2.187-17.363z m-203.388 56.946l-32.46 8.098-32.462 8.094-31.808 7.922-33.69 8.385-33.677 8.396-109.35 27.239c-3.721 0.921-7.606-0.908-8.698-4.08l-7.884-23.132-2.868-8.397-2.854-8.382-2.705-7.924-5.41-16.186h-20.618l5.41 16.186 2.705 7.924 2.854 8.382 2.855 8.39 9.466 27.838a23.897 23.897 0 0 0 12.843 13.62 30.72 30.72 0 0 0 20.35 1.827l174.03-43.344 33.69-8.396 33.69-8.389 31.795-7.885 64.922-16.192zM257.867 262.554l-9.47 2.313-3.462 0.868-9.83 2.488-9.82 2.45-31.975 7.957c-14.113 3.532-22.221 16.162-18.138 28.243l50.042 147.066 9.89 28.822 9.804 28.797 3.463 10.163 9.466 27.757 9.471 27.75v-59.932l-9.47-27.75-9.467-27.757-3.437-10.24-9.83-28.797-9.82-28.809-31.254-91.76c-1.078-3.175 1.06-6.501 4.771-7.434l26.484-6.594 9.82-2.436 9.804-2.458 3.463-0.87 9.466-2.312 9.471-2.314v-17.553z m447.345-6.36l-5.285-15.531-1.354-3.812-0.647-1.895-4.916-14.412-0.135-0.392-4.054-12.098-0.19-0.54-8.952-26.289c-4.145-12.058-18.911-18.984-33.031-15.497l-167.78 41.794-6.263 1.563-26.265 6.535-7.424 1.848-25.038 6.246h70.167l25.05-6.232 7.423-1.843 26.27-6.547 6.262-1.564 103.074-25.676a8.602 8.602 0 0 1 1.979-0.243 6.972 6.972 0 0 1 6.758 4.336l7.318 21.577 0.528 1.563 1.35 4.072 0.284 0.81 0.558 1.666 0.633 1.843 1.53 4.478 0.608 1.754 0.732 2.15 0.891 2.616 4.898 14.365 4.693 13.792-0.085-19.174 2.451 2.626 3.488 3.734 12.052 12.943 4.059 4.37z m0 0"
-                  fill="#E7E7E7"
-                  p-id="3061"
-                />
-                <path
-                  d="M793.317 327.9v491.402c0 12.137-11.507 21.973-25.702 21.973H274.099c-14.193 0-25.702-9.836-25.702-21.973V229.5c0-12.137 11.509-21.977 25.702-21.977h414.708v16.191H274.099a7.373 7.373 0 0 0-4.787 1.696 5.388 5.388 0 0 0-1.983 4.09v589.803c0 3.191 3.029 5.78 6.766 5.78h493.517a7.386 7.386 0 0 0 4.783-1.69 5.392 5.392 0 0 0 1.983-4.09V325.161h16.384z m0 0"
-                  fill="#E7E7E7"
-                  p-id="3062"
-                />
-                <path
-                  d="M793.696 328.237l-0.313-0.337-2.56-2.739-86.393-92.681-11.483-12.328-2.546-2.73-0.403-0.44-1.127-1.154v-0.059l-0.11-0.116-0.079-0.094a13.49 13.49 0 0 0-8.873-4.067 13.878 13.878 0 0 0-2.222 0 15.064 15.064 0 0 0-3.149 0.574 13.323 13.323 0 0 0-3.993 1.946 11.924 11.924 0 0 0-1.844 1.653 9.897 9.897 0 0 0-2.704 6.739v1.307l0.497 110.687c0.046 5.98 5.685 10.825 12.675 10.893l36.194 0.234 8.021 0.056h2.216l10.24 0.08h7.318l31.391 0.205 9.157 0.06h0.314c4.848-0.09 9.216-2.513 11.285-6.262a9.66 9.66 0 0 0-1.521-11.433z m-56.171 1.24h-27.863l-24.428-0.163-0.323-72.499-0.08-19.173 2.447 2.623 3.492 3.736 12.05 12.941 4.056 4.372 11.484 12.13 52.428 56.252zM443.47 358.911h-90.089a23.202 23.202 0 0 0-23.265 23.08v89.406a23.202 23.202 0 0 0 23.265 23.08h90.09a23.211 23.211 0 0 0 23.275-23.08V381.99a23.211 23.211 0 0 0-23.275-23.08z m61.258 6.872H713.61v20.8H504.73z m0 101.023H713.61v20.8H504.73zM330.116 574.706h381.707v20.8H330.116z m-1.27 101.007h383.487v20.8H328.845z m0 0"
-                  fill="#E7E7E7"
-                  p-id="3063"
-                />
-                <path
-                  d="M358.725 376.182h82.86q10.342 0 10.342 9.743v78.103q0 9.741-10.342 9.743h-82.86q-10.343 0-10.343-9.743v-78.103q0-9.742 10.343-9.743z m0 0"
-                  fill="#F2F2F2"
-                  p-id="3064"
-                />
-                <path
-                  d="M360.67 382.944h74.188q12.288 0 12.288 12.288v74.188q0 12.288-12.288 12.288H360.67q-12.288 0-12.288-12.288v-74.188q0-12.288 12.288-12.288z"
-                  fill="#F2F2F2"
-                  p-id="3065"
+                  d="M909.016 820.828H841a30 30 0 0 1 0-60h38.016a20 20 0 0 0 20-20V145.185a20 20 0 0 0-20-20H352a20 20 0 0 0-20 20v28h370.016a50 50 0 0 1 50 50v223.36a29.989 29.989 0 1 1-59.507 5.283h-0.493V253.185a20 20 0 0 0-20-20H145a20 20 0 0 0-20 20v625.643a20 20 0 0 0 20 20h337a30 30 0 0 1 0 60H115a50 50 0 0 1-50-50V223.185a50 50 0 0 1 50-50h157v-58a50 50 0 0 1 50-50h587.016a50 50 0 0 1 50 50v655.643a50 50 0 0 1-50 50z m-663.037-484H572.74a29.979 29.979 0 1 1 0 59.957H245.979a29.979 29.979 0 1 1 0-59.957z m0 290.043h74.912a29.979 29.979 0 0 1 29.979 29.978 29.979 29.979 0 0 1-29.979 29.979h-74.912A29.979 29.979 0 0 1 216 656.849a29.979 29.979 0 0 1 29.979-29.978zM216 511.807a29.979 29.979 0 0 1 29.979-29.979h140.935a29.979 29.979 0 0 1 29.979 29.979v0.042a29.979 29.979 0 0 1-29.979 29.979H245.979A29.979 29.979 0 0 1 216 511.849v-0.042z m163 177.521c0-107.419 87.081-194.5 194.5-194.5S768 581.909 768 689.328a193.618 193.618 0 0 1-37.9 115.356l84.115 84.115a30 30 0 1 1-42.425 42.429l-84.3-84.3a193.6 193.6 0 0 1-113.99 36.9c-107.419 0-194.5-87.081-194.5-194.5z m194.5 134.5a134.5 134.5 0 1 0-134.5-134.5 134.5 134.5 0 0 0 134.5 134.5z"
+                  fill="#b7c8a9"
+                  p-id="1778"
                 />
               </svg>
-              <p>{{text}}</p>
-            </div> 
+              <p>该设备在一天内没有上传过数据</p>
             </div>
+          </div>
         </el-col>
-    <el-col :span = "4">
-        <div style = "height: 280px; width: 100%;background-color: #132435; margin-left: 10px;">
-              <div style="height: 40px; line-height: 40px;font-size: 18px; color: #43bfdb">门开关</div>
-                <el-row type="flex" justify="" style="margin-top: 50px;" >
-                    <el-col :span="12" style="text-align: center">
-                        <svg v-if = "!this.productData.door1" t="1658403361667" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4287" width="100" height="100"><path d="M785 64c44.183 0 80 35.817 80 80v736c0 44.183-35.817 80-80 80H240c-44.183 0-80-35.817-80-80V144c0-44.183 35.817-80 80-80h545z m0.397 56H240c-13.122 0-23.785 10.531-24 23.603V880c0 13.122 10.531 23.785 23.603 24H785c13.122 0 23.785-10.531 24-23.603V144c0-13.122-10.531-23.785-23.603-24zM705 421c15.464 0 28 12.536 28 28v157c0 15.464-12.536 28-28 28s-28-12.536-28-28V449c0-15.464 12.536-28 28-28z" p-id="4288" fill="#038b9e"></path></svg>   
-                        <svg v-if = "this.productData.door1" t="1658403380486" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5072" width="100" height="100"><path d="M 740.966 126.976 H 303.514 c -34.4064 0 -62.2592 27.8528 -62.2592 62.2592 v 556.851 c 0 34.4064 27.8528 62.2592 62.2592 62.2592 h 156.467 v 115.507 a 34.5088 34.5088 0 0 0 34.4064 34.4064 c 6.144 0 12.288 -1.6384 17.8176 -4.9152 l 246.579 -147.866 a 62.0544 62.0544 0 0 0 44.6464 -59.392 V 189.235 c 0 -34.4064 -28.0576 -62.2592 -62.464 -62.2592 Z m -260.506 176.333 c -12.6976 7.5776 -20.6848 21.504 -20.6848 36.4544 v 423.731 h -156.467 c -9.4208 0 -17.2032 -7.7824 -17.2032 -17.2032 V 189.235 c 0 -9.4208 7.7824 -17.2032 17.2032 -17.2032 h 396.083 l -218.931 131.277 Z m 24.576 601.907 V 341.197 l 227.123 -136.192 c 7.7824 -4.7104 14.7456 -1.6384 17.408 -0.2048 s 8.8064 5.9392 8.8064 14.9504 v 523.878 c 0 5.9392 -3.2768 11.6736 -8.3968 14.7456 l -8.192 4.9152 c -0.2048 0 -0.4096 0.2048 -0.6144 0.2048 v 0.2048 L 505.037 905.216 Z" p-id="5073" fill="#d4237a"></path><path d="M 542.106 547.226 c -6.5536 0 -19.8656 17.8176 -19.8656 39.7312 c 0 29.9008 9.0112 39.7312 19.8656 39.7312 c 6.5536 0 19.8656 -17.8176 19.8656 -39.7312 c 0 -29.696 -8.8064 -39.7312 -19.8656 -39.7312 Z" p-id="5074" fill="#d4237a"></path></svg>
-                   <p>门1({{this.productData.door1 == false?'关':'开'}})</p>
-                    </el-col>
-                    <el-col :span="12" style="text-align: center">
-                                            <svg v-if = "!this.productData.door2" t="1658403361667" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4287" width="100" height="100"><path d="M785 64c44.183 0 80 35.817 80 80v736c0 44.183-35.817 80-80 80H240c-44.183 0-80-35.817-80-80V144c0-44.183 35.817-80 80-80h545z m0.397 56H240c-13.122 0-23.785 10.531-24 23.603V880c0 13.122 10.531 23.785 23.603 24H785c13.122 0 23.785-10.531 24-23.603V144c0-13.122-10.531-23.785-23.603-24zM705 421c15.464 0 28 12.536 28 28v157c0 15.464-12.536 28-28 28s-28-12.536-28-28V449c0-15.464 12.536-28 28-28z" p-id="4288" fill="#038b9e"></path></svg>   
-                        <svg v-if = "this.productData.door2" t="1658403380486" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5072" width="100" height="100"><path d="M 740.966 126.976 H 303.514 c -34.4064 0 -62.2592 27.8528 -62.2592 62.2592 v 556.851 c 0 34.4064 27.8528 62.2592 62.2592 62.2592 h 156.467 v 115.507 a 34.5088 34.5088 0 0 0 34.4064 34.4064 c 6.144 0 12.288 -1.6384 17.8176 -4.9152 l 246.579 -147.866 a 62.0544 62.0544 0 0 0 44.6464 -59.392 V 189.235 c 0 -34.4064 -28.0576 -62.2592 -62.464 -62.2592 Z m -260.506 176.333 c -12.6976 7.5776 -20.6848 21.504 -20.6848 36.4544 v 423.731 h -156.467 c -9.4208 0 -17.2032 -7.7824 -17.2032 -17.2032 V 189.235 c 0 -9.4208 7.7824 -17.2032 17.2032 -17.2032 h 396.083 l -218.931 131.277 Z m 24.576 601.907 V 341.197 l 227.123 -136.192 c 7.7824 -4.7104 14.7456 -1.6384 17.408 -0.2048 s 8.8064 5.9392 8.8064 14.9504 v 523.878 c 0 5.9392 -3.2768 11.6736 -8.3968 14.7456 l -8.192 4.9152 c -0.2048 0 -0.4096 0.2048 -0.6144 0.2048 v 0.2048 L 505.037 905.216 Z" p-id="5073" fill="#d4237a"></path><path d="M 542.106 547.226 c -6.5536 0 -19.8656 17.8176 -19.8656 39.7312 c 0 29.9008 9.0112 39.7312 19.8656 39.7312 c 6.5536 0 19.8656 -17.8176 19.8656 -39.7312 c 0 -29.696 -8.8064 -39.7312 -19.8656 -39.7312 Z" p-id="5074" fill="#d4237a"></path></svg>
-                   <p>门2({{this.productData.door2 == false?'关':'开'}})</p>
-                    </el-col>
-                </el-row>
-        </div>
-    </el-col>
-   <el-col :span = "8" style = "margin-left: 20px;">
-        <div v-show = "tireShow"  style = "height: 280px; width: 100%;background-color: #132435; ">
+        <el-col :span="4" v-if="ifDoor">
+          <div style="height: 280px; width: 100%;background-color: #132435; margin-left: 10px;">
+            <div style="height: 40px; line-height: 40px;font-size: 18px; color: #43bfdb">门开关</div>
+            <el-row type="flex" justify style="margin-top: 50px;">
+              <el-col :span="12" style="text-align: center">
+                <svg
+                  v-if="this.productData.door1"
+                  t="1658403361667"
+                  class="icon"
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  p-id="4287"
+                  width="100"
+                  height="100"
+                >
+                  <path
+                    d="M785 64c44.183 0 80 35.817 80 80v736c0 44.183-35.817 80-80 80H240c-44.183 0-80-35.817-80-80V144c0-44.183 35.817-80 80-80h545z m0.397 56H240c-13.122 0-23.785 10.531-24 23.603V880c0 13.122 10.531 23.785 23.603 24H785c13.122 0 23.785-10.531 24-23.603V144c0-13.122-10.531-23.785-23.603-24zM705 421c15.464 0 28 12.536 28 28v157c0 15.464-12.536 28-28 28s-28-12.536-28-28V449c0-15.464 12.536-28 28-28z"
+                    p-id="4288"
+                    fill="#038b9e"
+                  />
+                </svg>
+                <svg
+                  v-if="!this.productData.door1"
+                  t="1658403380486"
+                  class="icon"
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  p-id="5072"
+                  width="100"
+                  height="100"
+                >
+                  <path
+                    d="M 740.966 126.976 H 303.514 c -34.4064 0 -62.2592 27.8528 -62.2592 62.2592 v 556.851 c 0 34.4064 27.8528 62.2592 62.2592 62.2592 h 156.467 v 115.507 a 34.5088 34.5088 0 0 0 34.4064 34.4064 c 6.144 0 12.288 -1.6384 17.8176 -4.9152 l 246.579 -147.866 a 62.0544 62.0544 0 0 0 44.6464 -59.392 V 189.235 c 0 -34.4064 -28.0576 -62.2592 -62.464 -62.2592 Z m -260.506 176.333 c -12.6976 7.5776 -20.6848 21.504 -20.6848 36.4544 v 423.731 h -156.467 c -9.4208 0 -17.2032 -7.7824 -17.2032 -17.2032 V 189.235 c 0 -9.4208 7.7824 -17.2032 17.2032 -17.2032 h 396.083 l -218.931 131.277 Z m 24.576 601.907 V 341.197 l 227.123 -136.192 c 7.7824 -4.7104 14.7456 -1.6384 17.408 -0.2048 s 8.8064 5.9392 8.8064 14.9504 v 523.878 c 0 5.9392 -3.2768 11.6736 -8.3968 14.7456 l -8.192 4.9152 c -0.2048 0 -0.4096 0.2048 -0.6144 0.2048 v 0.2048 L 505.037 905.216 Z"
+                    p-id="5073"
+                    fill="#d4237a"
+                  />
+                  <path
+                    d="M 542.106 547.226 c -6.5536 0 -19.8656 17.8176 -19.8656 39.7312 c 0 29.9008 9.0112 39.7312 19.8656 39.7312 c 6.5536 0 19.8656 -17.8176 19.8656 -39.7312 c 0 -29.696 -8.8064 -39.7312 -19.8656 -39.7312 Z"
+                    p-id="5074"
+                    fill="#d4237a"
+                  />
+                </svg>
+                <p>门1({{this.productData.door1 == false?'开':'关'}})</p>
+              </el-col>
+              <el-col :span="12" style="text-align: center">
+                <svg
+                  v-if="this.productData.door2"
+                  t="1658403361667"
+                  class="icon"
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  p-id="4287"
+                  width="100"
+                  height="100"
+                >
+                  <path
+                    d="M785 64c44.183 0 80 35.817 80 80v736c0 44.183-35.817 80-80 80H240c-44.183 0-80-35.817-80-80V144c0-44.183 35.817-80 80-80h545z m0.397 56H240c-13.122 0-23.785 10.531-24 23.603V880c0 13.122 10.531 23.785 23.603 24H785c13.122 0 23.785-10.531 24-23.603V144c0-13.122-10.531-23.785-23.603-24zM705 421c15.464 0 28 12.536 28 28v157c0 15.464-12.536 28-28 28s-28-12.536-28-28V449c0-15.464 12.536-28 28-28z"
+                    p-id="4288"
+                    fill="#038b9e"
+                  />
+                </svg>
+                <svg
+                  v-if="!this.productData.door2"
+                  t="1658403380486"
+                  class="icon"
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  p-id="5072"
+                  width="100"
+                  height="100"
+                >
+                  <path
+                    d="M 740.966 126.976 H 303.514 c -34.4064 0 -62.2592 27.8528 -62.2592 62.2592 v 556.851 c 0 34.4064 27.8528 62.2592 62.2592 62.2592 h 156.467 v 115.507 a 34.5088 34.5088 0 0 0 34.4064 34.4064 c 6.144 0 12.288 -1.6384 17.8176 -4.9152 l 246.579 -147.866 a 62.0544 62.0544 0 0 0 44.6464 -59.392 V 189.235 c 0 -34.4064 -28.0576 -62.2592 -62.464 -62.2592 Z m -260.506 176.333 c -12.6976 7.5776 -20.6848 21.504 -20.6848 36.4544 v 423.731 h -156.467 c -9.4208 0 -17.2032 -7.7824 -17.2032 -17.2032 V 189.235 c 0 -9.4208 7.7824 -17.2032 17.2032 -17.2032 h 396.083 l -218.931 131.277 Z m 24.576 601.907 V 341.197 l 227.123 -136.192 c 7.7824 -4.7104 14.7456 -1.6384 17.408 -0.2048 s 8.8064 5.9392 8.8064 14.9504 v 523.878 c 0 5.9392 -3.2768 11.6736 -8.3968 14.7456 l -8.192 4.9152 c -0.2048 0 -0.4096 0.2048 -0.6144 0.2048 v 0.2048 L 505.037 905.216 Z"
+                    p-id="5073"
+                    fill="#d4237a"
+                  />
+                  <path
+                    d="M 542.106 547.226 c -6.5536 0 -19.8656 17.8176 -19.8656 39.7312 c 0 29.9008 9.0112 39.7312 19.8656 39.7312 c 6.5536 0 19.8656 -17.8176 19.8656 -39.7312 c 0 -29.696 -8.8064 -39.7312 -19.8656 -39.7312 Z"
+                    p-id="5074"
+                    fill="#d4237a"
+                  />
+                </svg>
+                <p>门2({{this.productData.door2 == false?'开':'关'}})</p>
+              </el-col>
+            </el-row>
+          </div>
+        </el-col>
+        <el-col :span="span1" :offset="offset" style="margin-left: 20px;">
+          <div v-show="tireShow" style="height: 280px; width: 100%;background-color: #132435; ">
             <table
-            border
-            style="color: #e6eaf2; border: 1px solid #50bfdc; width: 98%; margin-left: 1%;"
-          >
-                <tr
-              style="text-align: center; color: #d7d8db; text-align: center; height: 40px; line-height: 40px; font-size: 16px;font-weight:600"
+              border
+              style="color: #e6eaf2; border: 1px solid #50bfdc; width: 98%; margin-left: 1%;"
             >
-              <td colspan="12" style = "color: #43bfdb">最新胎温胎压</td>
-            </tr>
-                        <tr
-              style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
-            >
-              <td colspan="2">时间</td>
-              <td colspan="10">{{this.time2}}</td>
-            </tr>
-                                    <tr
-              style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
-            >
-              <td rowspan = "2" colspan="1">胎1</td>
-                <td  colspan="1">胎温</td>
-              <td  colspan="1">{{this.productData.tire1.humi}}℃</td>
-               <td rowspan = "2" colspan="1">胎2</td>
-                       <td  colspan="1">胎温</td>
-              <td  colspan="1">{{this.productData.tire2.humi}}℃</td>
-                     <td rowspan = "2" colspan="1">胎3</td>
-                       <td  colspan="1">胎温</td>
-              <td  colspan="1">{{this.productData.tire3.humi}}℃</td>
-                     <td rowspan = "2" colspan="1">胎4</td>
-                       <td  colspan="1">胎温</td>
-              <td  colspan="1">{{this.productData.tire4.humi}}℃</td>
-            </tr>
-               <tr
-              style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
-            >
-                <td  colspan="1">胎压</td>
-              <td  colspan="1">{{this.productData.tire1.press}}kPa</td>
-    
-               <td  colspan="1">胎压</td>
-              <td  colspan="1">{{this.productData.tire2.press}}kPa</td>
-           
-           <td  colspan="1">胎压</td>
-              <td  colspan="1">{{this.productData.tire3.press}}kPa</td>
-               <td  colspan="1">胎压</td>
-              <td  colspan="1">{{this.productData.tire4.press}}kPa</td>
-            </tr>
-                     <tr
-              style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
-            >
-              <td rowspan = "2" colspan="1">胎5</td>
-                <td  colspan="1">胎温</td>
-              <td  colspan="1">{{this.productData.tire5.humi}}℃</td>
-               <td rowspan = "2" colspan="1">胎6</td>
-                       <td  colspan="1">胎温</td>
-              <td  colspan="1">{{this.productData.tire6.humi}}℃</td>
-                     <td rowspan = "2" colspan="1">胎7</td>
-                       <td  colspan="1">胎温</td>
-              <td  colspan="1">{{this.productData.tire7.humi}}℃</td>
-                     <td rowspan = "2" colspan="1">胎8</td>
-                       <td  colspan="1">胎温</td>
-              <td  colspan="1">{{this.productData.tire8.humi}}℃</td>
-            </tr>
-               <tr
-              style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
-            >
-                <td  colspan="1">胎压</td>
-              <td  colspan="1">{{this.productData.tire5.press}}kPa</td>
-    
-               <td  colspan="1">胎压</td>
-              <td  colspan="1">{{this.productData.tire6.press}}kPa</td>
-           
-           <td  colspan="1">胎压</td>
-              <td  colspan="1">{{this.productData.tire7.press}}kPa</td>
-               <td  colspan="1">胎压</td>
-              <td  colspan="1">{{this.productData.tire8.press}}kPa</td>
-            </tr>
-                     <tr
-              style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
-            >
-              <td rowspan = "2" colspan="1">胎9</td>
-                <td  colspan="1">胎温</td>
-              <td  colspan="1">{{this.productData.tire9.humi}}℃</td>
-               <td rowspan = "2" colspan="1">胎10</td>
-                       <td  colspan="1">胎温</td>
-              <td  colspan="1">{{this.productData.tire10.humi}}℃</td>
-                     <td rowspan = "2" colspan="1">胎11</td>
-                       <td  colspan="1">胎温</td>
-              <td  colspan="1">{{this.productData.tire11.humi}}℃</td>
-                     <td rowspan = "2" colspan="1">胎12</td>
-                       <td  colspan="1">胎温</td>
-              <td  colspan="1">{{this.productData.tire12.humi}}℃</td>
-            </tr>
-               <tr
-              style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
-            >
-                <td  colspan="1">胎压</td>
-              <td  colspan="1">{{this.productData.tire9.press}}kPa</td>
-    
-               <td  colspan="1">胎压</td>
-              <td  colspan="1">{{this.productData.tire10.press}}kPa</td>
-           
-           <td  colspan="1">胎压</td>
-              <td  colspan="1">{{this.productData.tire11.press}}kPa</td>
-               <td  colspan="1">胎压</td>
-              <td  colspan="1">{{this.productData.tire12.press}}kPa</td>
-            </tr>
-                                             
-          </table>
-        </div>
-             <div v-show = "!tireShow"  style = "height: 280px; width: 100%;background-color: #132435; ">
-<div style="height: 40px; line-height: 40px;font-size: 18px; color: #43bfdb">胎温胎压</div>
-<div style = "margin-top: 40px; text-align: center">
-    <svg t="1658405857986" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7895" width="120" height="120"><path d="M512 1024c-281.6 0-512-230.4-512-512s230.4-512 512-512 512 230.4 512 512S793.6 1024 512 1024zM512 64C262.4 64 64 262.4 64 512s198.4 448 448 448 448-198.4 448-448S761.6 64 512 64z" p-id="7896" fill="#b7c8a9"></path><path d="M761.6 294.4c-6.4 0-19.2 0-25.6-6.4-121.6-121.6-326.4-121.6-448 0C275.2 300.8 256 300.8 243.2 288S230.4 256 243.2 243.2c147.2-147.2 390.4-147.2 537.6 0 12.8 12.8 12.8 32 0 44.8C774.4 294.4 768 294.4 761.6 294.4z" p-id="7897" fill="#b7c8a9"></path><path d="M512 889.6c-96 0-192-38.4-268.8-108.8-12.8-12.8-12.8-32 0-44.8s32-12.8 44.8 0c121.6 121.6 326.4 121.6 448 0 12.8-12.8 32-12.8 44.8 0s12.8 32 0 44.8C704 857.6 608 889.6 512 889.6z" p-id="7898" fill="#b7c8a9"></path></svg>
-<p>未注册该设备！！</p>
-</div>
-        </div>
+              <tr
+                style="text-align: center; color: #d7d8db; text-align: center; height: 40px; line-height: 40px; font-size: 16px;font-weight:600"
+              >
+                <td colspan="12" style="color: #43bfdb">最新胎温胎压</td>
+              </tr>
+              <tr
+                style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
+              >
+                <td colspan="2">时间</td>
+                <td colspan="10">{{this.time2}}</td>
+              </tr>
+              <tr
+                style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
+              >
+                <td rowspan="2" colspan="1">胎1</td>
+                <td colspan="1">胎温</td>
+                <td colspan="1">{{this.productData.tire1.humi}}℃</td>
+                <td rowspan="2" colspan="1">胎2</td>
+                <td colspan="1">胎温</td>
+                <td colspan="1">{{this.productData.tire2.humi}}℃</td>
+                <td rowspan="2" colspan="1">胎3</td>
+                <td colspan="1">胎温</td>
+                <td colspan="1">{{this.productData.tire3.humi}}℃</td>
+                <td rowspan="2" colspan="1">胎4</td>
+                <td colspan="1">胎温</td>
+                <td colspan="1">{{this.productData.tire4.humi}}℃</td>
+              </tr>
+              <tr
+                style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
+              >
+                <td colspan="1">胎压</td>
+                <td colspan="1">{{this.productData.tire1.press}}kPa</td>
+
+                <td colspan="1">胎压</td>
+                <td colspan="1">{{this.productData.tire2.press}}kPa</td>
+
+                <td colspan="1">胎压</td>
+                <td colspan="1">{{this.productData.tire3.press}}kPa</td>
+                <td colspan="1">胎压</td>
+                <td colspan="1">{{this.productData.tire4.press}}kPa</td>
+              </tr>
+              <tr
+                style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
+              >
+                <td rowspan="2" colspan="1">胎5</td>
+                <td colspan="1">胎温</td>
+                <td colspan="1">{{this.productData.tire5.humi}}℃</td>
+                <td rowspan="2" colspan="1">胎6</td>
+                <td colspan="1">胎温</td>
+                <td colspan="1">{{this.productData.tire6.humi}}℃</td>
+                <td rowspan="2" colspan="1">胎7</td>
+                <td colspan="1">胎温</td>
+                <td colspan="1">{{this.productData.tire7.humi}}℃</td>
+                <td rowspan="2" colspan="1">胎8</td>
+                <td colspan="1">胎温</td>
+                <td colspan="1">{{this.productData.tire8.humi}}℃</td>
+              </tr>
+              <tr
+                style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
+              >
+                <td colspan="1">胎压</td>
+                <td colspan="1">{{this.productData.tire5.press}}kPa</td>
+
+                <td colspan="1">胎压</td>
+                <td colspan="1">{{this.productData.tire6.press}}kPa</td>
+
+                <td colspan="1">胎压</td>
+                <td colspan="1">{{this.productData.tire7.press}}kPa</td>
+                <td colspan="1">胎压</td>
+                <td colspan="1">{{this.productData.tire8.press}}kPa</td>
+              </tr>
+              <tr
+                style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
+              >
+                <td rowspan="2" colspan="1">胎9</td>
+                <td colspan="1">胎温</td>
+                <td colspan="1">{{this.productData.tire9.humi}}℃</td>
+                <td rowspan="2" colspan="1">胎10</td>
+                <td colspan="1">胎温</td>
+                <td colspan="1">{{this.productData.tire10.humi}}℃</td>
+                <td rowspan="2" colspan="1">胎11</td>
+                <td colspan="1">胎温</td>
+                <td colspan="1">{{this.productData.tire11.humi}}℃</td>
+                <td rowspan="2" colspan="1">胎12</td>
+                <td colspan="1">胎温</td>
+                <td colspan="1">{{this.productData.tire12.humi}}℃</td>
+              </tr>
+              <tr
+                style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
+              >
+                <td colspan="1">胎压</td>
+                <td colspan="1">{{this.productData.tire9.press}}kPa</td>
+
+                <td colspan="1">胎压</td>
+                <td colspan="1">{{this.productData.tire10.press}}kPa</td>
+
+                <td colspan="1">胎压</td>
+                <td colspan="1">{{this.productData.tire11.press}}kPa</td>
+                <td colspan="1">胎压</td>
+                <td colspan="1">{{this.productData.tire12.press}}kPa</td>
+              </tr>
+            </table>
+          </div>
+          <div v-show="!tireShow" style="height: 280px; width: 100%;background-color: #132435; ">
+            <div style="height: 40px; line-height: 40px;font-size: 18px; color: #43bfdb">胎温胎压</div>
+            <div style="margin-top: 40px; text-align: center">
+              <svg
+                t="1658405857986"
+                class="icon"
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                p-id="7895"
+                width="120"
+                height="120"
+              >
+                <path
+                  d="M512 1024c-281.6 0-512-230.4-512-512s230.4-512 512-512 512 230.4 512 512S793.6 1024 512 1024zM512 64C262.4 64 64 262.4 64 512s198.4 448 448 448 448-198.4 448-448S761.6 64 512 64z"
+                  p-id="7896"
+                  fill="#b7c8a9"
+                />
+                <path
+                  d="M761.6 294.4c-6.4 0-19.2 0-25.6-6.4-121.6-121.6-326.4-121.6-448 0C275.2 300.8 256 300.8 243.2 288S230.4 256 243.2 243.2c147.2-147.2 390.4-147.2 537.6 0 12.8 12.8 12.8 32 0 44.8C774.4 294.4 768 294.4 761.6 294.4z"
+                  p-id="7897"
+                  fill="#b7c8a9"
+                />
+                <path
+                  d="M512 889.6c-96 0-192-38.4-268.8-108.8-12.8-12.8-12.8-32 0-44.8s32-12.8 44.8 0c121.6 121.6 326.4 121.6 448 0 12.8-12.8 32-12.8 44.8 0s12.8 32 0 44.8C704 857.6 608 889.6 512 889.6z"
+                  p-id="7898"
+                  fill="#b7c8a9"
+                />
+              </svg>
+              <p>未注册该设备！！</p>
+            </div>
+          </div>
+        </el-col>
+        <el-col :span="8" v-show="pressHistory" style="margin-left: 10px;">
+          <!-- <div
+            id="press"
+            style="height: 280px; width: 100%; background-color: #132435;"
+            v-show="pressShow"
+            ></div> -->
+            <div v-show="pressShow" id="press" style="height: 280px; width: 500px; background-color: #132435;"></div>
+          <div style="height: 280px; width: 100%; background-color: #132435;" v-show="!pressShow">
+            <p
+              style="color: #43bfdb; font-size :18px; margin-top: 10px; margin-left: 20px"
+            >胎温胎压历史数据(一天内)</p>
+            <div style="text-align: center;margin-top: 50px; ">
+              <svg
+                t="1658394419942"
+                class="icon"
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                p-id="1777"
+                width="120"
+                height="120"
+              >
+                <path
+                  d="M909.016 820.828H841a30 30 0 0 1 0-60h38.016a20 20 0 0 0 20-20V145.185a20 20 0 0 0-20-20H352a20 20 0 0 0-20 20v28h370.016a50 50 0 0 1 50 50v223.36a29.989 29.989 0 1 1-59.507 5.283h-0.493V253.185a20 20 0 0 0-20-20H145a20 20 0 0 0-20 20v625.643a20 20 0 0 0 20 20h337a30 30 0 0 1 0 60H115a50 50 0 0 1-50-50V223.185a50 50 0 0 1 50-50h157v-58a50 50 0 0 1 50-50h587.016a50 50 0 0 1 50 50v655.643a50 50 0 0 1-50 50z m-663.037-484H572.74a29.979 29.979 0 1 1 0 59.957H245.979a29.979 29.979 0 1 1 0-59.957z m0 290.043h74.912a29.979 29.979 0 0 1 29.979 29.978 29.979 29.979 0 0 1-29.979 29.979h-74.912A29.979 29.979 0 0 1 216 656.849a29.979 29.979 0 0 1 29.979-29.978zM216 511.807a29.979 29.979 0 0 1 29.979-29.979h140.935a29.979 29.979 0 0 1 29.979 29.979v0.042a29.979 29.979 0 0 1-29.979 29.979H245.979A29.979 29.979 0 0 1 216 511.849v-0.042z m163 177.521c0-107.419 87.081-194.5 194.5-194.5S768 581.909 768 689.328a193.618 193.618 0 0 1-37.9 115.356l84.115 84.115a30 30 0 1 1-42.425 42.429l-84.3-84.3a193.6 193.6 0 0 1-113.99 36.9c-107.419 0-194.5-87.081-194.5-194.5z m194.5 134.5a134.5 134.5 0 1 0-134.5-134.5 134.5 134.5 0 0 0 134.5 134.5z"
+                  fill="#b7c8a9"
+                  p-id="1778"
+                />
+              </svg>
+              <p>该监测点在一天内没有上传过数据</p>
+            </div>
+          </div>
         </el-col>
       </el-row>
     </div>
@@ -508,9 +625,9 @@ export default {
         acc: "2",
         door1: false,
         door2: false,
-        light1: false,
-        light2: false,
-        light3: false,
+        light1: true,
+        light2: true,
+        light3: true,
         temp1: {
           temp: "0",
           humi: "0"
@@ -592,17 +709,27 @@ export default {
       tempDeviceKey: "",
       chartShow: true,
       oilShow: true,
-      accShow:true,
+      accShow: true,
       role: "",
       light1: false,
       light2: false,
       light3: false,
       loading1: false,
       typeIdentify: "",
-      text:"",
-      tireList:[],
+      text: "",
+      tireList: [],
       tireShow: true,
-      time2:"",
+      time2: "",
+      span: 8,
+      span1: 8,
+      offset: 0,
+      ifOil: true,
+      ifLight: true,
+      ifAcc: true,
+      ifDoor: true,
+      pressHistory: false,
+      pressDevcieKey: "",
+      pressShow: false
     };
   },
   created() {
@@ -632,7 +759,7 @@ export default {
           this.doorKeys = [];
           this.tireKeys = [];
           this.deviceKeys = [];
-              this.tireList  = []
+          this.tireList = [];
           res.data[0].deviceData.forEach(item => {
             this.deviceKeys.push(item.deviceKey);
             if (item.deviceName == "TH1") {
@@ -712,9 +839,9 @@ export default {
               this.productData.acc = item.acc.X + item.acc.Y + item.acc.Z;
               this.accKeys.push(item.deviceKey);
             }
-        
-                     if (item.deviceName.includes('TTP')) {
-            this.tireList.push(item)
+
+            if (item.deviceName.includes("TTP")) {
+              this.tireList.push(item);
             }
             if (item.deviceName == "door_1") {
               this.productData.door1 = item.door.door_1;
@@ -727,62 +854,89 @@ export default {
               this.light();
             }
           });
-          console.log(this.tireList)
-          if (this.tireList.length ==0) {
-              this.tireShow = false
+          console.log(this.tireList);
+          if (this.tireList.length == 0) {
+            this.tireShow = false;
           } else {
-              this.tireShow = true
-              console.log(this.productData)
-          function sortNa(a,b) {
-              return a.deviceName-b.deviceName
+            this.tireShow = true;
+            console.log(this.productData);
+            function sortNa(a, b) {
+              return a.deviceName - b.deviceName;
+            }
+            this.tireList.sort(sortNa);
+            console.log(this.tireList);
+            this.time2 = this.tireList[0].date;
+            this.productData.tire1.press =
+              Math.round(this.tireList[0].tirePress * 1000) / 1000000;
+            this.productData.tire1.humi = this.tireList[0].tireTemp;
+            this.productData.tire2.press =
+              Math.round(this.tireList[1].tirePress * 1000) / 1000000;
+            this.productData.tire2.humi = this.tireList[1].tireTemp;
+            this.productData.tire3.press =
+              Math.round(this.tireList[2].tirePress * 1000) / 1000000;
+            this.productData.tire3.humi = this.tireList[2].tireTemp;
+            this.productData.tire4.press =
+              Math.round(this.tireList[3].tirePress * 1000) / 1000000;
+            this.productData.tire4.humi = this.tireList[3].tireTemp;
+            this.productData.tire5.press =
+              Math.round(this.tireList[4].tirePress * 1000) / 1000000;
+            this.productData.tire5.humi = this.tireList[4].tireTemp;
+
+            this.productData.tire6.press =
+              Math.round(this.tireList[5].tirePress * 1000) / 1000000;
+            this.productData.tire6.humi = this.tireList[5].tireTemp;
+
+            this.productData.tire7.press =
+              Math.round(this.tireList[6].tirePress * 1000) / 1000000;
+            this.productData.tire7.humi = this.tireList[6].tireTemp;
+
+            this.productData.tire8.press =
+              Math.round(this.tireList[7].tirePress * 1000) / 1000000;
+            this.productData.tire8.humi = this.tireList[7].tireTemp;
+            this.productData.tire9.press =
+              Math.round(this.tireList[8].tirePress * 1000) / 1000000;
+            this.productData.tire9.humi = this.tireList[8].tireTemp;
+            this.productData.tire10.press =
+              Math.round(this.tireList[9].tirePress * 1000) / 1000000;
+            this.productData.tire10.humi = this.tireList[9].tireTemp;
+            this.productData.tire11.press =
+              Math.round(this.tireList[10].tirePress * 1000) / 1000000;
+            this.productData.tire11.humi = this.tireList[10].tireTemp;
+
+            this.productData.tire12.press =
+              Math.round(this.tireList[11].tirePress * 1000) / 1000000;
+            this.productData.tire12.humi = this.tireList[11].tireTemp;
           }
-          this.tireList.sort(sortNa)
-              console.log(this.tireList)
-                        this.time2 = this.tireList[0].date
-          this.productData.tire1.press = Math.round(this.tireList[0].tirePress*1000)/1000000
-          this.productData.tire1.humi = this.tireList[0].tireTemp
-            this.productData.tire2.press = Math.round(this.tireList[1].tirePress*1000)/1000000
-          this.productData.tire2.humi = this.tireList[1].tireTemp
-            this.productData.tire3.press = Math.round(this.tireList[2].tirePress*1000)/1000000
-            this.productData.tire3.humi = this.tireList[2].tireTemp
-            this.productData.tire4.press = Math.round(this.tireList[3].tirePress*1000)/1000000
-            this.productData.tire4.humi = this.tireList[3].tireTemp
-            this.productData.tire5.press = Math.round(this.tireList[4].tirePress*1000)/1000000
-            this.productData.tire5.humi = this.tireList[4].tireTemp
-
-            this.productData.tire6.press = Math.round(this.tireList[5].tirePress*1000)/1000000
-            this.productData.tire6.humi = this.tireList[5].tireTemp
-
-            this.productData.tire7.press = Math.round(this.tireList[6].tirePress*1000)/1000000
-            this.productData.tire7.humi = this.tireList[6].tireTemp
-
-            this.productData.tire8.press = Math.round(this.tireList[7].tirePress*1000)/1000000
-            this.productData.tire8.humi = this.tireList[7].tireTemp
-                 this.productData.tire9.press = Math.round(this.tireList[8].tirePress*1000)/1000000
-                 this.productData.tire9.humi = this.tireList[8].tireTemp
-                 this.productData.tire10.press = Math.round(this.tireList[9].tirePress*1000)/1000000
-                 this.productData.tire10.humi = this.tireList[9].tireTemp
-                 this.productData.tire11.press = Math.round(this.tireList[10].tirePress*1000)/1000000
-                 this.productData.tire11.humi = this.tireList[10].tireTemp
-
-                 this.productData.tire12.press = Math.round(this.tireList[11].tirePress*1000)/1000000
-            this.productData.tire12.humi = this.tireList[11].tireTemp
-          }
-
-
           this.tempDeviceKey = this.tempKeys[0].deviceKey;
           this.tempHistory();
           console.log(this.oilKeys);
-          this.drawOil();
-          console.log(this.accKeys)
-          this.drawAcc()
-        
+          if (this.role == "admin") {
+            this.span = 12;
+            this.offset = 3;
+            this.ifOil = false;
+            this.ifLight = false;
+            this.ifAcc = false;
+            this.ifDoor = false;
+            if (this.tireList.length == 0) {
+              this.span1 = 21;
+              this.pressHistory = false;
+              console.log("没有注册胎温胎压");
+            } else {
+              this.span1 = 15;
+              this.pressHistory = true;
+              console.log(this.tireList);
+              this.pressDevcieKey = this.tireList[0].deviceKey;
+              this.drawPress();
+            }
+          } else if (this.role == "user") {
+            this.drawOil();
+            console.log(this.accKeys);
+            this.drawAcc();
+          }
         }
       });
     },
     tempHistory() {
-      //   console.log(this.tempKeys)
-      //   console.log(this.tempKeys[0].deviceKey)
       var endTime = Math.round(new Date() / 1000);
       var startTime = endTime - 7200 * 12;
       var obj = {
@@ -836,7 +990,7 @@ export default {
               bottom: "3%",
               containLabel: true
             },
-            color: ["#cd9136", "#5a99e6"],
+            color: colors,
             xAxis: {
               type: "category",
               boundaryGap: false, //横轴顶格
@@ -858,7 +1012,7 @@ export default {
                 axisLine: {
                   show: true,
                   lineStyle: {
-                    color: "#fff"
+                    color: colors[0]
                   }
                 },
                 axisLabel: {
@@ -1051,29 +1205,28 @@ export default {
     changeLight() {
       console.log(this.light1);
       if (this.role == "admin") {
-  this.loading1 = true;
-      this.light1 = !this.light1;
-      var data = "";
-      if (this.light1 == false) {
-        data = "EFEFEF0100CE" + " " + this.typeIdentify;
-      } else if (this.light1 == true) {
-        data = "EFEFEF0101CF" + " " + this.typeIdentify;
-      }
-      changeLight(data).then(res => {
-        console.log(res);
-        this.loading1 = false;
-      });
+        this.loading1 = true;
+        this.light1 = !this.light1;
+        var data = "";
+        if (this.light1 == false) {
+          data = "EFEFEF0100CE" + " " + this.typeIdentify;
+        } else if (this.light1 == true) {
+          data = "EFEFEF0101CF" + " " + this.typeIdentify;
+        }
+        changeLight(data).then(res => {
+          console.log(res);
+          this.loading1 = false;
+        });
       } else if (this.role == "user") {
-     this.$message.info("您没有权限控制灯光开关！！")
+        this.$message.info("您没有权限控制灯光开关！！");
       }
-
     },
     drawAcc() {
-        if (this.accKeys.length == 0) {
-            this.accShow = false;
-            this.text = "没有注册该设备"
-        }
- var endTime = Math.round(new Date() / 1000);
+      if (this.accKeys.length == 0) {
+        this.accShow = false;
+        this.text = "没有注册该设备";
+      }
+      var endTime = Math.round(new Date() / 1000);
       var startTime = endTime - 7200 * 12;
       var obj = {
         deviceKey: this.accKeys[0],
@@ -1081,87 +1234,211 @@ export default {
         endTime: endTime,
         asc: 1
       };
-      getDeviceHisData(obj).then((res)=>{
-          console.log(res)
-          if (res.msg == "未找到记录"){
-                   this.accShow = false;
-            this.text = "一天内无数据"
-          } else if (res.msg == "ok") {
-              console.log(res)
-              var accDate = []
-              var accData = []
-              res.data.deviceData.forEach(item=>{
-                  accDate.push(item.date)
-                  accData.push(item.acc.X+item.acc.Y+item.acc.Z)
-              })
-             var chartDom = document.getElementById("acc"); 
-               var myChart = echarts.init(chartDom);
-                  var option;
+      getDeviceHisData(obj).then(res => {
+        console.log(res);
+        if (res.msg == "未找到记录") {
+          this.accShow = false;
+          this.text = "一天内无数据";
+        } else if (res.msg == "ok") {
+          console.log(res);
 
-                  option = {
-                      color: "#00a1da",
-                      title: {
-text:"车辆震动曲线图",
-textStyle:{
-    color: '#43bfdb'
-},
-                      },
-                    legend: {
-                      data: accDate
-                    },
-                    tooltip: {
-                      trigger: "axis"
-                    },
-                    xAxis: {
-                      type: "category",
-                      axisTick: {
-                        alignWithLabel: true
-                      },
-                      data: accDate,
-                      axisLabel: {
-                        formatter: function(value) {
-                          return (
-                            value.slice(5, 10) + "\n" + value.slice(11, 16)
-                          );
-                        },
-                        textStyle: {
-                          color: "#fff" //坐标值得具体的颜色
-                        }
-                      }
+          var accDate = [];
+          var accData = [];
+          res.data.deviceData.forEach(item => {
+            accDate.push(item.date);
+            accData.push(item.acc.X + item.acc.Y + item.acc.Z);
+          });
+          var chartDom = document.getElementById("acc");
+          console.log(chartDom);
+          var myChart = echarts.init(chartDom);
+          var option;
 
-                    },
-                    yAxis: {
-                      type: "value",
-                      axisLabel: {
-                        formatter: "{value}",
-                        textStyle: {
-                          color: "#fff" //坐标值得具体的颜色
-                        }
-                      },
-                      axisLine: {
-                        show: true, // Y轴线
-                        lineStyle: {
-                          type: "dashed",
-                          color: "#fff"
-                        }
-                      }
-
-                    },
-                    series: [
-                      {
-                        data: accData,
-                        type: "line",
-                        smooth: true
-                      }
-                    ]
-                  };
-      window.addEventListener("resize", function() {
-        myChart.resize();
+          option = {
+            color: "#00a1da",
+            title: {
+              text: "车辆震动曲线图",
+              textStyle: {
+                color: "#43bfdb"
+              }
+            },
+            legend: {
+              data: accDate
+            },
+            tooltip: {
+              trigger: "axis"
+            },
+            xAxis: {
+              type: "category",
+              axisTick: {
+                alignWithLabel: true
+              },
+              data: accDate,
+              axisLabel: {
+                formatter: function(value) {
+                  return value.slice(5, 10) + "\n" + value.slice(11, 16);
+                },
+                textStyle: {
+                  color: "#fff" //坐标值得具体的颜色
+                }
+              }
+            },
+            yAxis: {
+              type: "value",
+              axisLabel: {
+                formatter: "{value}",
+                textStyle: {
+                  color: "#fff" //坐标值得具体的颜色
+                }
+              },
+              axisLine: {
+                show: true, // Y轴线
+                lineStyle: {
+                  type: "dashed",
+                  color: "#fff"
+                }
+              }
+            },
+            series: [
+              {
+                data: accData,
+                type: "line",
+                smooth: true
+              }
+            ]
+          };
+          window.addEventListener("resize", function() {
+            myChart.resize();
+          });
+          option && myChart.setOption(option);
+        }
       });
-                  option && myChart.setOption(option);
-          }
-      })
     },
+    drawPress() {
+      console.log("开始绘制胎温胎压");
+      var endTime = Math.round(new Date() / 1000);
+      var startTime = endTime - 7200 * 12;
+      var obj = {
+        deviceKey: this.pressDevcieKey,
+        startTime: startTime,
+        endTime: endTime,
+        asc: 1
+      };
+      getDeviceHisData(obj).then(res => {
+        console.log(res);
+        if (res.msg == "未找到记录") {
+          this.pressShow = false;
+        } else if (res.msg == "ok") {
+          this.pressShow = true;
+          var date = [];
+          var tempData = [];
+          var pressData = [];
+          res.data.deviceData.forEach(item => {
+            date.push(item.date);
+            pressData.push(Math.round(item.tirePress * 1000) / 1000000);
+            tempData.push(item.tireTemp);
+          });
+          console.log(date);
+          console.log(tempData);
+          console.log(pressData);
+          var myChart = echarts.init(document.getElementById("press"));
+          console.log(myChart);
+          var colors = ["#d92179", "#008b9c"];
+
+          var option = {
+            color: colors,
+            title: {
+              text: "胎温胎压数据",
+              left: "center",
+              textStyle: {
+                color: "#43bfdb"
+              }
+            },
+            tooltip: {
+              trigger: "axis",
+              axisPointer: {
+                type: "cross"
+              }
+            },
+            legend: {
+              data: ["胎温", "胎压"],
+              left: 20,
+              textStyle: {
+                color: "#fff"
+              }
+            },
+            grid: {
+              left: "3%",
+              right: "4%",
+              bottom: "3%",
+              containLabel: true
+            },
+            color: colors,
+            xAxis: {
+              type: "category",
+              boundaryGap: false, //横轴顶格
+              data: date,
+              axisLabel: {
+                formatter: function(value) {
+                  return value.slice(5, 10) + "\n" + value.slice(11, 16);
+                },
+                textStyle: {
+                  color: "#fff" //坐标值得具体的颜色
+                }
+              }
+            },
+            yAxis: [
+              {
+                type: "value",
+                name: "温度",
+                position: "left",
+                axisLine: {
+                  show: true,
+                  lineStyle: {
+                    color: colors[0]
+                  }
+                },
+                axisLabel: {
+                  formatter: "{value} ℃"
+                }
+              },
+              {
+                type: "value",
+                name: "湿度",
+                position: "right",
+                offset: 6,
+                axisLine: {
+                  show: true,
+                  lineStyle: {
+                    color: colors[1]
+                  }
+                },
+                axisLabel: {
+                  formatter: "{value} kPa"
+                }
+              }
+            ],
+            series: [
+              {
+                name: "温度",
+                type: "line",
+                data: tempData
+              },
+              {
+                name: "湿度",
+                type: "line",
+                yAxisIndex: 1, //解决了左右y轴相同刻度，选定哪条y
+                // stack: "总量",
+                data: pressData
+              }
+            ]
+          };
+          option && myChart.setOption(option);
+          // window.addEventListener("resize", function() {
+          //   myChart.resize();
+          // });
+        }
+      });
+    }
   }
 };
 </script>

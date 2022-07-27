@@ -4,26 +4,79 @@
 
     <div class="nav-top">
       <div class="nav-top-title">冷藏车全局监控</div>
-        <div style =" position: absolute; right: 200px; top: 40px; cursor: pointer" >
-            <span style = "cursor: pointer;margin-right: 10px;" @click = "logout" >
- <svg t="1658407102656" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8938" width="25" height="25"><path d="M542.7 373.6h-59.5c-24.8 0-44.8-20.1-44.8-44.8V167.9c0-24.8 20.1-44.8 44.8-44.8h59.5c24.8 0 44.8 20.1 44.8 44.8v160.9c0.1 24.7-20 44.8-44.8 44.8z m0 0" fill="#d4237a" p-id="8939"></path><path d="M542.7 398.5h-59.5c-38.5 0-69.7-31.3-69.7-69.7V167.9c0-38.5 31.3-69.7 69.7-69.7h59.5c38.5 0 69.7 31.3 69.7 69.7v160.9c0.1 38.4-31.2 69.7-69.7 69.7zM483.3 148c-11 0-19.9 8.9-19.9 19.9v160.9c0 11 8.9 19.9 19.9 19.9h59.5c11 0 19.9-8.9 19.9-19.9V167.9c0-11-8.9-19.9-19.9-19.9h-59.5zM513 811.4" fill="#d4237a" p-id="8940"></path><path d="M513 928.3c-218.7 0-396.6-177.9-396.6-396.6 0-132.3 65.4-255.3 175-329 11.4-7.7 26.9-4.6 34.6 6.8 7.7 11.4 4.6 26.9-6.8 34.6-95.7 64.4-152.9 171.9-152.9 287.6 0 191.2 155.5 346.7 346.7 346.7s346.7-155.5 346.7-346.7c0-115.7-57.2-223.2-152.9-287.6-11.4-7.7-14.5-23.2-6.8-34.6 7.7-11.4 23.2-14.5 34.6-6.8 109.6 73.6 175 196.6 175 329 0 218.7-177.9 396.6-396.6 396.6z m0 0" fill="#d4237a" p-id="8941"></path></svg>
-            </span>
-            <span style = "cursor: pointer" @click = "operate" >
-                <svg t="1658407556234" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9926" width="25" height="25"><path d="M688.04 568H335.96c-20.17 0-36.67-16.5-36.67-36.67v-38.68c0-20.17 16.5-36.67 36.67-36.67h352.08c20.17 0 36.67 16.5 36.67 36.67v38.68c0 20.17-16.5 36.67-36.67 36.67z" fill="#038b9e" p-id="9927"></path><path d="M415.21 755.77H307.58c-64.88 0-126.03-25.42-172.19-71.58S63.81 576.88 63.81 512s25.42-126.03 71.58-172.19 107.31-71.58 172.19-71.58h107.63c17.52 0 31.71 14.2 31.71 31.71 0 17.52-14.2 31.71-31.71 31.71H307.58c-99.44 0-180.34 80.9-180.34 180.34s80.9 180.34 180.34 180.34h107.63c17.52 0 31.71 14.2 31.71 31.71 0.01 17.53-14.19 31.73-31.71 31.73zM716.42 755.77H608.79c-17.52 0-31.71-14.2-31.71-31.71 0-17.52 14.2-31.71 31.71-31.71h107.63c99.44 0 180.34-80.9 180.34-180.34s-80.9-180.34-180.34-180.34H608.79c-17.52 0-31.71-14.2-31.71-31.71 0-17.52 14.2-31.71 31.71-31.71h107.63c64.88 0 126.03 25.42 172.19 71.58s71.58 107.31 71.58 172.19-25.42 126.03-71.58 172.19c-46.16 46.14-107.31 71.56-172.19 71.56z" fill="#038b9e" p-id="9928"></path></svg>
-            </span>
-             
-          </div>
+      <div style=" position: absolute; right: 200px; top: 40px; cursor: pointer">
+        <span style="cursor: pointer;margin-right: 10px;" @click="logout">
+          <svg
+            t="1658407102656"
+            class="icon"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            p-id="8938"
+            width="25"
+            height="25"
+          >
+            <path
+              d="M542.7 373.6h-59.5c-24.8 0-44.8-20.1-44.8-44.8V167.9c0-24.8 20.1-44.8 44.8-44.8h59.5c24.8 0 44.8 20.1 44.8 44.8v160.9c0.1 24.7-20 44.8-44.8 44.8z m0 0"
+              fill="#d4237a"
+              p-id="8939"
+            />
+            <path
+              d="M542.7 398.5h-59.5c-38.5 0-69.7-31.3-69.7-69.7V167.9c0-38.5 31.3-69.7 69.7-69.7h59.5c38.5 0 69.7 31.3 69.7 69.7v160.9c0.1 38.4-31.2 69.7-69.7 69.7zM483.3 148c-11 0-19.9 8.9-19.9 19.9v160.9c0 11 8.9 19.9 19.9 19.9h59.5c11 0 19.9-8.9 19.9-19.9V167.9c0-11-8.9-19.9-19.9-19.9h-59.5zM513 811.4"
+              fill="#d4237a"
+              p-id="8940"
+            />
+            <path
+              d="M513 928.3c-218.7 0-396.6-177.9-396.6-396.6 0-132.3 65.4-255.3 175-329 11.4-7.7 26.9-4.6 34.6 6.8 7.7 11.4 4.6 26.9-6.8 34.6-95.7 64.4-152.9 171.9-152.9 287.6 0 191.2 155.5 346.7 346.7 346.7s346.7-155.5 346.7-346.7c0-115.7-57.2-223.2-152.9-287.6-11.4-7.7-14.5-23.2-6.8-34.6 7.7-11.4 23.2-14.5 34.6-6.8 109.6 73.6 175 196.6 175 329 0 218.7-177.9 396.6-396.6 396.6z m0 0"
+              fill="#d4237a"
+              p-id="8941"
+            />
+          </svg>
+        </span>
+        <span style="cursor: pointer" @click="operate">
+          <svg
+            t="1658887453958"
+            class="icon"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            p-id="2253"
+            width="25"
+            height="25"
+          >
+            <path
+              d="M346.2 514.6m-64.2 0a64.2 64.2 0 1 0 128.4 0 64.2 64.2 0 1 0-128.4 0Z"
+              fill="#008b9d"
+              p-id="2254"
+            />
+            <path
+              d="M450.1 514.6a64.2 64.2 0 1 0 128.4 0 64.2 64.2 0 1 0-128.4 0Z"
+              fill="#008b9d"
+              p-id="2255"
+            />
+            <path
+              d="M682.5 514.6m-64.2 0a64.2 64.2 0 1 0 128.4 0 64.2 64.2 0 1 0-128.4 0Z"
+              fill="#008b9d"
+              p-id="2256"
+            />
+            <path
+              d="M512 136.3c50.7 0 99.9 9.9 146.2 29.5 44.7 18.9 84.9 46 119.5 80.6 34.5 34.5 61.6 74.7 80.6 119.5 19.6 46.3 29.5 95.5 29.5 146.2s-9.9 99.9-29.5 146.2c-18.9 44.7-46 84.9-80.6 119.5-34.5 34.5-74.7 61.6-119.5 80.6-46.3 19.6-95.5 29.5-146.2 29.5s-99.9-9.9-146.2-29.5c-44.7-18.9-84.9-46-119.4-80.6-34.5-34.5-61.6-74.7-80.6-119.5-19.6-46.3-29.5-95.5-29.5-146.2s9.9-99.9 29.5-146.2c18.9-44.7 46-84.9 80.6-119.5 34.5-34.5 74.7-61.6 119.4-80.6 46.3-19.6 95.5-29.5 146.2-29.5m0-70C265.9 66.3 66.3 265.9 66.3 512S265.9 957.7 512 957.7 957.7 758.1 957.7 512 758.1 66.3 512 66.3z"
+              fill="#008b9d"
+              p-id="2257"
+            />
+          </svg>
+        </span>
+      </div>
       <div class="nav-top-time">
-                 
         <span id="date">{{date}}</span>
         <span id="time" style="margin-top: 5px;">{{day}}&nbsp;{{time}}</span>
       </div>
     </div>
 
     <div class="left">
-      <el-card
-        style="width: 90%; margin-left: 5%; height: 50px; background-color: rgba(22, 31, 38, 0.87); border: none; margin-top: 20px;"
-      >
+      <div
+        style="width: 90%; margin-left: 5%; height: 50px; background-color: rgba(22, 31, 38, 0.87); border: none; margin-top: 20px; padding: 10px 20px"
+          >
         <div style="font-size: 16px; color: #fff;">
           <el-row type="flex" justify>
             <el-col :span="2">
@@ -72,11 +125,11 @@
             </el-col>
           </el-row>
         </div>
-      </el-card>
-      <el-card
+      </div>
+      <div
         v-show="open1"
-        style="width: 90%; margin-left: 5%; height: 210px; background-color: rgba(22, 31, 38, 0.87); border: none; "
-      >
+        style="width: 90%; margin-left: 5%; height: 210px; background-color: rgba(22, 31, 38, 0.87); border: none; padding: 10px 20px;"
+         >
         <ul>
           <li>
             <span class="name">
@@ -128,10 +181,10 @@
           </li>
           <br />
         </ul>
-      </el-card>
-      <el-card
-        style="width: 90%; margin-left: 5%;height: 50px; background-color: rgba(22, 31, 38, 0.87);border: none; margin-top: 10px;"
-      >
+      </div>
+      <div
+        style="width: 90%; margin-left: 5%;height: 50px;  background-color: rgba(22, 31, 38, 0.87);border: none; margin-top: 10px; padding: 10px 20px"
+         >
         <div style="font-size: 16px; color: #fff;">
           <el-row type="flex" justify>
             <el-col :span="2">
@@ -346,41 +399,43 @@
             </el-col>
           </el-row>
         </div>
-      </el-card>
-      <el-card
-        style="width: 90%; margin-left: 5%;height: 180px; background-color: rgba(22, 31, 38, 0.87);border: none; "
+      </div>
+      <div
+        style="width: 90%; margin-left: 5%;height: 180px; background-color: rgba(22, 31, 38, 0.87);border: none; padding:10px 20px;"
         v-show="open2"
-      >
+           >
         <ul>
-          <li style="height: 12px; line-height: 12px;">
-            <span class="name">正常</span>
+          <li>
+            <span class="name" style="margin-left: 20px;">正常</span>
             <span class="num">2</span>
           </li>
           <br />
-          <li style="height: 12px; line-height: 12px;">
-            <span class="name">迟到</span>
+          <li>
+            <span class="name" style="margin-left: 20px;">迟到</span>
             <span class="num">2</span>
           </li>
           <br />
-          <li style="height: 12px; line-height: 12px;">
-            <span class="name">旷工</span>
+
+          <li>
+            <span class="name" style="margin-left: 20px;">旷工</span>
             <span class="num">2</span>
           </li>
           <br />
-          <li style="height: 12px; line-height: 12px;">
-            <span class="name">缺卡</span>
+          <li>
+            <span class="name" style="margin-left: 20px;">缺卡</span>
             <span class="num">2</span>
           </li>
           <br />
-          <li style="height: 12px; line-height: 12px;">
-            <span class="name">休息</span>
+          <li>
+            <span class="name" style="margin-left: 20px;">休息</span>
             <span class="num">2</span>
           </li>
+          <br />
         </ul>
-      </el-card>
-      <el-card
-        style="width: 90%; margin-left: 5%;height: 50px; background-color: rgba(22, 31, 38, 0.87);border: none;margin-top: 10px;"
-      >
+      </div>
+      <div
+        style="width: 90%; margin-left: 5%;height: 50px; background-color: rgba(22, 31, 38, 0.87);border: none;margin-top: 10px; padding: 10px 20px"
+          >
         <div style="font-size: 16px; color: #fff;">
           <el-row type="flex" justify>
             <el-col :span="2">
@@ -457,13 +512,13 @@
             </el-col>
           </el-row>
         </div>
-      </el-card>
-      <el-card
-        style="width: 90%; margin-left: 5%;height: 205px; background-color: rgba(22, 31, 38, 0.87);border: none;"
+      </div>
+      <div
+        style="width: 90%; margin-left: 5%;height: 205px; background-color: rgba(22, 31, 38, 0.87);border: none; padding: 10px 20px"
         v-show="open3"
-      >
+         >
         <div id="chart" style="height: 180px; width: 100%; "></div>
-      </el-card>
+      </div>
     </div>
     <div class="center">
       <div class="legend-container">
@@ -574,7 +629,7 @@
       <div
         v-show="accHistory"
         style="width: 500px; height: 300px; margin: 80px auto; background-color: rgba(22, 31, 38, 0.87)"
-         >
+          >
         <div style="height: 50px; line-height: 50px;color:#fff;font-size: 16px;  margin-left: 10px">
           <svg
             t="1658309732678"
@@ -618,51 +673,105 @@
         </div>
         <div id="acc" style="height: 250px; width: 500px;"></div>
       </div>
-      <div class="message" v-if= "messageShow"    style = "width:150%; height: 720px;  background-color: #0b1a2b; z-index: 20; position: absolute; top: 20px; left: -25%;">
-<div style = "height: 35px; line-height: 35px;">
-      <el-row type="flex" justify="" >
-          <el-col :span="1">
-              <svg t="1658369848942" class="icon" viewBox="0 0 1820 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2254" width="45" height="45"><path d="M916.859259 217.125926h350.435556v60.681481H916.859259z" fill="#5FFFBA" p-id="2255"></path><path d="M805.641481 550.874074H603.306667c-27.875556 0-50.536296 22.660741-50.536297 50.536296v202.24c0 27.875556 22.660741 50.536296 50.536297 50.536297h202.24c27.875556 0 50.536296-22.660741 50.536296-50.536297V601.41037c0.094815-27.875556-22.565926-50.536296-50.441482-50.536296zM795.496296 765.44c0 15.54963-12.61037 28.16-28.16 28.16H641.611852c-15.54963 0-28.16-12.61037-28.16-28.16V639.715556c0-15.54963 12.61037-28.16 28.16-28.16h125.819259c15.54963 0 28.16 12.61037 28.16 28.16v125.724444z" fill="#FFD561" p-id="2256"></path><path d="M916.859259 596.385185h350.435556v60.681482H916.859259z" fill="#5FFFBA" p-id="2257"></path><path d="M805.641481 171.614815H603.306667c-27.875556 0-50.536296 22.660741-50.536297 50.536296v202.24c0 27.875556 22.660741 50.536296 50.536297 50.536296h202.24c27.875556 0 50.536296-22.660741 50.536296-50.536296V222.151111c0.094815-27.875556-22.565926-50.536296-50.441482-50.536296zM795.496296 386.180741c0 15.54963-12.61037 28.16-28.16 28.16H641.611852c-15.54963 0-28.16-12.61037-28.16-28.16V260.456296c0-15.54963 12.61037-28.16 28.16-28.16h125.819259c15.54963 0 28.16 12.61037 28.16 28.16v125.724445z" fill="#FFA28D" p-id="2258"></path><path d="M916.859259 368.82963h350.435556v60.681481H916.859259zM916.859259 748.088889h350.435556v60.681481H916.859259z" fill="#5FFFBA" p-id="2259"></path></svg>
-          </el-col>
-          <el-col :span="10" style = "text-allign: left;">
-              <span style = "font-size: 18px; color: #f1e44a">{{this.whichProductData.productName}}</span>
-          </el-col>
-          <el-col :span="1" :offset="12">
-              <div style = "cursor: pointer;"  @click = "closeMessage">
-                  <svg t="1658370816805" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3272" width="25" height="25"><path d="M85.333333 512C85.333333 276.352 276.309333 85.333333 512 85.333333c235.648 0 426.666667 190.976 426.666667 426.666667 0 235.648-190.976 426.666667-426.666667 426.666667-235.648 0-426.666667-190.976-426.666667-426.666667z m426.666667-30.165333l-105.685333-105.706667a21.269333 21.269333 0 0 0-30.08 0.106667 21.205333 21.205333 0 0 0-0.106667 30.08L481.834667 512l-105.706667 105.685333a21.269333 21.269333 0 0 0 0.106667 30.08 21.205333 21.205333 0 0 0 30.08 0.106667L512 542.165333l105.685333 105.706667a21.269333 21.269333 0 0 0 30.08-0.106667 21.205333 21.205333 0 0 0 0.106667-30.08L542.165333 512l105.706667-105.685333a21.269333 21.269333 0 0 0-0.106667-30.08 21.205333 21.205333 0 0 0-30.08-0.106667L512 481.834667z" fill="#ffffff" p-id="3273"></path></svg>
+      <div
+        class="message"
+        v-if="messageShow"
+        style="width:150%; height: 720px;  background-color: #0b1a2b; z-index: 20; position: absolute; top: 20px; left: -25%;"
+      >
+        <div style="height: 35px; line-height: 35px;">
+          <el-row type="flex" justify>
+            <el-col :span="1">
+              <svg
+                t="1658369848942"
+                class="icon"
+                viewBox="0 0 1820 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                p-id="2254"
+                width="45"
+                height="45"
+              >
+                <path
+                  d="M916.859259 217.125926h350.435556v60.681481H916.859259z"
+                  fill="#5FFFBA"
+                  p-id="2255"
+                />
+                <path
+                  d="M805.641481 550.874074H603.306667c-27.875556 0-50.536296 22.660741-50.536297 50.536296v202.24c0 27.875556 22.660741 50.536296 50.536297 50.536297h202.24c27.875556 0 50.536296-22.660741 50.536296-50.536297V601.41037c0.094815-27.875556-22.565926-50.536296-50.441482-50.536296zM795.496296 765.44c0 15.54963-12.61037 28.16-28.16 28.16H641.611852c-15.54963 0-28.16-12.61037-28.16-28.16V639.715556c0-15.54963 12.61037-28.16 28.16-28.16h125.819259c15.54963 0 28.16 12.61037 28.16 28.16v125.724444z"
+                  fill="#FFD561"
+                  p-id="2256"
+                />
+                <path
+                  d="M916.859259 596.385185h350.435556v60.681482H916.859259z"
+                  fill="#5FFFBA"
+                  p-id="2257"
+                />
+                <path
+                  d="M805.641481 171.614815H603.306667c-27.875556 0-50.536296 22.660741-50.536297 50.536296v202.24c0 27.875556 22.660741 50.536296 50.536297 50.536296h202.24c27.875556 0 50.536296-22.660741 50.536296-50.536296V222.151111c0.094815-27.875556-22.565926-50.536296-50.441482-50.536296zM795.496296 386.180741c0 15.54963-12.61037 28.16-28.16 28.16H641.611852c-15.54963 0-28.16-12.61037-28.16-28.16V260.456296c0-15.54963 12.61037-28.16 28.16-28.16h125.819259c15.54963 0 28.16 12.61037 28.16 28.16v125.724445z"
+                  fill="#FFA28D"
+                  p-id="2258"
+                />
+                <path
+                  d="M916.859259 368.82963h350.435556v60.681481H916.859259zM916.859259 748.088889h350.435556v60.681481H916.859259z"
+                  fill="#5FFFBA"
+                  p-id="2259"
+                />
+              </svg>
+            </el-col>
+            <el-col :span="10" style="text-allign: left;">
+              <span style="font-size: 18px; color: #f1e44a">{{this.whichProductData.productName}}</span>
+            </el-col>
+            <el-col :span="1" :offset="12">
+              <div style="cursor: pointer;" @click="closeMessage">
+                <svg
+                  t="1658370816805"
+                  class="icon"
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  p-id="3272"
+                  width="25"
+                  height="25"
+                >
+                  <path
+                    d="M85.333333 512C85.333333 276.352 276.309333 85.333333 512 85.333333c235.648 0 426.666667 190.976 426.666667 426.666667 0 235.648-190.976 426.666667-426.666667 426.666667-235.648 0-426.666667-190.976-426.666667-426.666667z m426.666667-30.165333l-105.685333-105.706667a21.269333 21.269333 0 0 0-30.08 0.106667 21.205333 21.205333 0 0 0-0.106667 30.08L481.834667 512l-105.706667 105.685333a21.269333 21.269333 0 0 0 0.106667 30.08 21.205333 21.205333 0 0 0 30.08 0.106667L512 542.165333l105.685333 105.706667a21.269333 21.269333 0 0 0 30.08-0.106667 21.205333 21.205333 0 0 0 0.106667-30.08L542.165333 512l105.706667-105.685333a21.269333 21.269333 0 0 0-0.106667-30.08 21.205333 21.205333 0 0 0-30.08-0.106667L512 481.834667z"
+                    fill="#ffffff"
+                    p-id="3273"
+                  />
+                </svg>
               </div>
-          </el-col>
-      </el-row>
-</div>
-<div style = "height: 565px; ">
-<productMessageVue />
-</div>
+            </el-col>
+          </el-row>
+        </div>
+        <div style="height: 565px; ">
+          <productMessageVue />
+        </div>
       </div>
     </div>
     <div class="right">
-      <el-card
-        style="width: 90%; margin-left: 5%; height: 50px; background-color: rgba(22, 31, 38, 0.87); border: none; margin-top: 20px;"
-      >
+      <div
+        style="width: 90%; margin-left: 5%; height: 50px; background-color: rgba(22, 31, 38, 0.87); border: none; margin-top: 20px; padding: 10px 20px"
+           >
         <div style="font-size: 16px; color: #fff;">
           <el-row type="flex" justify>
             <el-col :span="2">
-                <div style= "cursor: pointer;"  @click = "openMessage">
-              <svg
-                t="1658284637566"
-                class="icon"
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                p-id="12626"
-                width="25"
-                height="25"
-              >
-                <path
-                  d="M648.927617 428.075654c46.384111 0 83.989337 37.605226 83.989337 83.989338s-37.605226 83.989337-83.989337 83.989337-83.989337-37.605226-83.989338-83.989337 37.605226-83.989337 83.989338-83.989338z m-279.964458 0c46.384111 0 83.989337 37.605226 83.989337 83.989338s-37.605226 83.989337-83.989337 83.989337-83.989337-37.605226-83.989337-83.989337 37.605226-83.989337 83.989337-83.989338zM0.099987 512.064992c0 282.734106 229.200902 511.935008 511.935009 511.935008s511.935008-229.200902 511.935008-511.935008-229.200902-511.935008-511.935008-511.935009-511.935008 229.200902-511.935009 511.935009zM673.914444 132.193218c49.523713 20.947341 94.008065 50.953531 132.243212 89.178678 38.225147 38.225147 68.231338 82.719499 89.178678 132.243211 21.667249 51.223497 32.655854 105.686583 32.655854 161.879449s-10.988605 110.655952-32.655854 161.879449c-20.947341 49.523713-50.943533 94.008065-89.178678 132.243212-38.225147 38.225147-82.719499 68.231338-132.243212 89.178678-51.223497 21.667249-105.686583 32.655854-161.879448 32.655854s-110.655952-10.988605-161.879449-32.655854c-49.523713-20.947341-94.008065-50.943533-132.243212-89.178678-38.225147-38.225147-68.231338-82.719499-89.178678-132.243212-21.667249-51.223497-32.655854-105.686583-32.655854-161.879449s10.988605-110.655952 32.655854-161.879449c20.947341-49.523713 50.953531-94.008065 89.178678-132.243211 38.225147-38.225147 82.719499-68.231338 132.243212-89.178678 51.223497-21.667249 105.686583-32.655854 161.879449-32.655855 56.192866 0.009999 110.655952 10.988605 161.879448 32.655855z"
-                  p-id="12627"
-                  fill="#00acea"
-                />
-              </svg>
+              <div style="cursor: pointer;" @click="openMessage">
+                <svg
+                  t="1658284637566"
+                  class="icon"
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  p-id="12626"
+                  width="25"
+                  height="25"
+                >
+                  <path
+                    d="M648.927617 428.075654c46.384111 0 83.989337 37.605226 83.989337 83.989338s-37.605226 83.989337-83.989337 83.989337-83.989337-37.605226-83.989338-83.989337 37.605226-83.989337 83.989338-83.989338z m-279.964458 0c46.384111 0 83.989337 37.605226 83.989337 83.989338s-37.605226 83.989337-83.989337 83.989337-83.989337-37.605226-83.989337-83.989337 37.605226-83.989337 83.989337-83.989338zM0.099987 512.064992c0 282.734106 229.200902 511.935008 511.935009 511.935008s511.935008-229.200902 511.935008-511.935008-229.200902-511.935008-511.935008-511.935009-511.935008 229.200902-511.935009 511.935009zM673.914444 132.193218c49.523713 20.947341 94.008065 50.953531 132.243212 89.178678 38.225147 38.225147 68.231338 82.719499 89.178678 132.243211 21.667249 51.223497 32.655854 105.686583 32.655854 161.879449s-10.988605 110.655952-32.655854 161.879449c-20.947341 49.523713-50.943533 94.008065-89.178678 132.243212-38.225147 38.225147-82.719499 68.231338-132.243212 89.178678-51.223497 21.667249-105.686583 32.655854-161.879448 32.655854s-110.655952-10.988605-161.879449-32.655854c-49.523713-20.947341-94.008065-50.943533-132.243212-89.178678-38.225147-38.225147-68.231338-82.719499-89.178678-132.243212-21.667249-51.223497-32.655854-105.686583-32.655854-161.879449s10.988605-110.655952 32.655854-161.879449c20.947341-49.523713 50.953531-94.008065 89.178678-132.243211 38.225147-38.225147 82.719499-68.231338 132.243212-89.178678 51.223497-21.667249 105.686583-32.655854 161.879449-32.655855 56.192866 0.009999 110.655952 10.988605 161.879448 32.655855z"
+                    p-id="12627"
+                    fill="#00acea"
+                  />
+                </svg>
               </div>
             </el-col>
             <el-col :span="12" :offset="2">详细信息</el-col>
@@ -708,18 +817,60 @@
             </el-col>
           </el-row>
         </div>
-      </el-card>
-      <el-card
-        style="width: 90%; margin-left: 5%; height: 470px; background-color: rgba(22, 31, 38, 0.87); border: none; "
+      </div>
+      <div
+        style="width: 90%; margin-left: 5%; height: 470px; background-color: rgba(22, 31, 38, 0.87); border: none; padding: 10px 20px"
         v-show="open4"
-      >
+          >
         <div>
           <span style="font-size: 21px; color:#00a2dc;">{{this.whichProductData.productName}}</span>
           <el-row style="height: 120px;  color: #d9dee; margin-top: 13px;">
             <el-col :span="12">
-              <p style="color:#f6e836;font-size: 16px;">检测点1</p>
-              <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp}}℃</p>
-              <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi}}％</p>
+              <p style="color:#f6e836;font-size: 16px;">
+                <!-- 检测点1 -->
+              <!-- 变成七个点的可选 -->
+              <select 
+                      class="select"
+                          v-model="whichTemp"
+                          placeholder="请选择监测点"
+                          @change="selectTemp">
+                <option 
+                       v-for="item in tempSelect"
+                            :key="item.name"
+                            :label="item.name"
+                            :value="item.name">
+
+                </option>
+              </select>
+              </p>
+              <div v-show = "tempShow1">
+              <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp1}}℃</p>
+              <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi1}}％</p>
+              </div>
+                       <div v-show = "tempShow2">
+              <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp2}}℃</p>
+              <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi2}}％</p>
+              </div>
+                       <div v-show = "tempShow3">
+              <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp3}}℃</p>
+              <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi3}}％</p>
+              </div>
+                       <div v-show = "tempShow4">
+              <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp4}}℃</p>
+              <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi4}}％</p>
+              </div>
+                       <div v-show = "tempShow5">
+              <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp5}}℃</p>
+              <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi5}}％</p>
+              </div>
+                       <div v-show = "tempShow6">
+              <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp6}}℃</p>
+              <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi6}}％</p>
+              </div>
+                       <div v-show = "tempShow7">
+              <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp7}}℃</p>
+              <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi7}}％</p>
+              </div>
             </el-col>
             <el-col :span="12">
               <p style="color:#f6e836;font-size: 16px;">车辆震动</p>
@@ -765,7 +916,7 @@
             <el-col :span="5">
               <div style="height: 90px; width: 100%; text-align: center;">
                 <svg
-                  v-if="!this.whichProductData.door1"
+                  v-if="this.whichProductData.door1"
                   t="1658320882254"
                   class="icon"
                   viewBox="0 0 1024 1024"
@@ -782,7 +933,7 @@
                   />
                 </svg>
                 <svg
-                  v-if="this.whichProductData.door1"
+                  v-if="!this.whichProductData.door1"
                   t="1658320985493"
                   class="icon"
                   viewBox="0 0 1024 1024"
@@ -807,7 +958,7 @@
               </div>
               <div style="height: 90px; width: 100%; text-align: center;">
                 <svg
-                  v-if="!this.whichProductData.door2"
+                  v-if="this.whichProductData.door2"
                   t="1658320882254"
                   class="icon"
                   viewBox="0 0 1024 1024"
@@ -824,7 +975,7 @@
                   />
                 </svg>
                 <svg
-                  v-if="this.whichProductData.door2"
+                  v-if="!this.whichProductData.door2"
                   t="1658320985493"
                   class="icon"
                   viewBox="0 0 1024 1024"
@@ -1047,10 +1198,10 @@
             </el-col>
           </el-row>
         </div>
-      </el-card>
-      <el-card
-        style="width: 90%; margin-left: 5%; height: 50px; background-color: rgba(22, 31, 38, 0.87); border: none; margin-top: 10px;"
-      >
+      </div>
+      <div
+        style="width: 90%; margin-left: 5%; height: 50px; background-color: rgba(22, 31, 38, 0.87); border: none; margin-top: 10px; padding: 10px 20px"
+         >
         <div style="font-size: 16px; color: #fff;">
           <el-row type="flex" justify>
             <el-col :span="2">
@@ -1126,11 +1277,11 @@
             </el-col>
           </el-row>
         </div>
-      </el-card>
-      <el-card
-        style="width: 90%; margin-left: 5%; height:140px; background-color: rgba(22, 31, 38, 0.87); border: none; "
+      </div>
+      <div
+        style="width: 90%; margin-left: 5%; height:140px; background-color: rgba(22, 31, 38, 0.87); border: none;  padding: 10px 20px;"
         v-show="open5"
-      >
+          >
         <p
           style="height: 50px; line-height: 50px; color: #cddef6; font-size:18px; margin-left: 30px;"
         >
@@ -1204,7 +1355,7 @@
           </svg>
           <span style="margin-left: 20px;">负责人：</span>
         </p>
-      </el-card>
+      </div>
     </div>
 
     <el-dialog title="提示" :visible.sync="dialogVisible" width="30%">
@@ -1220,11 +1371,11 @@
 import { product } from "@/api/data";
 import { allProductData, getDeviceHisData, changeLight } from "@/api/interface";
 import * as echarts from "echarts";
-import productMessageVue from '../productMessage.vue';
+import productMessageVue from "../productMessage.vue";
 export default {
   name: "admin",
   components: {
-productMessageVue 
+    productMessageVue
   },
   data() {
     return {
@@ -1264,6 +1415,23 @@ productMessageVue
       totalNum: "0",
       onlineNum: "0",
       messageShow: false,
+      tempSelect: [
+        {name:"监测点1"},
+        {name:"监测点2"},
+        {name:"监测点3"},
+        {name:"监测点4"},
+        {name:"监测点5"},
+        {name:"监测点6"},
+        {name:"监测点7"},
+      ],
+      whichTemp:"监测点1",
+      tempShow1: true,
+      tempShow2: false,
+      tempShow3: false,
+      tempShow4: false,
+      tempShow5: false,
+      tempShow6: false,
+      tempShow7: false,
     };
   },
   beforeDestroy() {
@@ -1278,18 +1446,18 @@ productMessageVue
     this.echarts();
     setInterval(this.timer, 1000);
     // 百度地图API功能
-    this.map = new BMap.Map("mapContainer"); // 创建Map实例
+    this.map = new BMap.Map("mapContainer", { mapType: BMAP_HYBRID_MAP }); // 创建Map实例
     this.map.centerAndZoom(
       new BMap.Point(this.center.lng, this.center.lat),
       this.zoom
     ); // 初始化地图,设置中心点坐标和地图级别
     let opts = {
-      mapTypes: [BMAP_NORMAL_MAP, BMAP_HYBRID_MAP],
+      mapTypes: [BMAP_HYBRID_MAP, BMAP_NORMAL_MAP],
       anchor: BMAP_ANCHOR_BOTTOM_RIGHT
     };
     this.map.addControl(new BMap.MapTypeControl(opts));
     this.map.enableScrollWheelZoom(true);
-    this.map.setMapStyle(this.mapStyle);
+    // this.map.setMapStyle(this.mapStyle);
   },
   methods: {
     prepare() {
@@ -1329,12 +1497,24 @@ productMessageVue
                     oil: 0,
                     door1: false,
                     door2: false,
-                    light1: false,
-                    light2: false,
-                    light3: false,
+                    light1: true,
+                    light2: true,
+                    light3: true,
                     shake: "1",
-                    humi: "0",
-                    temp: "0",
+                    humi1: "0",
+                     temp1: "0",
+                      humi2: "0",
+                    temp2: "0",
+                      humi3: "0",
+                    temp3: "0",
+                      humi4: "0",
+                    temp4: "0",
+                      humi5: "0",
+                    temp5: "0",
+                      humi6: "0",
+                    temp6: "0",
+                      humi7: "0",
+                    temp7: "0",
                     time: 0
                   };
                   item.deviceData.forEach(item1 => {
@@ -1361,8 +1541,32 @@ productMessageVue
                       }
                     }
                     if (item1.deviceName == "TH1") {
-                      obj.humi = item1.humi;
-                      obj.temp = item1.temp;
+                      obj.humi1 = item1.humi;
+                      obj.temp1= item1.temp;
+                    }
+                           if (item1.deviceName == "TH2") {
+                      obj.humi2 = item1.humi;
+                      obj.temp2= item1.temp;
+                    }
+                     if (item1.deviceName == "TH3") {
+                      obj.humi3 = item1.humi;
+                      obj.temp3= item1.temp;
+                    }
+                  if (item1.deviceName == "TH4") {
+                      obj.humi4 = item1.humi;
+                      obj.temp4= item1.temp;
+                    }
+                   if (item1.deviceName == "TH5") {
+                      obj.humi5 = item1.humi;
+                      obj.temp5= item1.temp;
+                    }
+                      if (item1.deviceName == "TH6") {
+                      obj.humi6 = item1.humi;
+                      obj.temp6= item1.temp;
+                    }
+                if (item1.deviceName == "TH7") {
+                      obj.humi7 = item1.humi;
+                      obj.temp7= item1.temp;
                     }
                     if (item1.deviceName == "ACC") {
                       obj.shake =
@@ -1394,7 +1598,10 @@ productMessageVue
                 this.center.lng = this.allProductData[0].lng;
                 this.center.lat = this.allProductData[0].lat;
                 this.whichProductData = this.allProductData[0];
-                    window.sessionStorage.setItem("productKey",this.whichProductData.productKey)
+                window.sessionStorage.setItem(
+                  "productKey",
+                  this.whichProductData.productKey
+                );
                 this.light();
                 this.drawOil();
                 this.allProductData.forEach(item => {
@@ -1461,7 +1668,12 @@ productMessageVue
                     () => {
                       console.log("1");
                       this.whichProductData = item;
-                          window.sessionStorage.setItem("productKey",this.whichProductData.productKey)
+                      this.whichTemp  = "监测点1"
+                        this.tempShow1 = true; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = false;
+                      window.sessionStorage.setItem(
+                        "productKey",
+                        this.whichProductData.productKey
+                      );
                       this.map.openInfoWindow(
                         infoWindow,
                         new BMap.Point(item.lng, item.lat)
@@ -1552,7 +1764,7 @@ productMessageVue
       };
 
       option && myChart.setOption(option);
-            window.addEventListener("resize", function() {
+      window.addEventListener("resize", function() {
         myChart.resize();
       });
     },
@@ -1758,10 +1970,15 @@ productMessageVue
     },
     selectAll() {
       console.log("选择全部");
-     this.messageShow = false;
-     this.accHistory = false;
+      this.messageShow = false;
+      this.accHistory = false;
       this.whichProductData = this.allProductData[0];
-          window.sessionStorage.setItem("productKey",this.whichProductData.productKey)
+          this.whichTemp  = "监测点1"
+                        this.tempShow1 = true; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = false;
+      window.sessionStorage.setItem(
+        "productKey",
+        this.whichProductData.productKey
+      );
       this.light();
       this.map.clearOverlays();
       this.center.lng = this.allProductData[0].lng;
@@ -1774,11 +1991,16 @@ productMessageVue
     },
     selectOnline() {
       console.log("选择在线");
-         this.messageShow = false;
-     this.accHistory = false;
+      this.messageShow = false;
+      this.accHistory = false;
       if (this.onlineProductData.length !== 0) {
         this.whichProductData = this.onlineProductData[0];
-            window.sessionStorage.setItem("productKey",this.whichProductData.productKey)
+            this.whichTemp  = "监测点1"
+                        this.tempShow1 = true; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = false;
+        window.sessionStorage.setItem(
+          "productKey",
+          this.whichProductData.productKey
+        );
         this.light();
         //   this.dialogVisible = true;
         this.map.clearOverlays();
@@ -1796,22 +2018,25 @@ productMessageVue
     select() {
       console.log("选择冷藏车");
       this.selectShow = true;
-              this.messageShow = false;
-     this.accHistory = false;
+      this.messageShow = false;
+      this.accHistory = false;
     },
     selectOne(data) {
-  
       this.selectShow = false;
       console.log(data);
       this.allProductData.forEach(item => {
         if (item.productName == data.productName) {
           this.whichProductData = item;
-           
         }
       });
       this.light();
       this.map.clearOverlays();
-         window.sessionStorage.setItem("productKey",this.whichProductData.productKey)
+          this.whichTemp  = "监测点1"
+                        this.tempShow1 = true; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = false;
+      window.sessionStorage.setItem(
+        "productKey",
+        this.whichProductData.productKey
+      );
       this.center.lng = this.whichProductData.lng;
       this.center.lat = this.whichProductData.lat;
       var marker = new BMap.Marker(
@@ -1824,7 +2049,7 @@ productMessageVue
       this.selectShow = false;
     },
     accOpen() {
-    //   console.log(this.whichProductData);
+      //   console.log(this.whichProductData);
       console.log(this.productDetailList);
       this.productDetailList.forEach(item => {
         if (this.whichProductData.productName == item.productName) {
@@ -1847,7 +2072,7 @@ productMessageVue
                 }
                 if (res.msg == "ok") {
                   this.accHistory = true;
-                  var chartDom = document.getElementById("acc");
+              
                   var accList = [];
                   var accDate = [];
                   var accData = [];
@@ -1856,18 +2081,26 @@ productMessageVue
                       res.data.deviceData.length - 100,
                       res.data.deviceData.length
                     );
+                  } else {
+                    accList = res.data.deviceData
                   }
-                  console.log(accList);
-                  accList.forEach(item => {
+                  // console.log(accList);
+                  if(res.data.deviceData == 0) {
+this.accData = false
+                  } else {
+                    this.accData  = true
+                     accList.forEach(item => {
                     accDate.push(item.date);
                     accData.push(item.acc.X + item.acc.Y + item.acc.Z);
                   });
                   console.log(accData);
                   console.log(accDate);
+                      var chartDom = document.getElementById("acc");
                   var myChart = echarts.init(chartDom);
                   var option;
 
                   option = {
+                            
                     legend: {
                       data: accDate
                     },
@@ -1890,21 +2123,7 @@ productMessageVue
                           color: "#fff" //坐标值得具体的颜色
                         }
                       }
-                      //    axisLabel: {   // X轴线 标签修改
 
-                      //  },
-                      //  splitLine:{
-                      //      show: true, // X轴线 颜色类型的修改
-                      //      lineStyle: {
-                      //          color: '#fff'
-                      //      }
-                      //  },
-                      //  axisLine: {
-                      //      show: true, // X轴 网格线 颜色类型的修改
-                      //      lineStyle: {
-                      //          color: '#fff'
-                      //      }
-                      //  },
                     },
                     yAxis: {
                       type: "value",
@@ -1921,14 +2140,6 @@ productMessageVue
                           color: "#fff"
                         }
                       }
-                      //          splitLine:{
-                      //              show: true,
-                      //              lineStyle: {
-                      //                  type: 'dashed',
-                      //                  color: '#fff'
-                      //              }
-
-                      // },
                     },
                     series: [
                       {
@@ -1940,9 +2151,11 @@ productMessageVue
                   };
 
                   option && myChart.setOption(option);
-                        window.addEventListener("resize", function() {
-        myChart.resize();
-      });
+                  window.addEventListener("resize", function() {
+                    myChart.resize();
+                  });
+                  }
+                 
                 }
               });
             }
@@ -1995,20 +2208,42 @@ productMessageVue
       console.log("点坐标点击事件");
     },
     openMessage() {
-      
-        this.messageShow = true;
-      
+      this.messageShow = true;
     },
     closeMessage() {
-               this.messageShow = false;
+      this.messageShow = false;
     },
-        logout() {
-  this.$router.push(`/login?redirect=${this.$route.fullPath}`);
+    logout() {
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`);
     },
     operate() {
-console.log("进入详情页")
-this.$router.push({ path: "/list/vehicle" });
+      console.log("进入详情页");
+      this.$router.push({ path: "/list/vehicle" });
     },
+    selectTemp() {
+      console.log(this.whichTemp)
+      if (this.whichTemp == "监测点1"){
+        this.tempShow1 = true; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = false;
+      }
+            if (this.whichTemp == "监测点2"){
+        this.tempShow1 = false; this.tempShow2 = true; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = false;
+      }
+       if (this.whichTemp == "监测点3"){
+        this.tempShow1 = false; this.tempShow2 = false; this.tempShow3 = true;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = false;
+      }
+             if (this.whichTemp == "监测点4"){
+        this.tempShow1 = false; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = true;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = false;
+      }
+                   if (this.whichTemp == "监测点5"){
+        this.tempShow1 = false; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = true;this.tempShow6 = false;this.tempShow7 = false;
+      }
+                         if (this.whichTemp == "监测点6"){
+        this.tempShow1 = false; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = true;this.tempShow7 = false;
+      }
+                         if (this.whichTemp == "监测点7"){
+        this.tempShow1 = false; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = true;
+      }
+    }
   }
 };
 </script>
@@ -2111,4 +2346,14 @@ this.$router.push({ path: "/list/vehicle" });
   border-radius: 5px;
   margin-top: 20px;
 }
+        .select {
+          width: 60%;
+          /* float: left;
+          margin-left: 2%; */
+          text-align: center;
+          background-color: #1d2b34 !important;
+          color: #f7ea4c;
+          border: 1px solid #1d2b34;
+          outline: none;
+        }
 </style>
