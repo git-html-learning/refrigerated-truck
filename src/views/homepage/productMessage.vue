@@ -854,6 +854,7 @@ export default {
               this.light();
             }
           });
+
           console.log(this.tireList);
           if (this.tireList.length == 0) {
             this.tireShow = false;
@@ -864,6 +865,7 @@ export default {
               return a.deviceName - b.deviceName;
             }
             this.tireList.sort(sortNa);
+            this.tempKeys.sort(sortNa)
             console.log(this.tireList);
             this.time2 = this.tireList[0].date;
             this.productData.tire1.press =
@@ -1389,7 +1391,7 @@ export default {
             yAxis: [
               {
                 type: "value",
-                name: "温度",
+                name: "胎温",
                 position: "left",
                 axisLine: {
                   show: true,
@@ -1403,7 +1405,7 @@ export default {
               },
               {
                 type: "value",
-                name: "湿度",
+                name: "胎压",
                 position: "right",
                 offset: 6,
                 axisLine: {
@@ -1433,9 +1435,9 @@ export default {
             ]
           };
           option && myChart.setOption(option);
-          // window.addEventListener("resize", function() {
-          //   myChart.resize();
-          // });
+          window.addEventListener("resize", function() {
+            myChart.resize();
+          });
         }
       });
     }

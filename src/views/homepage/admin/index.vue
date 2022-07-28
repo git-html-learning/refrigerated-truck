@@ -592,7 +592,7 @@
       <div
         class="select"
         v-if="selectShow"
-        style="width: 150px; min-height: 100px; background-color: rgba(22, 31, 38, 0.87); float: right"
+        style="width: 120px; min-height: 100px; background-color: rgba(22, 31, 38, 0.87); float: right"
       >
         <!-- <span style = "float: right; margin-right: 20px;" @click = "closeSelect"> -->
         <div style="float: right; margin-right: 20px;" @click="closeSelect">
@@ -613,7 +613,7 @@
             />
           </svg>
         </div>
-        <div style="margin-top: 30px;">
+        <div style="margin-top: 30px; text-align: center;">
           <ul style="color: #ebbd49">
             <li
               v-for="(item,index) in allProductData"
