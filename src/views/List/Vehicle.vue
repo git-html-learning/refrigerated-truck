@@ -67,13 +67,9 @@
         <a-row :gutter="16">
           <a-col :span="8" v-for="(item, index) in vehicleList" :key="index">
             <a-card hoverable class="vehicle">
-              <a-card-meta :title="item.productName">
-                <!-- <a-avatar :size="64" slot="avatar" 
-                  style="background: white;border-style:solid;border-width:2px;border-color:#1890ff"
-                >-->
+              <div style = "cursor: pointer" @click="trans(item)">
+                          <a-card-meta :title="item.productName">
                 <a-avatar :size="64" slot="avatar" style="background: #1890ff">
-                  <!-- <i class="iconfont icon-cangku"></i> -->
-                  <!-- <img src="../../static/pic/冷藏车.png" /> -->
                   <img src="../../static/icon/冷藏车1.svg" style="width: 60px" />
                 </a-avatar>
               </a-card-meta>
@@ -85,8 +81,12 @@
                 下次保养时间:
                 <span style="font-weight: 600; font-size: 15px">{{ item.value2 }}</span>
               </p>
-              <a style="float: right; font-size: 15px" @click="cut(item)">删除</a>
+              </div>
+    <div>
+           <a style="float: right; font-size: 15px" @click="cut(item)">删除</a>
               <a style="float: left; font-size: 15px" @click="trans(item)">查看</a>
+    </div>
+         
             </a-card>
           </a-col>
         </a-row>

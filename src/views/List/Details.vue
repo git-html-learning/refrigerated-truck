@@ -534,8 +534,9 @@
 
             <a-row type="flex" style="height: 40px; font-size: 16px">
               <a-col :span="8">
+                <div style = "cursor: pointer" @click="hisTire('0')">
                 <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="hisTire('0')" style="width: 30px" />
+                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
                   <span style="font-size: 13px">胎温:</span>
@@ -549,10 +550,12 @@
                     :class="[parseInt(this.productData.tire1.press)<parseInt(this.tirePressUp)? '' : 'error']"
                   >{{this.productData.tire1.press}}kPa</span>
                 </a-col>
+                </div>
               </a-col>
               <a-col :span="8">
+                <div style = "cursor: pointer" @click="hisTire('4')">
                 <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="hisTire('4')" style="width: 30px" />
+                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
                   <span style="font-size: 13px">胎温:</span>
@@ -566,10 +569,12 @@
                     :class="[parseInt(this.productData.tire5.press)<parseInt(this.tirePressUp)? '' : 'error']"
                   >{{this.productData.tire5.press}}kPa</span>
                 </a-col>
+                </div>
               </a-col>
               <a-col :span="8">
+                 <div style = "cursor: pointer" @click="hisTire('8')">
                 <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="hisTire('8')" style="width: 30px" />
+                  <img src="../../static/icon/轮胎1.svg" style="width: 30px" />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
                   <span style="font-size: 13px">胎温:</span>
@@ -583,12 +588,14 @@
                     :class="[parseInt(this.productData.tire9.press)<parseInt(this.tirePressUp)? '' : 'error']"
                   >{{this.productData.tire9.press}}kPa</span>
                 </a-col>
+                </div>
               </a-col>
             </a-row>
             <a-row type="flex" style="height: 40px; font-size: 16px">
               <a-col :span="8">
+                <div style = "cursor: pointer" @click="hisTire('1')">
                 <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="hisTire('1')" style="width: 30px" />
+                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
                   <span style="font-size: 13px">胎温:</span>
@@ -602,10 +609,12 @@
                     :class="[parseInt(this.productData.tire2.press)<parseInt(this.tirePressUp)? '' : 'error']"
                   >{{this.productData.tire2.press}}kPa</span>
                 </a-col>
+                </div>
               </a-col>
               <a-col :span="8">
+                <div style = "cursor: pointer" @click="hisTire('5')">
                 <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="hisTire('5')" style="width: 30px" />
+                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
                   <span style="font-size: 13px">胎温:</span>
@@ -619,10 +628,12 @@
                     :class="[parseInt(this.productData.tire6.press)<parseInt(this.tirePressUp)? '' : 'error']"
                   >{{this.productData.tire6.press}}kPa</span>
                 </a-col>
+                </div>
               </a-col>
               <a-col :span="8">
+                <div style = "cursor: pointer" @click="hisTire('9')">
                 <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="hisTire('9')" style="width: 30px" />
+                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
                   <span style="font-size: 13px">胎温:</span>
@@ -636,6 +647,7 @@
                     :class="[parseInt(this.productData.tire10.press)<parseInt(this.tirePressUp)? '' : 'error']"
                   >{{this.productData.tire10.press}}kPa</span>
                 </a-col>
+                </div>
               </a-col>
             </a-row>
             <a-row>
@@ -647,8 +659,9 @@
             </a-row>
             <a-row type="flex" style="height: 40px; font-size: 16px">
               <a-col :span="8">
+                 <div style = "cursor: pointer" @click="hisTire('2')">
                 <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="hisTire('2')" style="width: 30px" />
+                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
                   <span style="font-size: 13px">胎温:</span>
@@ -662,10 +675,13 @@
                     :class="[parseInt(this.productData.tire3.press)<parseInt(this.tirePressUp)? '' : 'error']"
                   >{{this.productData.tire3.press}}kPa</span>
                 </a-col>
+                </div>
               </a-col>
               <a-col :span="8">
+                 <div style = "cursor: pointer" @click="hisTire('6')">
                 <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="hisTire('6')" style="width: 30px" />
+                  
+                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
                   <span style="font-size: 13px">胎温:</span>
@@ -679,10 +695,12 @@
                     :class="[parseInt(this.productData.tire7.press)<parseInt(this.tirePressUp)? '' : 'error']"
                   >{{this.productData.tire7.press}}kPa</span>
                 </a-col>
+                </div>
               </a-col>
               <a-col :span="8">
+                 <div style = "cursor: pointer" @click="hisTire('10')">
                 <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="hisTire('10')" style="width: 30px" />
+                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
                   <span style="font-size: 13px">胎温:</span>
@@ -696,12 +714,14 @@
                     :class="[parseInt(this.productData.tire11.press)<parseInt(this.tirePressUp)? '' : 'error']"
                   >{{this.productData.tire11.press}}kPa</span>
                 </a-col>
+                </div>
               </a-col>
             </a-row>
             <a-row type="flex" style="height: 40px; font-size: 16px">
               <a-col :span="8">
+                 <div style = "cursor: pointer" @click="hisTire('3')">
                 <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="hisTire('3')" style="width: 30px" />
+                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
                   <span style="font-size: 13px">胎温:</span>
@@ -715,10 +735,12 @@
                     :class="[parseInt(this.productData.tire4.press)<parseInt(this.tirePressUp)? '' : 'error']"
                   >{{this.productData.tire4.press}}kPa</span>
                 </a-col>
+                </div>
               </a-col>
               <a-col :span="8">
+                <div style = "cursor: pointer" @click="hisTire('7')">
                 <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="hisTire('7')" style="width: 30px" />
+                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
                   <span style="font-size: 13px">胎温:</span>
@@ -732,10 +754,13 @@
                     :class="[parseInt(this.productData.tire8.press)<parseInt(this.tirePressUp)? '' : 'error']"
                   >{{this.productData.tire8.press}}kPa</span>
                 </a-col>
+                </div>
               </a-col>
               <a-col :span="8">
+                <div style = "cursor: pointer" @click="hisTire('11')">
                 <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" @click="hisTire('11')" style="width: 30px" />
+                   
+                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
                 </a-col>
                 <a-col :span="18" style="padding-top: 4px; font-weight: bold">
                   <span style="font-size: 13px">胎温:</span>
@@ -749,6 +774,7 @@
                     :class="[parseInt(this.productData.tire12.press)<parseInt(this.tirePressUp)? '' : 'error']"
                   >{{this.productData.tire12.press}}kPa</span>
                 </a-col>
+                </div>
               </a-col>
             </a-row>
           </a-card>
@@ -1820,7 +1846,7 @@ export default {
     },
     pressEchart() {
         this.tireTabKey =  this.item2
-        // this.tireTabname =  this.item2
+        this.tireTabname =  parseInt(this.item2)
       this.hisEndTime = Date.parse(new Date()) / 1000;
        getDeviceHisData({
         deviceKey: this.tireList[this.item2].deviceKey,
