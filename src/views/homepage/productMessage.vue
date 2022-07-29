@@ -124,7 +124,7 @@
         <el-col :span="5" style="background-color: #132435; margin-left: 10px;" v-show="ifOil">
           <div v-show="oilShow" id="oil" style=" height: 310px; "></div>
           <div v-show="!oilShow" id="oil" style=" height: 310px; ">
-            <p style="color: #43bfdb; font-size :18px; margin-top: 10px; margin-left: 20px">油位数据</p>
+            <p style="color: #43bfdb; font-size :18px; margin-top: 20px; padding-left: 20px">油位数据</p>
             <div style="text-align: center;margin-top: 50px; ">
               <svg
                 t="1658394947186"
@@ -172,7 +172,7 @@
       <el-row>
         <el-col :span="6" v-show="ifLight">
           <div style="background-color: #132435;width: 100%; height: 280px;">
-            <div style="height: 40px; line-height: 40px;font-size: 18px; color: #43bfdb">灯开关</div>
+            <div style="font-size: 18px; color: #43bfdb;padding-top: 10px; padding-left: 20px;">灯开关</div>
             <el-row type="flex" justify style="margin-top: 50px;">
               <el-col :span="8" style="text-align: center">
                 <div
@@ -333,7 +333,7 @@
         </el-col>
         <el-col :span="4" v-if="ifDoor">
           <div style="height: 280px; width: 100%;background-color: #132435; margin-left: 10px;">
-            <div style="height: 40px; line-height: 40px;font-size: 18px; color: #43bfdb">门开关</div>
+            <div style="font-size: 18px; color: #43bfdb;padding-top: 10px; padding-left: 20px;">门开关</div>
             <el-row type="flex" justify style="margin-top: 50px;">
               <el-col :span="12" style="text-align: center">
                 <svg
@@ -968,6 +968,7 @@ export default {
                 "温湿度历史数据(监测点" +
                 res.data.deviceData[0].deviceName.slice(2, 3) +
                 ")",
+                 padding: [10,0,0,0],
               left: "center",
               textStyle: {
                 color: "#43bfdb"
@@ -1122,6 +1123,7 @@ export default {
         var option = {
           title: {
             text: "油位数据",
+              padding: [10,0,0,20],
             left: "left",
             textStyle: {
               color: "#43bfdb"
@@ -1259,6 +1261,7 @@ export default {
             color: "#00a1da",
             title: {
               text: "车辆震动曲线图",
+              padding: [10,0,0,20],
               textStyle: {
                 color: "#43bfdb"
               }
