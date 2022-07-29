@@ -76,7 +76,7 @@
     <div class="left">
       <div
         style="width: 90%; margin-left: 5%; height: 50px; background-color: rgba(22, 31, 38, 0.87); border: none; margin-top: 20px; padding: 10px 20px"
-          >
+      >
         <div style="font-size: 16px; color: #fff;">
           <el-row type="flex" justify>
             <el-col :span="2">
@@ -129,7 +129,7 @@
       <div
         v-show="open1"
         style="width: 90%; margin-left: 5%; height: 210px; background-color: rgba(22, 31, 38, 0.87); border: none; padding: 10px 20px;"
-         >
+      >
         <ul>
           <li>
             <span class="name">
@@ -184,7 +184,7 @@
       </div>
       <div
         style="width: 90%; margin-left: 5%;height: 50px;  background-color: rgba(22, 31, 38, 0.87);border: none; margin-top: 10px; padding: 10px 20px"
-         >
+      >
         <div style="font-size: 16px; color: #fff;">
           <el-row type="flex" justify>
             <el-col :span="2">
@@ -403,7 +403,7 @@
       <div
         style="width: 90%; margin-left: 5%;height: 180px; background-color: rgba(22, 31, 38, 0.87);border: none; padding:10px 20px;"
         v-show="open2"
-           >
+      >
         <ul>
           <li>
             <span class="name" style="margin-left: 20px;">正常</span>
@@ -435,7 +435,7 @@
       </div>
       <div
         style="width: 90%; margin-left: 5%;height: 50px; background-color: rgba(22, 31, 38, 0.87);border: none;margin-top: 10px; padding: 10px 20px"
-          >
+      >
         <div style="font-size: 16px; color: #fff;">
           <el-row type="flex" justify>
             <el-col :span="2">
@@ -516,7 +516,7 @@
       <div
         style="width: 90%; margin-left: 5%;height: 205px; background-color: rgba(22, 31, 38, 0.87);border: none; padding: 10px 20px"
         v-show="open3"
-         >
+      >
         <div id="chart" style="height: 180px; width: 100%; "></div>
       </div>
     </div>
@@ -629,7 +629,7 @@
       <div
         v-show="accHistory"
         style="width: 500px; height: 300px; margin: 80px auto; background-color: rgba(22, 31, 38, 0.87)"
-          >
+      >
         <div style="height: 50px; line-height: 50px;color:#fff;font-size: 16px;  margin-left: 10px">
           <svg
             t="1658309732678"
@@ -751,7 +751,7 @@
     <div class="right">
       <div
         style="width: 90%; margin-left: 5%; height: 50px; background-color: rgba(22, 31, 38, 0.87); border: none; margin-top: 20px; padding: 10px 20px"
-           >
+      >
         <div style="font-size: 16px; color: #fff;">
           <el-row type="flex" justify>
             <el-col :span="2">
@@ -821,55 +821,55 @@
       <div
         style="width: 90%; margin-left: 5%; height: 470px; background-color: rgba(22, 31, 38, 0.87); border: none; padding: 10px 20px"
         v-show="open4"
-          >
+      >
         <div>
           <span style="font-size: 21px; color:#00a2dc;">{{this.whichProductData.productName}}</span>
           <el-row style="height: 120px;  color: #d9dee; margin-top: 13px;">
             <el-col :span="12">
               <p style="color:#f6e836;font-size: 16px;">
                 <!-- 检测点1 -->
-              <!-- 变成七个点的可选 -->
-              <select 
-                      class="select"
-                          v-model="whichTemp"
-                          placeholder="请选择监测点"
-                          @change="selectTemp">
-                <option 
-                       v-for="item in tempSelect"
-                            :key="item.name"
-                            :label="item.name"
-                            :value="item.name">
-
-                </option>
-              </select>
+                <!-- 变成七个点的可选 -->
+                <select
+                  class="select"
+                  v-model="whichTemp"
+                  placeholder="请选择监测点"
+                  @change="selectTemp"
+                >
+                  <option
+                    v-for="item in tempSelect"
+                    :key="item.name"
+                    :label="item.name"
+                    :value="item.name"
+                  ></option>
+                </select>
               </p>
-              <div v-show = "tempShow1">
-              <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp1}}℃</p>
-              <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi1}}％</p>
+              <div v-show="tempShow1">
+                <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp1}}℃</p>
+                <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi1}}％</p>
               </div>
-                       <div v-show = "tempShow2">
-              <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp2}}℃</p>
-              <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi2}}％</p>
+              <div v-show="tempShow2">
+                <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp2}}℃</p>
+                <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi2}}％</p>
               </div>
-                       <div v-show = "tempShow3">
-              <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp3}}℃</p>
-              <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi3}}％</p>
+              <div v-show="tempShow3">
+                <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp3}}℃</p>
+                <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi3}}％</p>
               </div>
-                       <div v-show = "tempShow4">
-              <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp4}}℃</p>
-              <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi4}}％</p>
+              <div v-show="tempShow4">
+                <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp4}}℃</p>
+                <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi4}}％</p>
               </div>
-                       <div v-show = "tempShow5">
-              <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp5}}℃</p>
-              <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi5}}％</p>
+              <div v-show="tempShow5">
+                <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp5}}℃</p>
+                <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi5}}％</p>
               </div>
-                       <div v-show = "tempShow6">
-              <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp6}}℃</p>
-              <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi6}}％</p>
+              <div v-show="tempShow6">
+                <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp6}}℃</p>
+                <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi6}}％</p>
               </div>
-                       <div v-show = "tempShow7">
-              <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp7}}℃</p>
-              <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi7}}％</p>
+              <div v-show="tempShow7">
+                <p style="font-size:14px;color: #fff;">温度： {{this.whichProductData.temp7}}℃</p>
+                <p style="font-size:14px;color: #fff;">湿度： {{this.whichProductData.humi7}}％</p>
               </div>
             </el-col>
             <el-col :span="12">
@@ -1201,7 +1201,7 @@
       </div>
       <div
         style="width: 90%; margin-left: 5%; height: 50px; background-color: rgba(22, 31, 38, 0.87); border: none; margin-top: 10px; padding: 10px 20px"
-         >
+      >
         <div style="font-size: 16px; color: #fff;">
           <el-row type="flex" justify>
             <el-col :span="2">
@@ -1281,7 +1281,7 @@
       <div
         style="width: 90%; margin-left: 5%; height:140px; background-color: rgba(22, 31, 38, 0.87); border: none;  padding: 10px 20px;"
         v-show="open5"
-          >
+      >
         <p
           style="height: 50px; line-height: 50px; color: #cddef6; font-size:18px; margin-left: 30px;"
         >
@@ -1416,22 +1416,22 @@ export default {
       onlineNum: "0",
       messageShow: false,
       tempSelect: [
-        {name:"监测点1"},
-        {name:"监测点2"},
-        {name:"监测点3"},
-        {name:"监测点4"},
-        {name:"监测点5"},
-        {name:"监测点6"},
-        {name:"监测点7"},
+        { name: "监测点1" },
+        { name: "监测点2" },
+        { name: "监测点3" },
+        { name: "监测点4" },
+        { name: "监测点5" },
+        { name: "监测点6" },
+        { name: "监测点7" }
       ],
-      whichTemp:"监测点1",
+      whichTemp: "监测点1",
       tempShow1: true,
       tempShow2: false,
       tempShow3: false,
       tempShow4: false,
       tempShow5: false,
       tempShow6: false,
-      tempShow7: false,
+      tempShow7: false
     };
   },
   beforeDestroy() {
@@ -1502,18 +1502,18 @@ export default {
                     light3: true,
                     shake: "1",
                     humi1: "0",
-                     temp1: "0",
-                      humi2: "0",
+                    temp1: "0",
+                    humi2: "0",
                     temp2: "0",
-                      humi3: "0",
+                    humi3: "0",
                     temp3: "0",
-                      humi4: "0",
+                    humi4: "0",
                     temp4: "0",
-                      humi5: "0",
+                    humi5: "0",
                     temp5: "0",
-                      humi6: "0",
+                    humi6: "0",
                     temp6: "0",
-                      humi7: "0",
+                    humi7: "0",
                     temp7: "0",
                     time: 0
                   };
@@ -1542,31 +1542,31 @@ export default {
                     }
                     if (item1.deviceName == "TH1") {
                       obj.humi1 = item1.humi;
-                      obj.temp1= item1.temp;
+                      obj.temp1 = item1.temp;
                     }
-                           if (item1.deviceName == "TH2") {
+                    if (item1.deviceName == "TH2") {
                       obj.humi2 = item1.humi;
-                      obj.temp2= item1.temp;
+                      obj.temp2 = item1.temp;
                     }
-                     if (item1.deviceName == "TH3") {
+                    if (item1.deviceName == "TH3") {
                       obj.humi3 = item1.humi;
-                      obj.temp3= item1.temp;
+                      obj.temp3 = item1.temp;
                     }
-                  if (item1.deviceName == "TH4") {
+                    if (item1.deviceName == "TH4") {
                       obj.humi4 = item1.humi;
-                      obj.temp4= item1.temp;
+                      obj.temp4 = item1.temp;
                     }
-                   if (item1.deviceName == "TH5") {
+                    if (item1.deviceName == "TH5") {
                       obj.humi5 = item1.humi;
-                      obj.temp5= item1.temp;
+                      obj.temp5 = item1.temp;
                     }
-                      if (item1.deviceName == "TH6") {
+                    if (item1.deviceName == "TH6") {
                       obj.humi6 = item1.humi;
-                      obj.temp6= item1.temp;
+                      obj.temp6 = item1.temp;
                     }
-                if (item1.deviceName == "TH7") {
+                    if (item1.deviceName == "TH7") {
                       obj.humi7 = item1.humi;
-                      obj.temp7= item1.temp;
+                      obj.temp7 = item1.temp;
                     }
                     if (item1.deviceName == "ACC") {
                       obj.shake =
@@ -1610,18 +1610,8 @@ export default {
                   );
 
                   this.map.addOverlay(marker);
-                  var opts = {
-                    width: 200,
-                    height: 100,
-                    title: "故宫博物院"
-                  };
-                  var html = [];
-                  // html.push(
-                  //   '<div style="font-weight:bold;color:#CE5521;font-size:12px； margin-top: 40px;">' +
-                  //     poi.title +
-                  //     "</div>"
-                  // );
 
+                  var html = [];
                   html.push(
                     '<table cellspacing="0" style="table-layout:fixed;width:100%;font:15px arial,simsun,sans-serif; margin: 10px;background-color:#fff !important; color: #0b1a2b "><tbody>'
                   );
@@ -1663,30 +1653,26 @@ export default {
                   });
                   // var infoWindow = new BMap.InfoWindow('地址：（'+item,lng+','+item.lat+")", opts);
                   // 点标记添加点击事件
-                  marker.addEventListener(
-                    "click",
-                    () => {
-                      console.log("1");
-                      this.whichProductData = item;
-                      this.whichTemp  = "监测点1"
-                        this.tempShow1 = true; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = false;
-                      window.sessionStorage.setItem(
-                        "productKey",
-                        this.whichProductData.productKey
-                      );
-                      this.map.openInfoWindow(
-                        infoWindow,
-                        new BMap.Point(item.lng, item.lat)
-                      ); // 开启信息窗口
-                    }
-                    // function () {
-                    //
-                    // this.whichProductData = item
-                    // console.log(this.whichProductData)
-                    // this.markerClick(item)
-                    // }
-                  );
-                  //   marker.addEventListener('click', this.markerClick(item));
+                  marker.addEventListener("click", () => {
+                    console.log("1");
+                    this.whichProductData = item;
+                    this.whichTemp = "监测点1";
+                    this.tempShow1 = true;
+                    this.tempShow2 = false;
+                    this.tempShow3 = false;
+                    this.tempShow4 = false;
+                    this.tempShow5 = false;
+                    this.tempShow6 = false;
+                    this.tempShow7 = false;
+                    window.sessionStorage.setItem(
+                      "productKey",
+                      this.whichProductData.productKey
+                    );
+                    this.map.openInfoWindow(
+                      infoWindow,
+                      new BMap.Point(item.lng, item.lat)
+                    ); // 开启信息窗口
+                  });
                 });
               }
             });
@@ -1973,8 +1959,15 @@ export default {
       this.messageShow = false;
       this.accHistory = false;
       this.whichProductData = this.allProductData[0];
-          this.whichTemp  = "监测点1"
-                        this.tempShow1 = true; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = false;
+
+      this.whichTemp = "监测点1";
+      this.tempShow1 = true;
+      this.tempShow2 = false;
+      this.tempShow3 = false;
+      this.tempShow4 = false;
+      this.tempShow5 = false;
+      this.tempShow6 = false;
+      this.tempShow7 = false;
       window.sessionStorage.setItem(
         "productKey",
         this.whichProductData.productKey
@@ -1983,9 +1976,85 @@ export default {
       this.map.clearOverlays();
       this.center.lng = this.allProductData[0].lng;
       this.center.lat = this.allProductData[0].lat;
+      this.zoom = 8;
+      this.map.centerAndZoom(
+        new BMap.Point(this.center.lng, this.center.lat),
+        this.zoom
+      ); // 初始化地图,设置中心点坐标和地图级别
       this.allProductData.forEach(item => {
         var marker = new BMap.Marker(new BMap.Point(item.lng, item.lat));
         this.map.addOverlay(marker);
+    var opts = {
+                    width: 200,
+                    height: 100,
+                    title: "故宫博物院"
+                  };
+                  var html = [];
+                  html.push(
+                    '<table cellspacing="0" style="table-layout:fixed;width:100%;font:15px arial,simsun,sans-serif; margin: 10px;background-color:#fff !important; color: #0b1a2b "><tbody>'
+                  );
+                  html.push(
+                    "<tr style = 'height: 35px; line-height: 35px;padding-top: 10px;' >"
+                  );
+                  html.push(
+                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">冷藏车:</td>'
+                  );
+                  html.push(
+                    '<td style="vertical-align:top;line-height:18px;">' +
+                      item.productName +
+                      " </td>"
+                  );
+                  html.push("</tr>");
+                  html.push("<tr style = 'height: 35px; line-height: 35px;' >");
+                  html.push(
+                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">经度:</td>'
+                  );
+                  html.push(
+                    '<td style="vertical-align:top;line-height:18px;">' +
+                      item.lng +
+                      " </td>"
+                  );
+                  html.push("</tr>");
+                  html.push("<tr style = 'height: 35px; line-height: 35px;' >");
+                  html.push(
+                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">纬度:</td>'
+                  );
+                  html.push(
+                    '<td style="vertical-align:top;line-height:18px;">' +
+                      item.lat +
+                      " </td>"
+                  );
+                  html.push("</tr>");
+                  html.push("</tbody></table>");
+                  var infoWindow = new BMap.InfoWindow(html.join(""), {
+                    width: 200
+                  });
+                  // var infoWindow = new BMap.InfoWindow('地址：（'+item,lng+','+item.lat+")", opts);
+                  // 点标记添加点击事件
+                  marker.addEventListener("click", () => {
+                    console.log("1");
+                    this.whichProductData = item;
+                    this.whichTemp = "监测点1";
+                    this.tempShow1 = true;
+                    this.tempShow2 = false;
+                    this.tempShow3 = false;
+                    this.tempShow4 = false;
+                    this.tempShow5 = false;
+                    this.tempShow6 = false;
+                    this.tempShow7 = false;
+                    window.sessionStorage.setItem(
+                      "productKey",
+                      this.whichProductData.productKey
+                    );
+                    this.map.openInfoWindow(
+                      infoWindow,
+                      new BMap.Point(item.lng, item.lat)
+                    ); // 开启信息窗口
+                  });
+
+
+
+
       });
       this.drawOil();
     },
@@ -1995,8 +2064,14 @@ export default {
       this.accHistory = false;
       if (this.onlineProductData.length !== 0) {
         this.whichProductData = this.onlineProductData[0];
-            this.whichTemp  = "监测点1"
-                        this.tempShow1 = true; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = false;
+        this.whichTemp = "监测点1";
+        this.tempShow1 = true;
+        this.tempShow2 = false;
+        this.tempShow3 = false;
+        this.tempShow4 = false;
+        this.tempShow5 = false;
+        this.tempShow6 = false;
+        this.tempShow7 = false;
         window.sessionStorage.setItem(
           "productKey",
           this.whichProductData.productKey
@@ -2006,10 +2081,79 @@ export default {
         this.map.clearOverlays();
         this.center.lng = this.onlineProductData[0].lng;
         this.center.lat = this.onlineProductData[0].lat;
+        this.zoom = 8;
+        this.map.centerAndZoom(
+          new BMap.Point(this.center.lng, this.center.lat),
+          this.zoom
+        ); // 初始化地图,设置中心点坐标和地图级别
         this.onlineProductData.forEach(item => {
           var marker = new BMap.Marker(new BMap.Point(item.lng, item.lat));
           this.map.addOverlay(marker);
+
+                  var html = [];
+                  html.push(
+                    '<table cellspacing="0" style="table-layout:fixed;width:100%;font:15px arial,simsun,sans-serif; margin: 10px;background-color:#fff !important; color: #0b1a2b "><tbody>'
+                  );
+                  html.push(
+                    "<tr style = 'height: 35px; line-height: 35px;padding-top: 10px;' >"
+                  );
+                  html.push(
+                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">冷藏车:</td>'
+                  );
+                  html.push(
+                    '<td style="vertical-align:top;line-height:18px;">' +
+                      item.productName +
+                      " </td>"
+                  );
+                  html.push("</tr>");
+                  html.push("<tr style = 'height: 35px; line-height: 35px;' >");
+                  html.push(
+                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">经度:</td>'
+                  );
+                  html.push(
+                    '<td style="vertical-align:top;line-height:18px;">' +
+                      item.lng +
+                      " </td>"
+                  );
+                  html.push("</tr>");
+                  html.push("<tr style = 'height: 35px; line-height: 35px;' >");
+                  html.push(
+                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">纬度:</td>'
+                  );
+                  html.push(
+                    '<td style="vertical-align:top;line-height:18px;">' +
+                      item.lat +
+                      " </td>"
+                  );
+                  html.push("</tr>");
+                  html.push("</tbody></table>");
+                  var infoWindow = new BMap.InfoWindow(html.join(""), {
+                    width: 200
+                  });
+                  // var infoWindow = new BMap.InfoWindow('地址：（'+item,lng+','+item.lat+")", opts);
+                  // 点标记添加点击事件
+                  marker.addEventListener("click", () => {
+                    console.log("1");
+                    this.whichProductData = item;
+                    this.whichTemp = "监测点1";
+                    this.tempShow1 = true;
+                    this.tempShow2 = false;
+                    this.tempShow3 = false;
+                    this.tempShow4 = false;
+                    this.tempShow5 = false;
+                    this.tempShow6 = false;
+                    this.tempShow7 = false;
+                    window.sessionStorage.setItem(
+                      "productKey",
+                      this.whichProductData.productKey
+                    );
+                    this.map.openInfoWindow(
+                      infoWindow,
+                      new BMap.Point(item.lng, item.lat)
+                    ); // 开启信息窗口
+                  });
         });
+   
       } else {
         this.$message.info("当前没有在线冷藏车！！");
       }
@@ -2023,16 +2167,30 @@ export default {
     },
     selectOne(data) {
       this.selectShow = false;
-      console.log(data);
+      // console.log(data);
       this.allProductData.forEach(item => {
         if (item.productName == data.productName) {
           this.whichProductData = item;
         }
       });
+      console.log(this.whichProductData);
+      this.center.lng = this.whichProductData.lng;
+      this.center.lat = this.whichProductData.lat;
+      this.zoom = 15;
+      this.map.centerAndZoom(
+        new BMap.Point(this.center.lng, this.center.lat),
+        this.zoom
+      ); // 初始化地图,设置中心点坐标和地图级别
       this.light();
       this.map.clearOverlays();
-          this.whichTemp  = "监测点1"
-                        this.tempShow1 = true; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = false;
+      this.whichTemp = "监测点1";
+      this.tempShow1 = true;
+      this.tempShow2 = false;
+      this.tempShow3 = false;
+      this.tempShow4 = false;
+      this.tempShow5 = false;
+      this.tempShow6 = false;
+      this.tempShow7 = false;
       window.sessionStorage.setItem(
         "productKey",
         this.whichProductData.productKey
@@ -2043,6 +2201,63 @@ export default {
         new BMap.Point(this.whichProductData.lng, this.whichProductData.lat)
       );
       this.map.addOverlay(marker);
+          var html = [];
+                  html.push(
+                    '<table cellspacing="0" style="table-layout:fixed;width:100%;font:15px arial,simsun,sans-serif; margin: 10px;background-color:#fff !important; color: #0b1a2b "><tbody>'
+                  );
+                  html.push(
+                    "<tr style = 'height: 35px; line-height: 35px;padding-top: 10px;' >"
+                  );
+                  html.push(
+                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">冷藏车:</td>'
+                  );
+                  html.push(
+                    '<td style="vertical-align:top;line-height:18px;">' +
+                   this.whichProductData.productName +
+                      " </td>"
+                  );
+                  html.push("</tr>");
+                  html.push("<tr style = 'height: 35px; line-height: 35px;' >");
+                  html.push(
+                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">经度:</td>'
+                  );
+                  html.push(
+                    '<td style="vertical-align:top;line-height:18px;">' +
+                     this.whichProductData.lng +
+                      " </td>"
+                  );
+                  html.push("</tr>");
+                  html.push("<tr style = 'height: 35px; line-height: 35px;' >");
+                  html.push(
+                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">纬度:</td>'
+                  );
+                  html.push(
+                    '<td style="vertical-align:top;line-height:18px;">' +
+                      this.whichProductData.lat +
+                      " </td>"
+                  );
+                  html.push("</tr>");
+                  html.push("</tbody></table>");
+                  var infoWindow = new BMap.InfoWindow(html.join(""), {
+                    width: 200
+                  });
+                  // var infoWindow = new BMap.InfoWindow('地址：（'+item,lng+','+item.lat+")", opts);
+                  // 点标记添加点击事件
+                  marker.addEventListener("click", () => {
+                    console.log("1");
+                    this.whichTemp = "监测点1";
+                    this.tempShow1 = true;
+                    this.tempShow2 = false;
+                    this.tempShow3 = false;
+                    this.tempShow4 = false;
+                    this.tempShow5 = false;
+                    this.tempShow6 = false;
+                    this.tempShow7 = false;
+                    this.map.openInfoWindow(
+                      infoWindow,
+                      new BMap.Point(this.whichProductData.lng, this.whichProductData.lat)
+                    ); // 开启信息窗口
+                  });
       this.drawOil();
     },
     closeSelect() {
@@ -2072,7 +2287,7 @@ export default {
                 }
                 if (res.msg == "ok") {
                   this.accHistory = true;
-              
+
                   var accList = [];
                   var accDate = [];
                   var accData = [];
@@ -2082,80 +2297,77 @@ export default {
                       res.data.deviceData.length
                     );
                   } else {
-                    accList = res.data.deviceData
+                    accList = res.data.deviceData;
                   }
                   // console.log(accList);
-                  if(res.data.deviceData == 0) {
-this.accData = false
+                  if (res.data.deviceData == 0) {
+                    this.accData = false;
                   } else {
-                    this.accData  = true
-                     accList.forEach(item => {
-                    accDate.push(item.date);
-                    accData.push(item.acc.X + item.acc.Y + item.acc.Z);
-                  });
-                  console.log(accData);
-                  console.log(accDate);
-                      var chartDom = document.getElementById("acc");
-                  var myChart = echarts.init(chartDom);
-                  var option;
+                    this.accData = true;
+                    accList.forEach(item => {
+                      accDate.push(item.date);
+                      accData.push(item.acc.X + item.acc.Y + item.acc.Z);
+                    });
+                    console.log(accData);
+                    console.log(accDate);
+                    var chartDom = document.getElementById("acc");
+                    var myChart = echarts.init(chartDom);
+                    var option;
 
-                  option = {
-                            
-                    legend: {
-                      data: accDate
-                    },
-                    tooltip: {
-                      trigger: "axis"
-                    },
-                    xAxis: {
-                      type: "category",
-                      axisTick: {
-                        alignWithLabel: true
+                    option = {
+                      legend: {
+                        data: accDate
                       },
-                      data: accDate,
-                      axisLabel: {
-                        formatter: function(value) {
-                          return (
-                            value.slice(5, 10) + "\n" + value.slice(11, 16)
-                          );
+                      tooltip: {
+                        trigger: "axis"
+                      },
+                      xAxis: {
+                        type: "category",
+                        axisTick: {
+                          alignWithLabel: true
                         },
-                        textStyle: {
-                          color: "#fff" //坐标值得具体的颜色
-                        }
-                      }
-
-                    },
-                    yAxis: {
-                      type: "value",
-                      axisLabel: {
-                        formatter: "{value}",
-                        textStyle: {
-                          color: "#fff" //坐标值得具体的颜色
+                        data: accDate,
+                        axisLabel: {
+                          formatter: function(value) {
+                            return (
+                              value.slice(5, 10) + "\n" + value.slice(11, 16)
+                            );
+                          },
+                          textStyle: {
+                            color: "#fff" //坐标值得具体的颜色
+                          }
                         }
                       },
-                      axisLine: {
-                        show: true, // Y轴线
-                        lineStyle: {
-                          type: "dashed",
-                          color: "#fff"
+                      yAxis: {
+                        type: "value",
+                        axisLabel: {
+                          formatter: "{value}",
+                          textStyle: {
+                            color: "#fff" //坐标值得具体的颜色
+                          }
+                        },
+                        axisLine: {
+                          show: true, // Y轴线
+                          lineStyle: {
+                            type: "dashed",
+                            color: "#fff"
+                          }
                         }
-                      }
-                    },
-                    series: [
-                      {
-                        data: accData,
-                        type: "line",
-                        smooth: true
-                      }
-                    ]
-                  };
+                      },
+                      series: [
+                        {
+                          data: accData,
+                          type: "line",
+                          smooth: true
+                        }
+                      ]
+                    };
 
-                  option && myChart.setOption(option);
-                  window.addEventListener("resize", function() {
-                    myChart.resize();
-                  });
+                    option && myChart.setOption(option);
+                    window.addEventListener("resize", function() {
+                      myChart.resize();
+                    });
                   }
-                 
                 }
               });
             }
@@ -2221,27 +2433,69 @@ this.accData = false
       this.$router.push({ path: "/list/vehicle" });
     },
     selectTemp() {
-      console.log(this.whichTemp)
-      if (this.whichTemp == "监测点1"){
-        this.tempShow1 = true; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = false;
+      console.log(this.whichTemp);
+      if (this.whichTemp == "监测点1") {
+        this.tempShow1 = true;
+        this.tempShow2 = false;
+        this.tempShow3 = false;
+        this.tempShow4 = false;
+        this.tempShow5 = false;
+        this.tempShow6 = false;
+        this.tempShow7 = false;
       }
-            if (this.whichTemp == "监测点2"){
-        this.tempShow1 = false; this.tempShow2 = true; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = false;
+      if (this.whichTemp == "监测点2") {
+        this.tempShow1 = false;
+        this.tempShow2 = true;
+        this.tempShow3 = false;
+        this.tempShow4 = false;
+        this.tempShow5 = false;
+        this.tempShow6 = false;
+        this.tempShow7 = false;
       }
-       if (this.whichTemp == "监测点3"){
-        this.tempShow1 = false; this.tempShow2 = false; this.tempShow3 = true;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = false;
+      if (this.whichTemp == "监测点3") {
+        this.tempShow1 = false;
+        this.tempShow2 = false;
+        this.tempShow3 = true;
+        this.tempShow4 = false;
+        this.tempShow5 = false;
+        this.tempShow6 = false;
+        this.tempShow7 = false;
       }
-             if (this.whichTemp == "监测点4"){
-        this.tempShow1 = false; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = true;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = false;
+      if (this.whichTemp == "监测点4") {
+        this.tempShow1 = false;
+        this.tempShow2 = false;
+        this.tempShow3 = false;
+        this.tempShow4 = true;
+        this.tempShow5 = false;
+        this.tempShow6 = false;
+        this.tempShow7 = false;
       }
-                   if (this.whichTemp == "监测点5"){
-        this.tempShow1 = false; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = true;this.tempShow6 = false;this.tempShow7 = false;
+      if (this.whichTemp == "监测点5") {
+        this.tempShow1 = false;
+        this.tempShow2 = false;
+        this.tempShow3 = false;
+        this.tempShow4 = false;
+        this.tempShow5 = true;
+        this.tempShow6 = false;
+        this.tempShow7 = false;
       }
-                         if (this.whichTemp == "监测点6"){
-        this.tempShow1 = false; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = true;this.tempShow7 = false;
+      if (this.whichTemp == "监测点6") {
+        this.tempShow1 = false;
+        this.tempShow2 = false;
+        this.tempShow3 = false;
+        this.tempShow4 = false;
+        this.tempShow5 = false;
+        this.tempShow6 = true;
+        this.tempShow7 = false;
       }
-                         if (this.whichTemp == "监测点7"){
-        this.tempShow1 = false; this.tempShow2 = false; this.tempShow3 = false;this.tempShow4 = false;this.tempShow5 = false;this.tempShow6 = false;this.tempShow7 = true;
+      if (this.whichTemp == "监测点7") {
+        this.tempShow1 = false;
+        this.tempShow2 = false;
+        this.tempShow3 = false;
+        this.tempShow4 = false;
+        this.tempShow5 = false;
+        this.tempShow6 = false;
+        this.tempShow7 = true;
       }
     }
   }
@@ -2346,14 +2600,14 @@ this.accData = false
   border-radius: 5px;
   margin-top: 20px;
 }
-        .select {
-          width: 60%;
-          /* float: left;
+.select {
+  width: 60%;
+  /* float: left;
           margin-left: 2%; */
-          text-align: center;
-          background-color: #1d2b34 !important;
-          color: #f7ea4c;
-          border: 1px solid #1d2b34;
-          outline: none;
-        }
+  text-align: center;
+  background-color: #1d2b34 !important;
+  color: #f7ea4c;
+  border: 1px solid #1d2b34;
+  outline: none;
+}
 </style>
