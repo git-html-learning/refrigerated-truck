@@ -1053,14 +1053,13 @@ import {
 import { person, editPerson } from "@/api/user";
 import * as echarts from "echarts";
 export default {
-  // mounted() {
-  //   this.getQuery();
-  //   this.timer = setInterval(this.getQuery, 60000);
-  // },
+  mounted() {
+    this.timer = setInterval(this.prepare, 20000);
+  },
 
-  // beforeDestroy() {
-  //   clearInterval(this.timer);
-  // },
+  beforeDestroy() {
+    clearInterval(this.timer);
+  },
 
   data() {
     return {
