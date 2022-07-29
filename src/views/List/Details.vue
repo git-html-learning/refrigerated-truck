@@ -1303,14 +1303,14 @@ export default {
   methods: {
       prepare() {
       console.log("准备");
-
+var username = window.sessionStorage.getItem("username")
       this.role = window.sessionStorage.getItem("role");
       this.productKey = window.sessionStorage.getItem("productKey");
       console.log(this.productKey);
       var pkList = [];
       pkList.push(this.productKey);
       var data = {
-        username: "通宇冷藏车",
+        username: username,
         pkList: pkList,
         startTime: 111111
       };
@@ -2355,129 +2355,7 @@ export default {
         }
       });
     },
-    // drawPress() {
-    //   console.log("开始绘制胎温胎压");
-    //   var endTime = Math.round(new Date() / 1000);
-    //   var startTime = endTime - 7200 * 12;
-    //   var obj = {
-    //     deviceKey: this.pressDevcieKey,
-    //     startTime: startTime,
-    //     endTime: endTime,
-    //     asc: 1
-    //   };
-    //   getDeviceHisData(obj).then(res => {
-    //     console.log(res);
-    //     if (res.msg == "未找到记录") {
-    //       this.pressShow = false;
-    //     } else if (res.msg == "ok") {
-    //       this.pressShow = true;
-    //       var date = [];
-    //       var tempData = [];
-    //       var pressData = [];
-    //       res.data.deviceData.forEach(item => {
-    //         date.push(item.date);
-    //         pressData.push(Math.round(item.tirePress * 1000) / 1000000);
-    //         tempData.push(item.tireTemp);
-    //       });
-    //       console.log(date);
-    //       console.log(tempData);
-    //       console.log(pressData);
-    //       var myChart = echarts.init(document.getElementById("press"));
-    //       console.log(myChart);
-    //       var colors = ["#d92179", "#008b9c"];
-
-    //       var option = {
-    //         color: colors,
-    //         title: {
-    //           text: "'胎温胎压数据(胎'+this.item2+')'",
-    //           left: "center",
-    //           textStyle: {
-    //             color: "#43bfdb"
-    //           }
-    //         },
-    //         tooltip: {
-    //           trigger: "axis",
-    //           axisPointer: {
-    //             type: "cross"
-    //           }
-    //         },
-    //         legend: {
-    //           data: ["胎温", "胎压"],
-    //           left: 20,
-    //           textStyle: {
-    //             color: "#fff"
-    //           }
-    //         },
-    //         grid: {
-    //           left: "3%",
-    //           right: "4%",
-    //           bottom: "3%",
-    //           containLabel: true
-    //         },
-    //         color: colors,
-    //         xAxis: {
-    //           type: "category",
-    //           boundaryGap: false, //横轴顶格
-    //           data: date,
-    //           axisLabel: {
-    //             formatter: function(value) {
-    //               return value.slice(5, 10) + "\n" + value.slice(11, 16);
-    //             },
-    //             textStyle: {
-    //               color: "#fff" //坐标值得具体的颜色
-    //             }
-    //           }
-    //         },
-    //         yAxis: [
-    //           {
-    //             type: "value",
-    //             name: "温度",
-    //             position: "left",
-    //             axisLine: {
-    //               show: true,
-    //               lineStyle: {
-    //                 color: colors[0]
-    //               }
-    //             },
-    //             axisLabel: {
-    //               formatter: "{value} ℃"
-    //             }
-    //           },
-    //           {
-    //             type: "value",
-    //             name: "湿度",
-    //             position: "right",
-    //             offset: 6,
-    //             axisLine: {
-    //               show: true,
-    //               lineStyle: {
-    //                 color: colors[1]
-    //               }
-    //             },
-    //             axisLabel: {
-    //               formatter: "{value} kPa"
-    //             }
-    //           }
-    //         ],
-    //         series: [
-    //           {
-    //             name: "温度",
-    //             type: "line",
-    //             data: tempData
-    //           },
-    //           {
-    //             name: "湿度",
-    //             type: "line",
-    //             yAxisIndex: 1, //解决了左右y轴相同刻度，选定哪条y
-    //             // stack: "总量",
-    //             data: pressData
-    //           }
-    //         ]
-    //       };
-    //       option && myChart.setOption(option);
-    //     }
-    //   });
-    // }
+    
   }
 };
 </script>

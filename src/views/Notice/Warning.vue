@@ -356,8 +356,9 @@ export default {
     detailPage(data) {
       console.log("点击跳转到详情页")
  console.log(data)
+  var transName = ""
  var transPk = ""
- var transName = ""
+
  if (data == "A7670C") {
 transName = data
 transPk = "cauief34s1f1bbrmq430"
@@ -365,12 +366,14 @@ transPk = "cauief34s1f1bbrmq430"
    transName = data
 transPk = "c51vnhu0c9hht95g2dtg"
  }
+   window.sessionStorage.setItem("productKey", transPk);
+      window.sessionStorage.setItem("carNum", transName);
    this.$router.push({
         path: "/list/details",
-        query: {
-          pk: transPk,
-          carnum: transName,
-        },
+        // query: {
+        //   pk: transPk,
+        //   carnum: transName,
+        // },
       });
     }
   },

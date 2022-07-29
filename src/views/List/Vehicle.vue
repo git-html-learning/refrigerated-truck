@@ -83,10 +83,10 @@
               </p>
               </div>
     <div>
-           <a style="float: right; font-size: 15px" @click="cut(item)">删除</a>
+             <a style="float: right; font-size: 15px" @click="cut(item)">删除</a>
               <a style="float: left; font-size: 15px" @click="trans(item)">查看</a>
     </div>
-         
+       
             </a-card>
           </a-col>
         </a-row>
