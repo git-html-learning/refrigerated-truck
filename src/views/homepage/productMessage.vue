@@ -573,7 +573,7 @@
             <div v-show="pressShow" id="press" style="height: 280px; width: 500px; background-color: #132435;"></div>
           <div style="height: 280px; width: 100%; background-color: #132435;" v-show="!pressShow">
             <p
-              style="color: #43bfdb; font-size :18px; margin-top: 10px; margin-left: 20px"
+              style="color: #43bfdb; font-size :18px; padding-top: 10px; padding-left: 20px"
             >胎温胎压历史数据(一天内)</p>
             <div style="text-align: center;margin-top: 50px; ">
               <svg
