@@ -593,7 +593,7 @@
         class="select"
         v-if="selectShow"
         style="width: 120px; min-height: 100px; background-color: rgba(22, 31, 38, 0.87); float: right"
-      >
+         >
         <!-- <span style = "float: right; margin-right: 20px;" @click = "closeSelect"> -->
         <div style="float: right; margin-right: 20px;" @click="closeSelect">
           <svg
@@ -629,7 +629,7 @@
       <div
         v-show="accHistory"
         style="width: 500px; height: 300px; margin: 80px auto; background-color: rgba(22, 31, 38, 0.87)"
-      >
+         >
         <div style="height: 50px; line-height: 50px;color:#fff;font-size: 16px;  margin-left: 10px">
           <svg
             t="1658309732678"
@@ -677,7 +677,7 @@
         class="message"
         v-if="messageShow"
         style="width:150%; height: 720px;  background-color: #0b1a2b; z-index: 20; position: absolute; top: 20px; left: -25%;"
-      >
+           >
         <div style="height: 35px; line-height: 35px;">
           <el-row type="flex" justify>
             <el-col :span="1">
@@ -719,7 +719,10 @@
               </svg>
             </el-col>
             <el-col :span="10" style="text-allign: left;">
+            <div style = "cursor: pointer"  @click = "detailPage(whichProductData)">
               <span style="font-size: 18px; color: #f1e44a">{{this.whichProductData.productName}}</span>
+              <span style  = "color: #f1e143; ">「点击进入冷藏车详情页」</span>
+              </div>
             </el-col>
             <el-col :span="1" :offset="12">
               <div style="cursor: pointer;" @click="closeMessage">
@@ -1515,7 +1518,23 @@ export default {
                     temp6: "0",
                     humi7: "0",
                     temp7: "0",
-                    time: 0
+                    time: 0,
+                    tireTempUp: item.extraInfo.thresholdValue.tire.tireTemp,
+                    tirePressUp: item.extraInfo.thresholdValue.tire.tirePress,
+                    shakeThres: item.extraInfo.thresholdValue.shake,
+                    oilThres: item.extraInfo.thresholdValue.oil,
+                    humiDown:
+                      item.extraInfo.thresholdValue.tempAndHumi.humiDown,
+                    humiUp: item.extraInfo.thresholdValue.tempAndHumi.humiUp,
+                    tempDown:
+                      item.extraInfo.thresholdValue.tempAndHumi.tempDown,
+                    tempUp: item.extraInfo.thresholdValue.tempAndHumi.tempUp,
+                    error: {
+                      oil: false,
+                      shake: false,
+                      humiAndTemp: false,
+                      tire: false
+                    }
                   };
                   item.deviceData.forEach(item1 => {
                     if (item1.deviceName == "GPS") {
@@ -1543,36 +1562,100 @@ export default {
                     if (item1.deviceName == "TH1") {
                       obj.humi1 = item1.humi;
                       obj.temp1 = item1.temp;
+                      if (
+                        parseInt(obj.humi1) > parseInt(obj.humiUp) ||
+                        parseInt(obj.humi1) < parseInt(obj.humiDown) ||
+                        parseInt(obj.temp1) > parseInt(obj.tempUp) ||
+                        parseInt(obj.temp1) < parseInt(obj.tempDown)
+                      ) {
+                        obj.error.humiAndTemp = true;
+                      }
                     }
                     if (item1.deviceName == "TH2") {
                       obj.humi2 = item1.humi;
                       obj.temp2 = item1.temp;
+                      if (
+                        parseInt(obj.humi2) > parseInt(obj.humiUp) ||
+                        parseInt(obj.humi2) < parseInt(obj.humiDown) ||
+                        parseInt(obj.temp2) > parseInt(obj.tempUp) ||
+                        parseInt(obj.temp2) < parseInt(obj.tempDown)
+                      ) {
+                        obj.error.humiAndTemp = true;
+                      }
                     }
                     if (item1.deviceName == "TH3") {
                       obj.humi3 = item1.humi;
                       obj.temp3 = item1.temp;
+                      if (
+                        parseInt(obj.humi3) > parseInt(obj.humiUp) ||
+                        parseInt(obj.humi3) < parseInt(obj.humiDown) ||
+                        parseInt(obj.temp3) > parseInt(obj.tempUp) ||
+                        parseInt(obj.temp3) < parseInt(obj.tempDown)
+                      ) {
+                        obj.error.humiAndTemp = true;
+                      }
                     }
                     if (item1.deviceName == "TH4") {
                       obj.humi4 = item1.humi;
                       obj.temp4 = item1.temp;
+                      if (
+                        parseInt(obj.humi4) > parseInt(obj.humiUp) ||
+                        parseInt(obj.humi4) < parseInt(obj.humiDown) ||
+                        parseInt(obj.temp4) > parseInt(obj.tempUp) ||
+                        parseInt(obj.temp4) < parseInt(obj.tempDown)
+                      ) {
+                        obj.error.humiAndTemp = true;
+                      }
                     }
                     if (item1.deviceName == "TH5") {
                       obj.humi5 = item1.humi;
                       obj.temp5 = item1.temp;
+                      if (
+                        parseInt(obj.humi5) > parseInt(obj.humiUp) ||
+                        parseInt(obj.humi5) < parseInt(obj.humiDown) ||
+                        parseInt(obj.temp5) > parseInt(obj.tempUp) ||
+                        parseInt(obj.temp5) < parseInt(obj.tempDown)
+                      ) {
+                        obj.error.humiAndTemp = true;
+                      }
                     }
                     if (item1.deviceName == "TH6") {
                       obj.humi6 = item1.humi;
                       obj.temp6 = item1.temp;
+                      if (
+                        parseInt(obj.humi6) > parseInt(obj.humiUp) ||
+                        parseInt(obj.humi6) < parseInt(obj.humiDown) ||
+                        parseInt(obj.temp6) > parseInt(obj.tempUp) ||
+                        parseInt(obj.temp6) < parseInt(obj.tempDown)
+                      ) {
+                        obj.error.humiAndTemp = true;
+                      }
                     }
                     if (item1.deviceName == "TH7") {
                       obj.humi7 = item1.humi;
                       obj.temp7 = item1.temp;
+                      if (
+                        parseInt(obj.humi7) > parseInt(obj.humiUp) ||
+                        parseInt(obj.humi7) < parseInt(obj.humiDown) ||
+                        parseInt(obj.temp7) > parseInt(obj.tempUp) ||
+                        parseInt(obj.temp7) < parseInt(obj.tempDown)
+                      ) {
+                        obj.error.humiAndTemp = true;
+                      }
                     }
                     if (item1.deviceName == "ACC") {
                       obj.shake =
                         Math.round(
                           (item1.acc.X + item1.acc.Y + item1.acc.Z) * 1000000
                         ) / 1000000;
+                    }
+                    if (item1.deviceName.includes("TTP")) {
+                      if (
+                        parseInt(item1.tirePress) > parseInt(obj.tirePressUp) ||
+                        parseInt(item1.tireTemp) > parseInt(obj.tireTempUp)
+                      ) {
+                        obj.error.tire = true;
+                      }
                     }
                     if (item1.deviceName == "door_1") {
                       obj.door1 = item1.door.door_1;
@@ -1584,8 +1667,17 @@ export default {
                       }
                     }
                   });
-                  //测试使用
-                  var time = Math.round(new Date() / 1000);
+                  // var num = 0;
+                  // if ()
+                  if (obj.oil < obj.oilThres) {
+                    obj.error.oil = true;
+                  }
+                  if (obj.shake > obj.shakeThres) {
+                    obj.error.shake = true;
+                  }
+                  if (obj)
+                    //测试使用
+                    var time = Math.round(new Date() / 1000);
                   if (time - obj.time < 7200 * 12) {
                     this.onlineProductData.push(obj);
                   }
@@ -1605,8 +1697,29 @@ export default {
                 this.light();
                 this.drawOil();
                 this.allProductData.forEach(item => {
+                   var time = Math.round(new Date() / 1000);
+                          if (time - item.time > 7200 * 12) {
+          var myIcon = new BMap.Icon(
+            require("@/assets/img/定位红.png"),
+            new BMap.Size(30, 30)
+          );
+        } 
+        else {
+              var myIcon = new BMap.Icon(
+            require("@/assets/img/定位绿.png"),
+            new BMap.Size(30, 30)
+          );
+        if(item.error.oil == true || item.error.shake == true || item.error.humiAndTemp == true || item.error.tire == true) {
+                     var myIcon = new BMap.Icon(
+            require("@/assets/img/定位黄.png"),
+            new BMap.Size(30, 30)
+          );
+        }
+        }
                   var marker = new BMap.Marker(
-                    new BMap.Point(item.lng, item.lat)
+                    new BMap.Point(item.lng, item.lat),{
+                         icon: myIcon
+                    }
                   );
 
                   this.map.addOverlay(marker);
@@ -1647,14 +1760,28 @@ export default {
                       " </td>"
                   );
                   html.push("</tr>");
+
+                  // html.push(
+                  //   '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">数据记录:</td>'
+                  // );
+                  // html.push(
+                  //   '<td style="vertical-align:top;line-height:18px;">油位数据异常</td>'     
+                  // );
                   html.push("</tbody></table>");
+                      //         html.push("<div style = 'cursor: pointer;' @click = 'detailPage(item)'>点击进入产品详情页</div>"
+                      //  );
+                      //  html.push("<p style = 'height: 25px; line-height: 25px; color: #ce9178;'  v-show = 'item.error.shake == true'>"+item.error.shake+"车辆震动数据异常</p>"
+                      //  );
+                      //  html.push("<p style = 'height: 25px; line-height: 25px; color: #ce9178;'  v-show = 'item.error.humiAndTemp == true'>"+item.error.humiAndTemp+"温湿度监测点数据异常</p>"
+                      //  );
+                      //  html.push("<p style = 'height: 25px; line-height: 25px; color: #ce9178;'  v-show = 'item.error.tire == true'>"+item.error.tire+"胎温胎压数据异常</p>"
+                      //  );
                   var infoWindow = new BMap.InfoWindow(html.join(""), {
                     width: 200
                   });
                   // var infoWindow = new BMap.InfoWindow('地址：（'+item,lng+','+item.lat+")", opts);
                   // 点标记添加点击事件
                   marker.addEventListener("click", () => {
-                    console.log("1");
                     this.whichProductData = item;
                     this.whichTemp = "监测点1";
                     this.tempShow1 = true;
@@ -1703,7 +1830,7 @@ export default {
               lineStyle: {
                 width: 3,
                 color: [
-                  [0.5, "#fd666d"],
+                  [this.whichProductData.oilThres / 100, "#fd666d"],
                   [1, "#009b64"]
                 ]
               }
@@ -1982,79 +2109,102 @@ export default {
         this.zoom
       ); // 初始化地图,设置中心点坐标和地图级别
       this.allProductData.forEach(item => {
-        var marker = new BMap.Marker(new BMap.Point(item.lng, item.lat));
+        var time = Math.round(new Date() / 1000);
+        if (time - item.time > 7200 * 12) {
+          var myIcon = new BMap.Icon(
+            require("@/assets/img/定位红.png"),
+            new BMap.Size(30, 30)
+          );
+        } 
+        else {
+              var myIcon = new BMap.Icon(
+            require("@/assets/img/定位绿.png"),
+            new BMap.Size(30, 30)
+          );
+        if(item.error.oil == true || item.error.shake == true || item.error.humiAndTemp == true || item.error.tire == true) {
+                     var myIcon = new BMap.Icon(
+            require("@/assets/img/定位黄.png"),
+            new BMap.Size(30, 30)
+          );
+        }
+        }
+        var marker = new BMap.Marker(new BMap.Point(item.lng, item.lat), {
+          icon: myIcon
+        });
         this.map.addOverlay(marker);
-    var opts = {
-                    width: 200,
-                    height: 100,
-                    title: "故宫博物院"
-                  };
-                  var html = [];
-                  html.push(
-                    '<table cellspacing="0" style="table-layout:fixed;width:100%;font:15px arial,simsun,sans-serif; margin: 10px;background-color:#fff !important; color: #0b1a2b "><tbody>'
-                  );
-                  html.push(
-                    "<tr style = 'height: 35px; line-height: 35px;padding-top: 10px;' >"
-                  );
-                  html.push(
-                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">冷藏车:</td>'
-                  );
-                  html.push(
-                    '<td style="vertical-align:top;line-height:18px;">' +
-                      item.productName +
-                      " </td>"
-                  );
-                  html.push("</tr>");
-                  html.push("<tr style = 'height: 35px; line-height: 35px;' >");
-                  html.push(
-                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">经度:</td>'
-                  );
-                  html.push(
-                    '<td style="vertical-align:top;line-height:18px;">' +
-                      item.lng +
-                      " </td>"
-                  );
-                  html.push("</tr>");
-                  html.push("<tr style = 'height: 35px; line-height: 35px;' >");
-                  html.push(
-                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">纬度:</td>'
-                  );
-                  html.push(
-                    '<td style="vertical-align:top;line-height:18px;">' +
-                      item.lat +
-                      " </td>"
-                  );
-                  html.push("</tr>");
-                  html.push("</tbody></table>");
-                  var infoWindow = new BMap.InfoWindow(html.join(""), {
-                    width: 200
-                  });
-                  // var infoWindow = new BMap.InfoWindow('地址：（'+item,lng+','+item.lat+")", opts);
-                  // 点标记添加点击事件
-                  marker.addEventListener("click", () => {
-                    console.log("1");
-                    this.whichProductData = item;
-                    this.whichTemp = "监测点1";
-                    this.tempShow1 = true;
-                    this.tempShow2 = false;
-                    this.tempShow3 = false;
-                    this.tempShow4 = false;
-                    this.tempShow5 = false;
-                    this.tempShow6 = false;
-                    this.tempShow7 = false;
-                    window.sessionStorage.setItem(
-                      "productKey",
-                      this.whichProductData.productKey
-                    );
-                    this.map.openInfoWindow(
-                      infoWindow,
-                      new BMap.Point(item.lng, item.lat)
-                    ); // 开启信息窗口
-                  });
-
-
-
-
+        var html = [];
+        html.push(
+          '<table cellspacing="0" style="table-layout:fixed;width:100%;font:15px arial,simsun,sans-serif; margin: 10px;background-color:#fff !important; color: #0b1a2b "><tbody>'
+        );
+        html.push(
+          "<tr style = 'height: 35px; line-height: 35px;padding-top: 10px;' >"
+        );
+        html.push(
+          '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">冷藏车:</td>'
+        );
+        html.push(
+          '<td style="vertical-align:top;line-height:18px;">' +
+            item.productName +
+            " </td>"
+        );
+        html.push("</tr>");
+        html.push("<tr style = 'height: 35px; line-height: 35px;' >");
+        html.push(
+          '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">经度:</td>'
+        );
+        html.push(
+          '<td style="vertical-align:top;line-height:18px;">' +
+            item.lng +
+            " </td>"
+        );
+        html.push("</tr>");
+        html.push("<tr style = 'height: 35px; line-height: 35px;' >");
+        html.push(
+          '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">纬度:</td>'
+        );
+        html.push(
+          '<td style="vertical-align:top;line-height:18px;">' +
+            item.lat +
+            " </td>"
+        );
+        html.push("</tr>");
+                      //          html.push("<tr style = 'height: 35px; line-height: 35px; color: #ce9178;'  v-if = 'item.error.oil == true'>油位数据异常</tr>"
+                      //  );
+                      //          html.push("</tr>");
+                      //  html.push("<tr style = 'height: 35px; line-height: 35px; color: #ce9178;'  v-if = 'item.error.shake == true'>车辆震动数据异常</tr>"
+                      //  );
+                      // html.push("</tr>");
+                      //  html.push("<tr style = 'height: 35px; line-height: 35px; color: #ce9178;'  v-if = 'item.error.humiAndTemp == true'>温湿度监测点数据异常</tr>"
+                      //  );
+                      //  html.push("</tr>");
+                      //  html.push("<tr style = 'height: 35px; line-height: 35px; color: #ce9178;'  v-if = 'item.error.tire == true'>胎温胎压数据异常</tr>"
+                      //  );
+        html.push("</tbody></table>");
+        var infoWindow = new BMap.InfoWindow(html.join(""), {
+          width: 200
+        });
+        // var infoWindow = new BMap.InfoWindow('地址：（'+item,lng+','+item.lat+")", opts);
+        // 点标记添加点击事件
+        marker.addEventListener("click", () => {
+          console.log("1");
+          this.whichProductData = item;
+          this.whichTemp = "监测点1";
+          this.tempShow1 = true;
+          this.tempShow2 = false;
+          this.tempShow3 = false;
+          this.tempShow4 = false;
+          this.tempShow5 = false;
+          this.tempShow6 = false;
+          this.tempShow7 = false;
+          window.sessionStorage.setItem(
+            "productKey",
+            this.whichProductData.productKey
+          );
+          this.map.openInfoWindow(
+            infoWindow,
+            new BMap.Point(item.lng, item.lat)
+          ); // 开启信息窗口
+        });
       });
       this.drawOil();
     },
@@ -2087,73 +2237,96 @@ export default {
           this.zoom
         ); // 初始化地图,设置中心点坐标和地图级别
         this.onlineProductData.forEach(item => {
-          var marker = new BMap.Marker(new BMap.Point(item.lng, item.lat));
+           if(item.error.oil == true || item.error.shake == true || item.error.humiAndTemp == true || item.error.tire == true)  {
+                                  var myIcon = new BMap.Icon(
+            require("@/assets/img/定位黄.png"),
+            new BMap.Size(30, 30)
+          );
+           } else {
+                           var myIcon = new BMap.Icon(
+            require("@/assets/img/定位绿.png"),
+            new BMap.Size(30, 30)
+          );
+           }
+          var marker = new BMap.Marker(new BMap.Point(item.lng, item.lat),{
+          icon: myIcon
+        });
           this.map.addOverlay(marker);
 
-                  var html = [];
-                  html.push(
-                    '<table cellspacing="0" style="table-layout:fixed;width:100%;font:15px arial,simsun,sans-serif; margin: 10px;background-color:#fff !important; color: #0b1a2b "><tbody>'
-                  );
-                  html.push(
-                    "<tr style = 'height: 35px; line-height: 35px;padding-top: 10px;' >"
-                  );
-                  html.push(
-                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">冷藏车:</td>'
-                  );
-                  html.push(
-                    '<td style="vertical-align:top;line-height:18px;">' +
-                      item.productName +
-                      " </td>"
-                  );
-                  html.push("</tr>");
-                  html.push("<tr style = 'height: 35px; line-height: 35px;' >");
-                  html.push(
-                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">经度:</td>'
-                  );
-                  html.push(
-                    '<td style="vertical-align:top;line-height:18px;">' +
-                      item.lng +
-                      " </td>"
-                  );
-                  html.push("</tr>");
-                  html.push("<tr style = 'height: 35px; line-height: 35px;' >");
-                  html.push(
-                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">纬度:</td>'
-                  );
-                  html.push(
-                    '<td style="vertical-align:top;line-height:18px;">' +
-                      item.lat +
-                      " </td>"
-                  );
-                  html.push("</tr>");
-                  html.push("</tbody></table>");
-                  var infoWindow = new BMap.InfoWindow(html.join(""), {
-                    width: 200
-                  });
-                  // var infoWindow = new BMap.InfoWindow('地址：（'+item,lng+','+item.lat+")", opts);
-                  // 点标记添加点击事件
-                  marker.addEventListener("click", () => {
-                    console.log("1");
-                    this.whichProductData = item;
-                    this.whichTemp = "监测点1";
-                    this.tempShow1 = true;
-                    this.tempShow2 = false;
-                    this.tempShow3 = false;
-                    this.tempShow4 = false;
-                    this.tempShow5 = false;
-                    this.tempShow6 = false;
-                    this.tempShow7 = false;
-                    window.sessionStorage.setItem(
-                      "productKey",
-                      this.whichProductData.productKey
-                    );
-                    this.map.openInfoWindow(
-                      infoWindow,
-                      new BMap.Point(item.lng, item.lat)
-                    ); // 开启信息窗口
-                  });
+          var html = [];
+          html.push(
+            '<table cellspacing="0" style="table-layout:fixed;width:100%;font:15px arial,simsun,sans-serif; margin: 10px;background-color:#fff !important; color: #0b1a2b "><tbody>'
+          );
+          html.push(
+            "<tr style = 'height: 35px; line-height: 35px;padding-top: 10px;' >"
+          );
+          html.push(
+            '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">冷藏车:</td>'
+          );
+          html.push(
+            '<td style="vertical-align:top;line-height:18px;">' +
+              item.productName +
+              " </td>"
+          );
+          html.push("</tr>");
+          html.push("<tr style = 'height: 35px; line-height: 35px;' >");
+          html.push(
+            '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">经度:</td>'
+          );
+          html.push(
+            '<td style="vertical-align:top;line-height:18px;">' +
+              item.lng +
+              " </td>"
+          );
+          html.push("</tr>");
+          html.push("<tr style = 'height: 35px; line-height: 35px;' >");
+          html.push(
+            '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">纬度:</td>'
+          );
+          html.push(
+            '<td style="vertical-align:top;line-height:18px;">' +
+              item.lat +
+              " </td>"
+          );
+          html.push("</tr>");
+                      //            html.push("<tr style = 'height: 35px; line-height: 35px; color: #ce9178;'  v-if = 'item.error.oil == true'>油位数据异常</tr>"
+                      //  );
+                      //          html.push("</tr>");
+                      //  html.push("<tr style = 'height: 35px; line-height: 35px; color: #ce9178;'  v-if = 'item.error.shake == true'>车辆震动数据异常</tr>"
+                      //  );
+                      // html.push("</tr>");
+                      //  html.push("<tr style = 'height: 35px; line-height: 35px; color: #ce9178;'  v-if = 'item.error.humiAndTemp == true'>温湿度监测点数据异常</tr>"
+                      //  );
+                      //  html.push("</tr>");
+                      //  html.push("<tr style = 'height: 35px; line-height: 35px; color: #ce9178;'  v-if = 'item.error.tire == true'>胎温胎压数据异常</tr>"
+                      //  );
+          html.push("</tbody></table>");
+          var infoWindow = new BMap.InfoWindow(html.join(""), {
+            width: 200
+          });
+          // var infoWindow = new BMap.InfoWindow('地址：（'+item,lng+','+item.lat+")", opts);
+          // 点标记添加点击事件
+          marker.addEventListener("click", () => {
+            console.log("1");
+            this.whichProductData = item;
+            this.whichTemp = "监测点1";
+            this.tempShow1 = true;
+            this.tempShow2 = false;
+            this.tempShow3 = false;
+            this.tempShow4 = false;
+            this.tempShow5 = false;
+            this.tempShow6 = false;
+            this.tempShow7 = false;
+            window.sessionStorage.setItem(
+              "productKey",
+              this.whichProductData.productKey
+            );
+            this.map.openInfoWindow(
+              infoWindow,
+              new BMap.Point(item.lng, item.lat)
+            ); // 开启信息窗口
+          });
         });
-   
       } else {
         this.$message.info("当前没有在线冷藏车！！");
       }
@@ -2201,63 +2374,75 @@ export default {
         new BMap.Point(this.whichProductData.lng, this.whichProductData.lat)
       );
       this.map.addOverlay(marker);
-          var html = [];
-                  html.push(
-                    '<table cellspacing="0" style="table-layout:fixed;width:100%;font:15px arial,simsun,sans-serif; margin: 10px;background-color:#fff !important; color: #0b1a2b "><tbody>'
-                  );
-                  html.push(
-                    "<tr style = 'height: 35px; line-height: 35px;padding-top: 10px;' >"
-                  );
-                  html.push(
-                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">冷藏车:</td>'
-                  );
-                  html.push(
-                    '<td style="vertical-align:top;line-height:18px;">' +
-                   this.whichProductData.productName +
-                      " </td>"
-                  );
-                  html.push("</tr>");
-                  html.push("<tr style = 'height: 35px; line-height: 35px;' >");
-                  html.push(
-                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">经度:</td>'
-                  );
-                  html.push(
-                    '<td style="vertical-align:top;line-height:18px;">' +
-                     this.whichProductData.lng +
-                      " </td>"
-                  );
-                  html.push("</tr>");
-                  html.push("<tr style = 'height: 35px; line-height: 35px;' >");
-                  html.push(
-                    '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">纬度:</td>'
-                  );
-                  html.push(
-                    '<td style="vertical-align:top;line-height:18px;">' +
-                      this.whichProductData.lat +
-                      " </td>"
-                  );
-                  html.push("</tr>");
-                  html.push("</tbody></table>");
-                  var infoWindow = new BMap.InfoWindow(html.join(""), {
-                    width: 200
-                  });
-                  // var infoWindow = new BMap.InfoWindow('地址：（'+item,lng+','+item.lat+")", opts);
-                  // 点标记添加点击事件
-                  marker.addEventListener("click", () => {
-                    console.log("1");
-                    this.whichTemp = "监测点1";
-                    this.tempShow1 = true;
-                    this.tempShow2 = false;
-                    this.tempShow3 = false;
-                    this.tempShow4 = false;
-                    this.tempShow5 = false;
-                    this.tempShow6 = false;
-                    this.tempShow7 = false;
-                    this.map.openInfoWindow(
-                      infoWindow,
-                      new BMap.Point(this.whichProductData.lng, this.whichProductData.lat)
-                    ); // 开启信息窗口
-                  });
+      var html = [];
+      html.push(
+        '<table cellspacing="0" style="table-layout:fixed;width:100%;font:15px arial,simsun,sans-serif; margin: 10px;background-color:#fff !important; color: #0b1a2b "><tbody>'
+      );
+      html.push(
+        "<tr style = 'height: 35px; line-height: 35px;padding-top: 10px;' >"
+      );
+      html.push(
+        '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">冷藏车:</td>'
+      );
+      html.push(
+        '<td style="vertical-align:top;line-height:18px;">' +
+          this.whichProductData.productName +
+          " </td>"
+      );
+      html.push("</tr>");
+      html.push("<tr style = 'height: 35px; line-height: 35px;' >");
+      html.push(
+        '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">经度:</td>'
+      );
+      html.push(
+        '<td style="vertical-align:top;line-height:18px;">' +
+          this.whichProductData.lng +
+          " </td>"
+      );
+      html.push("</tr>");
+      html.push("<tr style = 'height: 35px; line-height: 35px;' >");
+      html.push(
+        '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">纬度:</td>'
+      );
+      html.push(
+        '<td style="vertical-align:top;line-height:18px;">' +
+          this.whichProductData.lat +
+          " </td>"
+      );
+      html.push("</tr>");
+
+                      //        html.push("<tr style = 'height: 35px; line-height: 35px; color: #ce9178;'  v-if = 'item.error.oil == true'>油位数据异常</tr>"
+                      //  );
+                      //          html.push("</tr>");
+                      //  html.push("<tr style = 'height: 35px; line-height: 35px; color: #ce9178;'  v-if = 'item.error.shake == true'>车辆震动数据异常</tr>"
+                      //  );
+                      // html.push("</tr>");
+                      //  html.push("<tr style = 'height: 35px; line-height: 35px; color: #ce9178;'  v-if = 'item.error.humiAndTemp == true'>温湿度监测点数据异常</tr>"
+                      //  );
+                      //  html.push("</tr>");
+                      //  html.push("<tr style = 'height: 35px; line-height: 35px; color: #ce9178;'  v-if = 'item.error.tire == true'>胎温胎压数据异常</tr>"
+                      //  );
+      html.push("</tbody></table>");
+      var infoWindow = new BMap.InfoWindow(html.join(""), {
+        width: 200
+      });
+      // var infoWindow = new BMap.InfoWindow('地址：（'+item,lng+','+item.lat+")", opts);
+      // 点标记添加点击事件
+      marker.addEventListener("click", () => {
+        console.log("1");
+        this.whichTemp = "监测点1";
+        this.tempShow1 = true;
+        this.tempShow2 = false;
+        this.tempShow3 = false;
+        this.tempShow4 = false;
+        this.tempShow5 = false;
+        this.tempShow6 = false;
+        this.tempShow7 = false;
+        this.map.openInfoWindow(
+          infoWindow,
+          new BMap.Point(this.whichProductData.lng, this.whichProductData.lat)
+        ); // 开启信息窗口
+      });
       this.drawOil();
     },
     closeSelect() {
@@ -2273,7 +2458,7 @@ export default {
             if (item1.deviceName == "ACC") {
               accDeviceKey = item1.deviceKey;
               var endTime = Math.round(new Date() / 1000);
-              var startTime = endTime - 7200 * 12;
+              var startTime = endTime - 7200 * 12 * 7;
               var data = {
                 deviceKey: accDeviceKey,
                 startTime: startTime,
@@ -2283,7 +2468,7 @@ export default {
               getDeviceHisData(data).then(res => {
                 console.log(res);
                 if (res.msg == "未找到记录") {
-                  this.$message.info("一天内没有该车辆震动的记录数据");
+                  this.$message.info("一周内没有该车辆震动的记录数据");
                 }
                 if (res.msg == "ok") {
                   this.accHistory = true;
@@ -2315,6 +2500,7 @@ export default {
                     var option;
 
                     option = {
+                      color: "#00a1da",
                       legend: {
                         data: accDate
                       },
@@ -2358,7 +2544,26 @@ export default {
                         {
                           data: accData,
                           type: "line",
-                          smooth: true
+                          smooth: true,
+                          markLine: {
+                            data: [
+                              {
+                                name: "最大震动阈值",
+                                yAxis: this.whichProductData.shakeThres,
+                                label: {
+                                  show: true,
+                                  position: "end",
+                                  formatter: "设置阈值"
+                                },
+                                lineStyle: {
+                                  normal: {
+                                    width: 2,
+                                    color: "#ff5d1d"
+                                  }
+                                }
+                              }
+                            ]
+                          }
                         }
                       ]
                     };
@@ -2497,7 +2702,20 @@ export default {
         this.tempShow6 = false;
         this.tempShow7 = true;
       }
-    }
+    },
+    detailPage(data) {
+// console.log(data)
+      window.sessionStorage.setItem("productKey", data.productKey);
+      window.sessionStorage.setItem("carNum",data.productName);
+      window.sessionStorage.setItem("typeIdentify", data.typeIdentify);
+         this.$router.push({
+        path: "/list/details"
+        // query: {
+        //   pk: this.transpk,
+        //   carnum: this.transnum,
+        // },
+      });
+    },
   }
 };
 </script>

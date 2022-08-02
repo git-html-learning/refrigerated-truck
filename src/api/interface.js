@@ -16,6 +16,17 @@ export function getDevice(data) {       //获取设备列表
     })
 }
 
+export function editProduct(data) {       //更新指定产品信息
+    return request({
+        url: '/api/v1/product',
+        method: 'PUT',
+        data
+    })
+}
+
+
+
+
 export function getDeviceData(data) {       //获取设备最新数据
     return request({
         url: '/api/v1/batchDeviceData',

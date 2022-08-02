@@ -181,7 +181,7 @@
 
 <script>
 import GlobalFooter from "@/layouts/GlobalFooter";
-import { login, userRegister } from "@/api/user";
+import { login, userRegister,adminLogin } from "@/api/user";
 export default {
   name: "Login",
   components: {
@@ -305,6 +305,15 @@ export default {
         if (res.msg != "ok") {
           alert("用户名或者密码错误！");
         } else {
+adminLogin({
+  username:"弘恩科技",
+  password: "hongenkj&ahu@2020"
+}).then((res)=>{
+  console.log(res)
+  if (res.msg == "ok") {
+    window.sessionStorage.setItem("adminToken",res.data.token)
+  }
+})
           window.sessionStorage.setItem("username",this.loginform.username)
           this.$store
             .dispatch("user/login", this.loginform)

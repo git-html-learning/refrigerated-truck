@@ -20,7 +20,6 @@ Vue.use(BaiduMap, {
   ak: 'h4FizFQhYHfqEMM2cnNnrQyWx9pzOYQE'
 })
 
-
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 Vue.prototype.$form = Antd.Form

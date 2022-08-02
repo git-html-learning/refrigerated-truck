@@ -435,10 +435,6 @@ export default {
       window.sessionStorage.setItem("typeIdentify", typeIdentify);
       this.$router.push({
         path: "/list/details"
-        // query: {
-        //   pk: this.transpk,
-        //   carnum: this.transnum,
-        // },
       });
     },
 

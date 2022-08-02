@@ -316,57 +316,57 @@
               </a-col>
             </a-row>
 
-            <a-row >
-              <div style = "cursor: pointer" @click="hisTem1('7')">
-              <a-col :span="12" style="padding-top: 28px; text-align: right" >
-                <div style="font-size: 14px; margin-top: -20px;">
-                  <svg
-                    t="1659010167394"
-                    class="icon"
-                    viewBox="0 0 1024 1024"
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    p-id="12598"
-                    width="45"
-                    height="45"
-                  >
-                    <path
-                      d="M512 899.5c-213.668 0-387.5-173.832-387.5-387.5S298.332 124.5 512 124.5 899.5 298.332 899.5 512 725.668 899.5 512 899.5z"
-                      fill="#4472C4"
-                      p-id="12599"
-                    />
-                    <path
-                      d="M512 137c-206.776 0-375 168.224-375 375s168.224 375 375 375 375-168.224 375-375-168.224-375-375-375m0-25c220.914 0 400 179.086 400 400S732.914 912 512 912 112 732.914 112 512s179.086-400 400-400z"
-                      fill="#4472C4"
-                      p-id="12600"
-                    />
-                    <path
-                      d="M643.029 345.834c0-7.64-3.82-13.643-10.368-18.008s-14.188-7.64-22.92-10.368c-9.277-2.183-18.554-3.274-27.285-4.366-9.823-0.546-16.917-1.091-21.828-1.091-3.82 0-10.368 0.546-19.645 1.091-9.823 1.091-20.737 1.637-32.742 2.183-12.005 1.091-25.1 2.729-38.2 3.82-13.643 1.637-26.194 2.729-37.108 3.82l-29.468 3.82c-8.186 1.091-13.1 2.183-14.188 2.729-6.548 3.274-9.277 9.277-9.277 18.008 0 6 2.183 12.005 7.094 18.554a18.4 18.4 0 0 0 9.277 2.729 27.033 27.033 0 0 0 9.277 1.091 158.67 158.67 0 0 0 20.732-1.093c8.731-1.091 16.917-2.183 24.557-3.82 7.094-1.091 14.188-2.728 21.282-3.82s13.643-2.729 20.191-3.82c12.005-2.183 22.92-3.82 33.288-4.911a333.686 333.686 0 0 1 34.925-1.637c10.914 0 16.371 5.457 17.462 16.371-7.094 11.46-13.643 22.919-19.1 33.834a321.286 321.286 0 0 0-15.825 34.379c-10.368 23.465-20.191 46.93-28.922 69.85-9.277 22.92-17.462 45.839-25.1 69.3-7.64 24.011-14.188 47.476-19.645 70.941a111.766 111.766 0 0 0-2.729 13.1 58.277 58.277 0 0 0-1.637 13.643 105.147 105.147 0 0 0 0.546 13.1 41.164 41.164 0 0 0 4.366 13.1 26.67 26.67 0 0 0 7.64 9.823 25.8 25.8 0 0 0 14.188 3.82 16.045 16.045 0 0 0 12.005-4.911c3.274-3.274 5.457-7.094 7.64-11.46l3.274-14.734c0-4.366 0.546-8.731 0.546-13.1a92.5 92.5 0 0 1 0.546-12.005c0-4.366 0-8.731 1.091-13.1 0.546-6 1.637-12.005 2.729-18.008a116.62 116.62 0 0 1 4.366-17.462c4.366-16.917 9.823-36.562 16.917-58.39a842.05 842.05 0 0 1 22.92-64.939 600.189 600.189 0 0 1 29.469-62.757c10.368-19.645 21.828-36.016 34.925-49.659l5.457-5.457 4.911-6c1.091-1.637 1.637-3.82 2.729-6.548a15.847 15.847 0 0 0 1.637-7.642z"
-                      fill="#FFFFFF"
-                      p-id="12601"
-                    />
-                  </svg>
-                  <p style="color: #4070c1; height: -10px;">厢外监测</p>
-                </div>
-              </a-col>
-              <a-col :span="12" style="padding-top: 10px; font-weight: bold">
-                <div class="container">
-                  <span style="padding-left: 16px; font-size: 14px">
-                    温度：
-                    <span
-                      style="font-size: 20px"
-                      :class="[parseInt(productData.temp7.temp)<parseInt(this.tempUp)&& parseInt(productData.temp7.temp)>parseInt(this.tempDown)? '' : 'error']"
-                    >{{ productData.temp7.temp }}℃</span>
-                  </span>
-                  <span style="padding-left: 16px; font-size: 14px">
-                    湿度：
-                    <span
-                      style="font-size: 20px"
-                      :class="[parseInt(productData.temp7.humi)<parseInt(this.humiUp)&& parseInt(productData.temp7.humi)>parseInt(this.humiDown)? '' : 'error']"
-                    >{{ productData.temp7.humi }}%</span>
-                  </span>
-                </div>
-              </a-col>
+            <a-row>
+              <div style="cursor: pointer" @click="hisTem1('7')">
+                <a-col :span="12" style="padding-top: 28px; text-align: right">
+                  <div style="font-size: 14px; margin-top: -20px;">
+                    <svg
+                      t="1659010167394"
+                      class="icon"
+                      viewBox="0 0 1024 1024"
+                      version="1.1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      p-id="12598"
+                      width="45"
+                      height="45"
+                    >
+                      <path
+                        d="M512 899.5c-213.668 0-387.5-173.832-387.5-387.5S298.332 124.5 512 124.5 899.5 298.332 899.5 512 725.668 899.5 512 899.5z"
+                        fill="#4472C4"
+                        p-id="12599"
+                      />
+                      <path
+                        d="M512 137c-206.776 0-375 168.224-375 375s168.224 375 375 375 375-168.224 375-375-168.224-375-375-375m0-25c220.914 0 400 179.086 400 400S732.914 912 512 912 112 732.914 112 512s179.086-400 400-400z"
+                        fill="#4472C4"
+                        p-id="12600"
+                      />
+                      <path
+                        d="M643.029 345.834c0-7.64-3.82-13.643-10.368-18.008s-14.188-7.64-22.92-10.368c-9.277-2.183-18.554-3.274-27.285-4.366-9.823-0.546-16.917-1.091-21.828-1.091-3.82 0-10.368 0.546-19.645 1.091-9.823 1.091-20.737 1.637-32.742 2.183-12.005 1.091-25.1 2.729-38.2 3.82-13.643 1.637-26.194 2.729-37.108 3.82l-29.468 3.82c-8.186 1.091-13.1 2.183-14.188 2.729-6.548 3.274-9.277 9.277-9.277 18.008 0 6 2.183 12.005 7.094 18.554a18.4 18.4 0 0 0 9.277 2.729 27.033 27.033 0 0 0 9.277 1.091 158.67 158.67 0 0 0 20.732-1.093c8.731-1.091 16.917-2.183 24.557-3.82 7.094-1.091 14.188-2.728 21.282-3.82s13.643-2.729 20.191-3.82c12.005-2.183 22.92-3.82 33.288-4.911a333.686 333.686 0 0 1 34.925-1.637c10.914 0 16.371 5.457 17.462 16.371-7.094 11.46-13.643 22.919-19.1 33.834a321.286 321.286 0 0 0-15.825 34.379c-10.368 23.465-20.191 46.93-28.922 69.85-9.277 22.92-17.462 45.839-25.1 69.3-7.64 24.011-14.188 47.476-19.645 70.941a111.766 111.766 0 0 0-2.729 13.1 58.277 58.277 0 0 0-1.637 13.643 105.147 105.147 0 0 0 0.546 13.1 41.164 41.164 0 0 0 4.366 13.1 26.67 26.67 0 0 0 7.64 9.823 25.8 25.8 0 0 0 14.188 3.82 16.045 16.045 0 0 0 12.005-4.911c3.274-3.274 5.457-7.094 7.64-11.46l3.274-14.734c0-4.366 0.546-8.731 0.546-13.1a92.5 92.5 0 0 1 0.546-12.005c0-4.366 0-8.731 1.091-13.1 0.546-6 1.637-12.005 2.729-18.008a116.62 116.62 0 0 1 4.366-17.462c4.366-16.917 9.823-36.562 16.917-58.39a842.05 842.05 0 0 1 22.92-64.939 600.189 600.189 0 0 1 29.469-62.757c10.368-19.645 21.828-36.016 34.925-49.659l5.457-5.457 4.911-6c1.091-1.637 1.637-3.82 2.729-6.548a15.847 15.847 0 0 0 1.637-7.642z"
+                        fill="#FFFFFF"
+                        p-id="12601"
+                      />
+                    </svg>
+                    <p style="color: #4070c1; height: -10px;">厢外监测</p>
+                  </div>
+                </a-col>
+                <a-col :span="12" style="padding-top: 10px; font-weight: bold">
+                  <div class="container">
+                    <span style="padding-left: 16px; font-size: 14px">
+                      温度：
+                      <span
+                        style="font-size: 20px"
+                        :class="[parseInt(productData.temp7.temp)<parseInt(this.tempUp)&& parseInt(productData.temp7.temp)>parseInt(this.tempDown)? '' : 'error']"
+                      >{{ productData.temp7.temp }}℃</span>
+                    </span>
+                    <span style="padding-left: 16px; font-size: 14px">
+                      湿度：
+                      <span
+                        style="font-size: 20px"
+                        :class="[parseInt(productData.temp7.humi)<parseInt(this.humiUp)&& parseInt(productData.temp7.humi)>parseInt(this.humiDown)? '' : 'error']"
+                      >{{ productData.temp7.humi }}%</span>
+                    </span>
+                  </div>
+                </a-col>
               </div>
             </a-row>
           </a-card>
@@ -534,119 +534,119 @@
 
             <a-row type="flex" style="height: 40px; font-size: 16px">
               <a-col :span="8">
-                <div style = "cursor: pointer" @click="hisTire('0')">
-                <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
-                </a-col>
-                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span style="font-size: 13px">胎温:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire1.humi )<parseInt(this.tireTempUp)? '' : 'error']"
-                  >{{this.productData.tire1.humi }}℃</span> &nbsp;&nbsp;
-                  <span style="font-size: 13px">胎压:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire1.press)<parseInt(this.tirePressUp)? '' : 'error']"
-                  >{{this.productData.tire1.press}}kPa</span>
-                </a-col>
+                <div style="cursor: pointer" @click="hisTire('0')">
+                  <a-col :span="6" style="text-align: center">
+                    <img src="../../static/icon/轮胎1.svg" style="width: 30px" />
+                  </a-col>
+                  <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                    <span style="font-size: 13px">胎温:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire1.humi )<parseInt(this.tireTempUp)? '' : 'error']"
+                    >{{this.productData.tire1.humi }}℃</span> &nbsp;&nbsp;
+                    <span style="font-size: 13px">胎压:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire1.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                    >{{this.productData.tire1.press}}kPa</span>
+                  </a-col>
                 </div>
               </a-col>
               <a-col :span="8">
-                <div style = "cursor: pointer" @click="hisTire('4')">
-                <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
-                </a-col>
-                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span style="font-size: 13px">胎温:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire5.humi )<parseInt(this.tireTempUp)? '' : 'error']"
-                  >{{this.productData.tire5.humi }}℃</span> &nbsp;&nbsp;
-                  <span style="font-size: 13px">胎压:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire5.press)<parseInt(this.tirePressUp)? '' : 'error']"
-                  >{{this.productData.tire5.press}}kPa</span>
-                </a-col>
+                <div style="cursor: pointer" @click="hisTire('4')">
+                  <a-col :span="6" style="text-align: center">
+                    <img src="../../static/icon/轮胎1.svg" style="width: 30px" />
+                  </a-col>
+                  <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                    <span style="font-size: 13px">胎温:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire5.humi )<parseInt(this.tireTempUp)? '' : 'error']"
+                    >{{this.productData.tire5.humi }}℃</span> &nbsp;&nbsp;
+                    <span style="font-size: 13px">胎压:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire5.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                    >{{this.productData.tire5.press}}kPa</span>
+                  </a-col>
                 </div>
               </a-col>
               <a-col :span="8">
-                 <div style = "cursor: pointer" @click="hisTire('8')">
-                <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg" style="width: 30px" />
-                </a-col>
-                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span style="font-size: 13px">胎温:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire9.humi)<parseInt(this.tireTempUp)? '' : 'error']"
-                  >{{this.productData.tire9.humi}}℃</span> &nbsp;&nbsp;
-                  <span style="font-size: 13px">胎压:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire9.press)<parseInt(this.tirePressUp)? '' : 'error']"
-                  >{{this.productData.tire9.press}}kPa</span>
-                </a-col>
+                <div style="cursor: pointer" @click="hisTire('8')">
+                  <a-col :span="6" style="text-align: center">
+                    <img src="../../static/icon/轮胎1.svg" style="width: 30px" />
+                  </a-col>
+                  <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                    <span style="font-size: 13px">胎温:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire9.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                    >{{this.productData.tire9.humi}}℃</span> &nbsp;&nbsp;
+                    <span style="font-size: 13px">胎压:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire9.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                    >{{this.productData.tire9.press}}kPa</span>
+                  </a-col>
                 </div>
               </a-col>
             </a-row>
             <a-row type="flex" style="height: 40px; font-size: 16px">
               <a-col :span="8">
-                <div style = "cursor: pointer" @click="hisTire('1')">
-                <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
-                </a-col>
-                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span style="font-size: 13px">胎温:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire2.humi)<parseInt(this.tireTempUp)? '' : 'error']"
-                  >{{this.productData.tire2.humi}}℃</span> &nbsp;&nbsp;
-                  <span style="font-size: 13px">胎压:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire2.press)<parseInt(this.tirePressUp)? '' : 'error']"
-                  >{{this.productData.tire2.press}}kPa</span>
-                </a-col>
+                <div style="cursor: pointer" @click="hisTire('1')">
+                  <a-col :span="6" style="text-align: center">
+                    <img src="../../static/icon/轮胎1.svg" style="width: 30px" />
+                  </a-col>
+                  <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                    <span style="font-size: 13px">胎温:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire2.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                    >{{this.productData.tire2.humi}}℃</span> &nbsp;&nbsp;
+                    <span style="font-size: 13px">胎压:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire2.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                    >{{this.productData.tire2.press}}kPa</span>
+                  </a-col>
                 </div>
               </a-col>
               <a-col :span="8">
-                <div style = "cursor: pointer" @click="hisTire('5')">
-                <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
-                </a-col>
-                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span style="font-size: 13px">胎温:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire6.humi)<parseInt(this.tireTempUp)? '' : 'error']"
-                  >{{this.productData.tire6.humi}}℃</span> &nbsp;&nbsp;
-                  <span style="font-size: 13px">胎压:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire6.press)<parseInt(this.tirePressUp)? '' : 'error']"
-                  >{{this.productData.tire6.press}}kPa</span>
-                </a-col>
+                <div style="cursor: pointer" @click="hisTire('5')">
+                  <a-col :span="6" style="text-align: center">
+                    <img src="../../static/icon/轮胎1.svg" style="width: 30px" />
+                  </a-col>
+                  <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                    <span style="font-size: 13px">胎温:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire6.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                    >{{this.productData.tire6.humi}}℃</span> &nbsp;&nbsp;
+                    <span style="font-size: 13px">胎压:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire6.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                    >{{this.productData.tire6.press}}kPa</span>
+                  </a-col>
                 </div>
               </a-col>
               <a-col :span="8">
-                <div style = "cursor: pointer" @click="hisTire('9')">
-                <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
-                </a-col>
-                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span style="font-size: 13px">胎温:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire10.humi)<parseInt(this.tireTempUp)? '' : 'error']"
-                  >{{this.productData.tire10.humi}}℃</span> &nbsp;&nbsp;
-                  <span style="font-size: 13px">胎压:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire10.press)<parseInt(this.tirePressUp)? '' : 'error']"
-                  >{{this.productData.tire10.press}}kPa</span>
-                </a-col>
+                <div style="cursor: pointer" @click="hisTire('9')">
+                  <a-col :span="6" style="text-align: center">
+                    <img src="../../static/icon/轮胎1.svg" style="width: 30px" />
+                  </a-col>
+                  <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                    <span style="font-size: 13px">胎温:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire10.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                    >{{this.productData.tire10.humi}}℃</span> &nbsp;&nbsp;
+                    <span style="font-size: 13px">胎压:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire10.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                    >{{this.productData.tire10.press}}kPa</span>
+                  </a-col>
                 </div>
               </a-col>
             </a-row>
@@ -659,121 +659,119 @@
             </a-row>
             <a-row type="flex" style="height: 40px; font-size: 16px">
               <a-col :span="8">
-                 <div style = "cursor: pointer" @click="hisTire('2')">
-                <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
-                </a-col>
-                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span style="font-size: 13px">胎温:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire3.humi)<parseInt(this.tireTempUp)? '' : 'error']"
-                  >{{this.productData.tire3.humi}}℃</span> &nbsp;&nbsp;
-                  <span style="font-size: 13px">胎压:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire3.press)<parseInt(this.tirePressUp)? '' : 'error']"
-                  >{{this.productData.tire3.press}}kPa</span>
-                </a-col>
+                <div style="cursor: pointer" @click="hisTire('2')">
+                  <a-col :span="6" style="text-align: center">
+                    <img src="../../static/icon/轮胎1.svg" style="width: 30px" />
+                  </a-col>
+                  <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                    <span style="font-size: 13px">胎温:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire3.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                    >{{this.productData.tire3.humi}}℃</span> &nbsp;&nbsp;
+                    <span style="font-size: 13px">胎压:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire3.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                    >{{this.productData.tire3.press}}kPa</span>
+                  </a-col>
                 </div>
               </a-col>
               <a-col :span="8">
-                 <div style = "cursor: pointer" @click="hisTire('6')">
-                <a-col :span="6" style="text-align: center">
-                  
-                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
-                </a-col>
-                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span style="font-size: 13px">胎温:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire7.humi)<parseInt(this.tireTempUp)? '' : 'error']"
-                  >{{this.productData.tire7.humi}}℃</span> &nbsp;&nbsp;
-                  <span style="font-size: 13px">胎压:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire7.press)<parseInt(this.tirePressUp)? '' : 'error']"
-                  >{{this.productData.tire7.press}}kPa</span>
-                </a-col>
+                <div style="cursor: pointer" @click="hisTire('6')">
+                  <a-col :span="6" style="text-align: center">
+                    <img src="../../static/icon/轮胎1.svg" style="width: 30px" />
+                  </a-col>
+                  <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                    <span style="font-size: 13px">胎温:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire7.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                    >{{this.productData.tire7.humi}}℃</span> &nbsp;&nbsp;
+                    <span style="font-size: 13px">胎压:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire7.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                    >{{this.productData.tire7.press}}kPa</span>
+                  </a-col>
                 </div>
               </a-col>
               <a-col :span="8">
-                 <div style = "cursor: pointer" @click="hisTire('10')">
-                <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
-                </a-col>
-                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span style="font-size: 13px">胎温:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire11.humi)<parseInt(this.tireTempUp)? '' : 'error']"
-                  >{{this.productData.tire11.humi}}℃</span> &nbsp;&nbsp;
-                  <span style="font-size: 13px">胎压:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire11.press)<parseInt(this.tirePressUp)? '' : 'error']"
-                  >{{this.productData.tire11.press}}kPa</span>
-                </a-col>
+                <div style="cursor: pointer" @click="hisTire('10')">
+                  <a-col :span="6" style="text-align: center">
+                    <img src="../../static/icon/轮胎1.svg" style="width: 30px" />
+                  </a-col>
+                  <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                    <span style="font-size: 13px">胎温:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire11.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                    >{{this.productData.tire11.humi}}℃</span> &nbsp;&nbsp;
+                    <span style="font-size: 13px">胎压:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire11.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                    >{{this.productData.tire11.press}}kPa</span>
+                  </a-col>
                 </div>
               </a-col>
             </a-row>
             <a-row type="flex" style="height: 40px; font-size: 16px">
               <a-col :span="8">
-                 <div style = "cursor: pointer" @click="hisTire('3')">
-                <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
-                </a-col>
-                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span style="font-size: 13px">胎温:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire4.humi)<parseInt(this.tireTempUp)? '' : 'error']"
-                  >{{this.productData.tire4.humi}}℃</span> &nbsp;&nbsp;
-                  <span style="font-size: 13px">胎压:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire4.press)<parseInt(this.tirePressUp)? '' : 'error']"
-                  >{{this.productData.tire4.press}}kPa</span>
-                </a-col>
+                <div style="cursor: pointer" @click="hisTire('3')">
+                  <a-col :span="6" style="text-align: center">
+                    <img src="../../static/icon/轮胎1.svg" style="width: 30px" />
+                  </a-col>
+                  <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                    <span style="font-size: 13px">胎温:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire4.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                    >{{this.productData.tire4.humi}}℃</span> &nbsp;&nbsp;
+                    <span style="font-size: 13px">胎压:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire4.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                    >{{this.productData.tire4.press}}kPa</span>
+                  </a-col>
                 </div>
               </a-col>
               <a-col :span="8">
-                <div style = "cursor: pointer" @click="hisTire('7')">
-                <a-col :span="6" style="text-align: center">
-                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
-                </a-col>
-                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span style="font-size: 13px">胎温:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire8.humi)<parseInt(this.tireTempUp)? '' : 'error']"
-                  >{{this.productData.tire8.humi}}℃</span>nbsp;&nbsp;
-                  <span style="font-size: 13px">胎压:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire8.press)<parseInt(this.tirePressUp)? '' : 'error']"
-                  >{{this.productData.tire8.press}}kPa</span>
-                </a-col>
+                <div style="cursor: pointer" @click="hisTire('7')">
+                  <a-col :span="6" style="text-align: center">
+                    <img src="../../static/icon/轮胎1.svg" style="width: 30px" />
+                  </a-col>
+                  <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                    <span style="font-size: 13px">胎温:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire8.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                    >{{this.productData.tire8.humi}}℃</span>nbsp;&nbsp;
+                    <span style="font-size: 13px">胎压:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire8.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                    >{{this.productData.tire8.press}}kPa</span>
+                  </a-col>
                 </div>
               </a-col>
               <a-col :span="8">
-                <div style = "cursor: pointer" @click="hisTire('11')">
-                <a-col :span="6" style="text-align: center">
-                   
-                  <img src="../../static/icon/轮胎1.svg"  style="width: 30px" />
-                </a-col>
-                <a-col :span="18" style="padding-top: 4px; font-weight: bold">
-                  <span style="font-size: 13px">胎温:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire12.humi)<parseInt(this.tireTempUp)? '' : 'error']"
-                  >{{this.productData.tire12.humi}}℃</span> &nbsp;&nbsp;
-                  <span style="font-size: 13px">胎压:</span>
-                  <span
-                    style="font-size: 16px"
-                    :class="[parseInt(this.productData.tire12.press)<parseInt(this.tirePressUp)? '' : 'error']"
-                  >{{this.productData.tire12.press}}kPa</span>
-                </a-col>
+                <div style="cursor: pointer" @click="hisTire('11')">
+                  <a-col :span="6" style="text-align: center">
+                    <img src="../../static/icon/轮胎1.svg" style="width: 30px" />
+                  </a-col>
+                  <a-col :span="18" style="padding-top: 4px; font-weight: bold">
+                    <span style="font-size: 13px">胎温:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire12.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                    >{{this.productData.tire12.humi}}℃</span> &nbsp;&nbsp;
+                    <span style="font-size: 13px">胎压:</span>
+                    <span
+                      style="font-size: 16px"
+                      :class="[parseInt(this.productData.tire12.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                    >{{this.productData.tire12.press}}kPa</span>
+                  </a-col>
                 </div>
               </a-col>
             </a-row>
@@ -870,10 +868,10 @@
             v-for="(item, index) in tempKeys"
             :key="index"
             :tab="'监测点'+item.deviceName.slice(2,3)"
-             >
+          >
             <!-- <div style="font-size: 26px; font-weight: 600">
               <span>{{ item.name }}</span>
-            </div> -->
+            </div>-->
             <div style="font-size: 22px; font-weight: 600; line-height: 50px">
               <span>数据最后上传时间：{{ item.date }}</span>
             </div>
@@ -946,11 +944,7 @@
           ></i>
         </div>
 
-        <a-tabs
-          v-model="tireTabname"
-          :key="tireTabKey"
-          @tabClick="tabclick1"
-            >
+        <a-tabs v-model="tireTabname" :key="tireTabKey" @tabClick="tabclick1">
           <a-tab-pane v-for="(item, index) in tireList" :key="index" :tab="'胎'+index">
             <div
               style="
@@ -1031,10 +1025,51 @@
           ></i>
         </div>
         <a-spin tip="正在请求历史数据" :spinning="doorSpinning">
-          <div id="chart3" ref="chart3" v-show = "doorShow" style="height: 300px; width: 1450px; margin-left: 50px"></div>
-          <div id="chart3" ref="chart3" v-show = "!doorShow"   style="height: 300px; width: 1450px;  margin-top: 50px;text-align: center">
-            <svg t="1659014108163" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="13123" width="120" height="120"><path d="M402.432 356.3008m-286.5152 0a286.5152 286.5152 0 1 0 573.0304 0 286.5152 286.5152 0 1 0-573.0304 0Z" fill="#9FDFFF" p-id="13124"></path><path d="M731.648 546.9184m-253.0816 0a253.0816 253.0816 0 1 0 506.1632 0 253.0816 253.0816 0 1 0-506.1632 0Z" fill="#78CCFF" p-id="13125"></path><path d="M268.4416 570.8288m-229.2224 0a229.2224 229.2224 0 1 0 458.4448 0 229.2224 229.2224 0 1 0-458.4448 0Z" fill="#78CCFF" p-id="13126"></path><path d="M266.0864 570.8288h463.2064v229.2224H266.0864z" fill="#78CCFF" p-id="13127"></path><path d="M324.096 831.232h17.6128l82.7392 118.9888h0.6144v-118.9888h16.7936v146.2272h-17.2032L341.504 857.2416h-0.6144v120.2176H324.096v-146.2272zM536.8832 809.5232h14.5408l-72.4992 188.416h-14.7456l72.704-188.416zM616.5504 831.232h19.456l57.5488 146.2272h-18.2272l-15.5648-40.96h-67.1744l-15.5648 40.96h-18.0224l57.5488-146.2272z m-18.6368 91.136h56.5248l-27.648-73.1136h-0.8192l-28.0576 73.1136z" fill="#78CCFF" p-id="13128"></path></svg>
-          <p style = "color: #71cbfd">十天内无数据</p>
+          <div
+            id="chart3"
+            ref="chart3"
+            v-show="doorShow"
+            style="height: 300px; width: 1450px; margin-left: 50px"
+          ></div>
+          <div
+            id="chart3"
+            ref="chart3"
+            v-show="!doorShow"
+            style="height: 300px; width: 1450px;  margin-top: 50px;text-align: center"
+          >
+            <svg
+              t="1659014108163"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="13123"
+              width="120"
+              height="120"
+            >
+              <path
+                d="M402.432 356.3008m-286.5152 0a286.5152 286.5152 0 1 0 573.0304 0 286.5152 286.5152 0 1 0-573.0304 0Z"
+                fill="#9FDFFF"
+                p-id="13124"
+              />
+              <path
+                d="M731.648 546.9184m-253.0816 0a253.0816 253.0816 0 1 0 506.1632 0 253.0816 253.0816 0 1 0-506.1632 0Z"
+                fill="#78CCFF"
+                p-id="13125"
+              />
+              <path
+                d="M268.4416 570.8288m-229.2224 0a229.2224 229.2224 0 1 0 458.4448 0 229.2224 229.2224 0 1 0-458.4448 0Z"
+                fill="#78CCFF"
+                p-id="13126"
+              />
+              <path d="M266.0864 570.8288h463.2064v229.2224H266.0864z" fill="#78CCFF" p-id="13127" />
+              <path
+                d="M324.096 831.232h17.6128l82.7392 118.9888h0.6144v-118.9888h16.7936v146.2272h-17.2032L341.504 857.2416h-0.6144v120.2176H324.096v-146.2272zM536.8832 809.5232h14.5408l-72.4992 188.416h-14.7456l72.704-188.416zM616.5504 831.232h19.456l57.5488 146.2272h-18.2272l-15.5648-40.96h-67.1744l-15.5648 40.96h-18.0224l57.5488-146.2272z m-18.6368 91.136h56.5248l-27.648-73.1136h-0.8192l-28.0576 73.1136z"
+                fill="#78CCFF"
+                p-id="13128"
+              />
+            </svg>
+            <p style="color: #71cbfd">十天内无数据</p>
           </div>
         </a-spin>
       </div>
@@ -1048,15 +1083,16 @@ import {
   getDeviceData,
   getDeviceHisData,
   changeLight,
-  allProductData
+  allProductData,
+  editProduct
 } from "@/api/interface";
 import { person, editPerson } from "@/api/user";
 import * as echarts from "echarts";
+import axios from "axios";
 export default {
   mounted() {
     this.timer = setInterval(this.prepare, 20000);
   },
-
   beforeDestroy() {
     clearInterval(this.timer);
   },
@@ -1300,9 +1336,9 @@ export default {
     this.prepare();
   },
   methods: {
-      prepare() {
+    prepare() {
       console.log("准备");
-var username = window.sessionStorage.getItem("username")
+      var username = window.sessionStorage.getItem("username");
       this.role = window.sessionStorage.getItem("role");
       this.productKey = window.sessionStorage.getItem("productKey");
       console.log(this.productKey);
@@ -1441,7 +1477,7 @@ var username = window.sessionStorage.getItem("username")
               console.log(this.center);
             }
             if (item.deviceName == "door_1") {
-              this.doorKeys.push(item.deviceKey)
+              this.doorKeys.push(item.deviceKey);
               this.productData.door1 = item.door.door_1;
               this.productData.door2 = item.door.door_2;
               if (item.electrical[0] == 0) {
@@ -1511,8 +1547,14 @@ var username = window.sessionStorage.getItem("username")
               Math.round(this.tireList[11].tirePress * 1000) / 1000000;
             this.productData.tire12.humi = this.tireList[11].tireTemp;
           }
-          var username = window.sessionStorage.getItem("username");
-          person(username).then(res => {
+          //修改接口，阈值不能在用户的下面，因为希望不同的冷藏车的阈值不同
+          //因此，需要调用获取产品信息的接口
+          var productkey = window.sessionStorage.getItem("productKey");
+          var data = {
+            productKey: productkey
+          };
+          // console.log(this.productKey)
+          getDevice(data).then(res => {
             console.log(res);
             if (res.msg == "ok") {
               this.tireTempUp = res.data.extraInfo.thresholdValue.tire.tireTemp;
@@ -1530,22 +1572,11 @@ var username = window.sessionStorage.getItem("username")
                 res.data.extraInfo.thresholdValue.tempAndHumi.tempUp;
               console.log(this.oil);
               this.tempDeviceKey = this.tempKeys[0].deviceKey;
-              // this.tempHistory();
-              // console.log(this.oilKeys);
-              // if (this.tireList.length == 0) {
-              //   this.tireShow = true;
-              // } else {
-              //   this.pressDevcieKey = this.tireList[0].deviceKey;
-              //   this.drawPress();
-              // }
-              // } else if (this.role == "user") {
               this.drawOil();
               console.log(this.accKeys);
               this.drawAcc();
             }
           });
-
-          // }
         }
       });
     },
@@ -1649,10 +1680,9 @@ var username = window.sessionStorage.getItem("username")
       this.humiSpinning = true;
 
       this.tempEchart();
-
     },
     tempEchart() {
-       this.humiTabname = this.item1
+      this.humiTabname = this.item1;
       this.hisEndTime = Date.parse(new Date()) / 1000;
       getDeviceHisData({
         deviceKey: this.tempKeys[this.item1].deviceKey,
@@ -1661,7 +1691,7 @@ var username = window.sessionStorage.getItem("username")
       }).then(res => {
         console.log(res);
         if ((res.msg = "ok")) {
-          this.humiDataShow = true
+          this.humiDataShow = true;
           var tempDate = [];
           var tempData = [];
           var humiData = [];
@@ -1770,8 +1800,8 @@ var username = window.sessionStorage.getItem("username")
             myChart.resize();
           });
         } else {
-          this.humiDataShow = true
-           this.humiSpinning = false;
+          this.humiDataShow = true;
+          this.humiSpinning = false;
         }
       });
     },
@@ -1786,10 +1816,10 @@ var username = window.sessionStorage.getItem("username")
     },
 
     hisDoor() {
-            this.showPage = "4";
+      this.showPage = "4";
       this.doorSpinning = true;
       // console.log("hisDoor");
-         this.hisEndTime = Date.parse(new Date()) / 1000;
+      this.hisEndTime = Date.parse(new Date()) / 1000;
       getDeviceHisData({
         deviceKey: this.doorKeys[0],
         startTime: this.hisEndTime - 10 * 86400, //86400
@@ -1803,59 +1833,58 @@ var username = window.sessionStorage.getItem("username")
             this.hisDoor1.push(res.data.deviceData[i].door.door_1);
             this.hisDoor2.push(res.data.deviceData[i].door.door_2);
           }
-                  for (var i = 0; i < this.hisDoor1.length; i++) {
-          switch (this.hisDoor1[i]) {
-            case false:
-              this.hisDoor1[i] = 0;
-              break;
-            case true:
-              this.hisDoor1[i] = 1;
-              break;
+          for (var i = 0; i < this.hisDoor1.length; i++) {
+            switch (this.hisDoor1[i]) {
+              case false:
+                this.hisDoor1[i] = 0;
+                break;
+              case true:
+                this.hisDoor1[i] = 1;
+                break;
+            }
           }
-        }
-        for (var i = 0; i < this.hisDoor2.length; i++) {
-          switch (this.hisDoor2[i]) {
-            case false:
-              this.hisDoor2[i] = 0;
-              break;
-            case true:
-              this.hisDoor2[i] = 1;
-              break;
+          for (var i = 0; i < this.hisDoor2.length; i++) {
+            switch (this.hisDoor2[i]) {
+              case false:
+                this.hisDoor2[i] = 0;
+                break;
+              case true:
+                this.hisDoor2[i] = 1;
+                break;
+            }
           }
-        }
-                this.drawDoor();
+          this.drawDoor();
 
-        this.doorSpinning = false;
+          this.doorSpinning = false;
         } else {
           this.doorShow = false;
-            this.doorSpinning = false;
+          this.doorSpinning = false;
         }
       });
     },
 
-
     hisTire(item) {
-      this.item2  = item
-      console.log(this.item2)
+      this.item2 = item;
+      console.log(this.item2);
       this.showPage = "3";
       this.tireSpinning = true;
-       this.tireTabKey = "1";
-       this.tireDataShow = true
-      this.pressEchart()
+      this.tireTabKey = "1";
+      this.tireDataShow = true;
+      this.pressEchart();
     },
     pressEchart() {
-        this.tireTabKey =  this.item2
-        this.tireTabname =  parseInt(this.item2)
+      this.tireTabKey = this.item2;
+      this.tireTabname = parseInt(this.item2);
       this.hisEndTime = Date.parse(new Date()) / 1000;
-       getDeviceHisData({
+      getDeviceHisData({
         deviceKey: this.tireList[this.item2].deviceKey,
         startTime: this.hisEndTime - 20 * 86400, //86400
         endTime: this.hisEndTime
-      }).then((res)=>{
-        console.log(res)
+      }).then(res => {
+        console.log(res);
         if (res.msg == "ok") {
-          this.tireDataShow = true
-          this.tireSpinning = false
+          this.tireDataShow = true;
+          this.tireSpinning = false;
           var date = [];
           var tempData = [];
           var pressData = [];
@@ -1874,7 +1903,7 @@ var username = window.sessionStorage.getItem("username")
           var option = {
             color: colors,
             title: {
-             text: '胎温胎压数据(胎'+this.item2+')',
+              text: "胎温胎压数据(胎" + this.item2 + ")",
               left: "center",
               textStyle: {
                 color: "#43bfdb"
@@ -1964,13 +1993,12 @@ var username = window.sessionStorage.getItem("username")
           //   myChart.resize();
           // });
         } else {
-           this.tireDataShow = false
-           console.log("无数据")
-            this.tireSpinning = false
+          this.tireDataShow = false;
+          console.log("无数据");
+          this.tireSpinning = false;
         }
-      })
+      });
     },
-   
 
     tireBack() {
       this.showPage = "0";
@@ -2004,32 +2032,30 @@ var username = window.sessionStorage.getItem("username")
           this.productData.light1 = false;
           this.defaultChecked = false;
           this.spinning1 = false;
-          this.prepare()
+          this.prepare();
         });
       }
-  
     },
 
     tabclick(e) {
-      console.log(e)
-      this.item1 = e
+      console.log(e);
+      this.item1 = e;
       this.hisDate = [];
       this.hisTemp = [];
       this.hisHumi = [];
-     
+
       this.humiSpinning = true;
       this.tempEchart();
-      
     },
     tabclick1(e) {
       // console.log(e)
-      this.item2 = e
-         this.tireSpinning = true;
-      this.pressEchart()
+      this.item2 = e;
+      this.tireSpinning = true;
+      this.pressEchart();
     },
-  
+
     drawDoor() {
-      console.log("绘制门状态")
+      console.log("绘制门状态");
       var myChart = echarts.init(document.getElementById("chart3"));
       var colors = ["#5470C6", "#91CC75"];
       var option = {
@@ -2057,7 +2083,7 @@ var username = window.sessionStorage.getItem("username")
         xAxis: {
           type: "category",
           data: this.hisDoorDate,
-           axisLabel: {
+          axisLabel: {
             formatter: function(value) {
               return value.slice(5, 10) + "\n" + value.slice(11, 16);
             }
@@ -2089,39 +2115,90 @@ var username = window.sessionStorage.getItem("username")
       });
     },
 
-   
-
     openHumi() {
       this.humiDialogVisible = true;
     },
     setHumiValue() {
+      //现在修改阈值需要修改两个，一是修改产品信息，二是修改用户信息
+      //1. 修改产品信息
+      //获取产品信息
+      var data = {
+        productKey: this.productKey
+      };
+      getDevice(data).then(res => {
+        console.log(res);
+        res.data.extraInfo.thresholdValue.tempAndHumi.tempDown = this.tempDown;
+        res.data.extraInfo.thresholdValue.tempAndHumi.tempUp = this.tempUp;
+        res.data.extraInfo.thresholdValue.tempAndHumi.humiDown = this.humiDown;
+        res.data.extraInfo.thresholdValue.tempAndHumi.humiUp = this.humiUp;
+        var data = {
+          productName: res.data.productName,
+          productKey: res.data.productKey,
+          productType: res.data.productType,
+          protocolType: res.data.protocolType,
+          typeIdentify: res.data.typeIdentify,
+          extraInfo: res.data.extraInfo
+        };
+        editProduct(data).then(res => {
+          console.log(res);
+        });
+      });
 
+      //2. 修改子用户信息
+      person(this.carNum).then(res => {
+        console.log(res);
+        res.data.extraInfo.thresholdValue.tempAndHumi.tempDown = this.tempDown;
+        res.data.extraInfo.thresholdValue.tempAndHumi.tempUp = this.tempUp;
+        res.data.extraInfo.thresholdValue.tempAndHumi.humiDown = this.humiDown;
+        res.data.extraInfo.thresholdValue.tempAndHumi.humiUp = this.humiUp;
+        var data = {
+          username: res.data.username,
+          password: res.data.password,
+          phone: res.data.phone,
+          email: res.data.email,
+          extraInfo: res.data.extraInfo
+        };
+        console.log(data);
+        var adminToken = window.sessionStorage.getItem("adminToken");
+        axios({
+          method: "put",
+          url: "https://api.ahusmart.com/api/v1/admin/user/" + this.carNum,
+          headers: {
+            token: adminToken
+          },
+          data: data
+        }).then(res => {
+          console.log(res);
+          if (res.data.msg == "ok") {
+            this.$message.success("修改成功!");
+            this.humiDialogVisible = false;
+            this.prepare();
+          }
+        });
+      });
 
       //1. 获取当前用户信息
-      var username = window.sessionStorage.getItem("username");
-      console.log(username);
-      person(username).then(res => {
-        // console.log(res)
-        if (res.msg == "ok") {
-          console.log(res);
-          // res.data.extraInfo = {}
-          // res.data.extraInfo.thresholdValue= {}
-          // res.data.extraInfo.thresholdValue.tempAndHumi= {}
-          res.data.extraInfo.thresholdValue.tempAndHumi.tempDown = this.tempDown;
-          res.data.extraInfo.thresholdValue.tempAndHumi.tempUp = this.tempUp;
-          res.data.extraInfo.thresholdValue.tempAndHumi.humiDown = this.humiDown;
-          res.data.extraInfo.thresholdValue.tempAndHumi.humiUp = this.humiUp;
-          // console.log(res.data)
-          editPerson(res.data).then(res => {
-            // console.log(res)
-            if (res.msg == "ok") {
-              this.$message.success("修改成功!");
-              this.humiDialogVisible = false;
-              this.prepare();
-            }
-          });
-        }
-      });
+      // var username = window.sessionStorage.getItem("username");
+      // console.log(username);
+      // person(username).then(res => {
+      //   // console.log(res)
+      //   if (res.msg == "ok") {
+      //     console.log(res);
+      //     res.data.extraInfo.thresholdValue.tempAndHumi.tempDown = this.tempDown;
+      //     res.data.extraInfo.thresholdValue.tempAndHumi.tempUp = this.tempUp;
+      //     res.data.extraInfo.thresholdValue.tempAndHumi.humiDown = this.humiDown;
+      //     res.data.extraInfo.thresholdValue.tempAndHumi.humiUp = this.humiUp;
+      //     // console.log(res.data)
+      //     editPerson(res.data).then(res => {
+      //       // console.log(res)
+      //       if (res.msg == "ok") {
+      //         this.$message.success("修改成功!");
+      //         this.humiDialogVisible = false;
+      //         this.prepare();
+      //       }
+      //     });
+      //   }
+      // });
     },
 
     openOil() {
@@ -2135,24 +2212,76 @@ var username = window.sessionStorage.getItem("username")
           //1. 获取当前用户信息
           var username = window.sessionStorage.getItem("username");
           console.log(username);
-          person(username).then(res => {
-            // console.log(res)
-            if (res.msg == "ok") {
-              console.log(value);
-              res.data.extraInfo.thresholdValue.oil = value;
-              console.log(res.data);
-              editPerson(res.data).then(res => {
-                // console.log(res)
-                if (res.msg == "ok") {
-                  this.$message({
+      //1. 修改产品信息
+      //获取产品信息
+      var data = {
+        productKey: this.productKey
+      };
+      getDevice(data).then(res => {
+        console.log(res);
+  res.data.extraInfo.thresholdValue.oil = value;
+        var data = {
+          productName: res.data.productName,
+          productKey: res.data.productKey,
+          productType: res.data.productType,
+          protocolType: res.data.protocolType,
+          typeIdentify: res.data.typeIdentify,
+          extraInfo: res.data.extraInfo
+        };
+        editProduct(data).then(res => {
+          console.log(res);
+        });
+      });
+
+      //2. 修改子用户信息
+      person(this.carNum).then(res => {
+        console.log(res);
+  res.data.extraInfo.thresholdValue.oil = value;
+        var data = {
+          username: res.data.username,
+          password: res.data.password,
+          phone: res.data.phone,
+          email: res.data.email,
+          extraInfo: res.data.extraInfo
+        };
+        console.log(data);
+        var adminToken = window.sessionStorage.getItem("adminToken");
+        axios({
+          method: "put",
+          url: "https://api.ahusmart.com/api/v1/admin/user/" + this.carNum,
+          headers: {
+            token: adminToken
+          },
+          data: data
+        }).then(res => {
+          console.log(res);
+          if (res.data.msg == "ok") {
+  this.$message({
                     type: "success",
                     message: "油位低于: " + value + "报警"
                   });
                   this.prepare();
-                }
-              });
-            }
-          });
+          }
+        });
+      });
+          // person(username).then(res => {
+          //   // console.log(res)
+          //   if (res.msg == "ok") {
+          //     console.log(value);
+          //     res.data.extraInfo.thresholdValue.oil = value;
+          //     console.log(res.data);
+          //     editPerson(res.data).then(res => {
+          //       // console.log(res)
+          //       if (res.msg == "ok") {
+          //         this.$message({
+          //           type: "success",
+          //           message: "油位低于: " + value + "报警"
+          //         });
+          //         this.prepare();
+          //       }
+          //     });
+          //   }
+          // });
         })
         .catch(() => {
           this.$message({
@@ -2172,23 +2301,75 @@ var username = window.sessionStorage.getItem("username")
           //1. 获取当前用户信息
           var username = window.sessionStorage.getItem("username");
           console.log(username);
-          person(username).then(res => {
-            // console.log(res)
-            if (res.msg == "ok") {
-              res.data.extraInfo.thresholdValue.shake = value;
-              // console.log(res.data)
-              editPerson(res.data).then(res => {
-                // console.log(res)
-                if (res.msg == "ok") {
+                //1. 修改产品信息
+      //获取产品信息
+      var data = {
+        productKey: this.productKey
+      };
+      getDevice(data).then(res => {
+        console.log(res);
+ res.data.extraInfo.thresholdValue.shake = value;
+        var data = {
+          productName: res.data.productName,
+          productKey: res.data.productKey,
+          productType: res.data.productType,
+          protocolType: res.data.protocolType,
+          typeIdentify: res.data.typeIdentify,
+          extraInfo: res.data.extraInfo
+        };
+        editProduct(data).then(res => {
+          console.log(res);
+        });
+      });
+
+      //2. 修改子用户信息
+      person(this.carNum).then(res => {
+        console.log(res);
+  res.data.extraInfo.thresholdValue.shake = value;
+        var data = {
+          username: res.data.username,
+          password: res.data.password,
+          phone: res.data.phone,
+          email: res.data.email,
+          extraInfo: res.data.extraInfo
+        };
+        console.log(data);
+        var adminToken = window.sessionStorage.getItem("adminToken");
+        axios({
+          method: "put",
+          url: "https://api.ahusmart.com/api/v1/admin/user/" + this.carNum,
+          headers: {
+            token: adminToken
+          },
+          data: data
+        }).then(res => {
+          console.log(res);
+          if (res.data.msg == "ok") {
                   this.$message({
                     type: "success",
                     message: "车辆震动最大阈值: " + value
                   });
                   this.prepare();
-                }
-              });
-            }
-          });
+          }
+        });
+      });
+          // person(username).then(res => {
+          //   // console.log(res)
+          //   if (res.msg == "ok") {
+          //     res.data.extraInfo.thresholdValue.shake = value;
+          //     // console.log(res.data)
+          //     editPerson(res.data).then(res => {
+          //       // console.log(res)
+          //       if (res.msg == "ok") {
+          //         this.$message({
+          //           type: "success",
+          //           message: "车辆震动最大阈值: " + value
+          //         });
+          //         this.prepare();
+          //       }
+          //     });
+          //   }
+          // });
         })
         .catch(() => {
           this.$message({
@@ -2204,27 +2385,78 @@ var username = window.sessionStorage.getItem("username")
       //1. 获取当前用户信息
       var username = window.sessionStorage.getItem("username");
       console.log(username);
-      person(username).then(res => {
-        // console.log(res)
-        if (res.msg == "ok") {
-          res.data.extraInfo.thresholdValue.tire = {
-            tireTemp: "",
-            tirePress: ""
-          };
-          res.data.extraInfo.thresholdValue.tire.tireTemp = this.tireTempUp;
+            //1. 修改产品信息
+      //获取产品信息
+      var data = {
+        productKey: this.productKey
+      };
+      getDevice(data).then(res => {
+        console.log(res);
+         res.data.extraInfo.thresholdValue.tire.tireTemp = this.tireTempUp;
           res.data.extraInfo.thresholdValue.tire.tirePress = this.tirePressUp;
-          editPerson(res.data).then(res => {
-            if (res.msg == "ok") {
+        var data = {
+          productName: res.data.productName,
+          productKey: res.data.productKey,
+          productType: res.data.productType,
+          protocolType: res.data.protocolType,
+          typeIdentify: res.data.typeIdentify,
+          extraInfo: res.data.extraInfo
+        };
+        editProduct(data).then(res => {
+          console.log(res);
+        });
+      });
+
+      //2. 修改子用户信息
+      person(this.carNum).then(res => {
+        console.log(res);
+         res.data.extraInfo.thresholdValue.tire.tireTemp = this.tireTempUp;
+          res.data.extraInfo.thresholdValue.tire.tirePress = this.tirePressUp;
+        var data = {
+          username: res.data.username,
+          password: res.data.password,
+          phone: res.data.phone,
+          email: res.data.email,
+          extraInfo: res.data.extraInfo
+        };
+        console.log(data);
+        var adminToken = window.sessionStorage.getItem("adminToken");
+        axios({
+          method: "put",
+          url: "https://api.ahusmart.com/api/v1/admin/user/" + this.carNum,
+          headers: {
+            token: adminToken
+          },
+          data: data
+        }).then(res => {
+          console.log(res);
+          if (res.data.msg == "ok") {
               this.$message.success("修改成功!");
               this.tireDialogVisible = false;
               this.prepare();
-            }
-          });
-        }
+          }
+        });
       });
+      // person(username).then(res => {
+      //   // console.log(res)
+      //   if (res.msg == "ok") {
+      //     res.data.extraInfo.thresholdValue.tire = {
+      //       tireTemp: "",
+      //       tirePress: ""
+      //     };
+      //     res.data.extraInfo.thresholdValue.tire.tireTemp = this.tireTempUp;
+      //     res.data.extraInfo.thresholdValue.tire.tirePress = this.tirePressUp;
+      //     editPerson(res.data).then(res => {
+      //       if (res.msg == "ok") {
+      //         this.$message.success("修改成功!");
+      //         this.tireDialogVisible = false;
+      //         this.prepare();
+      //       }
+      //     });
+      //   }
+      // });
     },
 
-   
     light() {
       this.light1 = this.productData.light1;
       this.light2 = this.productData.light2;
@@ -2353,8 +2585,7 @@ var username = window.sessionStorage.getItem("username")
           option && myChart.setOption(option);
         }
       });
-    },
-    
+    }
   }
 };
 </script>

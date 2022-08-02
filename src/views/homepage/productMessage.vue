@@ -25,8 +25,17 @@
               <td>
                 <a>外厢检测</a>
               </td>
-              <td>温度： {{this.productData.temp7.temp}}℃</td>
-              <td>湿度： {{this.productData.temp7.humi}}％</td>
+          <td>温度：
+                <span
+                    :class="[parseInt(productData.temp7.temp)<parseInt(this.tempUp)&& parseInt(productData.temp7.temp)>parseInt(this.tempDown)? '' : 'error']"
+                > {{this.productData.temp7.temp}}℃</span></td>
+              <td
+  
+              >湿度： 
+              <span
+               :class="[parseInt(productData.temp7.humi)<parseInt(this.humiUp)&& parseInt(productData.temp7.humi)>parseInt(this.humiDown)? '' : 'error']"
+              > {{this.productData.temp7.humi}}％</span>
+             </td>
             </tr>
             <tr
               style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px; cursor: pointer"
@@ -35,8 +44,15 @@
               <td>
                 <a>检测点1</a>
               </td>
-              <td>温度： {{this.productData.temp1.temp}}℃</td>
-              <td>湿度： {{this.productData.temp1.humi}}％</td>
+              <td>温度：
+                <span
+                    :class="[parseInt(productData.temp1.temp)<parseInt(this.tempUp)&& parseInt(productData.temp1.temp)>parseInt(this.tempDown)? '' : 'error']"
+                > {{this.productData.temp1.temp}}℃</span></td>
+              <td>湿度：
+                <span
+                  :class="[parseInt(productData.temp1.humi)<parseInt(this.humiUp)&& parseInt(productData.temp1.humi)>parseInt(this.humiDown)? '' : 'error']"
+                > {{this.productData.temp1.humi}}％</span>
+                </td>
             </tr>
             <tr
               style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px; cursor: pointer"
@@ -45,8 +61,15 @@
               <td>
                 <a>检测点2</a>
               </td>
-              <td>温度： {{this.productData.temp2.temp}}℃</td>
-              <td>湿度： {{this.productData.temp2.humi}}％</td>
+              <td>温度：
+                <span
+                  :class="[parseInt(productData.temp2.temp)<parseInt(this.tempUp)&& parseInt(productData.temp2.temp)>parseInt(this.tempDown)? '' : 'error']"
+                >{{this.productData.temp2.temp}}℃</span> </td>
+            <td>湿度：
+                <span
+                  :class="[parseInt(productData.temp2.humi)<parseInt(this.humiUp)&& parseInt(productData.temp2.humi)>parseInt(this.humiDown)? '' : 'error']"
+                > {{this.productData.temp2.humi}}％</span>
+                </td>
             </tr>
             <tr
               style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px; cursor: pointer"
@@ -55,8 +78,13 @@
               <td>
                 <a>检测点3</a>
               </td>
-              <td>温度： {{this.productData.temp3.temp}}℃</td>
-              <td>湿度： {{this.productData.temp3.humi}}％</td>
+              <td>温度：
+                <span
+                    :class="[parseInt(productData.temp3.temp)<parseInt(this.tempUp)&& parseInt(productData.temp3.temp)>parseInt(this.tempDown)? '' : 'error']"
+                >{{this.productData.temp3.temp}}℃</span> </td>
+              <td>湿度：<span
+               :class="[parseInt(productData.temp3.humi)<parseInt(this.humiUp)&& parseInt(productData.temp3.humi)>parseInt(this.humiDown)? '' : 'error']"
+              > {{this.productData.temp3.humi}}％</span></td>
             </tr>
             <tr
               style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px; cursor: pointer"
@@ -65,8 +93,13 @@
               <td>
                 <a>检测点4</a>
               </td>
-              <td>温度： {{this.productData.temp4.temp}}℃</td>
-              <td>湿度： {{this.productData.temp4.humi}}％</td>
+              <td>温度：<span
+                    :class="[parseInt(productData.temp4.temp)<parseInt(this.tempUp)&& parseInt(productData.temp4.temp)>parseInt(this.tempDown)? '' : 'error']"
+              >
+                {{this.productData.temp4.temp}}℃</span> </td>
+              <td>湿度：<span
+                :class="[parseInt(productData.temp4.humi)<parseInt(this.humiUp)&& parseInt(productData.temp4.humi)>parseInt(this.humiDown)? '' : 'error']">
+                {{this.productData.temp4.humi}}％</span> </td>
             </tr>
             <tr
               style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px; cursor: pointer"
@@ -75,8 +108,13 @@
               <td>
                 <a>检测点5</a>
               </td>
-              <td>温度： {{this.productData.temp5.temp}}℃</td>
-              <td>湿度： {{this.productData.temp5.humi}}％</td>
+              <td>温度：<span
+                :class="[parseInt(productData.temp5.temp)<parseInt(this.tempUp)&& parseInt(productData.temp5.temp)>parseInt(this.tempDown)? '' : 'error']">
+               {{this.productData.temp5.temp}}℃ </span> </td>
+              <td>湿度：
+                <span
+                 :class="[parseInt(productData.temp5.humi)<parseInt(this.humiUp)&& parseInt(productData.temp5.humi)>parseInt(this.humiDown)? '' : 'error']">
+                {{this.productData.temp5.humi}}％  </span> </td>
             </tr>
             <tr
               style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px; cursor: pointer"
@@ -85,8 +123,14 @@
               <td>
                 <a>检测点6</a>
               </td>
-              <td>温度： {{this.productData.temp6.temp}}℃</td>
-              <td>湿度： {{this.productData.temp6.humi}}％</td>
+              <td>温度：
+                <span
+                  :class="[parseInt(productData.temp6.temp)<parseInt(this.tempUp)&& parseInt(productData.temp6.temp)>parseInt(this.tempDown)? '' : 'error']">
+                 {{this.productData.temp6.temp}}℃  </span></td>
+              <td>湿度：
+                <span
+                  :class="[parseInt(productData.temp6.humi)<parseInt(this.humiUp)&& parseInt(productData.temp6.humi)>parseInt(this.humiDown)? '' : 'error']">
+                 {{this.productData.temp6.humi}}％ </span> </td>
             </tr>
           </table>
         </el-col>
@@ -99,7 +143,7 @@
           <div v-show="!chartShow" id="temp" style="width: 100%; height: 310px; ">
             <p
               style="color: #43bfdb; font-size :18px; margin-top: 10px; margin-left: 20px"
-            >温湿度历史数据(一天内)</p>
+            >温湿度历史数据(一周内)</p>
             <div style="text-align: center;margin-top: 50px; ">
               <svg
                 t="1658394419942"
@@ -117,7 +161,7 @@
                   p-id="1778"
                 />
               </svg>
-              <p>该监测点在一天内没有上传过数据</p>
+              <p>该监测点在一周内没有上传过数据</p>
             </div>
           </div>
         </el-col>
@@ -327,7 +371,7 @@
                   p-id="1778"
                 />
               </svg>
-              <p>该设备在一天内没有上传过数据</p>
+              <p>该设备在一周内没有上传过数据</p>
             </div>
           </div>
         </el-col>
@@ -444,90 +488,138 @@
               >
                 <td rowspan="2" colspan="1">胎1</td>
                 <td colspan="1">胎温</td>
-                <td colspan="1">{{this.productData.tire1.humi}}℃</td>
+                <td colspan="1"
+                    :class="[parseInt(this.productData.tire1.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                >{{this.productData.tire1.humi}}℃</td>
                 <td rowspan="2" colspan="1">胎2</td>
                 <td colspan="1">胎温</td>
-                <td colspan="1">{{this.productData.tire2.humi}}℃</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire2.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                >{{this.productData.tire2.humi}}℃</td>
                 <td rowspan="2" colspan="1">胎3</td>
-                <td colspan="1">胎温</td>
+                <td colspan="1"
+                  :class="[parseInt(this.productData.tire3.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                >胎温</td>
                 <td colspan="1">{{this.productData.tire3.humi}}℃</td>
                 <td rowspan="2" colspan="1">胎4</td>
                 <td colspan="1">胎温</td>
-                <td colspan="1">{{this.productData.tire4.humi}}℃</td>
+                <td colspan="1"
+                  :class="[parseInt(this.productData.tire4.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                >{{this.productData.tire4.humi}}℃</td>
               </tr>
               <tr
                 style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
               >
                 <td colspan="1">胎压</td>
-                <td colspan="1">{{this.productData.tire1.press}}kPa</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire1.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                >{{this.productData.tire1.press}}kPa</td>
 
                 <td colspan="1">胎压</td>
-                <td colspan="1">{{this.productData.tire2.press}}kPa</td>
+                <td colspan="1" 
+                 :class="[parseInt(this.productData.tire2.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                >{{this.productData.tire2.press}}kPa</td>
 
                 <td colspan="1">胎压</td>
-                <td colspan="1">{{this.productData.tire3.press}}kPa</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire3.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                >{{this.productData.tire3.press}}kPa</td>
                 <td colspan="1">胎压</td>
-                <td colspan="1">{{this.productData.tire4.press}}kPa</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire4.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                >{{this.productData.tire4.press}}kPa</td>
               </tr>
               <tr
                 style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
               >
                 <td rowspan="2" colspan="1">胎5</td>
                 <td colspan="1">胎温</td>
-                <td colspan="1">{{this.productData.tire5.humi}}℃</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire5.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                >{{this.productData.tire5.humi}}℃</td>
                 <td rowspan="2" colspan="1">胎6</td>
                 <td colspan="1">胎温</td>
-                <td colspan="1">{{this.productData.tire6.humi}}℃</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire6.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                >{{this.productData.tire6.humi}}℃</td>
                 <td rowspan="2" colspan="1">胎7</td>
                 <td colspan="1">胎温</td>
-                <td colspan="1">{{this.productData.tire7.humi}}℃</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire7.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                >{{this.productData.tire7.humi}}℃</td>
                 <td rowspan="2" colspan="1">胎8</td>
                 <td colspan="1">胎温</td>
-                <td colspan="1">{{this.productData.tire8.humi}}℃</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire8.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                >{{this.productData.tire8.humi}}℃</td>
               </tr>
               <tr
                 style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
               >
                 <td colspan="1">胎压</td>
-                <td colspan="1">{{this.productData.tire5.press}}kPa</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire5.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                >{{this.productData.tire5.press}}kPa</td>
 
                 <td colspan="1">胎压</td>
-                <td colspan="1">{{this.productData.tire6.press}}kPa</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire5.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                >{{this.productData.tire6.press}}kPa</td>
 
                 <td colspan="1">胎压</td>
-                <td colspan="1">{{this.productData.tire7.press}}kPa</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire7.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                >{{this.productData.tire7.press}}kPa</td>
                 <td colspan="1">胎压</td>
-                <td colspan="1">{{this.productData.tire8.press}}kPa</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire8.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                >{{this.productData.tire8.press}}kPa</td>
               </tr>
               <tr
                 style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
               >
                 <td rowspan="2" colspan="1">胎9</td>
                 <td colspan="1">胎温</td>
-                <td colspan="1">{{this.productData.tire9.humi}}℃</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire9.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                >{{this.productData.tire9.humi}}℃</td>
                 <td rowspan="2" colspan="1">胎10</td>
                 <td colspan="1">胎温</td>
-                <td colspan="1">{{this.productData.tire10.humi}}℃</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire10.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                >{{this.productData.tire10.humi}}℃</td>
                 <td rowspan="2" colspan="1">胎11</td>
                 <td colspan="1">胎温</td>
-                <td colspan="1">{{this.productData.tire11.humi}}℃</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire11.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                >{{this.productData.tire11.humi}}℃</td>
                 <td rowspan="2" colspan="1">胎12</td>
                 <td colspan="1">胎温</td>
-                <td colspan="1">{{this.productData.tire12.humi}}℃</td>
+                <td colspan="1"
+                   :class="[parseInt(this.productData.tire12.humi)<parseInt(this.tireTempUp)? '' : 'error']"
+                >{{this.productData.tire12.humi}}℃</td>
               </tr>
               <tr
                 style="text-align: center; color: #d7d8db; text-align: center;font-size: 14px; height: 30px; line-height: 30px;"
               >
                 <td colspan="1">胎压</td>
-                <td colspan="1">{{this.productData.tire9.press}}kPa</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire9.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                >{{this.productData.tire9.press}}kPa</td>
 
                 <td colspan="1">胎压</td>
-                <td colspan="1">{{this.productData.tire10.press}}kPa</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire10.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                >{{this.productData.tire10.press}}kPa</td>
 
                 <td colspan="1">胎压</td>
-                <td colspan="1">{{this.productData.tire11.press}}kPa</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire11.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                >{{this.productData.tire11.press}}kPa</td>
                 <td colspan="1">胎压</td>
-                <td colspan="1">{{this.productData.tire12.press}}kPa</td>
+                <td colspan="1"
+                 :class="[parseInt(this.productData.tire12.press)<parseInt(this.tirePressUp)? '' : 'error']"
+                >{{this.productData.tire12.press}}kPa</td>
               </tr>
             </table>
           </div>
@@ -729,7 +821,15 @@ export default {
       ifDoor: true,
       pressHistory: false,
       pressDevcieKey: "",
-      pressShow: false
+      pressShow: false,
+      tireTempUp: "",
+      tirePressUp:"",
+      shake:"",
+      oil:"",
+      humiDown:"",
+      humiUp:"",
+      tempDown:"",
+      tempUp:"",
     };
   },
   created() {
@@ -737,6 +837,7 @@ export default {
   },
   methods: {
     prepare() {
+
       this.role = window.sessionStorage.getItem("role");
       this.productKey = window.sessionStorage.getItem("productKey");
       console.log(this.productKey);
@@ -751,6 +852,23 @@ export default {
         console.log(res);
 
         if (res.msg == "ok") {
+            this.tireTempUp = res.data[0].extraInfo.thresholdValue.tire.tireTemp;
+              this.tirePressUp =
+                res.data[0].extraInfo.thresholdValue.tire.tirePress;
+              this.shake = res.data[0].extraInfo.thresholdValue.shake;
+              this.oil = res.data[0].extraInfo.thresholdValue.oil;
+              this.humiDown =
+                res.data[0].extraInfo.thresholdValue.tempAndHumi.humiDown;
+              this.humiUp =
+                res.data[0].extraInfo.thresholdValue.tempAndHumi.humiUp;
+              this.tempDown =
+                res.data[0].extraInfo.thresholdValue.tempAndHumi.tempDown;
+              this.tempUp =
+                res.data[0].extraInfo.thresholdValue.tempAndHumi.tempUp
+
+
+
+
           this.typeIdentify = res.data[0].typeIdentify;
           this.tempKeys = [];
           this.oilKeys = [];
@@ -940,7 +1058,7 @@ export default {
     },
     tempHistory() {
       var endTime = Math.round(new Date() / 1000);
-      var startTime = endTime - 7200 * 12;
+      var startTime = endTime - 7200 * 12*7;
       var obj = {
         deviceKey: this.tempDeviceKey,
         startTime: startTime,
@@ -1141,7 +1259,7 @@ export default {
                   // 仪表盘轴线样式。
                   width: 10,
                   color: [
-                    [0.3, "#f04864"],
+                    [this.oil/100, "#f04864"],
                     [1, "#1890ff"]
                   ]
                 }
@@ -1226,12 +1344,13 @@ export default {
       }
     },
     drawAcc() {
+      console.log(this.shake)
       if (this.accKeys.length == 0) {
         this.accShow = false;
         this.text = "没有注册该设备";
       }
       var endTime = Math.round(new Date() / 1000);
-      var startTime = endTime - 7200 * 12;
+      var startTime = endTime - 7200 * 12*7;
       var obj = {
         deviceKey: this.accKeys[0],
         startTime: startTime,
@@ -1307,7 +1426,26 @@ export default {
               {
                 data: accData,
                 type: "line",
-                smooth: true
+                smooth: true,
+                markLine: {
+                  data: [
+                    {
+                      name: "最大震动阈值",
+                      yAxis: this.shake,
+                      label: {
+                        show: true,
+                        position: "end",
+                        formatter: "设置阈值"
+                      },
+                      lineStyle: {
+                        normal: {
+                          width: 2,
+                          color: "#ff5d1d"
+                        }
+                      }
+                    }
+                  ]
+                }
               }
             ]
           };
@@ -1361,7 +1499,7 @@ export default {
             tooltip: {
               trigger: "axis",
               axisPointer: {
-                type: "cross"
+                ty9         : "cross"
               }
             },
             legend: {
@@ -1451,5 +1589,8 @@ export default {
 .layout {
   padding: 10px;
   color: #fff;
+}
+.error {
+  color: red;
 }
 </style>
