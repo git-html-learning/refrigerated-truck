@@ -164,3 +164,18 @@ export function deleteProduct(data) {     //删除车辆
         data
     })
 }
+
+export function updateProduct(data) {     //修改车辆信息
+  return request({
+      url: '/api/v1/product',
+      method:'PUT',
+      data
+  })
+}
+
+export function productMessage(pk) {     //修改车辆信息
+  return request({
+      url: '/api/v1/productDetail?productKey='+pk,
+      method:'GET',
+  })
+}

@@ -153,7 +153,7 @@
               保修总数
               <span style="color: #0078a4">（辆）</span>
             </span>
-            <span class="num">1</span>
+            <span class="num">{{this.totalNum}}</span>
           </li>
           <br />
           <li>
@@ -161,7 +161,7 @@
               正在维修
               <span style="color: #0078a4">（辆）</span>
             </span>
-            <span class="num">1</span>
+            <span class="num">0</span>
           </li>
           <br />
           <li>
@@ -169,7 +169,7 @@
               质保期内
               <span style="color: #0078a4">（辆）</span>
             </span>
-            <span class="num">1</span>
+            <span class="num">{{this.totalNum}}</span>
           </li>
           <br />
           <li>
@@ -1472,7 +1472,7 @@ export default {
           this.productKeys = [];
           if (res.data.productInfo.length !== 0) {
             res.data.productInfo.forEach(item => {
-              if (item.typeIdentify !== "tysj") {
+              if (item.typeIdentify !== "tysj"&&item.typeIdentify.length == 15) {
                 this.productlist.push(item);
                 this.productKeys.push(item.productKey);
               }
@@ -1485,6 +1485,7 @@ export default {
               pkList: this.productKeys,
               startTime: 111111
             }).then(res => {
+              console.log(res)
               if (res.msg == "ok") {
                 console.log(res);
                 this.allProductData = [];
@@ -1697,13 +1698,14 @@ export default {
                 this.light();
                 this.drawOil();
                 this.allProductData.forEach(item => {
+                  console.log(item)
                    var time = Math.round(new Date() / 1000);
                           if (time - item.time > 7200 * 12) {
           var myIcon = new BMap.Icon(
             require("@/assets/img/定位红.png"),
             new BMap.Size(30, 30)
           );
-        } 
+        }
         else {
               var myIcon = new BMap.Icon(
             require("@/assets/img/定位绿.png"),
@@ -1760,22 +1762,7 @@ export default {
                       " </td>"
                   );
                   html.push("</tr>");
-
-                  // html.push(
-                  //   '<td style="vertical-align:top;line-height:16px;width:50px;white-space:nowrap;word-break:keep-all">数据记录:</td>'
-                  // );
-                  // html.push(
-                  //   '<td style="vertical-align:top;line-height:18px;">油位数据异常</td>'     
-                  // );
                   html.push("</tbody></table>");
-                      //         html.push("<div style = 'cursor: pointer;' @click = 'detailPage(item)'>点击进入产品详情页</div>"
-                      //  );
-                      //  html.push("<p style = 'height: 25px; line-height: 25px; color: #ce9178;'  v-show = 'item.error.shake == true'>"+item.error.shake+"车辆震动数据异常</p>"
-                      //  );
-                      //  html.push("<p style = 'height: 25px; line-height: 25px; color: #ce9178;'  v-show = 'item.error.humiAndTemp == true'>"+item.error.humiAndTemp+"温湿度监测点数据异常</p>"
-                      //  );
-                      //  html.push("<p style = 'height: 25px; line-height: 25px; color: #ce9178;'  v-show = 'item.error.tire == true'>"+item.error.tire+"胎温胎压数据异常</p>"
-                      //  );
                   var infoWindow = new BMap.InfoWindow(html.join(""), {
                     width: 200
                   });
@@ -2115,7 +2102,7 @@ export default {
             require("@/assets/img/定位红.png"),
             new BMap.Size(30, 30)
           );
-        } 
+        }
         else {
               var myIcon = new BMap.Icon(
             require("@/assets/img/定位绿.png"),

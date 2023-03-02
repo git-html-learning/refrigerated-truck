@@ -209,8 +209,16 @@ export function editdriver(data) {  //修改司机信息（更新指定设备信
 }
 
 export function allProductData(data) {       //查询多个产品下所有设备最新数据
+  return request({
+      url: '/api/v1/batchProductData',
+      method: 'POST',
+      data
+  })
+}
+
+export function registerDevice(data,pk) {       //创建设备
     return request({
-        url: '/api/v1/batchProductData',
+        url: '/api/v1/device?productKey='+pk,
         method: 'POST',
         data
     })

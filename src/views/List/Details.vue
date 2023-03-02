@@ -746,7 +746,7 @@
                     <span
                       style="font-size: 16px"
                       :class="[parseInt(this.productData.tire8.humi)<parseInt(this.tireTempUp)? '' : 'error']"
-                    >{{this.productData.tire8.humi}}℃</span>nbsp;&nbsp;
+                    >{{this.productData.tire8.humi}}℃</span>&nbsp;&nbsp;
                     <span style="font-size: 13px">胎压:</span>
                     <span
                       style="font-size: 16px"
@@ -1341,6 +1341,7 @@ export default {
       var username = window.sessionStorage.getItem("username");
       this.role = window.sessionStorage.getItem("role");
       this.productKey = window.sessionStorage.getItem("productKey");
+      this.carNum = window.sessionStorage.getItem("carNum");
       console.log(this.productKey);
       var pkList = [];
       pkList.push(this.productKey);
@@ -1351,8 +1352,7 @@ export default {
       };
       allProductData(data).then(res => {
         console.log(res);
-        if (res.msg == "ok") {
-          this.carNum = res.data[0].productName;
+
           this.title3 = this.carNum + "    行进中（已行驶99km 速度50km/h）";
           console.log(this.carNum);
           this.typeIdentify = res.data[0].typeIdentify;
@@ -1577,7 +1577,7 @@ export default {
               this.drawAcc();
             }
           });
-        }
+
       });
     },
 
