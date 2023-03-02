@@ -90,7 +90,7 @@
             </a-modal>
             <!-- <a-modal title="" :visible.sync="dialogVisible3" width="20%">
             </a-modal> -->
-          </a-form-model> 
+          </a-form-model>
         </div>
       </div>
       <div>
@@ -98,6 +98,7 @@
           <a-row :gutter="16">
             <a-col :span="8" v-for="(item, index) in driverList" :key="index">
               <a-card  class="vehicle"  hoverable>
+                <div style="cursor: pointer" @click="more(item)">
                 <a-card-meta :title="item.productName">
                   <a-avatar
                     :size="64"
@@ -130,6 +131,7 @@
                     </a-col> -->
                   </a-row>
                 </p>
+              </div>
               </a-card>
             </a-col>
           </a-row>

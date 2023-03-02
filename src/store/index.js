@@ -5,6 +5,7 @@ import getters from './getters'
 import account from './modules/account'
 import setting from './modules/setting'
 import user from './modules/user'
+import user1 from './modules/user1'
 
 Vue.use(Vuex)
 
@@ -12,7 +13,8 @@ export default new Vuex.Store({
   modules: {
     account,
     setting,
-    user
+    user,
+    user1
   },
   getters
 })

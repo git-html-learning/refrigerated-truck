@@ -1372,6 +1372,7 @@
 </template>
 <script>
 import { product } from "@/api/data";
+import { getUserList } from "@/api/admin";
 import { allProductData, getDeviceHisData, changeLight } from "@/api/interface";
 import * as echarts from "echarts";
 import productMessageVue from "../productMessage.vue";
@@ -1443,6 +1444,9 @@ export default {
     }
   },
   created() {
+    getUserList().then((res)=>{
+      console.log(res)
+    })
     this.prepare();
   },
   mounted() {

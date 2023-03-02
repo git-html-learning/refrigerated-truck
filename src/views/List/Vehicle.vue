@@ -214,9 +214,10 @@
   </div>
 </template>
 <script>
-import { product, registerDevice,allProductData } from "@/api/interface";
+import { product, registerDevice, allProductData } from "@/api/interface";
 import { updateProduct, productMessage } from "@/api/vehicle";
 import { userRegister, login, adminLogin, person } from "@/api/user";
+import { deleteUser,editUser } from "@/api/admin";
 import axios from "axios";
 import {
   registerVeh,
@@ -396,230 +397,242 @@ export default {
                   this.productKey = item.productKey;
                 }
               });
-              adminLogin({
-            username: "弘恩科技",
-            password: "hongenkj&ahu@2020",
-          }).then((res) => {
-            console.log(res);
-            this.adminToken = res.data.token;
-            console.log(this.adminToken);
-            var _this = this;
-            axios({
-              method: "put",
-              url:
-                "https://api.ahusmart.com/api/v1/admin/user/" +
-                this.productname,
-              headers: {
-                token: this.adminToken,
-              },
-              data: {
-                username: this.productname,
-                password: "123456",
-                phone: "",
-                email: "",
-                extraInfo: {
-                  productKey: _this.productKey,
-                  role: "user",
-                },
-              },
-            }).then((res) => {
-              console.log(res);
-              var deviceList = [
-                {
-                  deviceName: "TH1",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TempAndHumi",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TH2",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TempAndHumi",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TH3",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TempAndHumi",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TH4",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TempAndHumi",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TH5",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TempAndHumi",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TH6",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TempAndHumi",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TH7",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TempAndHumi",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "door_1",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "door",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "door_2",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "door",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "Alarm",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "alarm",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "GPS",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "gps",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "Oil",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "oil",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "ACC",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "acc",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TTP71_80:EA:CA:11:0:1",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TireTempPress",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TTP72_80:EA:CA:54:0:1",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TireTempPress",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TTP73_80:EA:CA:10:6:1",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TireTempPress",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TTP74_80:EA:CA:10:0:1",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TireTempPress",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TTP81_80:EA:CA:0:93:4",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TireTempPress",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TTP82_80:EA:CA:0:39:4",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TireTempPress",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TTP83_80:EA:CA:0:29:4",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TireTempPress",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TTP84_80:EA:CA:0:51:2",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TireTempPress",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TTP91_80:EA:CA:0:86:3",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TireTempPress",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TTP92_80:EA:CA:0:89:4",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TireTempPress",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TTP93_80:EA:CA:0:30:1",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TireTempPress",
-                  extraInfo: {},
-                },
-                {
-                  deviceName: "TTP94_80:EA:CA:0:72:2",
-                  nickname: "",
-                  netType: "4G",
-                  deviceType: "TireTempPress",
-                  extraInfo: {},
-                },
-              ];
-              var index = 0;
-              deviceList.forEach((item) => {
-                registerDevice(item, this.productKey).then((res) => {
-                  console.log(res);
-                  index = index + 1;
-                  if (index == deviceList.length) {
-                    _this.vehicleList = [];
-                    _this.visible = false;
-                    _this.loading = false;
-                    _this.$message.success("注册成功!");
-                    _this.getproduct();
+              // adminLogin({
+              //   username: "弘恩科技",
+              //   password: "hongenkj&ahu@2020",
+              // }).then((res) => {
+              //   console.log(res);
+              //   this.adminToken = res.data.token;
+              //   console.log(this.adminToken);
+              //   var _this = this;
+              //   axios({
+              //     method: "put",
+              //     url:
+              //       "https://api.ahusmart.com/api/v1/admin/user/" +
+              //       this.productname,
+              //     headers: {
+              //       token: this.adminToken,
+              //     },
+              //     data: {
+              //       username: this.productname,
+              //       password: "123456",
+              //       phone: "",
+              //       email: "",
+              //       extraInfo: {
+              //         productKey: _this.productKey,
+              //         role: "user",
+              //       },
+              //     },
+              //   }).then((res) => {
+              //     console.log(res);
+              var data = {
+                    username: this.productname,
+                    password: "123456",
+                    phone: "",
+                    email: "",
+                    extraInfo: {
+                      productKey: _this.productKey,
+                      role: "user",
+                    },
                   }
-                });
-              });
-            });
-          });
+              editUser(this.productname, data).then((res)=>{
+                console.log(res)
+                    var deviceList = [
+                    {
+                      deviceName: "TH1",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TempAndHumi",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TH2",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TempAndHumi",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TH3",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TempAndHumi",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TH4",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TempAndHumi",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TH5",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TempAndHumi",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TH6",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TempAndHumi",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TH7",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TempAndHumi",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "door_1",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "door",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "door_2",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "door",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "Alarm",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "alarm",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "GPS",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "gps",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "Oil",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "oil",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "ACC",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "acc",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TTP71_80:EA:CA:11:0:1",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TireTempPress",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TTP72_80:EA:CA:54:0:1",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TireTempPress",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TTP73_80:EA:CA:10:6:1",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TireTempPress",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TTP74_80:EA:CA:10:0:1",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TireTempPress",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TTP81_80:EA:CA:0:93:4",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TireTempPress",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TTP82_80:EA:CA:0:39:4",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TireTempPress",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TTP83_80:EA:CA:0:29:4",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TireTempPress",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TTP84_80:EA:CA:0:51:2",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TireTempPress",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TTP91_80:EA:CA:0:86:3",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TireTempPress",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TTP92_80:EA:CA:0:89:4",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TireTempPress",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TTP93_80:EA:CA:0:30:1",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TireTempPress",
+                      extraInfo: {},
+                    },
+                    {
+                      deviceName: "TTP94_80:EA:CA:0:72:2",
+                      nickname: "",
+                      netType: "4G",
+                      deviceType: "TireTempPress",
+                      extraInfo: {},
+                    },
+                  ];
+                  var index = 0;
+                  deviceList.forEach((item) => {
+                    registerDevice(item, this.productKey).then((res) => {
+                      console.log(res);
+                      index = index + 1;
+                      if (index == deviceList.length) {
+                        _this.vehicleList = [];
+                        _this.visible = false;
+                        _this.loading = false;
+                        _this.$message.success("注册成功!");
+                        _this.getproduct();
+                      }
+                    });
+                  });
+                  })
+
+
             }
           });
-
         });
         //设备注册
 
@@ -640,7 +653,7 @@ export default {
         console.log(res);
         if (res.code == 200) {
           this.visible2 = true;
-            this.userMessage = {
+          this.userMessage = {
             username: res.data.username,
             password: res.data.password,
             phone: res.data.phone,
@@ -648,8 +661,7 @@ export default {
 
             Wechat: res.data.Wechat,
             extraInfo: res.data.extraInfo,
-
-          }
+          };
           // this.userMessage = res.data;
           this.loginMessage.productName = res.data.username;
           this.loginMessage.password = res.data.password;
@@ -719,26 +731,26 @@ export default {
               this.userMessage.password = this.loginMessage.password;
               console.log(this.userMessage);
               //修改用户信息
-              axios({
-                  method: "put",
-                  url:
-                    "https://api.ahusmart.com/api/v1/admin/user/" +
-                    this.whichProduct.productName,
-                  headers: {
-                    token: this.adminToken,
-                  },
-                  data: this.userMessage,
-                }).then((res) => {
-                  console.log(res);
-                  if (res.data.code == 200) {
-                    this.$message.success("修改成功");
-                    this.vehicleList = [];
-                    this.visible2 = false;
-                    this.getproduct();
-                  } else {
-                    this.$message.warning(res.msg);
-                  }
-                });
+
+                // method: "put",
+                // url:
+                //   "https://api.ahusmart.com/api/v1/admin/user/" +
+                //   this.whichProduct.productName,
+                // headers: {
+                //   token: this.adminToken,
+                // },
+                // data: this.userMessage,
+                editUser(this.whichProduct.productName,this.userMessage).then((res) => {
+                console.log(res);
+                if (res.code == 200) {
+                  this.$message.success("修改成功");
+                  this.vehicleList = [];
+                  this.visible2 = false;
+                  this.getproduct();
+                } else {
+                  this.$message.warning(res.msg);
+                }
+              });
             } else {
               this.$message.warning(res.msg);
             }
@@ -779,18 +791,17 @@ export default {
       var data1 = {
         username: username,
         pkList: pkList,
-        startTime: 111111
+        startTime: 111111,
       };
-      allProductData(data1).then((res)=>{
-        if(res.data[0].deviceData) {
+      allProductData(data1).then((res) => {
+        if (res.data[0].deviceData) {
           this.$router.push({
-        path: "/list/details",
-      });
+            path: "/list/details",
+          });
         } else {
-          this.$message.info("当前产品无数据!!")
+          this.$message.info("当前产品无数据!!");
         }
-      })
-
+      });
     },
 
     cut(data) {
