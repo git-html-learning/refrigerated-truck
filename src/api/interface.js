@@ -68,70 +68,70 @@ export function driver(data) { //获取司机信息（查询指定产品）
     })
 }
 
-export function registerDri(data) {   //注册司机(创建设备)
-    return request({
-        url: '/api/v1/device?productKey=' + data.pKey,
-        method: 'POST',
-        data:
-        {
-            "deviceName": "通宇司机" + data.deviceName,
-            "nickname": "", //打算使用司机的身份证
-            "netType": "BlueTooth",
-            "deviceType": "Driver",
-            "extraInfo": {
-                "Name": {
-                    "Name": "司机姓名",
-                    "Value": data.deviceName,
-                    "userEditable": true,
-                    "userVisible": true,
-                    "adminEditable": true,
-                    "adminVisible": true
-                },
-                "ID": {
-                    "userEditable": true,
-                    "userVisible": true,
-                    "adminEditable": true,
-                    "adminVisible": true,
-                    "Name": "司机身份证号码",
-                    "Value": data.name1,
-                },
-                "PhoneNumber": {
-                    "userEditable": true,
-                    "userVisible": true,
-                    "adminEditable": true,
-                    "adminVisible": true,
-                    "Name": "司机手机号码",
-                    "Value": data.num1
-                },
-                "Age": {
-                    "userEditable": true,
-                    "userVisible": true,
-                    "adminEditable": true,
-                    "adminVisible": true,
-                    "Name": "司机年龄",
-                    "Value": data.num2
-                },
-                "DriveYear": {
-                    "userEditable": true,
-                    "userVisible": true,
-                    "adminEditable": true,
-                    "adminVisible": true,
-                    "Name": "驾龄",
-                    "Value": data.num3
-                },
-                "Account": {
-                    "userEditable": true,
-                    "userVisible": true,
-                    "adminEditable": true,
-                    "adminVisible": true,
-                    "Name": "银行账户",
-                    "Value": data.num4
-                }
-            }
+// export function registerDri(data) {   //注册司机(创建设备)
+//     return request({
+//         url: '/api/v1/device?productKey=' + data.pKey,
+//         method: 'POST',
+//         data:
+//         {
+//             "deviceName": "通宇司机" + data.deviceName,
+//             "nickname": "", //打算使用司机的身份证
+//             "netType": "BlueTooth",
+//             "deviceType": "Driver",
+//             "extraInfo": {
+//                 "Name": {
+//                     "Name": "司机姓名",
+//                     "Value": data.deviceName,
+//                     "userEditable": true,
+//                     "userVisible": true,
+//                     "adminEditable": true,
+//                     "adminVisible": true
+//                 },
+//                 "ID": {
+//                     "userEditable": true,
+//                     "userVisible": true,
+//                     "adminEditable": true,
+//                     "adminVisible": true,
+//                     "Name": "司机身份证号码",
+//                     "Value": data.name1,
+//                 },
+//                 "PhoneNumber": {
+//                     "userEditable": true,
+//                     "userVisible": true,
+//                     "adminEditable": true,
+//                     "adminVisible": true,
+//                     "Name": "司机手机号码",
+//                     "Value": data.num1
+//                 },
+//                 "Age": {
+//                     "userEditable": true,
+//                     "userVisible": true,
+//                     "adminEditable": true,
+//                     "adminVisible": true,
+//                     "Name": "司机年龄",
+//                     "Value": data.num2
+//                 },
+//                 "DriveYear": {
+//                     "userEditable": true,
+//                     "userVisible": true,
+//                     "adminEditable": true,
+//                     "adminVisible": true,
+//                     "Name": "驾龄",
+//                     "Value": data.num3
+//                 },
+//                 "Account": {
+//                     "userEditable": true,
+//                     "userVisible": true,
+//                     "adminEditable": true,
+//                     "adminVisible": true,
+//                     "Name": "银行账户",
+//                     "Value": data.num4
+//                 }
+//             }
 
-        }
-    })
-}
+//         }
+//     })
+// }
 
 export function founddriver(data) {   //详情(查询指定设备详情)
     return request({

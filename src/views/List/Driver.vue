@@ -14,63 +14,64 @@
             <a-form-model-item>
               <a-button type="primary" @click="reset">重置</a-button>
             </a-form-model-item>
-               <a-form-model-item>
-                <a-button
-              type="primary"
-              @click="add"
-              >添加司机
-            </a-button>
+            <a-form-model-item>
+              <a-button type="primary" @click="add">添加司机 </a-button>
             </a-form-model-item>
             <a-modal
-              title="添加司机"
               :visible="visible"
-              @ok="handleOk"
-              @cancel="visible = false"
-              width="500px"
+
+              style = "width: 60%;position: absolute; top: 200px; left: 20%;"
             >
-              <a-form-model :label-col="{ span: 7 }">
-                <a-form-model-item label="姓名" :wrapper-col="{ span: 12 }">
-                  <a-input v-model="deviceName" />
+              <a-form-model
+                :label-col="{ span: 7 }"
+                :model="dataForm"
+                :rules="rule"
+              >
+                <a-form-model-item prop = "productName" label="姓名" :wrapper-col="{ span: 12 }">
+                  <a-input v-model="dataForm.productName" />
                 </a-form-model-item>
-                <a-form-model-item label="年龄" :wrapper-col="{ span: 12 }">
-                  <a-input v-model="num2" />
+                <a-form-model-item prop = "age" label="年龄" :wrapper-col="{ span: 12 }">
+                  <a-input v-model="dataForm.age" />
                 </a-form-model-item>
-                <a-form-model-item label="驾龄" :wrapper-col="{ span: 12 }">
-                  <a-input v-model="num3" />
+                <a-form-model-item prop = "driverAge" label="驾龄" :wrapper-col="{ span: 12 }">
+                  <a-input v-model="dataForm.driverAge" />
                 </a-form-model-item>
-                <a-form-model-item label="手机号" :wrapper-col="{ span: 12 }">
-                  <a-input v-model="num1" />
+                <a-form-model-item prop = "phone" label="手机号" :wrapper-col="{ span: 12 }">
+                  <a-input v-model="dataForm.phone" />
                 </a-form-model-item>
-                <a-form-model-item label="身份证号" :wrapper-col="{ span: 12 }">
-                  <a-input v-model="name1" />
+                <a-form-model-item prop = "idNumber" label="身份证号" :wrapper-col="{ span: 12 }">
+                  <a-input v-model="dataForm.idNumber" />
                 </a-form-model-item>
-                <a-form-model-item label="银行账户" :wrapper-col="{ span: 12 }">
-                  <a-input v-model="num4" />
+                <a-form-model-item prop = "account" label="银行账户" :wrapper-col="{ span: 12 }">
+                  <a-input v-model="dataForm.account" />
+                </a-form-model-item>
+                <a-form-model-item>
+                  <a-button @click = "handleOk()"></a-button>
                 </a-form-model-item>
               </a-form-model>
             </a-modal>
-            <a-modal
+            <!-- <a-modal
               title="修改司机信息"
               :visible="dialogVisible2"
               @ok="edidriver"
               @cancel="dialogVisible2 = false"
               width="500px"
-            >
+             >
               <a-form-model :label-col="{ span: 7 }">
                 <a-form-model-item label="驾龄" :wrapper-col="{ span: 12 }">
-                  <a-input   v-model="drinum" />
+                  <a-input v-model="this.whichProduct.extraInfo.driverAge" />
                 </a-form-model-item>
                 <a-form-model-item label="年龄" :wrapper-col="{ span: 12 }">
-                  <a-input v-model="agenum" />
+                  <a-input v-model="this.whichProduct.extraInfo.age" />
                 </a-form-model-item>
                 <a-form-model-item label="手机号" :wrapper-col="{ span: 12 }">
-                  <a-input v-model="phnum" />
+                  <a-input v-model="this.whichProduct.extraInfo.phone" />
                 </a-form-model-item>
                 <a-form-model-item label="银行账户" :wrapper-col="{ span: 12 }">
-                  <a-input v-model="monnum" />
+                  <a-input v-model="this.whichProduct.extraInfo.account" />
                 </a-form-model-item>
-                 <a-form-model-item label="身份证号" :wrapper-col="{ span: 12 }">
-                  <a-input v-model="ID" />
+                <a-form-model-item label="身份证号" :wrapper-col="{ span: 12 }">
+                  <a-input v-model="this.whichProduct.extraInfo.idNumber" />
                 </a-form-model-item>
               </a-form-model>
             </a-modal>
@@ -80,63 +81,68 @@
               @ok="dialogVisible1 = false"
               @cancel="dialogVisible1 = false"
               width="500px"
-            >
-              <p>姓名：{{ this.Name }}</p>
-              <p>年龄：{{ this.Age }}</p>
-              <p>驾龄：{{ this.driveYear }}</p>
-              <p>电话号码：{{ this.phoneNumber }}</p>
-              <p>身份证号：{{ this.ID }}</p>
-              <p>银行卡号：{{ this.Account }}</p>
-            </a-modal>
-            <!-- <a-modal title="" :visible.sync="dialogVisible3" width="20%">
+             >
+              <p>姓名：{{ this.whichProduct.productName }}</p>
+              <p>年龄：{{ this.whichProduct.extraInfo.age }}</p>
+              <p>驾龄：{{ this.whichProduct.extraInfo.driverAge }}</p>
+              <p>电话号码：{{ this.whichProduct.extraInfo.phone }}</p>
+              <p>身份证号：{{ this.whichProduct.extraInfo.idNumber }}</p>
+              <p>银行卡号：{{ this.whichProduct.extraInfo.account }}</p>
             </a-modal> -->
           </a-form-model>
         </div>
       </div>
       <div>
-        <div v-show="driverList.length != 0" style = "padding: 10px 20px;">
+        <div v-show="productList.length != 0" style="padding: 10px 20px">
           <a-row :gutter="16">
-            <a-col :span="8" v-for="(item, index) in driverList" :key="index">
-              <a-card  class="vehicle"  hoverable>
+            <a-col :span="8" v-for="(item, index) in productList" :key="index">
+              <a-card class="vehicle" hoverable>
+                <span style="cursor: pointer; float: right" @click="cut(item)"
+                  ><img
+                    src="../../static/icon/删除1.svg"
+                    style="width: 20px; color: #515151"
+                /></span>
                 <div style="cursor: pointer" @click="more(item)">
-                <a-card-meta :title="item.productName">
-                  <a-avatar
-                    :size="64"
-                    slot="avatar"
-                    style="
-                      background: white;
-                      border: solid;
-                      border-color: #515151;"
-                  >
-                    <img src="../../static/icon/司机.svg" style="width: 60px" />
-                  </a-avatar>
-                </a-card-meta>
-                <p style="padding-left: 64px">
-                  电话号码&nbsp;&nbsp;
-                  <span> {{ item.phoneNumber }}</span>
-                </p>
-                <p style="padding-left: 80px">
-                  驾龄&nbsp;&nbsp;
-                  <span> {{ item.driveYear }}</span
-                  ><br /><br />
-                  <a-row>
-                    <a-col :span="12">
+                  <a-card-meta :title="item.productName">
+                    <a-avatar
+                      :size="64"
+                      slot="avatar"
+                      style="
+                        background: white;
+                        border: solid;
+                        border-color: #515151;
+                      "
+                    >
+                      <img
+                        src="../../static/icon/司机.svg"
+                        style="width: 60px"
+                      />
+                    </a-avatar>
+                    <p style="padding-left: 64px">
+                      电话号码&nbsp;&nbsp;
+                      <span> {{ item.extraInfo.phone }}</span>
+                    </p>
+                    <p style="padding-left: 80px">
+                      驾龄&nbsp;&nbsp;
+                      <span> {{ item.extraInfo.driverAge }}</span
+                      ><br /><br />
+                    </p>
+                  </a-card-meta>
+                </div>
+
+                <a-row>
+                  <!-- <a-col :span="12">
                       <a @click="more(item)">查看</a>
-                    </a-col>
-                    <a-col :span="12">
-                      <a @click="edit(item)">修改</a>
-                    </a-col>
-                    <!-- <a-col :span="8">
-                      <a @click="dele(item)">删除</a>
                     </a-col> -->
-                  </a-row>
-                </p>
-              </div>
+                  <a-col :span="12">
+                    <a @click="edit(item)">修改</a>
+                  </a-col>
+                </a-row>
               </a-card>
             </a-col>
           </a-row>
         </div>
-        <div v-show="driverList.length == 0">
+        <div v-show="productList.length == 0">
           <a-empty description="暂无司机信息" />
         </div>
       </div>
@@ -152,39 +158,73 @@ import {
   founddriver,
   editdriver,
 } from "@/api/interface";
+import { registerDriver, deleteProduct } from "@/api/vehicle";
+import { userRegister } from "@/api/user";
+import { deleteUser } from "@/api/admin";
 
 export default {
   data() {
     return {
-      pKey1: "",
-      Name: "",
-      ID: "",
-      Account: "",
-      Age: "",
-      searchNum: "", //车牌号搜索
-      visible: false, //对话框显示
-      productname: "", //注册车辆号码
-      phoneNumber: "", //号码
-      driveYear: "", //驾龄
-      deviceKey: "",
-      productKey: "",
-      deviceName: "",
-      name1: "", //身份证号码
-      key1: "",
-      key2: "",
-      num1: "", //手机号
-      num2: "", //年龄
-      num3: "", //驾龄
-      num4: "", //银行号码
-      phnum: "",
-      agenum: "",
-      drinum: "",
-      monnum: "",
+      productList: [],
       dialogVisible1: false,
-      dialogVisible2: false, //修改
-      // dialogVisible3: false,
-      vehicleList: [],
-      driverList: [],
+      dialogVisible2: false,
+      visible: false,
+      searchNum: "",
+      // pKey1: "",
+      // Name: "",
+      // Account: "",
+      // Age: "",
+      // searchNum: "", //车牌号搜索
+      // visible: false, //对话框显示
+      // productName: "", //注册车辆号码
+      // phoneNumber: "", //号码
+      // driveYear: "", //驾龄
+      // deviceKey: "",
+      // productKey: "",
+      // deviceName: "",
+      // idNumber: "", //身份证号码
+      // key1: "",
+      // key2: "",
+      // phone: "", //手机号
+      // age: "", //年龄
+      // driverAge: "", //驾龄
+      // account: "", //银行号码
+      // phnum: "",
+      // agenum: "",
+      // drinum: "",
+      // monnum: "",
+      // ID: "",
+      // dialogVisible1: false,
+      // dialogVisible2: false, //修改
+      // vehicleList: [],
+      // driverList: [],
+      // productList: [],
+      whichProduct: {
+        productName: "",
+        extraInfo: {
+          age: "",
+          driverAge: "",
+          accout: "",
+          phone: "",
+          idNumber: "",
+        },
+      },
+      dataForm: {
+        productName: "",
+        age: "",
+        driverAge: "",
+        phone: "",
+        idNumber: "",
+        account: "",
+      },
+      rule: {
+        productName:[{ required: true, message: '必填项不能为空', trigger: 'change' }],
+        age:[{ required: true, message: '必填项不能为空', trigger: 'change' }],
+        driverAge:[{ required: true, message: '必填项不能为空', trigger: 'change' }],
+        phone:[{ required: true, message: '必填项不能为空', trigger: 'change' }],
+        idNumber:[{ required: true, message: '必填项不能为空', trigger: 'change' }],
+        account:[{ required: true, message: '必填项不能为空', trigger: 'change' }],
+      }
     };
   },
 
@@ -193,168 +233,41 @@ export default {
   },
 
   methods: {
-    async getproduct() { //获取全部信息
-      const res = await product();
-      for (var i = 0; i < res.data.productInfo.length; i++) {
-        if (res.data.productInfo[i].typeIdentify == "tysj") {
-          // console.log(res);
-          this.productKey = res.data.productInfo[i].productKey;
-          // console.log( this.productKey);获取productkey来找到司机
-        }
-      }
-      this.getdriver();
-    },
-    async getdriver() { //获取司机信息
-      const res = await driver({
-        key: this.productKey,
+    async getproduct() {
+      product().then((res) => {
+        console.log(res);
+        this.productList = [];
+        res.data.productInfo.forEach((item) => {
+          if (item.typeIdentify == "tysj") {
+            this.productList.push(item);
+          }
+        });
+        console.log(this.productList.length);
+        // if(this.productList.length != 0) {
+        //   this.whichProduct = this.productList[0]
+        // }
       });
-      // console.log(res);
-      for (var i = 0; i < res.data.deviceInfo.length; i++) {
-        var obj = {
-          productName: res.data.deviceInfo[i].deviceName,
-          phoneNumber: res.data.deviceInfo[i].extraInfo.PhoneNumber.Value,
-          driveYear: res.data.deviceInfo[i].extraInfo.DriveYear.Value,
-          deviceKey: res.data.deviceInfo[i].deviceKey,
-          productKey: res.data.deviceInfo[i].productKey,
-          Account: res.data.deviceInfo[i].extraInfo.Account.Value,
-          Age: res.data.deviceInfo[i].extraInfo.Age.Value,
-          ID: res.data.deviceInfo[i].extraInfo.ID.Value,
-          Name: res.data.deviceInfo[i].extraInfo.Name.Value,
-        };
-        this.driverList.push(obj); //把obj数组放入driverList
-      }
     },
-    async handleOk() { //注册司机
-      var _this = this;
-      _this.visible = false;
-      const res = await registerDri({
-        pKey: this.productKey, //需要传的数据
-        deviceName: this.deviceName,
-        name1: this.name1,
-        num1: this.num1,
-        num2: this.num2,
-        num3: this.num3,
-        num4: this.num4,
-      });
-      console.log(res);
-      if (res.code == 200) {
-        var _this = this;
-        _this.productKey = res.data.productKey;
-        console.log(_this.productKey);
-        _this.driverList = [];
-        _this.$message.success("注册成功!");
-        console.log(_this.driverList);
-        _this.getproduct();
-      }
-      // console.log(_this.num1);
+    search() {
+      console.log("查询");
     },
-    async moredriver() {  //司机详情
-      const res = await founddriver({
-        pKey: this.productkey,
-      });
-      // console.log(this.productkey);
-      // console.log(res);
-    },
-    // async deletdriver() { //删除司机
-    //   const res = await deledriver({
-    //     key1: this.productkey,
-    //     key2: this.devicekey,
-    //   });
-    //   console.log(res);
-    //   if (res.code == 200) {
-    //     this.$message.success("删除成功!");
-    //     this.driverList = [];
-    //     this.getproduct();
-    //   }
-    // },
-    async edidriver() { //修改司机
-      const res = await editdriver({
-        name: this.name, //取已存的数据
-        ID: this.ID,
-        dKey: this.dKey,
-        productKey: this.productKey,
-        phnum: this.phnum,
-        agenum: this.agenum,
-        drinum: this.drinum,
-        monnum: this.monnum,
-      });
-      // console.log(this.ID);
-      // console.log(res);
-      if (res.code == 200) {
-        this.$message.success("修改成功!");
-        this.driverList = [];
-        this.getproduct();
-        this.dialogVisible2 = false;
-      } else {
-        this.$message.info("修改失败");
-        this.dialogVisible2 = false;
-      }
-    },
-    edit(data) {
-      //存需要传入服务器的data
-      // console.log(data);
-      this.dialogVisible2 = true;
-      this.phnum = data.phoneNumber; //输入
-      this.agenum = data.Age;
-      this.drinum = data.driveYear;
-      this.monnum = data.Account;
-      this.dKey = data.deviceKey; //不变
-      this.name = data.Name;
-      this.ID = data.ID;
-    },
-    more(data) {
-      // console.log(data);
-      this.deviceKey = data.deviceKey;
-      this.Name = data.Name;
-      this.phoneNumber = data.phoneNumber;
-      this.productkey = data.productKey;
-      this.ID = data.ID;
-      this.driveYear = data.driveYear;
-      this.Age = data.Age;
-      this.Account = data.Account;
-      this.moredriver();
-      this.dialogVisible1 = true;
-    },
-    // dele(data) {//删除司机
-    //   // console.log(data);
-    //   this.productkey = data.productKey;
-    //   this.devicekey = data.deviceKey;
-    //   // console.log(this.productkey);
-    //   // console.log(this.devicekey);
-    //   this.$confirm("此操作将永久删除司机， 是否继续?", "提示", {
-    //     confirmButtonText: "确定",
-    //     cancelButtonText: "取消",
-    //     type: "warning",
-    //   })
-    //     .then(() => {
-    //       this.deletdriver();
-    //     })
-    //     .catch(() => {
-    //       this.$message.info("已取消删除");
-    //     });
-    // },
-    search() { //查询司机
-      var arr = [];
-      for (var i = 0; i < this.driverList.length; i++) {
-        if (this.driverList[i].productName.indexOf(this.searchNum) >= 0) {
-          arr.push(this.driverList[i]);
-        }
-      }
-      this.driverList = arr;
-    },
-    reset() { //重置
-      this.driverList = [];
-      this.searchNum = "";
-      this.getproduct();
+    reset() {
+      console.log("重置");
     },
     add() {
+      console.log("添加司机");
       this.visible = true;
-      this.deviceName = "";
-      this.name1 = "";
-      this.num1 = "";
-      this.num2 = "";
-      this.num3 = "";
-      this.num4 = "";
+    },
+    handleOk() {
+      console.log("添加");
+      var _this = this
+      // _this.$refs.dataForm.validate(valid=>{
+      //   if(valid) {
+
+      //   } else {
+      //     return false
+      //   }
+      // })
     },
   },
 };

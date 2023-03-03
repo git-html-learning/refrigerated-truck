@@ -49,6 +49,28 @@ export function registerVeh(data) {   //注册车辆
     })
 }
 
+export function registerDriver(data) {   //注册司机
+  return request({
+      url: "/api/v1/product",
+      method: "POST",
+      data: {
+          "protocolType": "MQTT",
+          "productName": data.productName,
+          "productType": 1,
+          "typeIdentify": "tysj",
+          "description": "此产品为通宇用户目录下的司机",
+          "extraInfo": {
+              "age": data.age,
+              "driverAge": data.driverAge,
+              "phone":data.phone,
+              "idNumber":data.idNumber,
+              "account": data.account
+
+          }
+      }
+  })
+}
+
 export function tempAndHumi(data) {   //批量注册车辆温湿度设备
     return request({
         url: "/api/v1/batchDevice",

@@ -246,33 +246,6 @@ export default {
         password: "",
       },
       userMessage: null,
-      // vehicleList: [
-      //   {
-      //     number: "皖A11111",
-      //     driver: "俞大",
-      //     destination: "上海",
-      //   },
-      //   {
-      //     number: "皖A22222",
-      //     driver: "陈二",
-      //     destination: "浙江",
-      //   },
-      //   {
-      //     number: "皖A33333",
-      //     driver: "张三",
-      //     destination: "福建",
-      //   },
-      //   {
-      //     number: "皖A44444",
-      //     driver: "李五",
-      //     destination: "广州",
-      //   },
-      //   {
-      //     number: "皖A55555",
-      //     driver: "汪鸽",
-      //     destination: "武汉",
-      //   },
-      // ],
     };
   },
 
@@ -288,16 +261,16 @@ export default {
       for (var i = 0; i < res.data.productInfo.length; i++) {
         if (res.data.productInfo[i].typeIdentify != "tysj") {
           var time1 = res.data.productInfo[i].createdAt.split("T");
-          console.log(time1);
+          // console.log(time1);
           var time2 = time1[0].split("-");
-          console.log(time2);
+          // console.log(time2);
           var num2 = time2[0].slice(3, 4);
           var num1 = time2[0].slice(0, 3);
-          console.log(num1);
-          console.log(num2);
+          // console.log(num1);
+          // console.log(num2);
           num2 = parseInt(num2);
           var num3 = num2 + 2;
-          console.log(num3);
+          // console.log(num3);
 
           var obj = {
             productName: res.data.productInfo[i].productName,
