@@ -190,27 +190,6 @@
         <a-empty description="暂无车辆信息" />
       </div>
     </div>
-
-    <!-- <div v-show="showInfo == '2'">
-      <div class="home-item1">
-        <a-form-model :label-col="{ span: 8 }" >
-          <a-form-model-item label="车牌号" :wrapper-col="{ span: 6 }">
-            <a-input-number v-model="vehicleList.number" />
-          </a-form-model-item>
-          <a-form-model-item label="司机" :wrapper-col="{ span: 6 }">
-            <a-input-number v-model="vehicleList.driver" />
-          </a-form-model-item>
-          <a-form-model-item label="目的地" :wrapper-col="{ span: 6 }">
-            <a-input-number v-model="vehicleList.destination" />
-          </a-form-model-item>
-        </a-form-model>
-     <a-form-item :wrapper-col="{ span: 14, offset: 8 }">
-      <a-button type="primary" @click="handleOk">注册</a-button>
-      <a-button style="margin-left: 10px" @click="handleCancel">取消</a-button>
-    </a-form-item>
-
-      </div>
-    </div>-->
   </div>
 </template>
 <script>
@@ -390,41 +369,14 @@ export default {
         userRegister(obj).then((res) => {
           console.log(res);
           //拿到当前产品的pk
-          product().then((res) => {
+          if(res.code == 200) {
+            product().then((res) => {
             if (res.code == 200) {
               res.data.productInfo.forEach((item) => {
                 if (item.productName == this.productname) {
                   this.productKey = item.productKey;
                 }
               });
-              // adminLogin({
-              //   username: "弘恩科技",
-              //   password: "hongenkj&ahu@2020",
-              // }).then((res) => {
-              //   console.log(res);
-              //   this.adminToken = res.data.token;
-              //   console.log(this.adminToken);
-              //   var _this = this;
-              //   axios({
-              //     method: "put",
-              //     url:
-              //       "https://api.ahusmart.com/api/v1/admin/user/" +
-              //       this.productname,
-              //     headers: {
-              //       token: this.adminToken,
-              //     },
-              //     data: {
-              //       username: this.productname,
-              //       password: "123456",
-              //       phone: "",
-              //       email: "",
-              //       extraInfo: {
-              //         productKey: _this.productKey,
-              //         role: "user",
-              //       },
-              //     },
-              //   }).then((res) => {
-              //     console.log(res);
               var data = {
                     username: this.productname,
                     password: "123456",
@@ -633,6 +585,13 @@ export default {
 
             }
           });
+          }else {
+        // _this.vehicleList = [];
+        // _this.visible = false;
+        _this.loading = false;
+        _this.$message.error(res.msg);
+      }
+
         });
         //设备注册
 
@@ -702,7 +661,6 @@ export default {
         });
       }
 
-      // updateProduct()
     },
     handleOk2() {
       console.log("修改信息");
@@ -730,16 +688,6 @@ export default {
               this.userMessage.username = this.loginMessage.productName;
               this.userMessage.password = this.loginMessage.password;
               console.log(this.userMessage);
-              //修改用户信息
-
-                // method: "put",
-                // url:
-                //   "https://api.ahusmart.com/api/v1/admin/user/" +
-                //   this.whichProduct.productName,
-                // headers: {
-                //   token: this.adminToken,
-                // },
-                // data: this.userMessage,
                 editUser(this.whichProduct.productName,this.userMessage).then((res) => {
                 console.log(res);
                 if (res.code == 200) {
@@ -830,25 +778,12 @@ export default {
       const res = await deleteProduct({
         key: this.productkey,
       });
-      // console.log(res);
       if (res.code == 200) {
-        adminLogin({
-          username: "弘恩科技",
-          password: "hongenkj&ahu@2020",
-        }).then((res) => {
-          console.log(res);
-          this.adminToken = res.data.token;
-          axios({
-            method: "delete",
-            url:
-              "https://api.ahusmart.com/api/v1/admin/user/" + this.productname,
-            headers: {
-              token: this.adminToken,
-            },
-          }).then((res) => {
+
+            deleteUser(this.productname).then((res) => {
             console.log(res);
           });
-        });
+        // });
         // console.log(this.adminToken)
 
         this.$message.success("删除成功!");

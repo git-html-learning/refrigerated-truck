@@ -300,27 +300,18 @@ export default {
       this.show1 = "1";
     },
     denglu() {
-      // login(this.loginform).then((res) => {
-      //   console.log(res);
-      //   if (res.msg != "ok") {
-      //     alert("用户名或者密码错误！");
-      //   } else {
-          // adminLogin({
-          //   username: "弘恩科技",
-          //   password: "hongenkj&ahu@2020",
-          // }).then((res) => {
-          //   console.log(res);
-          //   if (res.msg == "ok") {
-          //     window.sessionStorage.setItem("adminToken", res.data.token);
-          //   }
-          // });
+      login(this.loginform).then((res) => {
+        console.log(res);
+        if (res.msg != "ok") {
+          alert("用户名或者密码错误！");
+        } else {
+
           this.$store.dispatch("user1/adminLogin",{
             username: "弘恩科技",
             password: "hongenkj&ahu@2020",
-          }).then((res)=>{
+          }).then(()=>{
             console.log(res)
-          })
-          window.sessionStorage.setItem("username", this.loginform.username);
+            window.sessionStorage.setItem("username", this.loginform.username);
           this.$store
             .dispatch("user/login", this.loginform)
             .then(() => {
@@ -330,8 +321,10 @@ export default {
             .catch(() => {
               this.loading = false;
             });
-      //   }
-      // });
+          })
+
+        }
+      });
     },
     more() {
       this.show1 = "2";

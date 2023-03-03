@@ -6,7 +6,6 @@ export function getUserList(data) {     //获取所有用户
   return request({
     url: '/api/v1/admin/users',
     method: 'GET',
-    data
   })
 }
 
@@ -14,7 +13,6 @@ export function deleteUser(username) {     //删除用户
   return request({
     url: '/api/v1/admin/user/'+username,
     method: 'DELETE',
-    data
   })
 }
 

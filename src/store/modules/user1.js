@@ -1,5 +1,5 @@
 import { adminLogin} from '@/api/user'
-import { adminToken} from '@/utils/auth1'
+import { adminToken,setToken} from '@/utils/auth1'
 // import { resetRouter } from '@/router'
 
 const getDefaultState = () => {
@@ -24,7 +24,7 @@ const mutations = {
         adminLogin(userInfo).then(response => {
           const { data } = response
           commit('SET_TOKEN', data.token)
-          adminToken(data.token)
+          setToken(data.token)
           resolve()
         }).catch(error => {
           reject(error)
