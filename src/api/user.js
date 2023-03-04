@@ -14,11 +14,7 @@ export function userRegister(data) {
     url: '/session',
     method: 'put',
     data
-    // :{
-    //   "username":data.username,
-    //   "password":data.password,
-    //   "phone":String(data.phone)
-    // }
+
   })
 }
 

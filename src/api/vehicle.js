@@ -195,7 +195,7 @@ export function updateProduct(data) {     //修改车辆信息
   })
 }
 
-export function productMessage(pk) {     //修改车辆信息
+export function productMessage(pk) {     //获取车辆信息
   return request({
       url: '/api/v1/productDetail?productKey='+pk,
       method:'GET',

@@ -767,6 +767,7 @@ export default {
     bind(data) {
       console.log(data);
       this.whichProduct = data;
+      this.imei = this.whichProduct.typeIdentify
       this.visible1 = true;
     },
   },
