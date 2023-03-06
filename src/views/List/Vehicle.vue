@@ -196,7 +196,7 @@
 import { product, registerDevice, allProductData } from "@/api/interface";
 import { updateProduct, productMessage } from "@/api/vehicle";
 import { userRegister, login, adminLogin, person } from "@/api/user";
-import { deleteUser,editUser } from "@/api/admin";
+import { deleteUser, editUser } from "@/api/admin";
 import axios from "axios";
 import {
   registerVeh,
@@ -246,43 +246,59 @@ export default {
         password: "",
       },
       userMessage: null,
+      allProduct: [],
+      statusIf: "",
     };
   },
 
   created() {
     this.getproduct();
   },
-
-  methods: {
-    async getproduct() {
-      //获取产品信息
-      const res = await product();
-      console.log(res);
-      for (var i = 0; i < res.data.productInfo.length; i++) {
-        if (res.data.productInfo[i].typeIdentify != "tysj") {
-          var time1 = res.data.productInfo[i].createdAt.split("T");
-          // console.log(time1);
-          var time2 = time1[0].split("-");
-          // console.log(time2);
-          var num2 = time2[0].slice(3, 4);
-          var num1 = time2[0].slice(0, 3);
-          // console.log(num1);
-          // console.log(num2);
-          num2 = parseInt(num2);
-          var num3 = num2 + 2;
-          // console.log(num3);
-
-          var obj = {
-            productName: res.data.productInfo[i].productName,
-            value1: time1[0],
-            value2: num1 + num3 + "-" + time2[1] + "-" + time2[2],
-            productkey: res.data.productInfo[i].productKey,
-            typeIdentify: res.data.productInfo[i].typeIdentify,
-          };
-          this.vehicleList.push(obj);
-        }
+  watch: {
+    $route(to, from) {
+      //监听路由  每次跳转到该页面的时候，只渲染一遍，所以需要每次跳转的时候都要获取一次数据
+      if (to.path == "/list/vehicle") {
+        this.getproduct();
       }
-      console.log(this.vehicleList);
+      deep: true;
+    },
+  },
+  methods: {
+    getproduct() {
+      //获取产品信息
+      this.vehicleList = [];
+      this.allProduct = [];
+      product().then((res) => {
+        for (var i = 0; i < res.data.productInfo.length; i++) {
+          this.allProduct.push(res.data.productInfo[i]);
+          if (res.data.productInfo[i].typeIdentify != "tysj") {
+            var time1 = res.data.productInfo[i].createdAt.split("T");
+            // console.log(time1);
+            var time2 = time1[0].split("-");
+            // console.log(time2);
+            var num2 = time2[0].slice(3, 4);
+            var num1 = time2[0].slice(0, 3);
+            // console.log(num1);
+            // console.log(num2);
+            num2 = parseInt(num2);
+            var num3 = num2 + 2;
+            // console.log(num3);
+
+            var obj = {
+              productName: res.data.productInfo[i].productName,
+              value1: time1[0],
+              value2: num1 + num3 + "-" + time2[1] + "-" + time2[2],
+              productkey: res.data.productInfo[i].productKey,
+              typeIdentify: res.data.productInfo[i].typeIdentify,
+              extraInfo: res.data.productInfo[i].extraInfo,
+            };
+            this.vehicleList.push(obj);
+
+          }
+        }
+        console.log(this.vehicleList);
+        console.log(this.allProduct);
+      });
     },
 
     search() {
@@ -342,27 +358,27 @@ export default {
         userRegister(obj).then((res) => {
           console.log(res);
           //拿到当前产品的pk
-          if(res.code == 200) {
+          if (res.code == 200) {
             product().then((res) => {
-            if (res.code == 200) {
-              res.data.productInfo.forEach((item) => {
-                if (item.productName == this.productname) {
-                  this.productKey = item.productKey;
-                }
-              });
-              var data = {
-                    username: this.productname,
-                    password: "123456",
-                    phone: "",
-                    email: "",
-                    extraInfo: {
-                      productKey: _this.productKey,
-                      role: "user",
-                    },
+              if (res.code == 200) {
+                res.data.productInfo.forEach((item) => {
+                  if (item.productName == this.productname) {
+                    this.productKey = item.productKey;
                   }
-              editUser(this.productname, data).then((res)=>{
-                console.log(res)
-                    var deviceList = [
+                });
+                var data = {
+                  username: this.productname,
+                  password: "123456",
+                  phone: "",
+                  email: "",
+                  extraInfo: {
+                    productKey: _this.productKey,
+                    role: "user",
+                  },
+                };
+                editUser(this.productname, data).then((res) => {
+                  console.log(res);
+                  var deviceList = [
                     {
                       deviceName: "TH1",
                       nickname: "",
@@ -545,26 +561,23 @@ export default {
                       console.log(res);
                       index = index + 1;
                       if (index == deviceList.length) {
-                        _this.vehicleList = [];
-                        _this.visible = false;
-                        _this.loading = false;
-                        _this.$message.success("注册成功!");
-                        _this.getproduct();
+                        this.vehicleList = [];
+                        this.visible = false;
+                        this.loading = false;
+                        this.$message.success("注册成功!");
+                        this.getproduct();
                       }
                     });
                   });
-                  })
-
-
-            }
-          });
-          }else {
-        // _this.vehicleList = [];
-        // _this.visible = false;
-        _this.loading = false;
-        _this.$message.error(res.msg);
-      }
-
+                });
+              }
+            });
+          } else {
+            // _this.vehicleList = [];
+            // _this.visible = false;
+            _this.loading = false;
+            _this.$message.error(res.msg);
+          }
         });
         //设备注册
 
@@ -633,7 +646,6 @@ export default {
           });
         });
       }
-
     },
     handleOk2() {
       console.log("修改信息");
@@ -661,17 +673,19 @@ export default {
               this.userMessage.username = this.loginMessage.productName;
               this.userMessage.password = this.loginMessage.password;
               console.log(this.userMessage);
-                editUser(this.whichProduct.productName,this.userMessage).then((res) => {
-                console.log(res);
-                if (res.code == 200) {
-                  this.$message.success("修改成功");
-                  this.vehicleList = [];
-                  this.visible2 = false;
-                  this.getproduct();
-                } else {
-                  this.$message.warning(res.msg);
+              editUser(this.whichProduct.productName, this.userMessage).then(
+                (res) => {
+                  console.log(res);
+                  if (res.code == 200) {
+                    this.$message.success("修改成功");
+                    this.vehicleList = [];
+                    this.visible2 = false;
+                    this.getproduct();
+                  } else {
+                    this.$message.warning(res.msg);
+                  }
                 }
-              });
+              );
             } else {
               this.$message.warning(res.msg);
             }
@@ -728,6 +742,8 @@ export default {
     cut(data) {
       //删除车辆
       // console.log(data.productkey);
+      this.statusIf = data.extraInfo.status.if;
+      console.log(this.statusIf);
       this.whichProduct = data;
       this.productname = data.productName;
       this.productkey = data.productkey;
@@ -741,33 +757,102 @@ export default {
         }
       )
         .then(() => {
-          this.confirm();
+          this.confirm(data);
         })
         .catch(() => {
           this.$message.info("已取消删除");
         });
     },
-    async confirm() {
-      const res = await deleteProduct({
+    confirm(data) {
+      console.log(data);
+      console.log(data.extraInfo.status.if);
+
+      deleteProduct({
         key: this.productkey,
-      });
-      if (res.code == 200) {
-
-            deleteUser(this.productname).then((res) => {
+      }).then((res) => {
+        if (res.code == 200) {
+          deleteUser(this.productname).then((res) => {
             console.log(res);
-          });
-        // });
-        // console.log(this.adminToken)
+            if (res.code == 200) {
+              //如果该车辆没有被分组，就不需要下面的操作
+              //删除grouper中的members
+              console.log(data);
 
-        this.$message.success("删除成功!");
-        this.vehicleList = [];
-        this.getproduct();
-      }
+              if (this.statusIf === "ed") {
+                console.log("已分组");
+                //查询小组长名
+                var grouperName = "";
+                console.log(this.allProduct)
+                console.log(data.productkey)
+                this.allProduct.forEach((item) => {
+                  if (item.productKey == data.extraInfo.status.grouper) {
+                    grouperName = item.productName;
+                  }
+                });
+                console.log(grouperName);
+                person(grouperName).then((res) => {
+                  console.log(res);
+                  if (res.code == 200) {
+                    var groupData = res.data;
+                    res.data.extraInfo.members.forEach((item, index) => {
+                      if (item.name == data.productName) {
+                        groupData.extraInfo.members.splice(index, 1);
+                      }
+                    });
+                    console.log(groupData);
+                    editUser(groupData.username,groupData).then((res) => {
+                      console.log(res);
+                      if (res.code == 200) {
+                        //开始修改管理员的信息
+                        console.log(grouperName);
+                        var username =
+                          window.sessionStorage.getItem("username");
+                        person(username).then((res) => {
+                          if (res.code == 200) {
+                            var adminData = res.data;
+                            res.data.extraInfo.grouping.forEach(
+                              (item, index) => {
+                                if (item.grouper.name == grouperName) {
+                                  item.members.forEach((item1, index1) => {
+                                    if (item1.name == data.productName) {
+                                      adminData.extraInfo.grouping[
+                                        index
+                                      ].members.splice(index1, 1);
+                                    }
+                                  });
+                                }
+                              }
+                            );
+                            console.log(adminData);
+                            editUser(adminData.username,adminData).then((res) => {
+                              if (res.code == 200) {
+                                this.$message.success("删除成功!");
+                                this.vehicleList = [];
+                                this.getproduct();
+                              }
+                            });
+                          }
+                        });
+                      }
+                    });
+                  }
+                });
+              } else {
+                this.$message.success("删除成功!");
+                this.vehicleList = [];
+                this.getproduct();
+              }
+            }
+          });
+          // });
+          // console.log(this.adminToken)
+        }
+      });
     },
     bind(data) {
       console.log(data);
       this.whichProduct = data;
-      this.imei = this.whichProduct.typeIdentify
+      this.imei = this.whichProduct.typeIdentify;
       this.visible1 = true;
     },
   },
